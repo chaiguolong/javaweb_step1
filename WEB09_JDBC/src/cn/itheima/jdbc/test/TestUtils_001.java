@@ -15,7 +15,12 @@ import cn.itheima.jdbc.JDBCUtils_V3;
  * 测试工具类
  */
 public class TestUtils_001{
+    public static void main(String[] args){
+        TestUtils_001.testAdd();
+        System.out.println("3333333");
+    }
     /**
+     *
      * 根据id更新用户的信息方法
      */
     @Test
@@ -30,8 +35,8 @@ public class TestUtils_001{
             //3.获取执行sql语句对象
             pstmt = conn.prepareStatement(sql);
             //4.设置参数
-            pstmt.setString(1,"999");
-            pstmt.setInt(2,3);
+            pstmt.setString(1,"1314520");
+            pstmt.setInt(2,2);
             //5.执行更新操作
             int row = pstmt.executeUpdate();
             if(row > 0){
@@ -61,7 +66,7 @@ public class TestUtils_001{
             //3.获取执行sql语句对象
             pstmt = conn.prepareStatement(sql);
             //4.设置参数
-            pstmt.setInt(1,4);
+            pstmt.setInt(1,1);
             //5.执行删除操作
             int row = pstmt.executeUpdate();
             if(row > 0){
@@ -82,7 +87,7 @@ public class TestUtils_001{
      * 添加用户信息方法
      */
     @Test
-    public void testAdd(){
+    public static void testAdd(){
         Connection conn = null;
         PreparedStatement pstmt = null;
         try{
@@ -93,11 +98,11 @@ public class TestUtils_001{
             //3.获取执行sql语句对象
             pstmt = conn.prepareStatement(sql);
             //4.设置参数
-            pstmt.setString(1,"lisi");
-            pstmt.setString(2,"hehe");
+            pstmt.setString(1,"貂蝉");
+            pstmt.setString(2,"吕布12345");
             //5.执行插入操作
             int row = pstmt.executeUpdate();
-            if(row == 0){
+            if(row > 0){
                 System.out.println("添加成功");
             }else{
                 System.out.println("添加失败");
@@ -136,7 +141,7 @@ public class TestUtils_001{
             //3.获取执行sql语句对象
             pstmt = conn.prepareStatement(sql);
             //4.设置参数
-            pstmt.setInt(1,2);
+            pstmt.setInt(1,6);
             //5.执行查询
             rs = pstmt.executeQuery();
             //6.处理结果集
