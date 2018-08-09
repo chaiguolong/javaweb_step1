@@ -17,7 +17,7 @@ public class TestMyServlet {
 		try {
 			String className = "cn.itheima.web.servlet.MyServletImpl";
 			Class<?> clazz = Class.forName(className);
-			MyServletImpl my = (MyServletImpl) clazz.newInstance();
+			MyServletImpl my = (MyServletImpl)clazz.newInstance();
 			my.init();
 			my.service();
 			my.destory();

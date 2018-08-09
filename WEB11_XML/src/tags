@@ -6,50 +6,118 @@
 !_TAG_PROGRAM_VERSION	5.8	//
 IMyServlet	cn/itheima/web/servlet/IMyServlet.java	/^public interface IMyServlet {$/;"	i
 IMyServlet	cn/itheima/web/servlet1/IMyServlet.java	/^public interface IMyServlet {$/;"	i
+IMyServlet_001	cn/itheima/web/servlet/IMyServlet_001.java	/^public interface IMyServlet_001{$/;"	i
+IMyServlet_001	cn/itheima/web/servlet1/IMyServlet_001.java	/^public interface IMyServlet_001{$/;"	i
+IMyServlet_002	cn/itheima/web/servlet/IMyServlet_002.java	/^public interface IMyServlet_002{$/;"	i
+IMyServlet_002	cn/itheima/web/servlet1/IMyServlet_002.java	/^public interface IMyServlet_002{$/;"	i
 MyServlet1	cn/itheima/web/servlet1/MyServlet1.java	/^public class MyServlet1 implements IMyServlet{$/;"	c
+MyServlet1_001	cn/itheima/web/servlet1/MyServlet1_001.java	/^public class MyServlet1_001 implements IMyServlet{$/;"	c
+MyServlet1_002	cn/itheima/web/servlet1/MyServlet1_002.java	/^public class MyServlet1_002 implements IMyServlet{$/;"	c
 MyServlet2	cn/itheima/web/servlet1/MyServlet2.java	/^public class MyServlet2 implements IMyServlet{$/;"	c
+MyServlet2_001	cn/itheima/web/servlet1/MyServlet2_001.java	/^public class MyServlet2_001 implements IMyServlet{$/;"	c
+MyServlet2_002	cn/itheima/web/servlet1/MyServlet2_002.java	/^public class MyServlet2_002 implements IMyServlet{$/;"	c
 MyServletImpl	cn/itheima/web/servlet/MyServletImpl.java	/^public class MyServletImpl implements IMyServlet {$/;"	c
+MyServletImpl_001	cn/itheima/web/servlet/MyServletImpl_001.java	/^public class MyServletImpl_001 implements IMyServlet{$/;"	c
+MyServletImpl_002	cn/itheima/web/servlet/MyServletImpl_002.java	/^public class MyServletImpl_002 implements IMyServlet{$/;"	c
 TestDom4j	cn/itheima/xml/dom4j/TestDom4j.java	/^public class TestDom4j {$/;"	c
 TestDom4j_001	cn/itheima/xml/dom4j/TestDom4j_001.java	/^public class TestDom4j_001{$/;"	c
 TestMyServlet	cn/itheima/web/servlet/TestMyServlet.java	/^public class TestMyServlet {$/;"	c
 TestMyServlet	cn/itheima/web/servlet1/TestMyServlet.java	/^public class TestMyServlet {$/;"	c
 TestMyServlet2	cn/itheima/web/servlet1/TestMyServlet2.java	/^public class TestMyServlet2 {$/;"	c
+TestMyServlet2_001	cn/itheima/web/servlet1/TestMyServlet2_001.java	/^public class TestMyServlet2_001{$/;"	c
+TestMyServlet2_002	cn/itheima/web/servlet1/TestMyServlet2_002.java	/^public class TestMyServlet2_002{$/;"	c
+TestMyServlet_001	cn/itheima/web/servlet/TestMyServlet_001.java	/^public class TestMyServlet_001{$/;"	c
 TestMyServlet_001	cn/itheima/web/servlet1/TestMyServlet_001.java	/^public class TestMyServlet_001{$/;"	c
+TestMyServlet_002	cn/itheima/web/servlet/TestMyServlet_002.java	/^public class TestMyServlet_002{$/;"	c
 TestMyServlet_002	cn/itheima/web/servlet1/TestMyServlet_002.java	/^public class TestMyServlet_002{$/;"	c
 cn.itheima.web.servlet	cn/itheima/web/servlet/IMyServlet.java	/^package cn.itheima.web.servlet;$/;"	p
+cn.itheima.web.servlet	cn/itheima/web/servlet/IMyServlet_001.java	/^package cn.itheima.web.servlet;$/;"	p
 cn.itheima.web.servlet	cn/itheima/web/servlet/MyServletImpl.java	/^package cn.itheima.web.servlet;$/;"	p
+cn.itheima.web.servlet	cn/itheima/web/servlet/MyServletImpl_001.java	/^package cn.itheima.web.servlet;$/;"	p
+cn.itheima.web.servlet	cn/itheima/web/servlet/MyServletImpl_002.java	/^package cn.itheima.web.servlet;$/;"	p
 cn.itheima.web.servlet	cn/itheima/web/servlet/TestMyServlet.java	/^package cn.itheima.web.servlet;$/;"	p
+cn.itheima.web.servlet	cn/itheima/web/servlet/TestMyServlet_001.java	/^package cn.itheima.web.servlet;$/;"	p
+cn.itheima.web.servlet	cn/itheima/web/servlet/TestMyServlet_002.java	/^package cn.itheima.web.servlet;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet/IMyServlet_002.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/IMyServlet.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/IMyServlet_001.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/IMyServlet_002.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/MyServlet1.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/MyServlet1_001.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/MyServlet1_002.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/MyServlet2.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/MyServlet2_001.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/MyServlet2_002.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/TestMyServlet.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/TestMyServlet2.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/TestMyServlet2_001.java	/^package cn.itheima.web.servlet1;$/;"	p
+cn.itheima.web.servlet1	cn/itheima/web/servlet1/TestMyServlet2_002.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/TestMyServlet_001.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.web.servlet1	cn/itheima/web/servlet1/TestMyServlet_002.java	/^package cn.itheima.web.servlet1;$/;"	p
 cn.itheima.xml.dom4j	cn/itheima/xml/dom4j/TestDom4j.java	/^package cn.itheima.xml.dom4j;$/;"	p
 cn.itheima.xml.dom4j	cn/itheima/xml/dom4j/TestDom4j_001.java	/^package cn.itheima.xml.dom4j;$/;"	p
 data	cn/itheima/web/servlet1/TestMyServlet2.java	/^	private HashMap<String, String> data = new HashMap<String,String>();$/;"	f	class:TestMyServlet2	file:
+data	cn/itheima/web/servlet1/TestMyServlet2_001.java	/^     private  HashMap<String,String> data = new HashMap<String,String>();$/;"	f	class:TestMyServlet2_001	file:
+data	cn/itheima/web/servlet1/TestMyServlet2_002.java	/^    private HashMap<String,String> data = new HashMap<String,String>();$/;"	f	class:TestMyServlet2_002	file:
 destory	cn/itheima/web/servlet/IMyServlet.java	/^	public void destory();$/;"	m	interface:IMyServlet
+destory	cn/itheima/web/servlet/IMyServlet_001.java	/^    public void destory();$/;"	m	interface:IMyServlet_001
+destory	cn/itheima/web/servlet/IMyServlet_002.java	/^    public void destory();$/;"	m	interface:IMyServlet_002
 destory	cn/itheima/web/servlet/MyServletImpl.java	/^	public void destory() {$/;"	m	class:MyServletImpl
+destory	cn/itheima/web/servlet/MyServletImpl_001.java	/^    public void destory() {$/;"	m	class:MyServletImpl_001
+destory	cn/itheima/web/servlet/MyServletImpl_002.java	/^    public void destory() {$/;"	m	class:MyServletImpl_002
 destory	cn/itheima/web/servlet1/IMyServlet.java	/^	public void destory();$/;"	m	interface:IMyServlet
+destory	cn/itheima/web/servlet1/IMyServlet_001.java	/^    public void destory();$/;"	m	interface:IMyServlet_001
+destory	cn/itheima/web/servlet1/IMyServlet_002.java	/^    public void destory();$/;"	m	interface:IMyServlet_002
 destory	cn/itheima/web/servlet1/MyServlet1.java	/^	public void destory() {$/;"	m	class:MyServlet1
+destory	cn/itheima/web/servlet1/MyServlet1_001.java	/^    public void destory() {$/;"	m	class:MyServlet1_001
+destory	cn/itheima/web/servlet1/MyServlet1_002.java	/^    public void destory() {$/;"	m	class:MyServlet1_002
 destory	cn/itheima/web/servlet1/MyServlet2.java	/^	public void destory() {$/;"	m	class:MyServlet2
+destory	cn/itheima/web/servlet1/MyServlet2_001.java	/^    public void destory() {$/;"	m	class:MyServlet2_001
+destory	cn/itheima/web/servlet1/MyServlet2_002.java	/^    public void destory() {$/;"	m	class:MyServlet2_002
 init	cn/itheima/web/servlet/IMyServlet.java	/^	public void init();$/;"	m	interface:IMyServlet
+init	cn/itheima/web/servlet/IMyServlet_001.java	/^    public void init();$/;"	m	interface:IMyServlet_001
+init	cn/itheima/web/servlet/IMyServlet_002.java	/^    public void init();$/;"	m	interface:IMyServlet_002
 init	cn/itheima/web/servlet/MyServletImpl.java	/^	public void init() {$/;"	m	class:MyServletImpl
+init	cn/itheima/web/servlet/MyServletImpl_001.java	/^    public void init() {$/;"	m	class:MyServletImpl_001
+init	cn/itheima/web/servlet/MyServletImpl_002.java	/^    public void init() {$/;"	m	class:MyServletImpl_002
 init	cn/itheima/web/servlet1/IMyServlet.java	/^	public void init();$/;"	m	interface:IMyServlet
+init	cn/itheima/web/servlet1/IMyServlet_001.java	/^    public void init();$/;"	m	interface:IMyServlet_001
+init	cn/itheima/web/servlet1/IMyServlet_002.java	/^    public void init();$/;"	m	interface:IMyServlet_002
 init	cn/itheima/web/servlet1/MyServlet1.java	/^	public void init() {$/;"	m	class:MyServlet1
+init	cn/itheima/web/servlet1/MyServlet1_001.java	/^    public void init() {$/;"	m	class:MyServlet1_001
+init	cn/itheima/web/servlet1/MyServlet1_002.java	/^    public void init() {$/;"	m	class:MyServlet1_002
 init	cn/itheima/web/servlet1/MyServlet2.java	/^	public void init() {$/;"	m	class:MyServlet2
+init	cn/itheima/web/servlet1/MyServlet2_001.java	/^    public void init() {$/;"	m	class:MyServlet2_001
+init	cn/itheima/web/servlet1/MyServlet2_002.java	/^    public void init() {$/;"	m	class:MyServlet2_002
 service	cn/itheima/web/servlet/IMyServlet.java	/^	public void service();$/;"	m	interface:IMyServlet
+service	cn/itheima/web/servlet/IMyServlet_001.java	/^    public void service();$/;"	m	interface:IMyServlet_001
+service	cn/itheima/web/servlet/IMyServlet_002.java	/^    public void service();$/;"	m	interface:IMyServlet_002
 service	cn/itheima/web/servlet/MyServletImpl.java	/^	public void service() {$/;"	m	class:MyServletImpl
+service	cn/itheima/web/servlet/MyServletImpl_001.java	/^    public void service() {$/;"	m	class:MyServletImpl_001
+service	cn/itheima/web/servlet/MyServletImpl_002.java	/^    public void service() {$/;"	m	class:MyServletImpl_002
 service	cn/itheima/web/servlet1/IMyServlet.java	/^	public void service();$/;"	m	interface:IMyServlet
+service	cn/itheima/web/servlet1/IMyServlet_001.java	/^    public void service();$/;"	m	interface:IMyServlet_001
+service	cn/itheima/web/servlet1/IMyServlet_002.java	/^    public void service();$/;"	m	interface:IMyServlet_002
 service	cn/itheima/web/servlet1/MyServlet1.java	/^	public void service() {$/;"	m	class:MyServlet1
+service	cn/itheima/web/servlet1/MyServlet1_001.java	/^    public void service() {$/;"	m	class:MyServlet1_001
+service	cn/itheima/web/servlet1/MyServlet1_002.java	/^    public void service() {$/;"	m	class:MyServlet1_002
 service	cn/itheima/web/servlet1/MyServlet2.java	/^	public void service() {$/;"	m	class:MyServlet2
+service	cn/itheima/web/servlet1/MyServlet2_001.java	/^    @Override public void service() {$/;"	m	class:MyServlet2_001
+service	cn/itheima/web/servlet1/MyServlet2_002.java	/^    public void service() {$/;"	m	class:MyServlet2_002
 testMyServlet	cn/itheima/web/servlet/TestMyServlet.java	/^	public void testMyServlet(){$/;"	m	class:TestMyServlet
+testMyServlet	cn/itheima/web/servlet/TestMyServlet_001.java	/^    public void testMyServlet(){$/;"	m	class:TestMyServlet_001
+testMyServlet	cn/itheima/web/servlet/TestMyServlet_002.java	/^    public void testMyServlet(){$/;"	m	class:TestMyServlet_002
 testMyServlet	cn/itheima/web/servlet1/TestMyServlet.java	/^	public void testMyServlet(){$/;"	m	class:TestMyServlet
 testMyServlet	cn/itheima/web/servlet1/TestMyServlet2.java	/^	public void testMyServlet(){$/;"	m	class:TestMyServlet2
+testMyServlet	cn/itheima/web/servlet1/TestMyServlet2_001.java	/^     public void testMyServlet(){$/;"	m	class:TestMyServlet2_001
+testMyServlet	cn/itheima/web/servlet1/TestMyServlet2_002.java	/^    public void testMyServlet(){$/;"	m	class:TestMyServlet2_002
 testMyServlet	cn/itheima/web/servlet1/TestMyServlet_001.java	/^    public void testMyServlet(){$/;"	m	class:TestMyServlet_001
 testMyServlet	cn/itheima/web/servlet1/TestMyServlet_002.java	/^    public void testMyServlet(){$/;"	m	class:TestMyServlet_002
 testMyServlet1	cn/itheima/web/servlet/TestMyServlet.java	/^	public void testMyServlet1(){$/;"	m	class:TestMyServlet
+testMyServlet1	cn/itheima/web/servlet/TestMyServlet_001.java	/^    public void testMyServlet1(){$/;"	m	class:TestMyServlet_001
+testMyServlet1	cn/itheima/web/servlet/TestMyServlet_002.java	/^    public void testMyServlet1(){$/;"	m	class:TestMyServlet_002
 testReadWEBXml	cn/itheima/web/servlet1/TestMyServlet2.java	/^	public void testReadWEBXml(){$/;"	m	class:TestMyServlet2
+testReadWEBXml	cn/itheima/web/servlet1/TestMyServlet2_001.java	/^     public void testReadWEBXml(){$/;"	m	class:TestMyServlet2_001
+testReadWEBXml	cn/itheima/web/servlet1/TestMyServlet2_002.java	/^    private void testReadWEBXml(){$/;"	m	class:TestMyServlet2_002	file:
 testReadWebXML	cn/itheima/xml/dom4j/TestDom4j.java	/^	public void testReadWebXML() {$/;"	m	class:TestDom4j
 testReadWebXML	cn/itheima/xml/dom4j/TestDom4j_001.java	/^    public void testReadWebXML(){$/;"	m	class:TestDom4j_001

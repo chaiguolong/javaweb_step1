@@ -1,4 +1,4 @@
-package cn.itheima.web.servlet1;
+package cn.itheima.web.servlet;
 
 public interface IMyServlet_001{
 

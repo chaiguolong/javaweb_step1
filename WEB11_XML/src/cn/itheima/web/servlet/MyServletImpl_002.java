@@ -1,4 +1,4 @@
-package cn.itheima.web.servlet1;
+package cn.itheima.web.servlet;
 
 public class MyServletImpl_002 implements IMyServlet{
 
