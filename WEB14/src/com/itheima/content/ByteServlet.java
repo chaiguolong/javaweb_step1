@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ByteServlet extends HttpServlet {
 
+	private static final long serialVersionUID = -53324535345L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

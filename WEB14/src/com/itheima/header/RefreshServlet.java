@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class RefreshServlet extends HttpServlet {
 
+	private static final long serialVersionUID = -1231231245123424L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  * 
  */
 public class CheckImgServlet extends HttpServlet {
+	private static final long serialVersionUID = -4345345345L;
 
 	// 集合中保存所有成语
 	private List<String> words = new ArrayList<String>();

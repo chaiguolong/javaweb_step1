@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HeaderServlet extends HttpServlet {
 
+	private static final long serialVersionUID = -234214234L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
