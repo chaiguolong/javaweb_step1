@@ -134,6 +134,26 @@
     <servlet-name>AdminUpdateProductServlet_001</servlet-name>
     <url-pattern>/adminUpdateProduct_001</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminSearchProductListServlet</display-name>
+    <servlet-name>AdminSearchProductListServlet</servlet-name>
+    <servlet-class>com.itheima.web.AdminSearchProductListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchProductListServlet</servlet-name>
+    <url-pattern>/adminSearchProductList</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductListServlet</display-name>
+    <servlet-name>ProductListServlet</servlet-name>
+    <servlet-class>com.itheima.web.ProductListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductListServlet</servlet-name>
+    <url-pattern>/productList</url-pattern>
+  </servlet-mapping>
 
 
   <!-- ==================================PRODUCT_002======================================= -->
@@ -211,4 +231,5 @@
     <servlet-name>AdminUpdateProductServlet_002</servlet-name>
     <url-pattern>/adminUpdateProduct_002</url-pattern>
   </servlet-mapping>
+
 </web-app>

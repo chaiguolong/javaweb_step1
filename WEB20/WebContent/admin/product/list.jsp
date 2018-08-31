@@ -26,6 +26,17 @@
 		<form id="Form1" name="Form1"
 			action="${pageContext.request.contextPath}/user/list.jsp"
 			method="post">
+			商品名称: <input type="text" name="pname" id="pname" value="" />&nbsp;&nbsp;
+			是否热门: <select name="isHot" id="isHot">
+				<option value="">不限</option>
+				<option value="0">否</option>
+				<option value="1">是</option>
+			</select> &nbsp;  &nbsp;
+			商品类别: <select name="cid" id="cid">
+				<option value="">不限</option>
+			</select> &nbsp; &nbsp;
+
+			<input type="submit" name="" id="" value="搜索" />
 			<table cellSpacing="1" cellPadding="0" width="100%" align="center"
 				bgColor="#f5fafe" border="0">
 				<TBODY>
