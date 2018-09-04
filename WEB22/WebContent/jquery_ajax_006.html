@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Insert title here</title>
+		<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+
+			function fn1(){
+				//get异步访问
+				$.get(
+					"/WEB22/ajaxServlet2",		//url地址
+					{"name":"张三","age":25},	//请求参数
+					function(data){				//执行成功后的回调函数
+						alert(data.name);
+					},
+					"json"
+				);
+			}
+
+			function fn2(){
+				//post异步访问
+				$.post(
+					"/WEB22/ajaxServlet2",		//url地址
+					{"name":"李四","age":25},	//请求参数
+					function(data){				//请求成功后的回调函数
+						alert(data.name);
+					},
+					"json"
+				);
+			}
+			
+
+			function fn3(){
+				$.ajax({
+					url:"/WEB22/ajaxServlet2",
+					async:true,
+					type:"POST",
+					success:function(data){
+						alert(data.name);
+					},
+					error:function(){
+						alert("请求失败");
+					},
+					dataType:"json"
+				});
+			}
+
+
+
+		</script>
+	</head>
+	<body>
+		<form action="jquery_ajax_006_submit" method="get" accept-charset="utf-8">
+			<input type="button" name="name1" id="name1" value="get访问服务器端" onclick="fn1()"/><span id="span1" class="name"></span>
+			<br>
+			<input type="button" name="name2" id="name2" value="post访问服务器端" onclick="fn2()"/><span id="span2" class="name"></span>
+			<br>
+			<input type="button" name="name3" id="name3" value="ajax访问服务器端" onclick="fn3()"/><span id="span3" class="name"></span>
+		</form>
+	</body>
+</html>
