@@ -19,7 +19,6 @@ import com.itheima.domain.Product;
 import com.itheima.service.AdminProductService;
 
 public class AdminAddProductServlet extends HttpServlet {
-
 	private static final long serialVersionUID = -345341231532346L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

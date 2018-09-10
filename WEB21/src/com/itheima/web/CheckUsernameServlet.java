@@ -2,35 +2,34 @@ package com.itheima.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itheima.domain.Category;
-import com.itheima.service.AdminProductService;
+import com.itheima.service.UserService;
 
-public class AdminAddProductUIServlet extends HttpServlet {
+public class CheckUsernameServlet extends HttpServlet {
+
+	private static final long serialVersionUID = -345341231532346L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		
-		//获得所有的商品的类别数据
-		AdminProductService service = new AdminProductService();
-		List<Category> categoryList = null;
+		//获得要校验的用户名
+		String username = request.getParameter("username");
+		
+		//传递username到service
+		UserService service = new UserService();
+		boolean isExist = false;
 		try {
-			categoryList = service.findAllCategory();
+			isExist = service.checkUsername(username);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("categoryList", categoryList);
-
-		
-		request.getRequestDispatcher("/admin/product/add.jsp").forward(request, response);
+		response.getWriter().write("{\"isExist\":"+isExist+"}");
 		
 	}
 

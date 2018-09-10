@@ -69,150 +69,6 @@
     <servlet-name>AdminUpdateProductServlet</servlet-name>
     <url-pattern>/adminUpdateProduct</url-pattern>
   </servlet-mapping>
-
-
-  <!-- ==================================TEST001======================================= -->
-  <servlet>
-    <description></description>
-    <display-name>AdminProductListServlet_001</display-name>
-    <servlet-name>AdminProductListServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminProductListServlet_001</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminProductListServlet_001</servlet-name>
-    <url-pattern>/adminProductList_001</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AdminAddProductUIServlet_001</display-name>
-    <servlet-name>AdminAddProductUIServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminAddProductUIServlet_001</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminAddProductUIServlet_001</servlet-name>
-    <url-pattern>/adminAddProductUI_001</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AdminAddProductServlet_001</display-name>
-    <servlet-name>AdminAddProductServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminAddProductServlet_001</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminAddProductServlet_001</servlet-name>
-    <url-pattern>/adminAddProduct_001</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <description></description>
-    <display-name>AdminDelProductServlet_001</display-name>
-    <servlet-name>AdminDelProductServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminDelProductServlet_001</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminDelProductServlet_001</servlet-name>
-    <url-pattern>/adminDelProduct_001</url-pattern>
-  </servlet-mapping>
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminUpdateProductUIServlet_001</display-name>
-    <servlet-name>AdminUpdateProductUIServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminUpdateProductUIServlet_001</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminUpdateProductUIServlet_001</servlet-name>
-    <url-pattern>/adminUpdateProductUI_001</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AdminUpdateProductServlet_001</display-name>
-    <servlet-name>AdminUpdateProductServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminUpdateProductServlet_001</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminUpdateProductServlet_001</servlet-name>
-    <url-pattern>/adminUpdateProduct_001</url-pattern>
-  </servlet-mapping>
-
-  <!-- ==================================PRODUCT_002======================================= -->
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminProductListServlet_002</display-name>
-    <servlet-name>AdminProductListServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminProductListServlet_002</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminProductListServlet_002</servlet-name>
-    <url-pattern>/adminProductList_002</url-pattern>
-  </servlet-mapping>
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminAddProductUIServlet_002</display-name>
-    <servlet-name>AdminAddProductUIServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminAddProductUIServlet_002</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminAddProductUIServlet_002</servlet-name>
-    <url-pattern>/adminAddProductUI_002</url-pattern>
-  </servlet-mapping>
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminAddProductServlet_002</display-name>
-    <servlet-name>AdminAddProductServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminAddProductServlet_002</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminAddProductServlet_002</servlet-name>
-    <url-pattern>/adminAddProduct_002</url-pattern>
-  </servlet-mapping>
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminDelProductServlet_002</display-name>
-    <servlet-name>AdminDelProductServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminDelProductServlet_002</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminDelProductServlet_002</servlet-name>
-    <url-pattern>/adminDelProduct_002</url-pattern>
-  </servlet-mapping>
-
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminUpdateProductUIServlet_002</display-name>
-    <servlet-name>AdminUpdateProductUIServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminUpdateProductUIServlet_002</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminUpdateProductUIServlet_002</servlet-name>
-    <url-pattern>/adminUpdateProductUI_002</url-pattern>
-  </servlet-mapping>
-
-
-
-  <servlet>
-    <description></description>
-    <display-name>AdminUpdateProductServlet_002</display-name>
-    <servlet-name>AdminUpdateProductServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminUpdateProductServlet_002</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminUpdateProductServlet_002</servlet-name>
-    <url-pattern>/adminUpdateProduct_002</url-pattern>
-  </servlet-mapping>
-
-  <!-- ==================================分页功能======================================= -->
   <servlet>
     <description></description>
     <display-name>AdminSearchProductListServlet</display-name>
@@ -233,56 +89,66 @@
     <servlet-name>ProductListServlet</servlet-name>
     <url-pattern>/productList</url-pattern>
   </servlet-mapping>
-
-  <!-- ==================================分页功能001======================================= -->
-
   <servlet>
     <description></description>
-    <display-name>AdminSearchProductListServlet_001</display-name>
-    <servlet-name>AdminSearchProductListServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.AdminSearchProductListServlet_001</servlet-class>
+    <display-name>CheckUsernameServlet</display-name>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <servlet-class>com.itheima.web.CheckUsernameServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminSearchProductListServlet_001</servlet-name>
-    <url-pattern>/adminSearchProductList_001</url-pattern>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <url-pattern>/checkUsername</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description></description>
-    <display-name>ProductListServlet_001</display-name>
-    <servlet-name>ProductListServlet_001</servlet-name>
-    <servlet-class>com.itheima.web.ProductListServlet_001</servlet-class>
+    <display-name>SearchWordServlet</display-name>
+    <servlet-name>SearchWordServlet</servlet-name>
+    <servlet-class>com.itheima.web.SearchWordServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProductListServlet_001</servlet-name>
-    <url-pattern>/productList_001</url-pattern>
+    <servlet-name>SearchWordServlet</servlet-name>
+    <url-pattern>/searchWord</url-pattern>
   </servlet-mapping>
-
-
-
-  <!-- ==================================分页功能002======================================= -->
-
+  <!-- =============================Test001============================ -->
   <servlet>
     <description></description>
-    <display-name>AdminSearchProductListServlet_002</display-name>
-    <servlet-name>AdminSearchProductListServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.AdminSearchProductListServlet_002</servlet-class>
+    <display-name>CheckUsernameServlet_001</display-name>
+    <servlet-name>CheckUsernameServlet_001</servlet-name>
+    <servlet-class>com.itheima.web.CheckUsernameServlet_001</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminSearchProductListServlet_002</servlet-name>
-    <url-pattern>/adminSearchProductList_002</url-pattern>
+    <servlet-name>CheckUsernameServlet_001</servlet-name>
+    <url-pattern>/checkUsername_001</url-pattern>
   </servlet-mapping>
-
-
   <servlet>
     <description></description>
-    <display-name>ProductListServlet_002</display-name>
-    <servlet-name>ProductListServlet_002</servlet-name>
-    <servlet-class>com.itheima.web.ProductListServlet_002</servlet-class>
+    <display-name>SearchWordServlet_001</display-name>
+    <servlet-name>SearchWordServlet_001</servlet-name>
+    <servlet-class>com.itheima.web.SearchWordServlet_001</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProductListServlet_002</servlet-name>
-    <url-pattern>/productList_002</url-pattern>
+    <servlet-name>SearchWordServlet_001</servlet-name>
+    <url-pattern>/searchWord_001</url-pattern>
   </servlet-mapping>
-
+  <!-- =============================Test002============================ -->
+  <servlet>
+    <description></description>
+    <display-name>CheckUsernameServlet_002</display-name>
+    <servlet-name>CheckUsernameServlet_002</servlet-name>
+    <servlet-class>com.itheima.web.CheckUsernameServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckUsernameServlet_002</servlet-name>
+    <url-pattern>/checkUsername_002</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchWordServlet_002</display-name>
+    <servlet-name>SearchWordServlet_002</servlet-name>
+    <servlet-class>com.itheima.web.SearchWordServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchWordServlet_002</servlet-name>
+    <url-pattern>/searchWord_002</url-pattern>
+  </servlet-mapping>
 </web-app>

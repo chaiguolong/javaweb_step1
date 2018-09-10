@@ -20,8 +20,6 @@ import com.itheima.vo.Condition;
 
 public class AdminSearchProductListServlet extends HttpServlet {
 
-	private static final long serialVersionUID = -345341231532346L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

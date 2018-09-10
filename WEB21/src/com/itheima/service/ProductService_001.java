@@ -40,4 +40,10 @@ public class ProductService_001 {
 
 	}
 
+	//根据关键字查询商品
+	public List<Object> findProductByWord(String word) throws SQLException{
+		ProductDao_001 dao = new ProductDao_001();
+		return dao.findProductByWord(word);
+	}
+
 }

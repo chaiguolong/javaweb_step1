@@ -13,11 +13,10 @@ import com.itheima.domain.Product;
 import com.itheima.service.ProductService;
 import com.itheima.vo.PageBean;
 
+@SuppressWarnings("unchecked")
 public class ProductListServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -345341231532346L;
-
-	@SuppressWarnings("unchecked")
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
