@@ -13,6 +13,7 @@ public class AjaxServlet2 extends HttpServlet {
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+
 		
 		String name = request.getParameter("name");
 		String age = request.getParameter("age");
