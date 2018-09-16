@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/WEB24/encodingServlet_001" method="get">
+	<form action="/WEB24/encodingServlet" method="get">
 		<input type="text" name="username">
 		<input type="submit" value="提交">
 	</form>

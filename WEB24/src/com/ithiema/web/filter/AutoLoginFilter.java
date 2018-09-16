@@ -28,6 +28,8 @@ public class AutoLoginFilter implements Filter{
 		HttpServletResponse resp = (HttpServletResponse) response;
 		HttpSession session = req.getSession();
 		
+		
+		
 		//获得cookie中用户名和密码 进行登录的操作
 		//定义cookie_username
 		String cookie_username = null;

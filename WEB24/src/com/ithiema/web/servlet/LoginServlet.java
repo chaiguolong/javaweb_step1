@@ -15,7 +15,6 @@ import com.ithiema.domain.User;
 import com.ithiema.service.UserService;
 
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = -345341231532346L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

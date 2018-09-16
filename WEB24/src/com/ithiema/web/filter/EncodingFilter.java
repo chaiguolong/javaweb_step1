@@ -2,6 +2,9 @@ package com.ithiema.web.filter;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,6 +22,34 @@ public class EncodingFilter implements Filter{
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
+		final HttpServletRequest req = (HttpServletRequest) request;
+		
+		//使用动态代理完成全局编码
+		HttpServletRequest enhanceRequset = (HttpServletRequest) Proxy.newProxyInstance(
+				req.getClass().getClassLoader(), 
+				req.getClass().getInterfaces(), 
+				new InvocationHandler() {
+					@Override
+					public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+						//对getParameter方法进行增强
+						String name = method.getName();//获得目标对象的方法名称
+						if("getParameter".equals(name)){
+							String invoke = (String) method.invoke(req, args);//乱码
+							//转码
+							invoke = new String(invoke.getBytes("iso8859-1"),"UTF-8");
+							return invoke;
+						}
+						return method.invoke(req, args);
+					}
+				}
+					
+			);
+		
+		
+		chain.doFilter(enhanceRequset, response);
+		
+		
+		
 		//request.setCharacterEncoding("UTF-8");
 		
 		//在传递request之前对request的getParameter方法进行增强
@@ -32,12 +63,12 @@ public class EncodingFilter implements Filter{
 		 */
 		
 		//被增强的对象
-		HttpServletRequest req = (HttpServletRequest) request;
+		//HttpServletRequest req = (HttpServletRequest) request;
 		//增强对象
-		EnhanceRequest enhanceRequest = new EnhanceRequest(req);
+		//EnhanceRequest enhanceRequest = new EnhanceRequest(req);
 		
 		
-		chain.doFilter(enhanceRequest, response);
+		//chain.doFilter(enhanceRequest, response);
 		
 	}
 

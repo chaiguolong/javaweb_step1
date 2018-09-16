@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class EncodingServlet extends HttpServlet {
 
-	private static final long serialVersionUID = -345341231532346L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String parameter = request.getParameter("username");//中文
+		
+		int i=0;
 		
 		System.out.println(parameter);
 		
