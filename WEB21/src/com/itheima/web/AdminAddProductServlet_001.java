@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.beanutils.BeanUtils;
 
 import com.itheima.domain.Product;
@@ -25,6 +24,7 @@ public class AdminAddProductServlet_001 extends HttpServlet{
 
 		System.out.println("1111111");
 		request.setCharacterEncoding("UTF-8");
+
 
 		//1.获取数据
 		Map<String,String[]> properties = request.getParameterMap();

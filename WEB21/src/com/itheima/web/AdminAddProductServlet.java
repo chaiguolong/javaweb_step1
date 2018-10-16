@@ -4,19 +4,18 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
+import com.itheima.domain.Product;
+import com.itheima.service.AdminProductService;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.beanutils.BeanUtils;
-
-import com.itheima.domain.Product;
-import com.itheima.service.AdminProductService;
 
 public class AdminAddProductServlet extends HttpServlet {
 	private static final long serialVersionUID = -345341231532346L;
@@ -28,6 +27,7 @@ public class AdminAddProductServlet extends HttpServlet {
 		
 		//1、获取数据
 		Map<String, String[]> properties = request.getParameterMap();
+
 		//2、封装数据
 		Product product = new Product();
 		try {
