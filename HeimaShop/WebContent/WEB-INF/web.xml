@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>HeimaShop</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.itheima.web.servlet.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ActiveServlet</display-name>
+    <servlet-name>ActiveServlet</servlet-name>
+    <servlet-class>com.itheima.web.servlet.ActiveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActiveServlet</servlet-name>
+    <url-pattern>/active</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckUsernameServlet</display-name>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <servlet-class>com.itheima.web.servlet.CheckUsernameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckUsernameServlet</servlet-name>
+    <url-pattern>/checkUsername</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>CategoryListServlet</display-name>
+  	<servlet-name>CategoryListServlet</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.CategoryListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CategoryListServlet</servlet-name>
+	<url-pattern>/categoryList</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>IndexServlet</display-name>
+  	<servlet-name>IndexServlet</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>IndexServlet</servlet-name>
+  	<url-pattern>/indexServlet</url-pattern>
+  </servlet-mapping>
+
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductInfoServlet</display-name>
+  	<servlet-name>ProductInfoServlet</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductInfoServlet</servlet-name>
+  	<url-pattern>/productInfoServlet</url-pattern>
+  </servlet-mapping>
+
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductListByCidServlet</display-name>
+  	<servlet-name>ProductListByCidServlet</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductListByCidServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductListByCidServlet</servlet-name>
+	<url-pattern>/productListByCid</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductInfoServlet</display-name>
+  	<servlet-name>ProductInfoServlet</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductInfoServlet</servlet-name>
+	<url-pattern>/productInfo</url-pattern>
+  </servlet-mapping>
+
+  <!-- =====================================Test001=================================== -->
+  
+  <servlet>
+  	<description></description>
+  	<display-name>RegisterServlet_001</display-name>
+  	<servlet-name>RegisterServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.RegisterServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RegisterServlet_001</servlet-name>
+  	<url-pattern>/RegisterServlet_001</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ActiveServlet_001</display-name>
+  	<servlet-name>ActiveServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ActiveServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ActiveServlet_001</servlet-name>
+  	<url-pattern>/ActiveServlet_001</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>CheckUsernameServlet_001</display-name>
+  	<servlet-name>CheckUsernameServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.CheckUsernameServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckUsernameServlet_001</servlet-name>
+  	<url-pattern>/checkUsernameServlet_001</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>IndexServlet_001</display-name>
+  	<servlet-name>IndexServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.IndexServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>IndexServlet_001</servlet-name>
+  	<url-pattern>/indexServlet_001</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>CategoryListServlet_001</display-name>
+  	<servlet-name>CategoryListServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.CategoryListServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CategoryListServlet_001</servlet-name>
+  	<url-pattern>/categoryListServlet_001</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductInfoServlet_001</display-name>
+  	<servlet-name>ProductInfoServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductInfoServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductInfoServlet_001</servlet-name>
+  	<url-pattern>/productInfoServlet_001</url-pattern>
+  </servlet-mapping>
+
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductListByCidServlet_001</display-name>
+  	<servlet-name>ProductListByCidServlet_001</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductListByCidServlet_001</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductListByCidServlet_001</servlet-name>
+  	<url-pattern>/productListByCidServlet_001</url-pattern>
+  </servlet-mapping>
+
+
+  
+   
+  <!-- =====================================Test002=================================== -->
+  
+  <servlet>
+  	<description></description>
+  	<display-name>RegisterServlet_002</display-name>
+  	<servlet-name>RegisterServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.RegisterServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RegisterServlet_002</servlet-name>
+  	<url-pattern>/RegisterServlet_002</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>CheckUsernameServlet_002</display-name>
+  	<servlet-name>CheckUsernameServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.CheckUsernameServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CheckUsernameServlet_002</servlet-name>
+  	<url-pattern>/checkUsernameServlet_002</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ActiveServlet_002</display-name>
+  	<servlet-name>ActiveServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ActiveServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ActiveServlet_002</servlet-name>
+  	<url-pattern>/activeServlet_002</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>CategoryListServlet_002</display-name>
+  	<servlet-name>CategoryListServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.CategoryListServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CategoryListServlet_002</servlet-name>
+  	<url-pattern>/categoryListServlet_002</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>IndexServlet_002</display-name>
+  	<servlet-name>IndexServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.IndexServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>IndexServlet_002</servlet-name>
+  	<url-pattern>/indexServlet_002</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductListByCidServlet_002</display-name>
+  	<servlet-name>ProductListByCidServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductListByCidServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductListByCidServlet_002</servlet-name>
+  	<url-pattern>/productListByCidServlet_002</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+  	<description></description>
+  	<display-name>ProductInfoServlet_002</display-name>
+  	<servlet-name>ProductInfoServlet_002</servlet-name>
+  	<servlet-class>com.itheima.web.servlet.ProductInfoServlet_002</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProductInfoServlet_002</servlet-name>
+  	<url-pattern>/productInfoServlet_002</url-pattern>
+  </servlet-mapping>
+</web-app>
