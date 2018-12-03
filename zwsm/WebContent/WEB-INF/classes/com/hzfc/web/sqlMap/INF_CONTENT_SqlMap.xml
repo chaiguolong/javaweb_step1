@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WEB_INF_CONTENT">
+  <resultMap class="com.hzfc.web.entity.Content" id="WEB_INF_CONTENT_BaseResultMap">
+    <result column="CONTENTID" jdbcType="DECIMAL" nullValue="0" property="contentid" />
+    <result column="CATEGORYID" jdbcType="DECIMAL" nullValue="0" property="categoryid" />
+    <result column="TITLE" jdbcType="VARCHAR" nullValue="" property="title" />
+    <result column="WEBSHOWDATE" jdbcType="TIMESTAMP" nullValue="" property="webshowdate" />
+    <result column="SOURCE" jdbcType="VARCHAR" nullValue="" property="source" />
+    <result column="DESCR" jdbcType="VARCHAR" nullValue="" property="descr" />
+    <result column="THUMBNAIL" jdbcType="VARCHAR" nullValue="" property="thumbnail" />
+    <result column="TAG" jdbcType="VARCHAR" nullValue="" property="tag" />
+    <result column="STATICURL" jdbcType="VARCHAR" nullValue="" property="staticurl" />
+    <result column="RELATEDNEXTID" jdbcType="DECIMAL" nullValue="0" property="relatednextid" />
+    <result column="ENTRYDATE" jdbcType="TIMESTAMP" nullValue="" property="entrydate" />
+    <result column="RELEASETIME" jdbcType="TIMESTAMP" nullValue="" property="releasetime" />
+    <result column="RELEASEMARK" jdbcType="DECIMAL" nullValue="0" property="releasemark" />
+    <result column="UPLOADATTACHMENT" jdbcType="VARCHAR" nullValue="" property="uploadattachment" />
+    <result column="RESEARCHID" jdbcType="DECIMAL" nullValue="0" property="researchid" />
+    <result column="HOTFLAG" jdbcType="DECIMAL" nullValue="0" property="hotflag" />
+    <result column="RECOMMENDFLAG" jdbcType="DECIMAL" nullValue="0" property="recommendflag" />
+    <result column="DISTRICTID" jdbcType="DECIMAL" nullValue="0" property="districtid" />
+    <result column="AREAID" jdbcType="DECIMAL" nullValue="0" property="areaid" />
+    <result column="HOUSETYPEID" jdbcType="DECIMAL" nullValue="0" property="housetypeid" />
+    <result column="FOCUSFLAG" jdbcType="DECIMAL" nullValue="0" property="focusflag" />
+    <result column="GOTOURL" jdbcType="VARCHAR" nullValue="" property="gotourl" />
+  </resultMap>
+  <resultMap class="com.hzfc.web.entity.Content" extends="WEB_INF_CONTENT_BaseResultMap" id="WEB_INF_CONTENT_ResultMapWithBLOBs">
+    <result column="CONTENT" jdbcType="CLOB" nullValue="" property="content" />
+  </resultMap>
+  <select id="WEB_INF_CONTENT_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="WEB_INF_CONTENT_ResultMapWithBLOBs">
+    select INF_CONTENT.CONTENTID, CATEGORYID, INF_CONTENT.TITLE,
+      TO_CHAR(INF_CONTENT.WEBSHOWDATE, 'YYYY-MM-DD HH24:MI:SS') WEBSHOWDATE, INF_CONTENT.SOURCE,
+      INF_CONTENT.DESCR, INF_CONTENT.THUMBNAIL, INF_CONTENT.TAG, INF_CONTENT.STATICURL,
+      INF_CONTENT.RELATEDNEXTID, TO_CHAR(INF_CONTENT.ENTRYDATE, 'YYYY-MM-DD HH24:MI:SS') ENTRYDATE,
+      TO_CHAR(INF_CONTENT.RELEASETIME, 'YYYY-MM-DD HH24:MI:SS') RELEASETIME,
+      INF_CONTENT.RELEASEMARK, INF_CONTENT.UPLOADATTACHMENT, INF_CONTENT.RESEARCHID,
+      INF_CONTENT.HOTFLAG, INF_CONTENT.RECOMMENDFLAG, INF_CONTENT.DISTRICTID, INF_CONTENT.AREAID,
+      INF_CONTENT.HOUSETYPEID, INF_CONTENT.FOCUSFLAG, INF_CONTENT.GOTOURL, INF_CONTENT.CONTENT
+    from INF_CONTENT
+    where CONTENTID = #contentid#
+  </select>
+  <select id="WEB_INF_CONTENT_selectByMap" parameterClass="java.util.Map" resultMap="WEB_INF_CONTENT_BaseResultMap">
+    select INF_CONTENT.CONTENTID, CATEGORYID, INF_CONTENT.TITLE,
+      TO_CHAR(INF_CONTENT.WEBSHOWDATE, 'YYYY-MM-DD HH24:MI:SS') WEBSHOWDATE, INF_CONTENT.SOURCE,
+      INF_CONTENT.DESCR, INF_CONTENT.THUMBNAIL, INF_CONTENT.TAG, INF_CONTENT.STATICURL,
+      INF_CONTENT.RELATEDNEXTID, TO_CHAR(INF_CONTENT.ENTRYDATE, 'YYYY-MM-DD HH24:MI:SS') ENTRYDATE,
+      TO_CHAR(INF_CONTENT.RELEASETIME, 'YYYY-MM-DD HH24:MI:SS') RELEASETIME,
+      INF_CONTENT.RELEASEMARK, INF_CONTENT.UPLOADATTACHMENT, INF_CONTENT.RESEARCHID,
+      INF_CONTENT.HOTFLAG, INF_CONTENT.RECOMMENDFLAG, INF_CONTENT.DISTRICTID, INF_CONTENT.AREAID,
+      INF_CONTENT.HOUSETYPEID, INF_CONTENT.FOCUSFLAG, INF_CONTENT.GOTOURL
+    from INF_CONTENT
+    where RELEASEMARK = 1
+      <isNotNull prepend="and" property="categoryid">
+        (CATEGORYID = #categoryid#
+        or
+        CONTENTID in (select CONTENTID from INF_CONTENTCATEGORY where CATEGORYID = #categoryid#))
+      </isNotNull>
+      <isNotNull prepend="and" property="pid">
+        CONTENTID in (select CONTENTID from INF_CONTENTCATEGORY where CATEGORYID in (select CATEGORYID from INF_CATEGORY where PID = #pid# and isdisplay =1))
+      </isNotNull>
+      <isNotNull prepend="and" property="keyword">
+        (TITLE like #keyword# or
+        CONTENT like #keyword#)
+      </isNotNull>
+      <isNotNull prepend="and" property="title">
+        TITLE = #title#
+      </isNotNull>
+      <isNotNull prepend="and" property="webshowdate">
+        WEBSHOWDATE = TO_DATE(#webshowdate#and 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="and" property="source">
+        SOURCE = #source#
+      </isNotNull>
+      <isNotNull prepend="and" property="descr">
+        DESCR = #descr#
+      </isNotNull>
+      <isNotNull prepend="and" property="thumbnail">
+        THUMBNAIL = #thumbnail#
+      </isNotNull>
+      <isNotNull prepend="and" property="tag">
+        TAG = #tag#
+      </isNotNull>
+      <isNotNull prepend="and" property="staticurl">
+        STATICURL = #staticurl#
+      </isNotNull>
+      <isNotNull prepend="and" property="relatednextid">
+        RELATEDNEXTID = #relatednextid#
+      </isNotNull>
+      <isNotNull prepend="and" property="entrydate">
+        ENTRYDATE = TO_DATE(#entrydate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="and" property="releasetime">
+        RELEASETIME = TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="and" property="releasemark">
+        RELEASEMARK = #releasemark#
+      </isNotNull>
+      <isNotNull prepend="and" property="uploadattachment">
+        UPLOADATTACHMENT = #uploadattachment#
+      </isNotNull>
+      <isNotNull prepend="and" property="researchid">
+        RESEARCHID = #researchid#
+      </isNotNull>
+      <isNotNull prepend="and" property="hotflag">
+        HOTFLAG = #hotflag#
+      </isNotNull>
+      <isNotNull prepend="and" property="recommendflag">
+        RECOMMENDFLAG = #recommendflag#
+      </isNotNull>
+      <isNotNull prepend="and" property="districtid">
+        DISTRICTID = #districtid#
+      </isNotNull>
+      <isNotNull prepend="and" property="areaid">
+        AREAID = #areaid#
+      </isNotNull>
+      <isNotNull prepend="and" property="housetypeid">
+        HOUSETYPEID = #housetypeid#
+      </isNotNull>
+      <isNotNull prepend="and" property="focusflag">
+        FOCUSFLAG = #focusflag#
+      </isNotNull>
+      <isNotNull prepend="and" property="gotourl">
+        GOTOURL = #gotourl#
+      </isNotNull>
+      <isNotNull prepend="and" property="content">
+        CONTENT = #content#
+      </isNotNull>
+      order by WEBSHOWDATE desc
+  </select>
+  <delete id="WEB_INF_CONTENT_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from INF_CONTENT
+    where CONTENTID = #contentid#
+  </delete>
+  <insert id="WEB_INF_CONTENT_insert" parameterClass="com.hzfc.web.entity.Content">
+    insert into INF_CONTENT (CONTENTID, CATEGORYID, TITLE, WEBSHOWDATE, SOURCE, DESCR, THUMBNAIL,
+      TAG, STATICURL, RELATEDNEXTID, ENTRYDATE, RELEASETIME, RELEASEMARK, UPLOADATTACHMENT,
+      RESEARCHID, HOTFLAG, RECOMMENDFLAG, DISTRICTID, AREAID, HOUSETYPEID, FOCUSFLAG, GOTOURL,
+      CONTENT)
+    values (#contentid#, #categoryid#, #title#, TO_DATE(#webshowdate#, 'YYYY-MM-DD HH24:MI:SS'),
+      #source#, #descr#, #thumbnail#, #tag#, #staticurl#, #relatednextid#, TO_DATE(#entrydate#,
+      'YYYY-MM-DD HH24:MI:SS'), TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS'), #releasemark#,
+      #uploadattachment#, #researchid#, #hotflag#, #recommendflag#, #districtid#, #areaid#,
+      #housetypeid#, #focusflag#, #gotourl#, #content#)
+  </insert>
+  <insert id="WEB_INF_CONTENT_insertSelective" parameterClass="com.hzfc.web.entity.Content">
+    insert into INF_CONTENT
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="contentid">
+        CONTENTID
+      </isNotNull>
+      <isNotNull prepend="," property="categoryid">
+        CATEGORYID
+      </isNotNull>
+      <isNotNull prepend="," property="title">
+        TITLE
+      </isNotNull>
+      <isNotNull prepend="," property="webshowdate">
+        WEBSHOWDATE
+      </isNotNull>
+      <isNotNull prepend="," property="source">
+        SOURCE
+      </isNotNull>
+      <isNotNull prepend="," property="descr">
+        DESCR
+      </isNotNull>
+      <isNotNull prepend="," property="thumbnail">
+        THUMBNAIL
+      </isNotNull>
+      <isNotNull prepend="," property="tag">
+        TAG
+      </isNotNull>
+      <isNotNull prepend="," property="staticurl">
+        STATICURL
+      </isNotNull>
+      <isNotNull prepend="," property="relatednextid">
+        RELATEDNEXTID
+      </isNotNull>
+      <isNotNull prepend="," property="entrydate">
+        ENTRYDATE
+      </isNotNull>
+      <isNotNull prepend="," property="releasetime">
+        RELEASETIME
+      </isNotNull>
+      <isNotNull prepend="," property="releasemark">
+        RELEASEMARK
+      </isNotNull>
+      <isNotNull prepend="," property="uploadattachment">
+        UPLOADATTACHMENT
+      </isNotNull>
+      <isNotNull prepend="," property="researchid">
+        RESEARCHID
+      </isNotNull>
+      <isNotNull prepend="," property="hotflag">
+        HOTFLAG
+      </isNotNull>
+      <isNotNull prepend="," property="recommendflag">
+        RECOMMENDFLAG
+      </isNotNull>
+      <isNotNull prepend="," property="districtid">
+        DISTRICTID
+      </isNotNull>
+      <isNotNull prepend="," property="areaid">
+        AREAID
+      </isNotNull>
+      <isNotNull prepend="," property="housetypeid">
+        HOUSETYPEID
+      </isNotNull>
+      <isNotNull prepend="," property="focusflag">
+        FOCUSFLAG
+      </isNotNull>
+      <isNotNull prepend="," property="gotourl">
+        GOTOURL
+      </isNotNull>
+      <isNotNull prepend="," property="content">
+        CONTENT
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="contentid">
+        #contentid#
+      </isNotNull>
+      <isNotNull prepend="," property="categoryid">
+        #categoryid#
+      </isNotNull>
+      <isNotNull prepend="," property="title">
+        #title#
+      </isNotNull>
+      <isNotNull prepend="," property="webshowdate">
+        TO_DATE(#webshowdate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="source">
+        #source#
+      </isNotNull>
+      <isNotNull prepend="," property="descr">
+        #descr#
+      </isNotNull>
+      <isNotNull prepend="," property="thumbnail">
+        #thumbnail#
+      </isNotNull>
+      <isNotNull prepend="," property="tag">
+        #tag#
+      </isNotNull>
+      <isNotNull prepend="," property="staticurl">
+        #staticurl#
+      </isNotNull>
+      <isNotNull prepend="," property="relatednextid">
+        #relatednextid#
+      </isNotNull>
+      <isNotNull prepend="," property="entrydate">
+        TO_DATE(#entrydate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="releasetime">
+        TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="releasemark">
+        #releasemark#
+      </isNotNull>
+      <isNotNull prepend="," property="uploadattachment">
+        #uploadattachment#
+      </isNotNull>
+      <isNotNull prepend="," property="researchid">
+        #researchid#
+      </isNotNull>
+      <isNotNull prepend="," property="hotflag">
+        #hotflag#
+      </isNotNull>
+      <isNotNull prepend="," property="recommendflag">
+        #recommendflag#
+      </isNotNull>
+      <isNotNull prepend="," property="districtid">
+        #districtid#
+      </isNotNull>
+      <isNotNull prepend="," property="areaid">
+        #areaid#
+      </isNotNull>
+      <isNotNull prepend="," property="housetypeid">
+        #housetypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="focusflag">
+        #focusflag#
+      </isNotNull>
+      <isNotNull prepend="," property="gotourl">
+        #gotourl#
+      </isNotNull>
+      <isNotNull prepend="," property="content">
+        #content#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="WEB_INF_CONTENT_updateByPrimaryKeySelective" parameterClass="com.hzfc.web.entity.Content">
+    update INF_CONTENT
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="categoryid">
+        CATEGORYID = #categoryid#
+      </isNotNull>
+      <isNotNull prepend="," property="title">
+        TITLE = #title#
+      </isNotNull>
+      <isNotNull prepend="," property="webshowdate">
+        WEBSHOWDATE = TO_DATE(#webshowdate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="source">
+        SOURCE = #source#
+      </isNotNull>
+      <isNotNull prepend="," property="descr">
+        DESCR = #descr#
+      </isNotNull>
+      <isNotNull prepend="," property="thumbnail">
+        THUMBNAIL = #thumbnail#
+      </isNotNull>
+      <isNotNull prepend="," property="tag">
+        TAG = #tag#
+      </isNotNull>
+      <isNotNull prepend="," property="staticurl">
+        STATICURL = #staticurl#
+      </isNotNull>
+      <isNotNull prepend="," property="relatednextid">
+        RELATEDNEXTID = #relatednextid#
+      </isNotNull>
+      <isNotNull prepend="," property="entrydate">
+        ENTRYDATE = TO_DATE(#entrydate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="releasetime">
+        RELEASETIME = TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="releasemark">
+        RELEASEMARK = #releasemark#
+      </isNotNull>
+      <isNotNull prepend="," property="uploadattachment">
+        UPLOADATTACHMENT = #uploadattachment#
+      </isNotNull>
+      <isNotNull prepend="," property="researchid">
+        RESEARCHID = #researchid#
+      </isNotNull>
+      <isNotNull prepend="," property="hotflag">
+        HOTFLAG = #hotflag#
+      </isNotNull>
+      <isNotNull prepend="," property="recommendflag">
+        RECOMMENDFLAG = #recommendflag#
+      </isNotNull>
+      <isNotNull prepend="," property="districtid">
+        DISTRICTID = #districtid#
+      </isNotNull>
+      <isNotNull prepend="," property="areaid">
+        AREAID = #areaid#
+      </isNotNull>
+      <isNotNull prepend="," property="housetypeid">
+        HOUSETYPEID = #housetypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="focusflag">
+        FOCUSFLAG = #focusflag#
+      </isNotNull>
+      <isNotNull prepend="," property="gotourl">
+        GOTOURL = #gotourl#
+      </isNotNull>
+      <isNotNull prepend="," property="content">
+        CONTENT = #content#
+      </isNotNull>
+    </dynamic>
+    where CONTENTID = #contentid#
+  </update>
+  <update id="WEB_INF_CONTENT_updateByPrimaryKeyWithBLOBs" parameterClass="com.hzfc.web.entity.Content">
+    update INF_CONTENT
+    set CATEGORYID = #categoryid#,
+      TITLE = #title#,
+      WEBSHOWDATE = TO_DATE(#webshowdate#, 'YYYY-MM-DD HH24:MI:SS'),
+      SOURCE = #source#,
+      DESCR = #descr#,
+      THUMBNAIL = #thumbnail#,
+      TAG = #tag#,
+      STATICURL = #staticurl#,
+      RELATEDNEXTID = #relatednextid#,
+      ENTRYDATE = TO_DATE(#entrydate#, 'YYYY-MM-DD HH24:MI:SS'),
+      RELEASETIME = TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS'),
+      RELEASEMARK = #releasemark#,
+      UPLOADATTACHMENT = #uploadattachment#,
+      RESEARCHID = #researchid#,
+      HOTFLAG = #hotflag#,
+      RECOMMENDFLAG = #recommendflag#,
+      DISTRICTID = #districtid#,
+      AREAID = #areaid#,
+      HOUSETYPEID = #housetypeid#,
+      FOCUSFLAG = #focusflag#,
+      GOTOURL = #gotourl#,
+      CONTENT = #content#
+    where CONTENTID = #contentid#
+  </update>
+  <update id="WEB_INF_CONTENT_updateByPrimaryKey" parameterClass="com.hzfc.web.entity.Content">
+    update INF_CONTENT
+    set CATEGORYID = #categoryid#,
+      TITLE = #title#,
+      WEBSHOWDATE = TO_DATE(#webshowdate#, 'YYYY-MM-DD HH24:MI:SS'),
+      SOURCE = #source#,
+      DESCR = #descr#,
+      THUMBNAIL = #thumbnail#,
+      TAG = #tag#,
+      STATICURL = #staticurl#,
+      RELATEDNEXTID = #relatednextid#,
+      ENTRYDATE = TO_DATE(#entrydate#, 'YYYY-MM-DD HH24:MI:SS'),
+      RELEASETIME = TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS'),
+      RELEASEMARK = #releasemark#,
+      UPLOADATTACHMENT = #uploadattachment#,
+      RESEARCHID = #researchid#,
+      HOTFLAG = #hotflag#,
+      RECOMMENDFLAG = #recommendflag#,
+      DISTRICTID = #districtid#,
+      AREAID = #areaid#,
+      HOUSETYPEID = #housetypeid#,
+      FOCUSFLAG = #focusflag#,
+      GOTOURL = #gotourl#
+    where CONTENTID = #contentid#
+  </update>
+  
+  <select id="WEB_INF_CONTENT_selectContentinfoByMap" parameterClass="java.util.Map" resultMap="WEB_INF_CONTENT_BaseResultMap">
+ 	select ROWALL.* FROM
+	(SELECT ROW_.*, ROWNUM as NUM_  FROM (
+	   select INF_CONTENT.CONTENTID, INF_CONTENT.CATEGORYID, INF_CONTENT.TITLE,
+		      TO_CHAR(INF_CONTENT.WEBSHOWDATE, 'YYYY-MM-DD HH24:MI:SS') WEBSHOWDATE, INF_CONTENT.SOURCE,
+		      INF_CONTENT.DESCR, INF_CONTENT.THUMBNAIL, INF_CONTENT.TAG, INF_CONTENT.STATICURL,
+		      INF_CONTENT.RELATEDNEXTID, TO_CHAR(INF_CONTENT.ENTRYDATE, 'YYYY-MM-DD HH24:MI:SS') ENTRYDATE,
+		      TO_CHAR(INF_CONTENT.RELEASETIME, 'YYYY-MM-DD HH24:MI:SS') RELEASETIME,
+		      INF_CONTENT.RELEASEMARK, INF_CONTENT.UPLOADATTACHMENT, INF_CONTENT.RESEARCHID,
+		      INF_CONTENT.HOTFLAG, INF_CONTENT.RECOMMENDFLAG, INF_CONTENT.DISTRICTID, INF_CONTENT.AREAID,
+		      INF_CONTENT.HOUSETYPEID, INF_CONTENT.FOCUSFLAG, INF_CONTENT.GOTOURL
+	   from INF_CONTENT
+		    <dynamic prepend="where">
+		      <isNotNull prepend="and" property="categoryid">
+		        (CATEGORYID = #categoryid#
+		        or
+		        CONTENTID in (select CONTENTID from INF_CONTENTCATEGORY where INF_CONTENTCATEGORY.CATEGORYID = #categoryid#))
+		      </isNotNull>
+		      <isNotNull prepend="and" property="pid">
+		        CATEGORYID in (select CATEGORYID from INF_CATEGORY where PID = #pid#)
+		      </isNotNull>
+		      <isNotNull prepend="and" property="title">
+		        TITLE = #title#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="webshowdate">
+		        WEBSHOWDATE = TO_DATE(#webshowdate#and 'YYYY-MM-DD HH24:MI:SS')
+		      </isNotNull>
+		      <isNotNull prepend="and" property="source">
+		        SOURCE = #source#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="descr">
+		        DESCR = #descr#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="thumbnail">
+		        THUMBNAIL = #thumbnail#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="tag">
+		        TAG = #tag#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="staticurl">
+		        STATICURL = #staticurl#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="relatednextid">
+		        RELATEDNEXTID = #relatednextid#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="entrydate">
+		        ENTRYDATE = TO_DATE(#entrydate#, 'YYYY-MM-DD HH24:MI:SS')
+		      </isNotNull>
+		      <isNotNull prepend="and" property="releasetime">
+		        RELEASETIME = TO_DATE(#releasetime#, 'YYYY-MM-DD HH24:MI:SS')
+		      </isNotNull>
+		      <isNotNull prepend="and" property="releasemark">
+		        RELEASEMARK = #releasemark#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="uploadattachment">
+		        UPLOADATTACHMENT = #uploadattachment#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="researchid">
+		        RESEARCHID = #researchid#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="hotflag">
+		        HOTFLAG = #hotflag#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="recommendflag">
+		        RECOMMENDFLAG = #recommendflag#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="districtid">
+		        DISTRICTID = #districtid#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="areaid">
+		        AREAID = #areaid#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="housetypeid">
+		        HOUSETYPEID = #housetypeid#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="focusflag">
+		        FOCUSFLAG = #focusflag#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="gotourl">
+		        GOTOURL = #gotourl#
+		      </isNotNull>
+		      <isNotNull prepend="and" property="content">
+		        CONTENT = #content#
+		      </isNotNull>
+    	  </dynamic>
+    	  order by WEBSHOWDATE desc
+	 ) ROW_ ) ROWALL 
+	WHERE NUM_ > 0  AND NUM_ <![CDATA[<=]]> $counts$
+  </select>
+  <select id="WEB_INF_CONTENT_selectFdcPageByQueryCondition" parameterClass="java.util.Map" resultMap="WEB_INF_CONTENT_BaseResultMap">
+  	select INF_CONTENT.CONTENTID, INF_CONTENT.CATEGORYID, INF_CONTENT.TITLE,
+     	   TO_CHAR(INF_CONTENT.WEBSHOWDATE, 'YYYY-MM-DD') WEBSHOWDATE, INF_CONTENT.SOURCE,
+      	   INF_CONTENT.DESCR, INF_CONTENT.THUMBNAIL, INF_CONTENT.TAG, INF_CONTENT.STATICURL,
+      	   INF_CONTENT.RELATEDNEXTID, TO_CHAR(INF_CONTENT.ENTRYDATE, 'YYYY-MM-DD HH24:MI:SS') ENTRYDATE,
+   		   TO_CHAR(INF_CONTENT.RELEASETIME, 'YYYY-MM-DD HH24:MI:SS') RELEASETIME,
+      	   INF_CONTENT.RELEASEMARK, INF_CONTENT.UPLOADATTACHMENT, INF_CONTENT.RESEARCHID,
+     	   INF_CONTENT.HOTFLAG, INF_CONTENT.RECOMMENDFLAG, INF_CONTENT.DISTRICTID, INF_CONTENT.AREAID,
+      	   INF_CONTENT.HOUSETYPEID, INF_CONTENT.FOCUSFLAG, INF_CONTENT.GOTOURL
+    from   INF_CONTENT
+    <dynamic prepend="where">
+      <isNotNull prepend="and" property="categoryid">
+        (CATEGORYID = #categoryid#
+        or
+        CONTENTID in (select CONTENTID from INF_CONTENTCATEGORY where INF_CONTENTCATEGORY.CATEGORYID = #categoryid#))
+      </isNotNull>
+      <isNotNull prepend="and" property="pid">
+        CATEGORYID in (select CATEGORYID from INF_CATEGORY where PID = #pid#)
+      </isNotNull>
+    </dynamic>
+    order by WEBSHOWDATE desc
+  </select>
+</sqlMap>

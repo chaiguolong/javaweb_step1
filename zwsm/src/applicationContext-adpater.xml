@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+    
+    <!--配置装配层-->
+	<bean name="superAdpater" class="com.hzfc.common.adpater.impl.SuperAdpaterImpl"
+		scope="prototype">
+		<property name="superService" ref="superService" />
+	</bean>
+	
+	<!-- 新界面菜单加载 -->
+	<bean name="superMenuAdpater" class="com.hzfc.superadmin.framework.adpater.impl.SuperMenuAdpaterImpl"
+		scope="prototype">
+		<property name="superMenuService" ref="superMenuService" />
+	</bean>
+	
+	<!-- 用户信息 -->
+	<bean name="userInfomationAdpater" class="com.hzfc.superadmin.framework.adpater.impl.UserInfomationAdpaterImpl"
+		scope="prototype">
+		<property name="superService" ref="superService" />
+		<property name="userInfomationService" ref="userInfomationService" />
+	</bean>
+	
+	<!-- 辅助功能管理 -->
+	<bean name="assistAdpater" class="com.hzfc.superadmin.assist.adpater.impl.AssistAdpaterImpl"
+		scope="prototype">
+		<property name="superService" ref="superService"/>	
+		<property name="assistService" ref="assistService"/>
+	</bean>
+
+	<!-- 广告管理 -->
+	<bean name="webAdMangerAdpater" class="com.hzfc.superadmin.ad.adpater.impl.WebAdMangerAdpaterImpl"
+		scope="prototype">
+		<property name="superService" ref="superService"></property>	
+		<property name="webAdMangerService" ref="webAdMangerService"></property>
+	</bean>
+	
+	<!-- 资讯新闻 -->
+	<bean name="newsContentAdpater" class="com.hzfc.superadmin.newscontent.adpater.impl.NewsContentAdpaterImpl"
+		scope="prototype">
+		<property name="superService" ref="superService"></property>	
+		<property name="newsContentService" ref="newsContentService"></property>
+	</bean>
+	
+	<!-- 菜单资源管理 -->
+	<bean name="menuResourceAdpater" class="com.hzfc.superadmin.framework.adpater.impl.MenuResourceAdpaterImpl"
+		scope="prototype">
+		<property name="superService" ref="superService" />
+		<property name="menuResourceService" ref="menuResourceService" />
+	</bean>
+	
+	<!-- 前台 -->
+	<bean name="webAdpater" class="com.hzfc.web.adpater.impl.WebAdpaterImpl" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+		<property name="contentCategoryService" ref="contentCategoryService"/>
+		<property name="contentService" ref="contentService"/>
+		<property name="d30Service" ref="d30Service"/>
+		<property name="developerService" ref="developerService"/>
+		<property name="presellService" ref="presellService"/>
+		<property name="complaintService" ref="complaintService"/>
+		<property name="noticeService" ref="noticeService"/>
+		<property name="contractContinuousService" ref="contractContinuousService"/>
+		<property name="contractRevokeService" ref="contractRevokeService"/>
+	</bean>
+
+	<!-- 党建 -->
+	<bean name="webDjAdpater" class="com.hzfc.web.adpater.impl.WebDjAdpaterImpl" scope="prototype">
+		<property name="categoryService" ref="categoryService"/>
+		<property name="contentService" ref="contentService"/>
+		<property name="contentCategoryService" ref="contentCategoryService"/>
+	</bean>
+</beans>

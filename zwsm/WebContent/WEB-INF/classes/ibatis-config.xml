@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<!-- ibatis开启缓存 -->
+	<settings cacheModelsEnabled="true" enhancementEnabled="true" lazyLoadingEnabled="true"/>
+	
+	<!-- Sql语句配置XML文路径 -->
+	<sqlMap resource="com/hzfc/common/dao/COUNT_sqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/FRAMEWORK_sqlMap.xml"/>
+
+	<!-- 辅助信息管理 -->
+	<sqlMap resource="com/hzfc/superadmin/assist/sqlMap/T_ESF_CODETYPE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/assist/sqlMap/T_ESF_CODEITEMS_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/assist/sqlMap/T_ESF_RESSINFO_SqlMap.xml"/>
+	
+	<!-- 广告管理 -->
+	<sqlMap resource="com/hzfc/superadmin/ad/sqlMap/WEB_ADTYPE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/ad/sqlMap/WEB_ADINFO_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/ad/sqlMap/WEB_STATICTASK_SqlMap.xml"/>
+	
+	<!-- 新闻资讯 -->
+	<sqlMap resource="com/hzfc/superadmin/newscontent/sqlMap/INF_CATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/newscontent/sqlMap/INF_CONTENT_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/newscontent/sqlMap/INF_CONTENTCATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/newscontent/sqlMap/WEB_COMPLAINT_SqlMap.xml"/>
+
+	<!-- 用户信息 -->
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_USEREXT_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_ACCOUNT_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_USERROLE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_USERRESOURCE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_USERDEPARTMENT_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_DEPARTMENT_SqlMap.xml"/>
+
+	<!-- 资源权限 -->
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_MENU_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_RESOURCE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_ROLE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_POSITION_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_ROLERESOURCE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_POSITIONRESOURCE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_DEPARTMENTRESOURCE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/superadmin/framework/sqlMap/SYS_USERPOSITION_SqlMap.xml"/>
+	
+	<!-- 前台 -->
+	<sqlMap resource="com/hzfc/web/sqlMap/INF_CATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/INF_CONTENT_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/INF_CONTENTCATEGORY_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/STA_D30_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/COH_DEVELOPER_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/WEB_COMPLAINT_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/WEB_CONTRACT_CONTINUOUS_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/WEB_CONTRACT_REVOKE_SqlMap.xml"/>
+	<sqlMap resource="com/hzfc/web/sqlMap/COH_PRESELL_SqlMap.xml"/>
+	<!-- 前台广告位 -->
+	<sqlMap resource="com/hzfc/web/common/sqlMap/WEB_COMMON_ADS_sqlMap.xml"/>
+</sqlMapConfig>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="FRAMEWORK_INFO">
+	<resultMap id="system_menu_result" class="com.hzfc.superadmin.framework.entity.SuperMenu">
+		<result column="MENUID" property="menuid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="PID" property="pid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="MENUNAME" property="menuname" jdbcType="VARCHAR" nullValue="" />
+	    <result column="SORTNUMBER" property="sortnumber" jdbcType="DECIMAL" nullValue="0" />
+		<result column="RESOURCEID" property="resourceid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="NAME" property="name" jdbcType="VARCHAR" nullValue="" />
+	    <result column="TYPE" property="type" jdbcType="VARCHAR" nullValue="" />
+	    <result column="DEFINESTRING" property="definestring" jdbcType="VARCHAR" nullValue="" />
+	    <result column="ISUSE" property="isuse" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="ISMENU" property="ismenu" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="CATEGORYID" property="categoryid" jdbcType="DECIMAL" nullValue="0" />
+	</resultMap>
+	
+	<resultMap id="system_menu_level_result" class="com.hzfc.superadmin.framework.entity.SuperMenu">
+		<result column="LEVELID" property="levelid" jdbcType="DECIMAL" nullValue="0" />
+		<result column="MENUID" property="menuid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="PID" property="pid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="MENUNAME" property="menuname" jdbcType="VARCHAR" nullValue="" />
+	    <result column="SORTNUMBER" property="sortnumber" jdbcType="DECIMAL" nullValue="0" />
+		<result column="RESOURCEID" property="resourceid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="NAME" property="name" jdbcType="VARCHAR" nullValue="" />
+	    <result column="TYPE" property="type" jdbcType="VARCHAR" nullValue="" />
+	    <result column="DEFINESTRING" property="definestring" jdbcType="VARCHAR" nullValue="" />
+	    <result column="ISUSE" property="isuse" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="ISMENU" property="ismenu" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="CATEGORYID" property="categoryid" jdbcType="DECIMAL" nullValue="0" />
+	</resultMap>
+	
+	<resultMap id="loginSysAccountResult" class="com.hzfc.superadmin.framework.entity.SysAccount">
+		<result column="ACCOUNTID" property="accountid" jdbcType="DECIMAL" nullValue="0" />
+		<result column="LOGINUSER" property="loginuser" jdbcType="VARCHAR" nullValue="" />
+		<result column="LOGINPASS" property="loginpass" jdbcType="VARCHAR" nullValue="" />
+		<result column="ISENABLE" property="isenable" jdbcType="DECIMAL" nullValue="0" />
+	</resultMap>
+	
+	<select id="getTopMenuByAccountid" resultMap="system_menu_result" parameterClass="java.lang.Long">
+		select M.MENUID, M.PID, M.MENUNAME, M.SORTNUMBER, T.RESOURCEID, T.ISUSE, T.ISMENU, T.DEFINESTRING, T.TYPE, T.NAME, T.CATEGORYID from SYS_RESOURCE T, SYS_MENU M 
+		where T.MENUID = M.MENUID(+)
+		and T.ISUSE = 1 
+		and T.ISMENU = 1
+		and T.RESOURCEID in (
+		    select RESOURCEID from VIW_RIGHT where ACCOUNTID = #accountid#
+		)
+		and M.PID = 0
+		order by M.SORTNUMBER desc
+	</select>
+	
+	<select id="getLeftMenuByArgMap" resultMap="system_menu_level_result" parameterClass="java.util.Map">
+		select LEVEL as LEVELID, M.MENUID, M.PID, M.MENUNAME, M.SORTNUMBER, T.RESOURCEID, T.ISUSE, T.ISMENU, T.DEFINESTRING, T.TYPE, T.NAME, T.CATEGORYID from SYS_RESOURCE T, SYS_MENU M 
+		where T.MENUID = M.MENUID(+)
+		and T.ISUSE = 1 
+		and T.ISMENU = 1
+		and T.RESOURCEID in (
+		    select RESOURCEID from VIW_RIGHT where ACCOUNTID = #accountid#
+		)
+		start with M.PID = #pid#
+	    connect by prior M.MENUID = M.PID
+	    order siblings by M.SORTNUMBER desc
+	</select>
+	
+	<select id="getLeftMenuByArgMapAndInf" resultMap="system_menu_level_result" parameterClass="java.util.Map">
+		select 
+			LEVELID, ZZ.CATEGORYID as MENUID, ZZ.PID as PID, ZZ.NAME as MENUNAME, 
+			ZZ.SORTNUMBER as SORTNUMBER, ZZ.CATEGORYID as RESOURCEID, 1 as ISUSE, 0 as ISMENU, 
+			('inf/InfContentAction_list.jspx?infContent.categoryid='||ZZ.CATEGORYID) as DEFINESTRING,
+			'内容栏目' as TYPE, ZZ.NAME as NAME, ZZ.CATEGORYID as CATEGORYID
+		from(
+		    select LEVEL as LEVELID, INF.CATEGORYID, INF.PID, INF.NAME, INF.SORTNUMBER from INF_CATEGORY INF 
+			where INF.CATEGORYID in(
+				select T.CATEGORYID from SYS_RESOURCE T
+		  		where  
+		      	T.ISMENU = 0
+		      	and T.RESOURCEID in (
+		    		select RESOURCEID from VIW_RIGHT where ACCOUNTID = #accountid#
+		      	)
+		  	)
+		  	start with INF.PID = 0
+		  	connect by prior INF.CATEGORYID = INF.PID 
+		  	order siblings by INF.SORTNUMBER desc
+		) ZZ
+	</select>
+
+	<select id="getSysAccountForLoginByLoginname" resultMap="loginSysAccountResult" parameterClass="java.util.Map">
+		select ACCOUNTID, LOGINUSER, LOGINPASS, ISENABLE from SYS_ACCOUNT
+		where LOGINUSER = #loginname#
+	</select>
+	
+	<update id="updateSysAccountPassword" parameterClass="com.hzfc.superadmin.framework.entity.SysAccount">
+		update SYS_ACCOUNT set 
+			LOGINPASS = #loginpass#
+		where ACCOUNTID = #accountid#
+	</update>
+	
+</sqlMap>

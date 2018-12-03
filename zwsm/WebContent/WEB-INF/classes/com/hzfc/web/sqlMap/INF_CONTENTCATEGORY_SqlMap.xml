@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WEB_INF_CONTENTCATEGORY">
+	<resultMap class="com.hzfc.web.entity.ContentCategory" id="WEB_INF_CONTENTCATEGORY_BaseResultMap">
+		<result column="LINKEID" jdbcType="DECIMAL" nullValue="0" property="linkeid" />
+		<result column="CONTENTID" jdbcType="DECIMAL" nullValue="0" property="contentid" />
+		<result column="CATEGORYID" jdbcType="DECIMAL" nullValue="0" property="categoryid" />
+	</resultMap>
+	<select id="WEB_INF_CONTENTCATEGORY_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="WEB_INF_CONTENTCATEGORY_BaseResultMap">
+		select INF_CONTENTCATEGORY.LINKEID, INF_CONTENTCATEGORY.CONTENTID,
+			INF_CONTENTCATEGORY.CATEGORYID
+		from INF_CONTENTCATEGORY
+		where LINKEID = #linkeid#
+	</select>
+	<select id="WEB_INF_CONTENTCATEGORY_selectCategoryListByMap" parameterClass="java.util.Map" resultMap="WEB_INF_CONTENTCATEGORY_BaseResultMap">
+		select INF_CONTENTCATEGORY.LINKEID, INF_CONTENTCATEGORY.CONTENTID,
+			INF_CONTENTCATEGORY.CATEGORYID
+		from INF_CONTENTCATEGORY
+		where 1=1
+		<isNotNull property="pid">
+			and CATEGORYID in (select CATEGORYID from INF_CATEGORY where PID = #pid#)
+		</isNotNull>
+		<isNotNull property="contentid">
+			and CONTENTID = #contentid#
+		</isNotNull>
+		order by CATEGORYID desc
+	</select>
+	<delete id="WEB_INF_CONTENTCATEGORY_deleteByPrimaryKey" parameterClass="java.lang.Long">
+		delete from INF_CONTENTCATEGORY
+		where LINKEID = #linkeid#
+	</delete>
+	<insert id="WEB_INF_CONTENTCATEGORY_insert" parameterClass="com.hzfc.web.entity.ContentCategory">
+		insert into INF_CONTENTCATEGORY (LINKEID, CONTENTID, CATEGORYID)
+		values (#linkeid#, #contentid#, #categoryid#)
+	</insert>
+	<insert id="WEB_INF_CONTENTCATEGORY_insertSelective" parameterClass="com.hzfc.web.entity.ContentCategory">
+		insert into INF_CONTENTCATEGORY
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="linkeid">
+				LINKEID
+			</isNotNull>
+			<isNotNull prepend="," property="contentid">
+				CONTENTID
+			</isNotNull>
+			<isNotNull prepend="," property="categoryid">
+				CATEGORYID
+			</isNotNull>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="linkeid">
+				#linkeid#
+			</isNotNull>
+			<isNotNull prepend="," property="contentid">
+				#contentid#
+			</isNotNull>
+			<isNotNull prepend="," property="categoryid">
+				#categoryid#
+			</isNotNull>
+			)
+		</dynamic>
+	</insert>
+	<update id="WEB_INF_CONTENTCATEGORY_updateByPrimaryKeySelective" parameterClass="com.hzfc.web.entity.ContentCategory">
+		update INF_CONTENTCATEGORY
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="contentid">
+				CONTENTID = #contentid#
+			</isNotNull>
+			<isNotNull prepend="," property="categoryid">
+				CATEGORYID = #categoryid#
+			</isNotNull>
+		</dynamic>
+		where LINKEID = #linkeid#
+	</update>
+	<update id="WEB_INF_CONTENTCATEGORY_updateByPrimaryKey" parameterClass="com.hzfc.web.entity.ContentCategory">
+		update INF_CONTENTCATEGORY
+		set CONTENTID = #contentid#,
+			CATEGORYID = #categoryid#
+		where LINKEID = #linkeid#
+	</update>
+</sqlMap>

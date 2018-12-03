@@ -1,20 +1,6 @@
 package com.itheima.web.servlet;
+import com.itheima.domain.User;
 import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.itheima.domain.Cart;
 import com.itheima.domain.CartItem;
 import com.itheima.domain.Category;
@@ -22,11 +8,33 @@ import com.itheima.domain.PageBean;
 import com.itheima.domain.Product;
 import com.itheima.service.ProductService_002;
 import com.itheima.utils.JedisPoolUtils;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import redis.clients.jedis.Jedis;
 
 
 public class ProductServlet_002 extends BaseServlet_002{
 	private static final long serialVersionUID = -345341231532346L;
+
+	//提交订单
+	public void submitOrder(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
+		HttpSession session = request.getSession();
+
+		//判断用户是否已经登录 未登录下面代码不执行
+		User user = new User();
+
+
+	}
 	//清空购物车
 	public void clearCart(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 		HttpSession session = request.getSession();

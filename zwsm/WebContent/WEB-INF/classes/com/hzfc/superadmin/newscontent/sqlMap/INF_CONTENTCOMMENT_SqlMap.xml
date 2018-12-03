@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="INF_CONTENTCOMMENT" >
+  <resultMap id="INF_CONTENTCOMMENT_BaseResultMap" class="com.hzfc.superadmin.newscontent.entity.ContentComment" >
+    <result column="CONTENTCOMMENTID" property="contentcommentid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="CONTENTID" property="contentid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="COMMENTTITLE" property="commenttitle" jdbcType="VARCHAR" nullValue="" />
+    <result column="COMMENTREMARK" property="commentremark" jdbcType="VARCHAR" nullValue="" />
+    <result column="COMMENTTIME" property="commenttime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="AGREECOUNT" property="agreecount" jdbcType="DECIMAL" nullValue="0" />
+    <result column="NEGATIVECOUNT" property="negativecount" jdbcType="DECIMAL" nullValue="0" />
+  </resultMap>
+  <select id="INF_CONTENTCOMMENT_selectByPrimaryKey" resultMap="INF_CONTENTCOMMENT_BaseResultMap" parameterClass="java.lang.Long" >
+    select INF_CONTENTCOMMENT.CONTENTCOMMENTID, INF_CONTENTCOMMENT.CONTENTID,
+      INF_CONTENTCOMMENT.COMMENTTITLE, INF_CONTENTCOMMENT.COMMENTREMARK,
+      TO_CHAR(INF_CONTENTCOMMENT.COMMENTTIME, 'YYYY-MM-DD HH24:MI:SS') COMMENTTIME,
+      INF_CONTENTCOMMENT.AGREECOUNT, INF_CONTENTCOMMENT.NEGATIVECOUNT
+    from INF_CONTENTCOMMENT
+    where CONTENTCOMMENTID = #contentcommentid#
+  </select>
+  <delete id="INF_CONTENTCOMMENT_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from INF_CONTENTCOMMENT
+    where CONTENTCOMMENTID = #contentcommentid#
+  </delete>
+  <insert id="INF_CONTENTCOMMENT_insert" parameterClass="com.hzfc.superadmin.newscontent.entity.ContentComment" >
+    insert into INF_CONTENTCOMMENT (CONTENTCOMMENTID, CONTENTID, COMMENTTITLE, COMMENTREMARK,
+      COMMENTTIME, AGREECOUNT, NEGATIVECOUNT)
+    values (#contentcommentid#, #contentid#, #commenttitle#, #commentremark#, TO_DATE(#commenttime#,
+      'YYYY-MM-DD HH24:MI:SS'), #agreecount#, #negativecount#)
+  </insert>
+  <insert id="INF_CONTENTCOMMENT_insertSelective" parameterClass="com.hzfc.superadmin.newscontent.entity.ContentComment" >
+    insert into INF_CONTENTCOMMENT
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="contentcommentid" >
+        CONTENTCOMMENTID
+      </isNotNull>
+      <isNotNull prepend="," property="contentid" >
+        CONTENTID
+      </isNotNull>
+      <isNotNull prepend="," property="commenttitle" >
+        COMMENTTITLE
+      </isNotNull>
+      <isNotNull prepend="," property="commentremark" >
+        COMMENTREMARK
+      </isNotNull>
+      <isNotNull prepend="," property="commenttime" >
+        COMMENTTIME
+      </isNotNull>
+      <isNotNull prepend="," property="agreecount" >
+        AGREECOUNT
+      </isNotNull>
+      <isNotNull prepend="," property="negativecount" >
+        NEGATIVECOUNT
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="contentcommentid" >
+        #contentcommentid#
+      </isNotNull>
+      <isNotNull prepend="," property="contentid" >
+        #contentid#
+      </isNotNull>
+      <isNotNull prepend="," property="commenttitle" >
+        #commenttitle#
+      </isNotNull>
+      <isNotNull prepend="," property="commentremark" >
+        #commentremark#
+      </isNotNull>
+      <isNotNull prepend="," property="commenttime" >
+        TO_DATE(#commenttime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="agreecount" >
+        #agreecount#
+      </isNotNull>
+      <isNotNull prepend="," property="negativecount" >
+        #negativecount#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="INF_CONTENTCOMMENT_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.newscontent.entity.ContentComment" >
+    update INF_CONTENTCOMMENT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="contentid" >
+        CONTENTID = #contentid#
+      </isNotNull>
+      <isNotNull prepend="," property="commenttitle" >
+        COMMENTTITLE = #commenttitle#
+      </isNotNull>
+      <isNotNull prepend="," property="commentremark" >
+        COMMENTREMARK = #commentremark#
+      </isNotNull>
+      <isNotNull prepend="," property="commenttime" >
+        COMMENTTIME = TO_DATE(#commenttime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="agreecount" >
+        AGREECOUNT = #agreecount#
+      </isNotNull>
+      <isNotNull prepend="," property="negativecount" >
+        NEGATIVECOUNT = #negativecount#
+      </isNotNull>
+    </dynamic>
+    where CONTENTCOMMENTID = #contentcommentid#
+  </update>
+  <update id="INF_CONTENTCOMMENT_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.newscontent.entity.ContentComment" >
+    update INF_CONTENTCOMMENT
+    set CONTENTID = #contentid#,
+      COMMENTTITLE = #commenttitle#,
+      COMMENTREMARK = #commentremark#,
+      COMMENTTIME = TO_DATE(#commenttime#, 'YYYY-MM-DD HH24:MI:SS'),
+      AGREECOUNT = #agreecount#,
+      NEGATIVECOUNT = #negativecount#
+    where CONTENTCOMMENTID = #contentcommentid#
+  </update>
+  <resultMap id="INF_CONTENTCOMMENT_ListResultMap" class="com.hzfc.superadmin.newscontent.entity.ContentComment" >
+    <result column="CONTENTCOMMENTID" property="contentcommentid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" nullValue="" />
+    <result column="COMMENTTITLE" property="commenttitle" jdbcType="VARCHAR" nullValue="" />
+    <result column="COMMENTREMARK" property="commentremark" jdbcType="VARCHAR" nullValue="" />
+    <result column="COMMENTTIME" property="commenttime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="AGREECOUNT" property="agreecount" jdbcType="DECIMAL" nullValue="0" />
+    <result column="NEGATIVECOUNT" property="negativecount" jdbcType="DECIMAL" nullValue="0" />
+  </resultMap>
+  <select id="INF_CONTENTCOMMENT_selectPageByQueryCondition" resultMap="INF_CONTENTCOMMENT_ListResultMap" parameterClass="java.util.Map">
+  	select 
+  		INF_CONTENTCOMMENT.CONTENTCOMMENTID, 
+  		INF_CONTENT.TITLE,
+        INF_CONTENTCOMMENT.COMMENTTITLE, 
+        INF_CONTENTCOMMENT.COMMENTREMARK,
+        TO_CHAR(INF_CONTENTCOMMENT.COMMENTTIME, 'YYYY-MM-DD HH24:MI:SS') COMMENTTIME,
+        INF_CONTENTCOMMENT.AGREECOUNT, 
+        INF_CONTENTCOMMENT.NEGATIVECOUNT
+    from INF_CONTENTCOMMENT,INF_CONTENT
+    where INF_CONTENTCOMMENT.CONTENTID=INF_CONTENT.CONTENTID
+        <isNotEmpty prepend="and" property="starttime" >
+		    INF_CONTENTCOMMENT.COMMENTTIME >= TO_DATE(#starttime#,'YYYY-MM-DD')
+	    </isNotEmpty>
+	    <isNotEmpty prepend="and" property="endtime" >
+	    	INF_CONTENTCOMMENT.COMMENTTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD') + 1
+	    </isNotEmpty>
+	    <isNotEmpty prepend="and" property="keywords" >
+	    	(
+	    		INF_CONTENT.TITLE like #keywords#
+	    		or INF_CONTENTCOMMENT.COMMENTTITLE like #keywords#
+	    	)
+	    </isNotEmpty>
+	order by INF_CONTENTCOMMENT.CONTENTCOMMENTID desc
+  </select>
+</sqlMap>

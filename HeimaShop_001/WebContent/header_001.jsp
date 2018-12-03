@@ -12,10 +12,15 @@
 	</div>
 	<div class="col-md-3" style="padding-top:20px">
 		<ol class="list-inline">
-			<li><a href="login.jsp">登录</a></li>
-			<li><a href="register.jsp">注册</a></li>
-			<li><a href="cart.jsp">购物车</a></li>
-			<li><a href="order_list.jsp">我的订单</a></li>
+			<c:if test="${empty user}">
+				<li><a href="login_001.jsp">登录</a></li>
+				<li><a href="register_001.jsp">注册</a></li>
+			</c:if>
+			<c:if test="${!empty user}">
+				<li style="color:red;">欢迎您,${user.username}</li>
+			</c:if>
+			<li><a href="cart_001.jsp">购物车</a></li>
+			<li><a href="order_list_001.jsp">我的订单</a></li>
 		</ol>
 	</div>
 </div>

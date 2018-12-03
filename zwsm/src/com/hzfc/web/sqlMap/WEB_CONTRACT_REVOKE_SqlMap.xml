@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WEB_CONTRACT_REVOKE">
+  <resultMap class="com.hzfc.web.entity.ContractRevoke" id="WEB_CONTRACT_REVOKE_BaseResultMap">
+    <result column="AGG_NM" jdbcType="DECIMAL" nullValue="0" property="agg_nm" />
+    <result column="DEVID" jdbcType="DECIMAL" nullValue="0" property="devid" />
+    <result column="GFRID" jdbcType="DECIMAL" nullValue="0" property="gfrid" />
+    <result column="TFDATE" jdbcType="TIMESTAMP" nullValue="" property="tfdate" />
+    <result column="FW_ZL" jdbcType="VARCHAR" nullValue="" property="fw_zl" />
+    <result column="GFR" jdbcType="VARCHAR" nullValue="" property="gfr" />
+    <result column="GFR_CID" jdbcType="VARCHAR" nullValue="" property="gfr_cid" />
+    <result column="REG_DATE" jdbcType="TIMESTAMP" nullValue="" property="reg_date" />
+    <result column="FH_NM" jdbcType="DECIMAL" nullValue="0" property="fh_nm" />
+    <result column="PRJNAME" jdbcType="VARCHAR" nullValue="" property="prjname" />
+    <result column="DEVCODE" jdbcType="DECIMAL" nullValue="0" property="devcode" />
+    <result column="DEVNAME" jdbcType="VARCHAR" nullValue="" property="devname" />
+    <result column="PRESELL_ID" jdbcType="DECIMAL" nullValue="0" property="presell_id" />
+    <result column="PRESELL_CODE" jdbcType="DECIMAL" nullValue="0" property="presell_code" />
+    <result column="ZH_NM" jdbcType="DECIMAL" nullValue="0" property="zh_nm" />
+    <result column="HTID" jdbcType="DECIMAL" nullValue="0" property="htid" />
+  </resultMap>
+  <select id="WEB_CONTRACT_REVOKE_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="WEB_CONTRACT_REVOKE_BaseResultMap">
+    select WEB_CONTRACT_REVOKE.AGG_NM, WEB_CONTRACT_REVOKE.DEVID, WEB_CONTRACT_REVOKE.GFRID,
+      TO_CHAR(WEB_CONTRACT_REVOKE.TFDATE, 'YYYY-MM-DD HH24:MI:SS') TFDATE,
+      WEB_CONTRACT_REVOKE.FW_ZL, WEB_CONTRACT_REVOKE.GFR, WEB_CONTRACT_REVOKE.GFR_CID,
+      TO_CHAR(WEB_CONTRACT_REVOKE.REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE,
+      WEB_CONTRACT_REVOKE.FH_NM, WEB_CONTRACT_REVOKE.PRJNAME, WEB_CONTRACT_REVOKE.DEVCODE,
+      WEB_CONTRACT_REVOKE.DEVNAME, WEB_CONTRACT_REVOKE.PRESELL_ID, WEB_CONTRACT_REVOKE.PRESELL_CODE,
+      WEB_CONTRACT_REVOKE.ZH_NM, WEB_CONTRACT_REVOKE.HTID
+    from WEB_CONTRACT_REVOKE
+    where AGG_NM = #agg_nm#
+      and DEVID = #devid#
+      and GFRID = #gfrid#
+  </select>
+  <select id="WEB_CONTRACT_REVOKE_selectByMap" parameterClass="java.util.Map" resultMap="WEB_CONTRACT_REVOKE_BaseResultMap">
+    select WEB_CONTRACT_REVOKE.AGG_NM, WEB_CONTRACT_REVOKE.DEVID, WEB_CONTRACT_REVOKE.GFRID,
+      TO_CHAR(WEB_CONTRACT_REVOKE.TFDATE, 'YYYY-MM-DD HH24:MI:SS') TFDATE,
+      WEB_CONTRACT_REVOKE.FW_ZL, WEB_CONTRACT_REVOKE.GFR, WEB_CONTRACT_REVOKE.GFR_CID,
+      TO_CHAR(WEB_CONTRACT_REVOKE.REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE,
+      WEB_CONTRACT_REVOKE.FH_NM, WEB_CONTRACT_REVOKE.PRJNAME, WEB_CONTRACT_REVOKE.DEVCODE,
+      WEB_CONTRACT_REVOKE.DEVNAME, WEB_CONTRACT_REVOKE.PRESELL_ID, WEB_CONTRACT_REVOKE.PRESELL_CODE,
+      WEB_CONTRACT_REVOKE.ZH_NM, WEB_CONTRACT_REVOKE.HTID
+    from WEB_CONTRACT_REVOKE
+    where 1 = 1
+    <isNotNull property="devname">
+    	and DEVNAME = #devname#
+    </isNotNull>
+    <isNotNull property="devname_htid">
+    	and DEVNAME = (select DEVNAME from WEB_CONTRACT_REVOKE where HTID = #devname_htid#)
+    </isNotNull>
+    <isNotNull property="prjname_htid">
+    	and PRJNAME = (select PRJNAME from WEB_CONTRACT_REVOKE where HTID = #prjname_htid#)
+    </isNotNull>
+    <isNotNull property="fw_zl_htid">
+    	and FW_ZL = (select FW_ZL from WEB_CONTRACT_REVOKE where HTID = #fw_zl_htid#)
+    </isNotNull>
+    <isNotNull property="gfr_htid">
+    	and GFR = (select GFR from WEB_CONTRACT_REVOKE where HTID = #gfr_htid#)
+    </isNotNull>
+    order by TFDATE desc
+  </select>
+</sqlMap>

@@ -3,8 +3,11 @@ package com.itheima.web.servlet;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,18 +19,123 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.itheima.domain.Cart;
 import com.itheima.domain.CartItem;
 import com.itheima.domain.Category;
+import com.itheima.domain.Order;
+import com.itheima.domain.OrderItem;
 import com.itheima.domain.PageBean;
 import com.itheima.domain.Product;
+import com.itheima.domain.User;
 import com.itheima.service.ProductService_001;
+import com.itheima.utils.CommonsUtils;
 import com.itheima.utils.JedisPoolUtils;
 import redis.clients.jedis.Jedis;
 
 @SuppressWarnings("rawtypes")
 public class ProductServlet_001 extends BaseServlet{
 	private static final long serialVersionUID = -23324535345L;
+
+
+	//确认订单--更新收货人信息+在线支付
+	public void confirmOrder(HttpServletRequest request ,HttpServletResponse response) throws ServletException,IOException{
+		//1.更新收货人信息
+		Map<String,String[]> properties = request.getParameterMap();
+		Order order = new Order();
+		try {
+			BeanUtils.populate(order,properties);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		ProductService_001 service = new ProductService_001();
+		service.updateOrderAdrr(order);
+	}
+
+	//提交订单
+	public void submitOrder(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException,ParseException{
+		HttpSession session = request.getSession();
+
+		//判断用户是否已经登录,未登录下面代码不执行
+		User user = (User)session.getAttribute("user");
+		if(user==null){
+			//没有登录
+			response.sendRedirect(request.getContextPath()+"/login_001.jsp");
+			return;
+		}
+
+		//目的:封装好一个Order对象 传递给service层
+		Order order = new Order();
+
+		//1.private String欧弟;//该订单的订单号
+		String oid = CommonsUtils.getUUID();
+		order.setOid(oid);
+
+		//2.private Date ordertime;//下单时间
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+		Date date_fmt =  sdf.parse(sdf.format(date));
+		order.setOrdertime(date_fmt);
+		System.out.println(order.getOrdertime());
+
+
+		//3.private double total;//该订单的总金额
+		//获得session中的购物车
+		Cart cart =(Cart)session.getAttribute("cart");
+		double total = cart.getTotal();
+		order.setTotal(total);
+
+		//4.private int state;//订单支付状态 1代表已付款 0 代表未付款
+		order.setState(0);
+
+		//5.private String address;//收获地址
+		order.setAddress(null);
+
+		//6.private String name;//收货人
+		order.setName(null);
+
+		//7.private String telephone;//收获人电话
+		order.setTelephone(null);
+
+		//8.private User user;//该订单属于哪个用户
+		order.setUser(user);
+
+		//9.该订单中有多少订单项List<OrderItem> orderItems = new ArrayList<OrderItem>();
+		//获得购物车中的购物项的集合map
+		Map<String,CartItem> cartItems = cart.getCartItems();
+		for(Map.Entry<String,CartItem> entry : cartItems.entrySet()){
+			//取出每一个购物项
+			CartItem cartItem = entry.getValue();
+			//创建新的订单项
+			OrderItem orderItem = new OrderItem();
+			//1)private String itemid;//订单项id
+			orderItem.setItemid(CommonsUtils.getUUID());
+			//2.private int count;//订单项内商品的购买数量
+			orderItem.setCount(cartItem.getBuyNum());
+			//3.private double subtotal;//订单项小计
+			orderItem.setSubtotal(cartItem.getSubtotal());
+			//4.private Product product;//订单项内部的商品
+			orderItem.setProduct(cartItem.getProduct());
+			//5.private Order order;//该订单项属于哪个订单
+			orderItem.setOrder(order);
+
+			//将该订单项添加到订单的订单项集合中
+			order.getOrderItems().add(orderItem);
+		}
+		//order对象封装完毕
+		//传递数据到service层
+		ProductService_001 service = new ProductService_001();
+		service.submitOrder(order);
+
+		session.setAttribute("order",order);
+
+		//页面跳转
+		response.sendRedirect(request.getContextPath()+"/order_info_001.jsp");
+
+	}
+
+
 	//清空购物车
 	public void clearCart(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
 		HttpSession session = request.getSession();

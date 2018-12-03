@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_USERDEPARTMENT">
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserDepartment" id="SYS_USERDEPARTMENT_BaseResultMap">
+    <result column="USERDEPARTMENTID" jdbcType="DECIMAL" nullValue="0" property="userdepartmentid" />
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="DEPARTMENTID" jdbcType="DECIMAL" nullValue="0" property="departmentid" />
+  </resultMap>
+  <select id="SYS_USERDEPARTMENT_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_USERDEPARTMENT_BaseResultMap">
+    select SYS_USERDEPARTMENT.USERDEPARTMENTID, SYS_USERDEPARTMENT.ACCOUNTID,
+      	   SYS_USERDEPARTMENT.DEPARTMENTID
+    from   SYS_USERDEPARTMENT
+    where  USERDEPARTMENTID = #userdepartmentid#
+  </select>
+  <delete id="SYS_USERDEPARTMENT_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_USERDEPARTMENT
+    where  USERDEPARTMENTID = #userdepartmentid#
+  </delete>
+  <insert id="SYS_USERDEPARTMENT_insert" parameterClass="com.hzfc.superadmin.framework.entity.UserDepartment">
+  	<selectKey resultClass="long" keyProperty="userdepartmentid"> 
+	        select HIBERNATE_SEQUENCE.nextval as userdepartmentid from dual 
+    </selectKey>
+    insert  into SYS_USERDEPARTMENT (USERDEPARTMENTID, ACCOUNTID, DEPARTMENTID)
+    values  (#userdepartmentid#, #accountid#, #departmentid#)
+  </insert>
+  <insert id="SYS_USERDEPARTMENT_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.UserDepartment">
+    insert into SYS_USERDEPARTMENT
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userdepartmentid">
+        USERDEPARTMENTID
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID
+      </isNotNull>
+      <isNotNull prepend="," property="departmentid">
+        DEPARTMENTID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userdepartmentid">
+        #userdepartmentid#
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="departmentid">
+        #departmentid#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_USERDEPARTMENT_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.UserDepartment">
+    update SYS_USERDEPARTMENT
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID = #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="departmentid">
+        DEPARTMENTID = #departmentid#
+      </isNotNull>
+    </dynamic>
+    where USERDEPARTMENTID = #userdepartmentid#
+  </update>
+  <update id="SYS_USERDEPARTMENT_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.UserDepartment">
+    update SYS_USERDEPARTMENT
+    set ACCOUNTID = #accountid#,
+      DEPARTMENTID = #departmentid#
+    where USERDEPARTMENTID = #userdepartmentid#
+  </update>
+  
+  <delete id="deleteDepartmentContentByContentid" parameterClass="java.lang.Long">
+  	delete from SYS_USERDEPARTMENT 
+  	where  SYS_USERDEPARTMENT.ACCOUNTID = #accountid#
+  </delete>
+  
+  <select id="selectIsExistUserDepartment" parameterClass="java.util.Map" resultMap="SYS_USERDEPARTMENT_BaseResultMap">
+    select SYS_USERDEPARTMENT.USERDEPARTMENTID, SYS_USERDEPARTMENT.ACCOUNTID,
+      	   SYS_USERDEPARTMENT.DEPARTMENTID
+    from   SYS_USERDEPARTMENT
+    where  DEPARTMENTID = #departmentid#
+  </select>
+  
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserDepartment" id="getPositionListForResult">
+    <result column="POSITIONNAME" jdbcType="VARCHAR" nullValue="" property="positionname" />
+    <result column="POSITIONID" jdbcType="DECIMAL" nullValue="0" property="positionid" />
+    <result column="DEPARTMENTID" jdbcType="DECIMAL" nullValue="0" property="departmentid" />
+  </resultMap>
+  
+  <select id="selectPositionByDepartmentid" parameterClass="java.util.Map" resultMap="getPositionListForResult">
+    select SYS_POSITION.DEPARTMENTID,SYS_POSITION.POSITIONNAME,SYS_POSITION.POSITIONID
+    from   SYS_POSITION
+    where  SYS_POSITION.DEPARTMENTID = #departmentid#
+  </select>
+  
+</sqlMap>

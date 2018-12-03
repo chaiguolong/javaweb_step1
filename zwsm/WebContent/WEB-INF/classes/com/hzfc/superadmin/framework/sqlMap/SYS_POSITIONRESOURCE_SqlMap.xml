@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_POSITIONRESOURCE">
+  <resultMap class="com.hzfc.superadmin.framework.entity.PositionResource" id="SYS_POSITIONRESOURCE_BaseResultMap">
+    <result column="POSITIONRESOURCEID" jdbcType="DECIMAL" nullValue="0" property="positionresourceid" />
+    <result column="POSITIONID" jdbcType="DECIMAL" nullValue="0" property="positionid" />
+    <result column="RESOURCEID" jdbcType="DECIMAL" nullValue="0" property="resourceid" />
+  </resultMap>
+  <select id="SYS_POSITIONRESOURCE_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_POSITIONRESOURCE_BaseResultMap">
+    select SYS_POSITIONRESOURCE.POSITIONRESOURCEID, SYS_POSITIONRESOURCE.POSITIONID,
+      SYS_POSITIONRESOURCE.RESOURCEID
+    from   SYS_POSITIONRESOURCE
+    where  POSITIONRESOURCEID = #positionresourceid#
+  </select>
+  <delete id="SYS_POSITIONRESOURCE_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_POSITIONRESOURCE
+    where  POSITIONID = #positionid#
+  </delete>
+  <insert id="SYS_POSITIONRESOURCE_insert" parameterClass="com.hzfc.superadmin.framework.entity.PositionResource">
+      <selectKey resultClass="long" keyProperty="positionresourceid"> 
+	        select HIBERNATE_SEQUENCE.nextval as positionresourceid from dual 
+	  </selectKey>
+    insert into SYS_POSITIONRESOURCE (POSITIONRESOURCEID, POSITIONID, RESOURCEID)
+    values (#positionresourceid#, #positionid#, #resourceid#)
+  </insert>
+  <insert id="SYS_POSITIONRESOURCE_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.PositionResource">
+    insert into SYS_POSITIONRESOURCE
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="positionresourceid">
+        POSITIONRESOURCEID
+      </isNotNull>
+      <isNotNull prepend="," property="positionid">
+        POSITIONID
+      </isNotNull>
+      <isNotNull prepend="," property="resourceid">
+        RESOURCEID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="positionresourceid">
+        #positionresourceid#
+      </isNotNull>
+      <isNotNull prepend="," property="positionid">
+        #positionid#
+      </isNotNull>
+      <isNotNull prepend="," property="resourceid">
+        #resourceid#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_POSITIONRESOURCE_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.PositionResource">
+    update SYS_POSITIONRESOURCE
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="positionid">
+        POSITIONID = #positionid#
+      </isNotNull>
+      <isNotNull prepend="," property="resourceid">
+        RESOURCEID = #resourceid#
+      </isNotNull>
+    </dynamic>
+    where POSITIONRESOURCEID = #positionresourceid#
+  </update>
+  <update id="SYS_POSITIONRESOURCE_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.PositionResource">
+    update SYS_POSITIONRESOURCE
+    set    POSITIONID = #positionid#,
+           RESOURCEID = #resourceid#
+    where  POSITIONRESOURCEID = #positionresourceid#
+  </update>
+  <resultMap class="com.hzfc.superadmin.framework.entity.RoleResource" id="SYS_POSITIONRESOURCE_MenuResultMap">
+    <result column="RESOURCEID" jdbcType="DECIMAL" nullValue="0" property="resourceid" />
+  </resultMap>
+  <select id="selectPositionResourceByPositionid" parameterClass="java.util.Map" resultMap="SYS_POSITIONRESOURCE_MenuResultMap">
+    select SYS_RESOURCE.RESOURCEID
+    from   SYS_POSITIONRESOURCE,SYS_RESOURCE
+    where  SYS_POSITIONRESOURCE.RESOURCEID = SYS_RESOURCE.RESOURCEID and SYS_POSITIONRESOURCE.POSITIONID = #positionid#
+  </select>
+  <delete id="deletePositionResourceByPositionid" parameterClass="java.lang.Long">
+    delete from SYS_POSITIONRESOURCE
+    where  POSITIONID = #positionid#
+  </delete>
+  <select id="selectIsExistPositionResource" parameterClass="java.util.Map" resultMap="SYS_POSITIONRESOURCE_BaseResultMap">
+    select SYS_POSITIONRESOURCE.POSITIONRESOURCEID, SYS_POSITIONRESOURCE.POSITIONID,
+      SYS_POSITIONRESOURCE.RESOURCEID
+    from   SYS_POSITIONRESOURCE
+    where  RESOURCEID = #resourceid#
+  </select>
+</sqlMap>

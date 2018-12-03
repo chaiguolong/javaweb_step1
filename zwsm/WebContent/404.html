@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>您正在浏览的网页可能已经被删除或者转移</title>
+<meta name="keywords" content="房产,杭州房产,房地产,杭州房价,杭州买房,杭州租房,新房,二手房,写字楼,商铺,房产新闻,一房一价,透明点评,房价走势" />
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<style>
+html,body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,lable,textarea,p,blockquote,th,td {margin:0;padding:0;}
+body {background-color:#fff;}
+body,textarea {font:400 12px/1.5 Simsun,Arial,"宋体";color:#333;}
+a,a:visited,a:hover {text-decoration:none;color:#1d50a3;cursor:pointer;}
+a:hover {text-decoration:underline;color:#1d50a3;}
+em,i {font-style:normal;}
+h1,h2,h3,h4,h5,h6,strong {font-weight:700;font-size:100%;}
+label, input, select {vertical-align:middle;}
+img, button {background:none;border:0 none;vertical-align:middle;}
+ol,ul {list-style:none;}
+pre {white-space:pre-wrap;}
+.thml404 { width:630px; height:300px; border:1px solid #dddddd; margin:150px auto; margin-bottom:0; background:url(/images/logoerror.gif) 40px 50px no-repeat;}
+.thml404 .a { text-indent:160px; font-family:"微软雅黑"; font-size:22px; color:#010000; margin-top:60px;}
+.thml404 .b { line-height:50px; font-size:12px; color: #010101;text-indent:160px; }
+.thml404 .c { text-indent:160px; line-height:25px;}
+</style>
+<script type="text/javascript">
+var intervalProcess;//时间ID
+var count = 5;
+$(document).ready(function(){
+	intervalProcess = setInterval("fleshpage()", 1000);
+});
+function fleshpage(){
+	if(count == 0){
+		window.location.href = "/";
+	}
+	else {
+		count --;
+		$('#timecount').html(count);
+	}
+}
+</script>
+</head>
+
+<body>
+<div  class="thml404">
+<p class="a">您浏览的网页暂时不能显示哦</p>
+<p class="b">您正在浏览的网页可能已经被删除或者转移</p>
+<p class="c">1、检查网址是否正确</p>
+<p class="c">2、直接访问 <a href="/" >政务网首页</a></p>
+<p class="c">3、<font id="timecount">5</font>秒后 <a href="/" >返回</a> 页面，如无响应 <a href="/" >点击</a> 返回</p>
+</p>
+</div>
+
+</body>
+</html>

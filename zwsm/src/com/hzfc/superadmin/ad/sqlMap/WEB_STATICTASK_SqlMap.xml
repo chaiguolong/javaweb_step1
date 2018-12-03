@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WEB_STATICTASK" >
+  <resultMap id="WEB_STATICTASK_BaseResultMap" class="com.hzfc.superadmin.ad.entity.WebStatictask" >
+    <result column="STATICTASKID" property="statictaskid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="DYNAMICURL" property="dynamicurl" jdbcType="VARCHAR" nullValue="" />
+    <result column="STATICURL" property="staticurl" jdbcType="VARCHAR" nullValue="" />
+    <result column="STATICPATH" property="staticpath" jdbcType="VARCHAR" nullValue="" />
+    <result column="PLANDATE" property="plandate" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="ACTUALDATE" property="actualdate" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="STATTYPE" property="stattype" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  <resultMap id="WEB_STATICTASK_ResultMapWithBLOBs" class="com.hzfc.superadmin.ad.entity.WebStatictask" extends="WEB_STATICTASK_BaseResultMap" >
+    <result column="STATICHTML" property="statichtml" jdbcType="CLOB" nullValue="" />
+  </resultMap>
+  
+  <resultMap id="WEB_STATICTASK_ListResultMap" class="com.hzfc.superadmin.ad.entity.WebStatictask" >
+	 <result column="STATICTASKID" property="statictaskid" jdbcType="DECIMAL" nullValue="0" />
+	 <result column="DYNAMICURL" property="dynamicurl" jdbcType="VARCHAR" nullValue="" />
+	 <result column="STATICURL" property="staticurl" jdbcType="VARCHAR" nullValue="" />
+	 <result column="STATICPATH" property="staticpath" jdbcType="VARCHAR" nullValue="" />
+	 <result column="ACTUALDATE" property="actualdate" jdbcType="VARCHAR" nullValue="" />
+	 <result column="STATTYPE" property="stattype" jdbcType="VARCHAR" nullValue="" />
+	 <result column="STATTYPENAME" property="stattypename" jdbcType="VARCHAR" nullValue="" />
+	</resultMap>
+  
+  <select id="WEB_STATICTASK_selectByPrimaryKey" resultMap="WEB_STATICTASK_ResultMapWithBLOBs" parameterClass="java.lang.Long" >
+    select WEB_STATICTASK.STATICTASKID, WEB_STATICTASK.DYNAMICURL, WEB_STATICTASK.STATICURL,
+      WEB_STATICTASK.STATICPATH, TO_CHAR(WEB_STATICTASK.PLANDATE, 'YYYY-MM-DD HH24:MI:SS') PLANDATE,
+      TO_CHAR(WEB_STATICTASK.ACTUALDATE, 'YYYY-MM-DD HH24:MI:SS') ACTUALDATE,
+      WEB_STATICTASK.STATTYPE, WEB_STATICTASK.STATICHTML
+    from WEB_STATICTASK
+    where STATICTASKID = #statictaskid#
+  </select>
+  <delete id="WEB_STATICTASK_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from WEB_STATICTASK
+    where STATICTASKID = #statictaskid#
+  </delete>
+  <insert id="WEB_STATICTASK_insert" parameterClass="com.hzfc.superadmin.ad.entity.WebStatictask" >
+    insert into WEB_STATICTASK (STATICTASKID, DYNAMICURL, STATICURL, STATICPATH, PLANDATE,
+      ACTUALDATE, STATTYPE, STATICHTML)
+    values (#statictaskid#, #dynamicurl#, #staticurl#, #staticpath#, TO_DATE(#plandate#, 'YYYY-MM-DD
+      HH24:MI:SS'), TO_DATE(#actualdate#, 'YYYY-MM-DD HH24:MI:SS'),
+      #stattype#, #statichtml#)
+  </insert>
+  <insert id="WEB_STATICTASK_insertSelective" parameterClass="com.hzfc.superadmin.ad.entity.WebStatictask" >
+    insert into WEB_STATICTASK
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="statictaskid" >
+        STATICTASKID
+      </isNotNull>
+      <isNotNull prepend="," property="dynamicurl" >
+        DYNAMICURL
+      </isNotNull>
+      <isNotNull prepend="," property="staticurl" >
+        STATICURL
+      </isNotNull>
+      <isNotNull prepend="," property="staticpath" >
+        STATICPATH
+      </isNotNull>
+      <isNotNull prepend="," property="plandate" >
+        PLANDATE
+      </isNotNull>
+      <isNotNull prepend="," property="actualdate" >
+        ACTUALDATE
+      </isNotNull>
+      <isNotNull prepend="," property="stattype" >
+        STATTYPE
+      </isNotNull>
+      <isNotNull prepend="," property="statichtml" >
+        STATICHTML
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="statictaskid" >
+        #statictaskid#
+      </isNotNull>
+      <isNotNull prepend="," property="dynamicurl" >
+        #dynamicurl#
+      </isNotNull>
+      <isNotNull prepend="," property="staticurl" >
+        #staticurl#
+      </isNotNull>
+      <isNotNull prepend="," property="staticpath" >
+        #staticpath#
+      </isNotNull>
+      <isNotNull prepend="," property="plandate" >
+        TO_DATE(#plandate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="actualdate" >
+        TO_DATE(#actualdate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="stattype" >
+        #stattype#
+      </isNotNull>
+      <isNotNull prepend="," property="statichtml" >
+        #statichtml#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="WEB_STATICTASK_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.ad.entity.WebStatictask" >
+    update WEB_STATICTASK
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="dynamicurl" >
+        DYNAMICURL = #dynamicurl#
+      </isNotNull>
+      <isNotNull prepend="," property="staticurl" >
+        STATICURL = #staticurl#
+      </isNotNull>
+      <isNotNull prepend="," property="staticpath" >
+        STATICPATH = #staticpath#
+      </isNotNull>
+      <isNotNull prepend="," property="plandate" >
+        PLANDATE = TO_DATE(#plandate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="actualdate" >
+        ACTUALDATE = TO_DATE(#actualdate#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNull prepend="," property="actualdate" >
+        ACTUALDATE = null
+      </isNull>
+      <isNotNull prepend="," property="stattype" >
+        STATTYPE = #stattype#
+      </isNotNull>
+      <isNotNull prepend="," property="statichtml" >
+        STATICHTML = #statichtml#
+      </isNotNull>
+    </dynamic>
+    where STATICTASKID = #statictaskid#
+  </update>
+  <update id="WEB_STATICTASK_updateByPrimaryKeyWithBLOBs" parameterClass="com.hzfc.superadmin.ad.entity.WebStatictask" >
+    update WEB_STATICTASK
+    set DYNAMICURL = #dynamicurl#,
+      STATICURL = #staticurl#,
+      STATICPATH = #staticpath#,
+      PLANDATE = TO_DATE(#plandate#, 'YYYY-MM-DD HH24:MI:SS'),
+      ACTUALDATE = TO_DATE(#actualdate#, 'YYYY-MM-DD HH24:MI:SS'),
+      STATTYPE = #stattype#,
+      STATICHTML = #statichtml#
+    where STATICTASKID = #statictaskid#
+  </update>
+  <update id="WEB_STATICTASK_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.ad.entity.WebStatictask" >
+    update WEB_STATICTASK
+    set DYNAMICURL = #dynamicurl#,
+      STATICURL = #staticurl#,
+      STATICPATH = #staticpath#,
+      PLANDATE = TO_DATE(#plandate#, 'YYYY-MM-DD HH24:MI:SS'),
+      ACTUALDATE = TO_DATE(#actualdate#, 'YYYY-MM-DD HH24:MI:SS'),
+      STATTYPE = #stattype#
+    where STATICTASKID = #statictaskid#
+  </update>
+  
+   <select id="WEB_STATICTASK_selectPageByQueryCondition" resultMap="WEB_STATICTASK_ListResultMap" parameterClass="java.util.Map">
+  	select  WEB_STATICTASK.STATICTASKID,WEB_STATICTASK.DYNAMICURL, WEB_STATICTASK.STATICURL,
+            WEB_STATICTASK.STATICPATH,TO_CHAR(WEB_STATICTASK.ACTUALDATE, 'YYYY-MM-DD HH24:MI:SS') ACTUALDATE,
+            WEB_STATICTASK.STATTYPE,
+            (select T_ESF_CODEITEMS.ITEMNAME from T_ESF_CODEITEMS where T_ESF_CODEITEMS.CODETYPE = #stattypecode# and T_ESF_CODEITEMS.ITEMVALUE = WEB_STATICTASK.STATTYPE) 
+          	as STATTYPENAME
+      from  WEB_STATICTASK
+     where  WEB_STATICTASK.STATICTASKID in (select WEB_STATICTASK_ROLE.STATICTASKID from WEB_STATICTASK_ROLE 
+         where WEB_STATICTASK_ROLE.ACCOUNTID = #accountid#)
+    <isNotEmpty prepend="and" property="stattype" >
+			WEB_STATICTASK.STATTYPE = #stattype#
+    </isNotEmpty>
+   	<isNotEmpty prepend="and" property="keywords" >
+		(
+		   WEB_STATICTASK.DYNAMICURL like #keywords# 
+		   or WEB_STATICTASK.STATICURL like #keywords# 
+		   or WEB_STATICTASK.STATICPATH like #keywords#
+		)
+    </isNotEmpty>
+     order by WEB_STATICTASK.STATICTASKID asc
+  </select>
+  
+  <select id="WEB_STATICTASK_selectListPageByQueryCondition" resultMap="WEB_STATICTASK_ListResultMap" parameterClass="java.util.Map">
+  	select  WEB_STATICTASK.STATICTASKID, WEB_STATICTASK.DYNAMICURL, WEB_STATICTASK.STATICURL,
+            WEB_STATICTASK.STATICPATH,TO_CHAR(WEB_STATICTASK.ACTUALDATE, 'YYYY-MM-DD HH24:MI:SS') ACTUALDATE,
+            WEB_STATICTASK.STATTYPE,
+            (select T_ESF_CODEITEMS.ITEMNAME from T_ESF_CODEITEMS where T_ESF_CODEITEMS.CODETYPE = #stattypecode# and T_ESF_CODEITEMS.ITEMVALUE = WEB_STATICTASK.STATTYPE) 
+	        as STATTYPENAME
+      from  WEB_STATICTASK
+    <dynamic prepend="where" > 
+	    <isNotEmpty prepend="and" property="stattype" >
+				WEB_STATICTASK.STATTYPE = #stattype#
+	    </isNotEmpty>
+	   	<isNotEmpty prepend="and" property="keywords" >
+			(
+			   WEB_STATICTASK.DYNAMICURL like #keywords# 
+			   or WEB_STATICTASK.STATICURL like #keywords# 
+			   or WEB_STATICTASK.STATICPATH like #keywords#
+			)
+	    </isNotEmpty>
+    </dynamic>
+     order by WEB_STATICTASK.STATICTASKID asc
+  </select>
+</sqlMap>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WEB_COMPLAINT" >
+  <resultMap id="WEB_COMPLAINT_BaseResultMap" class="com.hzfc.superadmin.newscontent.entity.Complaint" >
+    <result column="COMPLAINTID" property="complaintid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="COMPLAINTNAME" property="complaintname" jdbcType="VARCHAR" nullValue="" />
+    <result column="TELNO" property="telno" jdbcType="VARCHAR" nullValue="" />
+    <result column="ADDTIME" property="addtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="DEVELOPERNAME" property="developername" jdbcType="VARCHAR" nullValue="" />
+    <result column="PROPERTYNAME" property="propertyname" jdbcType="VARCHAR" nullValue="" />
+    <result column="INFOTITLE" property="infotitle" jdbcType="VARCHAR" nullValue="" />
+    <result column="INFOCONTENT" property="infocontent" jdbcType="VARCHAR" nullValue="" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" nullValue="0" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" nullValue="0" />
+    <result column="REPLYTIME" property="replytime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="REPLYCONTENT" property="replycontent" jdbcType="VARCHAR" nullValue="" />
+    <result column="REPLYNAME" property="replyname" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  <select id="WEB_COMPLAINT_selectByPrimaryKey" resultMap="WEB_COMPLAINT_BaseResultMap" parameterClass="java.lang.Long" >
+    select WEB_COMPLAINT.COMPLAINTID, WEB_COMPLAINT.COMPLAINTNAME, WEB_COMPLAINT.TELNO,
+      TO_CHAR(WEB_COMPLAINT.ADDTIME, 'YYYY-MM-DD HH24:MI:SS') ADDTIME, WEB_COMPLAINT.DEVELOPERNAME,
+      WEB_COMPLAINT.PROPERTYNAME, WEB_COMPLAINT.INFOTITLE, WEB_COMPLAINT.INFOCONTENT,
+      WEB_COMPLAINT.ISDISPLAY, WEB_COMPLAINT.STATE, TO_CHAR(WEB_COMPLAINT.REPLYTIME, 'YYYY-MM-DD HH24:MI:SS') REPLYTIME, 
+      WEB_COMPLAINT.REPLYCONTENT, WEB_COMPLAINT.REPLYNAME
+    from WEB_COMPLAINT
+    where COMPLAINTID = #complaintid#
+  </select>
+  <delete id="WEB_COMPLAINT_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from WEB_COMPLAINT
+    where COMPLAINTID = #complaintid#
+  </delete>
+  <insert id="WEB_COMPLAINT_insert" parameterClass="com.hzfc.superadmin.newscontent.entity.Complaint" >
+    insert into WEB_COMPLAINT (COMPLAINTID, COMPLAINTNAME, TELNO, ADDTIME, DEVELOPERNAME,
+      PROPERTYNAME, INFOTITLE, INFOCONTENT, ISDISPLAY, STATE, REPLYTIME, REPLYCONTENT, REPLYNAME)
+    values (#complaintid#, #complaintname#, #telno#, TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS'),
+      #developername#, #propertyname#, #infotitle#, #infocontent#, #isdisplay#, #state#,
+      TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS'), #replycontent#, #replyname#)
+  </insert>
+  <insert id="WEB_COMPLAINT_insertSelective" parameterClass="com.hzfc.superadmin.newscontent.entity.Complaint" >
+    insert into WEB_COMPLAINT
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="complaintid" >
+        COMPLAINTID
+      </isNotNull>
+      <isNotNull prepend="," property="complaintname" >
+        COMPLAINTNAME
+      </isNotNull>
+      <isNotNull prepend="," property="telno" >
+        TELNO
+      </isNotNull>
+      <isNotNull prepend="," property="addtime" >
+        ADDTIME
+      </isNotNull>
+      <isNotNull prepend="," property="developername" >
+        DEVELOPERNAME
+      </isNotNull>
+      <isNotNull prepend="," property="propertyname" >
+        PROPERTYNAME
+      </isNotNull>
+      <isNotNull prepend="," property="infotitle" >
+        INFOTITLE
+      </isNotNull>
+      <isNotNull prepend="," property="infocontent" >
+        INFOCONTENT
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        ISDISPLAY
+      </isNotNull>
+      <isNotNull prepend="," property="state" >
+        STATE
+      </isNotNull>
+      <isNotNull prepend="," property="replytime" >
+        REPLYTIME
+      </isNotNull>
+      <isNotNull prepend="," property="replycontent" >
+        REPLYCONTENT
+      </isNotNull>
+      <isNotNull prepend="," property="replyname" >
+        REPLYNAME
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="complaintid" >
+        #complaintid#
+      </isNotNull>
+      <isNotNull prepend="," property="complaintname" >
+        #complaintname#
+      </isNotNull>
+      <isNotNull prepend="," property="telno" >
+        #telno#
+      </isNotNull>
+      <isNotNull prepend="," property="addtime" >
+        TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="developername" >
+        #developername#
+      </isNotNull>
+      <isNotNull prepend="," property="propertyname" >
+        #propertyname#
+      </isNotNull>
+      <isNotNull prepend="," property="infotitle" >
+        #infotitle#
+      </isNotNull>
+      <isNotNull prepend="," property="infocontent" >
+        #infocontent#
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        #isdisplay#
+      </isNotNull>
+      <isNotNull prepend="," property="state" >
+        #state#
+      </isNotNull>
+      <isNotNull prepend="," property="replytime" >
+        TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="replycontent" >
+        #replycontent#
+      </isNotNull>
+      <isNotNull prepend="," property="replyname" >
+        #replyname#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="WEB_COMPLAINT_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.newscontent.entity.Complaint" >
+    update WEB_COMPLAINT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="complaintname" >
+        COMPLAINTNAME = #complaintname#
+      </isNotNull>
+      <isNotNull prepend="," property="telno" >
+        TELNO = #telno#
+      </isNotNull>
+      <isNotNull prepend="," property="addtime" >
+        ADDTIME = TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="developername" >
+        DEVELOPERNAME = #developername#
+      </isNotNull>
+      <isNotNull prepend="," property="propertyname" >
+        PROPERTYNAME = #propertyname#
+      </isNotNull>
+      <isNotNull prepend="," property="infotitle" >
+        INFOTITLE = #infotitle#
+      </isNotNull>
+      <isNotNull prepend="," property="infocontent" >
+        INFOCONTENT = #infocontent#
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        ISDISPLAY = #isdisplay#
+      </isNotNull>
+      <isNotNull prepend="," property="state" >
+        STATE = #state#
+      </isNotNull>
+      <isNotNull prepend="," property="replytime" >
+        REPLYTIME = TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="replycontent" >
+        REPLYCONTENT = #replycontent#
+      </isNotNull>
+      <isNotNull prepend="," property="replyname" >
+        REPLYNAME = #replyname#
+      </isNotNull>
+    </dynamic>
+    where COMPLAINTID = #complaintid#
+  </update>
+  <update id="WEB_COMPLAINT_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.newscontent.entity.Complaint" >
+    update WEB_COMPLAINT
+    set COMPLAINTNAME = #complaintname#,
+      TELNO = #telno#,
+      ADDTIME = TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS'),
+      DEVELOPERNAME = #developername#,
+      PROPERTYNAME = #propertyname#,
+      INFOTITLE = #infotitle#,
+      INFOCONTENT = #infocontent#,
+      ISDISPLAY = #isdisplay#,
+      STATE = #state#,
+      REPLYTIME = TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS'),
+      REPLYCONTENT = #replycontent#,
+      REPLYNAME = #replyname#
+    where COMPLAINTID = #complaintid#
+  </update>
+  
+  <resultMap id="WEB_COMPLAINT_ListResultMap" class="com.hzfc.superadmin.newscontent.entity.Complaint" >
+    <result column="COMPLAINTID" property="complaintid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="COMPLAINTNAME" property="complaintname" jdbcType="VARCHAR" nullValue="" />
+    <result column="ADDTIME" property="addtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="DEVELOPERNAME" property="developername" jdbcType="VARCHAR" nullValue="" />
+    <result column="INFOTITLE" property="infotitle" jdbcType="VARCHAR" nullValue="" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" nullValue="0" />
+    <result column="STATE" property="state" jdbcType="DECIMAL" nullValue="0" />
+    <result column="REPLYTIME" property="replytime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="REPLYNAME" property="replyname" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="WEB_COMPLAINT_selectPageByQueryCondition" resultMap="WEB_COMPLAINT_ListResultMap" parameterClass="java.util.Map" >
+    select WEB_COMPLAINT.COMPLAINTID,
+	       WEB_COMPLAINT.COMPLAINTNAME,
+	       TO_CHAR(WEB_COMPLAINT.ADDTIME, 'YYYY-MM-DD HH24:MI:SS') ADDTIME,
+	       WEB_COMPLAINT.DEVELOPERNAME,
+	       WEB_COMPLAINT.INFOTITLE,
+	       WEB_COMPLAINT.ISDISPLAY,
+	       WEB_COMPLAINT.STATE,
+	       TO_CHAR(WEB_COMPLAINT.REPLYTIME,'YYYY-MM-DD HH24:MI:SS') REPLYTIME,
+	       WEB_COMPLAINT.REPLYNAME
+	  from WEB_COMPLAINT
+    <dynamic prepend="where" >
+    	<isNotEmpty prepend="and" property="starttime" >
+		    WEB_COMPLAINT.ADDTIME >= TO_DATE(#starttime#,'YYYY-MM-DD')
+	    </isNotEmpty>
+	    <isNotEmpty prepend="and" property="endtime" >
+	    	WEB_COMPLAINT.ADDTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD') + 1
+	    </isNotEmpty>
+        <isNotEmpty prepend="and" property="isdisplay" >
+			WEB_COMPLAINT.ISDISPLAY like #isdisplay# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="state" >
+			WEB_COMPLAINT.STATE like #state# 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="keywords" >
+			(
+	    		WEB_COMPLAINT.COMPLAINTNAME like #keywords# 
+	    		or WEB_COMPLAINT.DEVELOPERNAME like #keywords#
+	    		or WEB_COMPLAINT.INFOTITLE like #keywords#
+	    		or WEB_COMPLAINT.REPLYNAME like #keywords#
+	    	)
+		</isNotEmpty>
+	</dynamic>
+	order by WEB_COMPLAINT.ADDTIME desc
+  </select>
+</sqlMap>

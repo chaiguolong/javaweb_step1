@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="T_ESF_CODETYPE" >
+  <resultMap id="T_ESF_CODETYPE_BaseResultMap" class="com.hzfc.superadmin.assist.entity.DicType" > 
+    <result column="CODEID" property="codeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="CODETYPE" property="codetype" jdbcType="VARCHAR" nullValue="" />
+    <result column="CODENAME" property="codename" jdbcType="VARCHAR" nullValue="" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="MODTIME" property="modtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="CODERMK" property="codermk" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  <select id="T_ESF_CODETYPE_selectByPrimaryKey" resultMap="T_ESF_CODETYPE_BaseResultMap" parameterClass="java.lang.Long" >
+    select T_ESF_CODETYPE.CODEID, T_ESF_CODETYPE.CODETYPE, T_ESF_CODETYPE.CODENAME,
+      T_ESF_CODETYPE.ORDERID, TO_CHAR(T_ESF_CODETYPE.MODTIME, 'YYYY-MM-DD') MODTIME,
+      T_ESF_CODETYPE.CODERMK
+    from T_ESF_CODETYPE
+    where CODEID = #codeid#
+  </select>
+  
+  <select id="T_ESF_CODETYPE_selectByCodetype" resultMap="T_ESF_CODETYPE_BaseResultMap" parameterClass="java.lang.String" >
+    select T_ESF_CODETYPE.CODEID, T_ESF_CODETYPE.CODETYPE, T_ESF_CODETYPE.CODENAME,
+      T_ESF_CODETYPE.ORDERID, TO_CHAR(T_ESF_CODETYPE.MODTIME, 'YYYY-MM-DD') MODTIME,
+      T_ESF_CODETYPE.CODERMK
+    from T_ESF_CODETYPE
+    where T_ESF_CODETYPE.CODETYPE = #codetype#
+  </select>
+  
+  <delete id="T_ESF_CODETYPE_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from T_ESF_CODETYPE
+    where CODEID = #codeid#
+  </delete>
+  <insert id="T_ESF_CODETYPE_insert" parameterClass="com.hzfc.superadmin.assist.entity.DicType" >
+  	<selectKey resultClass="long" keyProperty="codeid"> 
+        select HIBERNATE_SEQUENCE.nextval as codeid from dual 
+    </selectKey>
+    insert into T_ESF_CODETYPE (CODEID, CODETYPE, CODENAME, ORDERID, MODTIME, CODERMK)
+    values (#codeid#, #codetype#, #codename#, #orderid#, sysdate, #codermk#)
+  </insert>
+  <insert id="T_ESF_CODETYPE_insertSelective" parameterClass="com.hzfc.superadmin.assist.entity.DicType" >
+    insert into T_ESF_CODETYPE
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="codeid" >
+        CODEID
+      </isNotNull>
+      <isNotNull prepend="," property="codetype" >
+        CODETYPE
+      </isNotNull>
+      <isNotNull prepend="," property="codename" >
+        CODENAME
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID
+      </isNotNull>
+      <isNotNull prepend="," property="modtime" >
+        MODTIME
+      </isNotNull>
+      <isNotNull prepend="," property="codermk" >
+        CODERMK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="codeid" >
+        #codeid#
+      </isNotNull>
+      <isNotNull prepend="," property="codetype" >
+        #codetype#
+      </isNotNull>
+      <isNotNull prepend="," property="codename" >
+        #codename#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="modtime" >
+        TO_DATE(#modtime#, 'YYYY-MM-DD')
+      </isNotNull>
+      <isNotNull prepend="," property="codermk" >
+        #codermk#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="T_ESF_CODETYPE_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.assist.entity.DicType" >
+    update T_ESF_CODETYPE
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="codetype" >
+        CODETYPE = #codetype#
+      </isNotNull>
+      <isNotNull prepend="," property="codename" >
+        CODENAME = #codename#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID = #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="modtime" >
+        MODTIME = TO_DATE(#modtime#, 'YYYY-MM-DD')
+      </isNotNull>
+      <isNotNull prepend="," property="codermk" >
+        CODERMK = #codermk#
+      </isNotNull>
+    </dynamic>
+    where CODEID = #codeid#
+  </update>
+  <update id="T_ESF_CODETYPE_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.assist.entity.DicType" >
+    update T_ESF_CODETYPE
+    set CODETYPE = #codetype#,
+      CODENAME = #codename#,
+      ORDERID = #orderid#,
+      MODTIME = sysdate,
+      CODERMK = #codermk#
+    where CODEID = #codeid#
+  </update>
+       
+  <select id="T_ESF_CODETYPE_selectPageByQueryCondition" resultMap="T_ESF_CODETYPE_BaseResultMap" parameterClass="java.util.Map">
+  	select T_ESF_CODETYPE.CODEID, T_ESF_CODETYPE.CODETYPE, T_ESF_CODETYPE.CODENAME, T_ESF_CODETYPE.ORDERID, 
+  	TO_CHAR(T_ESF_CODETYPE.MODTIME, 'YYYY-MM-DD') MODTIME,
+    T_ESF_CODETYPE.CODERMK
+    from T_ESF_CODETYPE
+    <dynamic prepend="where" >
+    	<isNotEmpty prepend="and" property="keywords" >
+			T_ESF_CODETYPE.CODENAME like #keywords#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="starttime" >
+			T_ESF_CODETYPE.MODTIME >= TO_DATE(#starttime#,'YYYY-MM-DD')
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="endtime" >
+			T_ESF_CODETYPE.MODTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD')+1
+        </isNotEmpty>
+    </dynamic>  
+    order by T_ESF_CODETYPE.ORDERID desc
+  </select>
+</sqlMap>

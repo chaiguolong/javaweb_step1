@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!-- 数据源配置 从appconfig.properties 中读取 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:appconfig.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 多数据源配置 -->
+	<!-- 默认数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- 连接池的最大数据库连接数，设为0 表示无限制 -->
+		<property name="maxActive" value="3" />
+		<!-- 最大/最小等待连接中的数量，设置为0时，表示没有限制 -->
+		<property name="minIdle" value="2" />
+		<property name="maxIdle" value="2" />
+		<!-- 最大等待秒数，单位为毫秒， 超过时间会报出错误信息 -->
+		<property name="maxWait" value="5000" />
+		<!-- 设置从数据源中返回的连接是否采用自动提交机制，默认值为 true -->
+		<property name="defaultAutoCommit" value="false" />
+		<!-- 回收被遗弃的（一般是忘了释放的）数据库连接到连接池中 
+		<property name="removeAbandoned" value="true" />-->
+		<!-- 数据库连接过多长时间不用将被视为被遗弃而收回连接池中
+		<property name="removeAbandonedTimeout" value="60" /> -->
+		<!--  连接池中连接可空闲的时间,毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="230000" />
+		<!--  毫秒秒检查一次连接池中空闲的连接,把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开,直到连接池中的连接数到minIdle为止-->
+		<property name="timeBetweenEvictionRunsMillis" value="240000" />
+	</bean>
+
+	<!-- 外部数据源 -->
+	<bean id="dataSourceOuter" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url.outer}" />
+		<property name="username" value="${jdbc.username.outer}" />
+		<property name="password" value="${jdbc.password.outer}" />
+		<!-- 连接池的最大数据库连接数，设为0 表示无限制 -->
+		<property name="maxActive" value="2" />
+		<!-- 最大/最小等待连接中的数量，设置为0时，表示没有限制 -->
+		<property name="minIdle" value="2" />
+		<property name="maxIdle" value="2" />
+		<!-- 最大等待秒数，单位为毫秒， 超过时间会报出错误信息 -->
+		<property name="maxWait" value="5000" />
+		<!-- 设置从数据源中返回的连接是否采用自动提交机制，默认值为 true -->
+		<property name="defaultAutoCommit" value="false" />
+		<!-- 回收被遗弃的（一般是忘了释放的）数据库连接到连接池中 
+		<property name="removeAbandoned" value="true" />-->
+		<!-- 数据库连接过多长时间不用将被视为被遗弃而收回连接池中
+		<property name="removeAbandonedTimeout" value="60" /> -->
+		<!--  连接池中连接可空闲的时间,毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="230000" />
+		<!--  毫秒秒检查一次连接池中空闲的连接,把空闲时间超过minEvictableIdleTimeMillis毫秒的连接断开,直到连接池中的连接数到minIdle为止-->
+		<property name="timeBetweenEvictionRunsMillis" value="240000" />
+	</bean>
+	
+	<!-- 系统保存，clob字段处理底层的JDBC驱动 -->
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler"
+		lazy-init="true">
+		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor" />
+	</bean>
+
+	<bean id="nativeJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"
+		lazy-init="true" />
+
+	<!-- 默认杭州sqlMapClient -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:ibatis-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="lobHandler">
+			<ref local="oracleLobHandler" />
+		</property>
+		<property name="useTransactionAwareDataSource" value="true"></property>
+	</bean>
+	<bean id="sqlMapClientOuter" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:ibatis-config.xml" />
+		<property name="dataSource" ref="dataSourceOuter" />
+		<property name="lobHandler">
+			<ref local="oracleLobHandler" />
+		</property>
+		<property name="useTransactionAwareDataSource" value="true"></property>
+	</bean>
+	
+	<!--声明式事务AOP控制 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	<bean id="transactionManagerOuter"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSourceOuter" />
+		</property>
+	</bean>
+	
+	<!--哪些类的哪些方法参与事务 -->
+	<aop:config>
+		<aop:pointcut id="allServiceMethod"
+			expression="execution(* com.hzfc..service.*.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+	</aop:config>
+	
+	<aop:config>
+		<aop:pointcut id="allServiceMethodOuter"
+			expression="execution(* com.hzfc..service.*.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdviceOuter" />
+	</aop:config>
+
+	<!--配置事务的传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="load*" read-only="true" />
+			<tx:method name="get*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<tx:advice id="txAdviceOuter" transaction-manager="transactionManagerOuter">
+		<tx:attributes>
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="load*" read-only="true" />
+			<tx:method name="get*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 调用FTL生成HTML静态化定时器 start-->
+	<bean id="quartzStatic" class="com.hzfc.web.action.WebAutoTask">
+		<property name="webStatictaskAction" ref="WebStatictaskAction" />
+	</bean>
+	
+	<bean id="jobstatic"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="quartzStatic" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>run</value>
+		</property>
+	</bean>
+	
+	<bean id="doStaticTime" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="jobstatic" />
+		</property>
+		<!-- cron表达式分钟能被整除时触发任务 -->
+		<property name="cronExpression">
+			<value>0 5 * * * ?</value>
+		</property>
+	</bean>
+	<!-- 调用生成JS定时器 end-->
+	
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序 -->
+	<!-- 某一个节点开启 -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="doStaticTime" />
+				<!--<ref bean="doStaticTime" />
+				<ref bean="doTime_SMS" />
+				 -->
+			</list>
+		</property>
+	</bean>
+</beans>

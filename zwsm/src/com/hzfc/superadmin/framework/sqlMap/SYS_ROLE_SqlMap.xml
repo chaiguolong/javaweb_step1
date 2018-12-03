@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_ROLE">
+  <resultMap class="com.hzfc.superadmin.framework.entity.Role" id="SYS_ROLE_BaseResultMap">
+    <result column="ROLEID" jdbcType="DECIMAL" nullValue="0" property="roleid" />
+    <result column="ROLENAME" jdbcType="VARCHAR" nullValue="" property="rolename" />
+    <result column="ROLEREMARK" jdbcType="VARCHAR" nullValue="" property="roleremark" />
+  </resultMap>
+  <select id="SYS_ROLE_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_ROLE_BaseResultMap">
+    select SYS_ROLE.ROLEID, SYS_ROLE.ROLENAME, SYS_ROLE.ROLEREMARK
+    from   SYS_ROLE
+    where  ROLEID = #roleid#
+  </select>
+  <delete id="SYS_ROLE_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_ROLE
+    where  ROLEID = #roleid#
+  </delete>
+  <insert id="SYS_ROLE_insert" parameterClass="com.hzfc.superadmin.framework.entity.Role">
+  	  <selectKey resultClass="long" keyProperty="roleid"> 
+	        select HIBERNATE_SEQUENCE.nextval as roleid from dual 
+	  </selectKey>
+    insert into SYS_ROLE (ROLEID, ROLENAME, ROLEREMARK)
+    values (#roleid#, #rolename#, #roleremark#)
+  </insert>
+  <insert id="SYS_ROLE_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.Role">
+    insert into SYS_ROLE
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="roleid">
+        ROLEID
+      </isNotNull>
+      <isNotNull prepend="," property="rolename">
+        ROLENAME
+      </isNotNull>
+      <isNotNull prepend="," property="roleremark">
+        ROLEREMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="roleid">
+        #roleid#
+      </isNotNull>
+      <isNotNull prepend="," property="rolename">
+        #rolename#
+      </isNotNull>
+      <isNotNull prepend="," property="roleremark">
+        #roleremark#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_ROLE_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.Role">
+    update SYS_ROLE
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="rolename">
+        ROLENAME = #rolename#
+      </isNotNull>
+      <isNotNull prepend="," property="roleremark">
+        ROLEREMARK = #roleremark#
+      </isNotNull>
+    </dynamic>
+    where ROLEID = #roleid#
+  </update>
+  <update id="SYS_ROLE_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.Role">
+    update SYS_ROLE
+    set    ROLENAME = #rolename#,
+   		   ROLEREMARK = #roleremark#
+    where  ROLEID = #roleid#
+  </update>
+  <select id="SYS_ROLE_selectPageByQueryCondition" parameterClass="java.util.Map" resultMap="SYS_ROLE_BaseResultMap">
+  	select SYS_ROLE.ROLEID, SYS_ROLE.ROLENAME, SYS_ROLE.ROLEREMARK
+    from   SYS_ROLE
+    <dynamic prepend="where">
+    	<isNotEmpty prepend="and" property="roleid" >
+			SYS_ROLE.ROLEID = #roleid#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="rolename" >
+			SYS_ROLE.ROLENAME = #rolename#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="roleremark" >
+			SYS_ROLE.ROLEREMARK = #roleremark#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="keywords" >
+	        (
+			SYS_ROLE.ROLENAME like #keywords# 
+			or SYS_ROLE.ROLEREMARK like #keywords#
+			)
+		</isNotEmpty>
+    </dynamic>
+  </select>
+</sqlMap>

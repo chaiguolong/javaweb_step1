@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_USERPOSITION">
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserPosition" id="SYS_USERPOSITION_BaseResultMap">
+    <result column="USERPOSITIONID" jdbcType="DECIMAL" nullValue="0" property="userpositionid" />
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="POSITIONID" jdbcType="DECIMAL" nullValue="0" property="positionid" />
+  </resultMap>
+  <select id="SYS_USERPOSITION_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_USERPOSITION_BaseResultMap">
+    select SYS_USERPOSITION.USERPOSITIONID, SYS_USERPOSITION.ACCOUNTID, SYS_USERPOSITION.POSITIONID
+    from   SYS_USERPOSITION
+    where  USERPOSITIONID = #userpositionid#
+  </select>
+  <delete id="SYS_USERPOSITION_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete 
+    from   SYS_USERPOSITION
+    where  USERPOSITIONID = #userpositionid#
+  </delete>
+  <insert id="SYS_USERPOSITION_insert" parameterClass="com.hzfc.superadmin.framework.entity.UserPosition">
+  	<selectKey resultClass="long" keyProperty="userpositionid"> 
+	        select HIBERNATE_SEQUENCE.nextval as userpositionid from dual 
+    </selectKey>
+    insert into SYS_USERPOSITION (USERPOSITIONID, ACCOUNTID, POSITIONID)
+    values (#userpositionid#, #accountid#, #positionid#)
+  </insert>
+  <insert id="SYS_USERPOSITION_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.UserPosition">
+    insert into SYS_USERPOSITION
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userpositionid">
+        USERPOSITIONID
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID
+      </isNotNull>
+      <isNotNull prepend="," property="positionid">
+        POSITIONID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userpositionid">
+        #userpositionid#
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="positionid">
+        #positionid#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_USERPOSITION_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.UserPosition">
+    update SYS_USERPOSITION
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID = #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="positionid">
+        POSITIONID = #positionid#
+      </isNotNull>
+    </dynamic>
+    where USERPOSITIONID = #userpositionid#
+  </update>
+  <update id="SYS_USERPOSITION_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.UserPosition">
+    update SYS_USERPOSITION
+    set    ACCOUNTID = #accountid#,
+		   POSITIONID = #positionid#
+    where  USERPOSITIONID = #userpositionid#
+  </update>
+  <select id="selectIsExistUserPosition" parameterClass="java.util.Map" resultMap="SYS_USERPOSITION_BaseResultMap">
+    select SYS_USERPOSITION.USERPOSITIONID, SYS_USERPOSITION.ACCOUNTID, SYS_USERPOSITION.POSITIONID
+    from   SYS_USERPOSITION
+    where  POSITIONID = #positionid#
+  </select>
+  
+  <delete id="deleteUserPositionContentByContentid" parameterClass="java.lang.Long">
+  	delete from SYS_USERPOSITION 
+  	where  SYS_USERPOSITION.ACCOUNTID = #accountid#
+  </delete>
+</sqlMap>

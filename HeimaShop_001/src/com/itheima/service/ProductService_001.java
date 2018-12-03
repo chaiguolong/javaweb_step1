@@ -1,15 +1,64 @@
 package com.itheima.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
-
 import com.itheima.dao.ProductDao_001;
-import com.itheima.domain.Product;
 import com.itheima.domain.Category;
+import com.itheima.domain.Order;
 import com.itheima.domain.PageBean;
+import com.itheima.domain.Product;
+import com.itheima.utils.DataSourceUtils;
 
 @SuppressWarnings("rawtypes")
 public class ProductService_001 {
+	public void updateOrderState(String r6_Order){
+		ProductDao_001 dao = new ProductDao_001();
+		try {
+			dao.updateOrderState(r6_Order);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+	public void updateOrderAdrr(Order order){
+		ProductDao_001 dao = new ProductDao_001();
+		try {
+			dao.updateOrderAdrr(order);
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	//提交订单 将订单的数据和订单项的数据存储到数据库
+	public void submitOrder(Order order){
+		ProductDao_001 dao = new ProductDao_001();
+		try {
+			//1.开启事务
+			DataSourceUtils.startTransaction();
+			//2.调用dao存储order表数据的方法
+			dao.addOrders(order);
+			//3.调用dao存储orderitem表数据的方法
+			dao.addOrderItem(order);
+		} catch(Exception e) {
+			try {
+				DataSourceUtils.rollback();
+			} catch(SQLException e1){
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				DataSourceUtils.commitAndRelease();
+			} catch(SQLException e2){
+				e2.printStackTrace();
+			}
+		}
+
+	}
 	//获得热门商品
 	public List<Product> findHotProductList(){
 

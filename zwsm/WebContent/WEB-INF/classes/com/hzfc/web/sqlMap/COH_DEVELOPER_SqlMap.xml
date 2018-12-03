@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="COH_DEVELOPER">
+  <resultMap class="com.hzfc.web.entity.Developer" id="WEB_COH_DEVELOPER_BaseResultMap">
+    <result column="DEVELOPERID" jdbcType="DECIMAL" nullValue="0" property="developerid" />
+    <result column="CHNAME" jdbcType="VARCHAR" nullValue="" property="chname" />
+    <result column="ENNAME" jdbcType="VARCHAR" nullValue="" property="enname" />
+    <result column="CERTIFNUM" jdbcType="VARCHAR" nullValue="" property="certifnum" />
+    <result column="ADDRESS" jdbcType="VARCHAR" nullValue="" property="address" />
+    <result column="ZIPCODE" jdbcType="VARCHAR" nullValue="" property="zipcode" />
+    <result column="TEL" jdbcType="VARCHAR" nullValue="" property="tel" />
+    <result column="FAX" jdbcType="VARCHAR" nullValue="" property="fax" />
+    <result column="URL" jdbcType="VARCHAR" nullValue="" property="url" />
+    <result column="EMAIL" jdbcType="VARCHAR" nullValue="" property="email" />
+    <result column="REGMONEY" jdbcType="VARCHAR" nullValue="" property="regmoney" />
+    <result column="CORPDEPUTY" jdbcType="VARCHAR" nullValue="" property="corpdeputy" />
+    <result column="DISTRICTID" jdbcType="DECIMAL" nullValue="0" property="districtid" />
+    <result column="LEGALNAME" jdbcType="VARCHAR" nullValue="" property="legalname" />
+    <result column="ISOFF" jdbcType="DECIMAL" nullValue="0" property="isoff" />
+    <result column="INTERNALID" jdbcType="DECIMAL" nullValue="0" property="internalid" />
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="DEVELOPERPY" jdbcType="VARCHAR" nullValue="" property="developerpy" />
+    <result column="CLICKNUM" jdbcType="DECIMAL" nullValue="0" property="clicknum" />
+    <result column="CONTACTMAN" jdbcType="VARCHAR" nullValue="" property="contactman" />
+    <result column="CERTIFNUMEXPTIME" jdbcType="TIMESTAMP" nullValue="" property="certifnumexptime" />
+    <result column="DEVOTHER1" jdbcType="VARCHAR" nullValue="" property="devother1" />
+    <result column="DEVOTHER2" jdbcType="VARCHAR" nullValue="" property="devother2" />
+  </resultMap>
+  <resultMap class="com.hzfc.web.entity.Developer" extends="WEB_COH_DEVELOPER_BaseResultMap" id="WEB_COH_DEVELOPER_ResultMapWithBLOBs">
+    <result column="CORPINTRO" jdbcType="CLOB" nullValue="" property="corpintro" />
+  </resultMap>
+  <select id="WEB_COH_DEVELOPER_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="WEB_COH_DEVELOPER_ResultMapWithBLOBs">
+    select COH_DEVELOPER.DEVELOPERID, COH_DEVELOPER.CHNAME, COH_DEVELOPER.ENNAME,
+      COH_DEVELOPER.CERTIFNUM, COH_DEVELOPER.ADDRESS, COH_DEVELOPER.ZIPCODE, COH_DEVELOPER.TEL,
+      COH_DEVELOPER.FAX, COH_DEVELOPER.URL, COH_DEVELOPER.EMAIL, COH_DEVELOPER.REGMONEY,
+      COH_DEVELOPER.CORPDEPUTY, COH_DEVELOPER.DISTRICTID, COH_DEVELOPER.LEGALNAME,
+      COH_DEVELOPER.ISOFF, COH_DEVELOPER.INTERNALID, COH_DEVELOPER.ACCOUNTID,
+      COH_DEVELOPER.DEVELOPERPY, COH_DEVELOPER.CLICKNUM, COH_DEVELOPER.CONTACTMAN,
+      TO_CHAR(COH_DEVELOPER.CERTIFNUMEXPTIME, 'YYYY-MM-DD HH24:MI:SS') CERTIFNUMEXPTIME,
+      COH_DEVELOPER.DEVOTHER1, COH_DEVELOPER.DEVOTHER2, COH_DEVELOPER.CORPINTRO
+    from COH_DEVELOPER
+    where DEVELOPERID = #developerid#
+  </select>
+  <select id="WEB_COH_DEVELOPER_selectAll" parameterClass="java.lang.Long" resultMap="WEB_COH_DEVELOPER_ResultMapWithBLOBs">
+    select COH_DEVELOPER.DEVELOPERID, COH_DEVELOPER.CHNAME, COH_DEVELOPER.ENNAME,
+      COH_DEVELOPER.CERTIFNUM, COH_DEVELOPER.ADDRESS, COH_DEVELOPER.ZIPCODE, COH_DEVELOPER.TEL,
+      COH_DEVELOPER.FAX, COH_DEVELOPER.URL, COH_DEVELOPER.EMAIL, COH_DEVELOPER.REGMONEY,
+      COH_DEVELOPER.CORPDEPUTY, COH_DEVELOPER.DISTRICTID, COH_DEVELOPER.LEGALNAME,
+      COH_DEVELOPER.ISOFF, COH_DEVELOPER.INTERNALID, COH_DEVELOPER.ACCOUNTID,
+      COH_DEVELOPER.DEVELOPERPY, COH_DEVELOPER.CLICKNUM, COH_DEVELOPER.CONTACTMAN,
+      TO_CHAR(COH_DEVELOPER.CERTIFNUMEXPTIME, 'YYYY-MM-DD HH24:MI:SS') CERTIFNUMEXPTIME,
+      COH_DEVELOPER.DEVOTHER1, COH_DEVELOPER.DEVOTHER2, COH_DEVELOPER.CORPINTRO
+    from COH_DEVELOPER
+	order by COH_DEVELOPER.DEVELOPERID desc 	
+  </select>
+  <delete id="WEB_COH_DEVELOPER_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from COH_DEVELOPER
+    where DEVELOPERID = #developerid#
+  </delete>
+  <insert id="WEB_COH_DEVELOPER_insert" parameterClass="com.hzfc.web.entity.Developer">
+    insert into COH_DEVELOPER (DEVELOPERID, CHNAME, ENNAME, CERTIFNUM, ADDRESS, ZIPCODE, TEL, FAX,
+      URL, EMAIL, REGMONEY, CORPDEPUTY, DISTRICTID, LEGALNAME, ISOFF, INTERNALID, ACCOUNTID,
+      DEVELOPERPY, CLICKNUM, CONTACTMAN, CERTIFNUMEXPTIME, DEVOTHER1, DEVOTHER2, CORPINTRO)
+    values (#developerid#, #chname#, #enname#, #certifnum#, #address#, #zipcode#, #tel#, #fax#,
+      #url#, #email#, #regmoney#, #corpdeputy#, #districtid#, #legalname#, #isoff#, #internalid#,
+      #accountid#, #developerpy#, #clicknum#, #contactman#, TO_DATE(#certifnumexptime#, 'YYYY-MM-DD
+      HH24:MI:SS'), #devother1#, #devother2#, #corpintro#)
+  </insert>
+  <insert id="WEB_COH_DEVELOPER_insertSelective" parameterClass="com.hzfc.web.entity.Developer">
+    insert into COH_DEVELOPER
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="developerid">
+        DEVELOPERID
+      </isNotNull>
+      <isNotNull prepend="," property="chname">
+        CHNAME
+      </isNotNull>
+      <isNotNull prepend="," property="enname">
+        ENNAME
+      </isNotNull>
+      <isNotNull prepend="," property="certifnum">
+        CERTIFNUM
+      </isNotNull>
+      <isNotNull prepend="," property="address">
+        ADDRESS
+      </isNotNull>
+      <isNotNull prepend="," property="zipcode">
+        ZIPCODE
+      </isNotNull>
+      <isNotNull prepend="," property="tel">
+        TEL
+      </isNotNull>
+      <isNotNull prepend="," property="fax">
+        FAX
+      </isNotNull>
+      <isNotNull prepend="," property="url">
+        URL
+      </isNotNull>
+      <isNotNull prepend="," property="email">
+        EMAIL
+      </isNotNull>
+      <isNotNull prepend="," property="regmoney">
+        REGMONEY
+      </isNotNull>
+      <isNotNull prepend="," property="corpdeputy">
+        CORPDEPUTY
+      </isNotNull>
+      <isNotNull prepend="," property="districtid">
+        DISTRICTID
+      </isNotNull>
+      <isNotNull prepend="," property="legalname">
+        LEGALNAME
+      </isNotNull>
+      <isNotNull prepend="," property="isoff">
+        ISOFF
+      </isNotNull>
+      <isNotNull prepend="," property="internalid">
+        INTERNALID
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID
+      </isNotNull>
+      <isNotNull prepend="," property="developerpy">
+        DEVELOPERPY
+      </isNotNull>
+      <isNotNull prepend="," property="clicknum">
+        CLICKNUM
+      </isNotNull>
+      <isNotNull prepend="," property="contactman">
+        CONTACTMAN
+      </isNotNull>
+      <isNotNull prepend="," property="certifnumexptime">
+        CERTIFNUMEXPTIME
+      </isNotNull>
+      <isNotNull prepend="," property="devother1">
+        DEVOTHER1
+      </isNotNull>
+      <isNotNull prepend="," property="devother2">
+        DEVOTHER2
+      </isNotNull>
+      <isNotNull prepend="," property="corpintro">
+        CORPINTRO
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="developerid">
+        #developerid#
+      </isNotNull>
+      <isNotNull prepend="," property="chname">
+        #chname#
+      </isNotNull>
+      <isNotNull prepend="," property="enname">
+        #enname#
+      </isNotNull>
+      <isNotNull prepend="," property="certifnum">
+        #certifnum#
+      </isNotNull>
+      <isNotNull prepend="," property="address">
+        #address#
+      </isNotNull>
+      <isNotNull prepend="," property="zipcode">
+        #zipcode#
+      </isNotNull>
+      <isNotNull prepend="," property="tel">
+        #tel#
+      </isNotNull>
+      <isNotNull prepend="," property="fax">
+        #fax#
+      </isNotNull>
+      <isNotNull prepend="," property="url">
+        #url#
+      </isNotNull>
+      <isNotNull prepend="," property="email">
+        #email#
+      </isNotNull>
+      <isNotNull prepend="," property="regmoney">
+        #regmoney#
+      </isNotNull>
+      <isNotNull prepend="," property="corpdeputy">
+        #corpdeputy#
+      </isNotNull>
+      <isNotNull prepend="," property="districtid">
+        #districtid#
+      </isNotNull>
+      <isNotNull prepend="," property="legalname">
+        #legalname#
+      </isNotNull>
+      <isNotNull prepend="," property="isoff">
+        #isoff#
+      </isNotNull>
+      <isNotNull prepend="," property="internalid">
+        #internalid#
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="developerpy">
+        #developerpy#
+      </isNotNull>
+      <isNotNull prepend="," property="clicknum">
+        #clicknum#
+      </isNotNull>
+      <isNotNull prepend="," property="contactman">
+        #contactman#
+      </isNotNull>
+      <isNotNull prepend="," property="certifnumexptime">
+        TO_DATE(#certifnumexptime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="devother1">
+        #devother1#
+      </isNotNull>
+      <isNotNull prepend="," property="devother2">
+        #devother2#
+      </isNotNull>
+      <isNotNull prepend="," property="corpintro">
+        #corpintro#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="WEB_COH_DEVELOPER_updateByPrimaryKeySelective" parameterClass="com.hzfc.web.entity.Developer">
+    update COH_DEVELOPER
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="chname">
+        CHNAME = #chname#
+      </isNotNull>
+      <isNotNull prepend="," property="enname">
+        ENNAME = #enname#
+      </isNotNull>
+      <isNotNull prepend="," property="certifnum">
+        CERTIFNUM = #certifnum#
+      </isNotNull>
+      <isNotNull prepend="," property="address">
+        ADDRESS = #address#
+      </isNotNull>
+      <isNotNull prepend="," property="zipcode">
+        ZIPCODE = #zipcode#
+      </isNotNull>
+      <isNotNull prepend="," property="tel">
+        TEL = #tel#
+      </isNotNull>
+      <isNotNull prepend="," property="fax">
+        FAX = #fax#
+      </isNotNull>
+      <isNotNull prepend="," property="url">
+        URL = #url#
+      </isNotNull>
+      <isNotNull prepend="," property="email">
+        EMAIL = #email#
+      </isNotNull>
+      <isNotNull prepend="," property="regmoney">
+        REGMONEY = #regmoney#
+      </isNotNull>
+      <isNotNull prepend="," property="corpdeputy">
+        CORPDEPUTY = #corpdeputy#
+      </isNotNull>
+      <isNotNull prepend="," property="districtid">
+        DISTRICTID = #districtid#
+      </isNotNull>
+      <isNotNull prepend="," property="legalname">
+        LEGALNAME = #legalname#
+      </isNotNull>
+      <isNotNull prepend="," property="isoff">
+        ISOFF = #isoff#
+      </isNotNull>
+      <isNotNull prepend="," property="internalid">
+        INTERNALID = #internalid#
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID = #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="developerpy">
+        DEVELOPERPY = #developerpy#
+      </isNotNull>
+      <isNotNull prepend="," property="clicknum">
+        CLICKNUM = #clicknum#
+      </isNotNull>
+      <isNotNull prepend="," property="contactman">
+        CONTACTMAN = #contactman#
+      </isNotNull>
+      <isNotNull prepend="," property="certifnumexptime">
+        CERTIFNUMEXPTIME = TO_DATE(#certifnumexptime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="devother1">
+        DEVOTHER1 = #devother1#
+      </isNotNull>
+      <isNotNull prepend="," property="devother2">
+        DEVOTHER2 = #devother2#
+      </isNotNull>
+      <isNotNull prepend="," property="corpintro">
+        CORPINTRO = #corpintro#
+      </isNotNull>
+    </dynamic>
+    where DEVELOPERID = #developerid#
+  </update>
+  <update id="WEB_COH_DEVELOPER_updateByPrimaryKeyWithBLOBs" parameterClass="com.hzfc.web.entity.Developer">
+    update COH_DEVELOPER
+    set CHNAME = #chname#,
+      ENNAME = #enname#,
+      CERTIFNUM = #certifnum#,
+      ADDRESS = #address#,
+      ZIPCODE = #zipcode#,
+      TEL = #tel#,
+      FAX = #fax#,
+      URL = #url#,
+      EMAIL = #email#,
+      REGMONEY = #regmoney#,
+      CORPDEPUTY = #corpdeputy#,
+      DISTRICTID = #districtid#,
+      LEGALNAME = #legalname#,
+      ISOFF = #isoff#,
+      INTERNALID = #internalid#,
+      ACCOUNTID = #accountid#,
+      DEVELOPERPY = #developerpy#,
+      CLICKNUM = #clicknum#,
+      CONTACTMAN = #contactman#,
+      CERTIFNUMEXPTIME = TO_DATE(#certifnumexptime#, 'YYYY-MM-DD HH24:MI:SS'),
+      DEVOTHER1 = #devother1#,
+      DEVOTHER2 = #devother2#,
+      CORPINTRO = #corpintro#
+    where DEVELOPERID = #developerid#
+  </update>
+  <update id="WEB_COH_DEVELOPER_updateByPrimaryKey" parameterClass="com.hzfc.web.entity.Developer">
+    update COH_DEVELOPER
+    set CHNAME = #chname#,
+      ENNAME = #enname#,
+      CERTIFNUM = #certifnum#,
+      ADDRESS = #address#,
+      ZIPCODE = #zipcode#,
+      TEL = #tel#,
+      FAX = #fax#,
+      URL = #url#,
+      EMAIL = #email#,
+      REGMONEY = #regmoney#,
+      CORPDEPUTY = #corpdeputy#,
+      DISTRICTID = #districtid#,
+      LEGALNAME = #legalname#,
+      ISOFF = #isoff#,
+      INTERNALID = #internalid#,
+      ACCOUNTID = #accountid#,
+      DEVELOPERPY = #developerpy#,
+      CLICKNUM = #clicknum#,
+      CONTACTMAN = #contactman#,
+      CERTIFNUMEXPTIME = TO_DATE(#certifnumexptime#, 'YYYY-MM-DD HH24:MI:SS'),
+      DEVOTHER1 = #devother1#,
+      DEVOTHER2 = #devother2#
+    where DEVELOPERID = #developerid#
+  </update>
+</sqlMap>

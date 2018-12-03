@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<!--配置Dao层-->
+	<bean name="superDao" class="com.hzfc.common.dao.impl.SuperDaoImpl"
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlMapClientOuter" ref="sqlMapClientOuter" />
+	</bean>
+	
+	<!-- 新界面菜单加载 -->
+	<bean name="superMenuDao" class="com.hzfc.superadmin.framework.dao.impl.SuperMenuDaoImpl"
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+
+	
+	<!-- 辅助功能管理 -->
+	<bean name="assistDao" class="com.hzfc.superadmin.assist.dao.impl.AssistDaoImpl"
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient"/>	
+	</bean>  
+	
+	<!-- 用户信息 -->
+	<bean name="userInfomationDao" class="com.hzfc.superadmin.framework.dao.impl.UserInfomationDaoImpl"
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient"/>
+	</bean> 
+	
+	<!-- 广告管理 -->
+	<bean name="webAdMangerDao" class="com.hzfc.superadmin.ad.dao.impl.WebAdMangerDaoImpl"
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient"/>	
+	</bean> 
+	
+	<!-- 资讯新闻 -->
+	<bean name="newsContentDao" class="com.hzfc.superadmin.newscontent.dao.impl.NewsContentDaoImpl"
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient"/>	
+	</bean> 
+	
+	
+	<!-- 菜单资源管理 -->
+	<bean id="menuResourceDao" class="com.hzfc.superadmin.framework.dao.impl.MenuResourceDaoImpl" 
+		scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<!-- 前台 -->
+	<bean name="categoryDao" class="com.hzfc.web.dao.impl.CategoryDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean name="contentCategoryDao" class="com.hzfc.web.dao.impl.ContentCategoryDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean name="contentDao" class="com.hzfc.web.dao.impl.ContentDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean name="d30Dao" class="com.hzfc.web.dao.impl.D30DAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlMapClientOuter" ref="sqlMapClientOuter" />
+	</bean>
+	<bean name="complaintDao" class="com.hzfc.web.dao.impl.ComplaintDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean name="developerDao" class="com.hzfc.web.dao.impl.DeveloperDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlMapClientOuter" ref="sqlMapClientOuter" />
+	</bean>
+	<bean name="presellDao" class="com.hzfc.web.dao.impl.PresellDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlMapClientOuter" ref="sqlMapClientOuter" />
+	</bean>
+	<bean name="contractContinuousDao" class="com.hzfc.web.dao.impl.ContractContinuousDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlMapClientOuter" ref="sqlMapClientOuter" />
+	</bean>
+	<bean name="contractRevokeDao" class="com.hzfc.web.dao.impl.ContractRevokeDAOImpl" scope="prototype">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="sqlMapClientOuter" ref="sqlMapClientOuter" />
+	</bean>
+</beans>

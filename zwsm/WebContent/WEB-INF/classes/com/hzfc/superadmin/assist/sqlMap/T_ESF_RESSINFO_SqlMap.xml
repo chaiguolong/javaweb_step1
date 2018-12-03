@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="T_ESF_RESSINFO" >
+  <resultMap id="T_ESF_RESSINFO_BaseResultMap" class="com.hzfc.superadmin.assist.entity.RessInfo" >
+    <result column="RESSID" property="ressid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="LINKID" property="linkid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RESSVEST" property="ressvest" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RESTYPEID" property="restypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="CLASSID" property="classid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="TAGNAME" property="tagname" jdbcType="VARCHAR" nullValue="" />
+    <result column="LINKURL" property="linkurl" jdbcType="VARCHAR" nullValue="" />
+    <result column="REALPATH" property="realpath" jdbcType="VARCHAR" nullValue="" />
+    <result column="DESCR" property="descr" jdbcType="VARCHAR" nullValue="" />
+    <result column="ISCHECKPASS" property="ischeckpass" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ISDELETE" property="isdelete" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ADDTIME" property="addtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="MODTIME" property="modtime" jdbcType="TIMESTAMP" nullValue="" />
+  </resultMap>
+  
+  <resultMap id="T_ESF_RESSINFO_ListResultMap" class="com.hzfc.superadmin.assist.entity.RessInfo" >
+    <result column="RESSID" property="ressid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="LINKID" property="linkid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RESSVEST" property="ressvest" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RESSVESTNAME" property="ressvestname" jdbcType="VARCHAR" nullValue="" />
+    <result column="RESTYPEID" property="restypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RESTYPEIDNAME" property="restypeidname" jdbcType="VARCHAR" nullValue="" />
+    <result column="CLASSID" property="classid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="CLASSIDNAME" property="classidname" jdbcType="VARCHAR" nullValue="" />
+    <result column="TAGNAME" property="tagname" jdbcType="VARCHAR" nullValue="" />
+    <result column="LINKURL" property="linkurl" jdbcType="VARCHAR" nullValue="" />
+    <result column="REALPATH" property="realpath" jdbcType="VARCHAR" nullValue="" />
+    <result column="DESCR" property="descr" jdbcType="VARCHAR" nullValue="" />
+    <result column="ISCHECKPASS" property="ischeckpass" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ISDELETE" property="isdelete" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ADDTIME" property="addtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="MODTIME" property="modtime" jdbcType="TIMESTAMP" nullValue="" />
+  </resultMap>
+  
+  <resultMap id="T_ESF_RESSINFO_ListMap" class="com.hzfc.superadmin.assist.entity.RessInfo" >
+    <result column="RESSID" property="ressid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="LINKID" property="linkid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="REALPATH" property="realpath" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="T_ESF_RESSINFO_selectByPrimaryKey" resultMap="T_ESF_RESSINFO_BaseResultMap" parameterClass="java.lang.Long" >
+    select T_ESF_RESSINFO.RESSID, T_ESF_RESSINFO.LINKID, T_ESF_RESSINFO.RESSVEST,
+      T_ESF_RESSINFO.RESTYPEID, T_ESF_RESSINFO.CLASSID, T_ESF_RESSINFO.TAGNAME,
+      T_ESF_RESSINFO.LINKURL, T_ESF_RESSINFO.REALPATH, T_ESF_RESSINFO.DESCR,
+      T_ESF_RESSINFO.ISCHECKPASS, T_ESF_RESSINFO.ISDISPLAY, T_ESF_RESSINFO.ORDERID,
+      T_ESF_RESSINFO.ISDELETE, TO_CHAR(T_ESF_RESSINFO.ADDTIME, 'YYYY-MM-DD HH24:MI:SS') ADDTIME,
+      TO_CHAR(T_ESF_RESSINFO.MODTIME, 'YYYY-MM-DD HH24:MI:SS') MODTIME
+    from T_ESF_RESSINFO
+    where RESSID = #ressid#
+  </select>
+  <delete id="T_ESF_RESSINFO_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from T_ESF_RESSINFO
+    where RESSID = #ressid#
+  </delete>
+  <insert id="T_ESF_RESSINFO_insert" parameterClass="com.hzfc.superadmin.assist.entity.RessInfo" >
+  	<selectKey resultClass="long" keyProperty="ressid"> 
+        select HIBERNATE_SEQUENCE.nextval as ressid from dual 
+    </selectKey>
+    insert into T_ESF_RESSINFO (RESSID, LINKID, RESSVEST, RESTYPEID, CLASSID, TAGNAME, LINKURL,
+      REALPATH, DESCR, ISCHECKPASS, ISDISPLAY, ORDERID, ISDELETE, ADDTIME, MODTIME)
+    values (#ressid#, #linkid#, #ressvest#, #restypeid#, #classid#, #tagname#, #linkurl#,
+      #realpath#, #descr#, #ischeckpass#, #isdisplay#, #orderid#, #isdelete#, sysdate, $modtime$)
+  </insert>
+  <insert id="T_ESF_RESSINFO_insertSelective" parameterClass="com.hzfc.superadmin.assist.entity.RessInfo" >
+    insert into T_ESF_RESSINFO
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="ressid" >
+        RESSID
+      </isNotNull>
+      <isNotNull prepend="," property="linkid" >
+        LINKID
+      </isNotNull>
+      <isNotNull prepend="," property="ressvest" >
+        RESSVEST
+      </isNotNull>
+      <isNotNull prepend="," property="restypeid" >
+        RESTYPEID
+      </isNotNull>
+      <isNotNull prepend="," property="classid" >
+        CLASSID
+      </isNotNull>
+      <isNotNull prepend="," property="tagname" >
+        TAGNAME
+      </isNotNull>
+      <isNotNull prepend="," property="linkurl" >
+        LINKURL
+      </isNotNull>
+      <isNotNull prepend="," property="realpath" >
+        REALPATH
+      </isNotNull>
+      <isNotNull prepend="," property="descr" >
+        DESCR
+      </isNotNull>
+      <isNotNull prepend="," property="ischeckpass" >
+        ISCHECKPASS
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        ISDISPLAY
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID
+      </isNotNull>
+      <isNotNull prepend="," property="isdelete" >
+        ISDELETE
+      </isNotNull>
+      <isNotNull prepend="," property="addtime" >
+        ADDTIME
+      </isNotNull>
+      <isNotNull prepend="," property="modtime" >
+        MODTIME
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="ressid" >
+        #ressid#
+      </isNotNull>
+      <isNotNull prepend="," property="linkid" >
+        #linkid#
+      </isNotNull>
+      <isNotNull prepend="," property="ressvest" >
+        #ressvest#
+      </isNotNull>
+      <isNotNull prepend="," property="restypeid" >
+        #restypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="classid" >
+        #classid#
+      </isNotNull>
+      <isNotNull prepend="," property="tagname" >
+        #tagname#
+      </isNotNull>
+      <isNotNull prepend="," property="linkurl" >
+        #linkurl#
+      </isNotNull>
+      <isNotNull prepend="," property="realpath" >
+        #realpath#
+      </isNotNull>
+      <isNotNull prepend="," property="descr" >
+        #descr#
+      </isNotNull>
+      <isNotNull prepend="," property="ischeckpass" >
+        #ischeckpass#
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        #isdisplay#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="isdelete" >
+        #isdelete#
+      </isNotNull>
+      <isNotNull prepend="," property="addtime" >
+        TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="modtime" >
+        $modtime$
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="T_ESF_RESSINFO_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.assist.entity.RessInfo" >
+    update T_ESF_RESSINFO
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="linkid" >
+        LINKID = #linkid#
+      </isNotNull>
+      <isNotNull prepend="," property="ressvest" >
+        RESSVEST = #ressvest#
+      </isNotNull>
+      <isNotNull prepend="," property="restypeid" >
+        RESTYPEID = #restypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="classid" >
+        CLASSID = #classid#
+      </isNotNull>
+      <isNotNull prepend="," property="tagname" >
+        TAGNAME = #tagname#
+      </isNotNull>
+      <isNotNull prepend="," property="linkurl" >
+        LINKURL = #linkurl#
+      </isNotNull>
+      <isNotNull prepend="," property="realpath" >
+        REALPATH = #realpath#
+      </isNotNull>
+      <isNotNull prepend="," property="descr" >
+        DESCR = #descr#
+      </isNotNull>
+      <isNotNull prepend="," property="ischeckpass" >
+        ISCHECKPASS = #ischeckpass#
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        ISDISPLAY = #isdisplay#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID = #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="isdelete" >
+        ISDELETE = #isdelete#
+      </isNotNull>
+      <isNotNull prepend="," property="addtime" >
+        ADDTIME = TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="modtime" >
+        MODTIME = $modtime$
+      </isNotNull>
+    </dynamic>
+    where RESSID = #ressid#
+  </update>
+  <update id="T_ESF_RESSINFO_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.assist.entity.RessInfo" >
+    update T_ESF_RESSINFO
+    set LINKID = #linkid#,
+      RESSVEST = #ressvest#,
+      RESTYPEID = #restypeid#,
+      CLASSID = #classid#,
+      TAGNAME = #tagname#,
+      LINKURL = #linkurl#,
+      REALPATH = #realpath#,
+      DESCR = #descr#,
+      ISCHECKPASS = #ischeckpass#,
+      ISDISPLAY = #isdisplay#,
+      ORDERID = #orderid#,
+      ISDELETE = #isdelete#,
+      ADDTIME = TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS'),
+      MODTIME = $modtime$
+    where RESSID = #ressid#
+  </update>
+  
+  <select id="T_ESF_RESSINFO_selectPageByQueryCondition" resultMap="T_ESF_RESSINFO_ListResultMap" parameterClass="java.util.Map">
+	select T_ESF_RESSINFO.RESSID, T_ESF_RESSINFO.LINKID, 
+	  T_ESF_RESSINFO.RESSVEST,
+	  (select T_ESF_CODEITEMS.ITEMNAME from T_ESF_CODEITEMS where T_ESF_CODEITEMS.CODETYPE = #ressvestcode# and T_ESF_CODEITEMS.ITEMVALUE = T_ESF_RESSINFO.RESSVEST) 
+	  as RESSVESTNAME,
+      T_ESF_RESSINFO.RESTYPEID,
+      (select T_ESF_CODEITEMS.ITEMNAME from T_ESF_CODEITEMS where T_ESF_CODEITEMS.CODETYPE = #restypeidcode# and T_ESF_CODEITEMS.ITEMVALUE = T_ESF_RESSINFO.RESTYPEID) 
+	  as RESTYPEIDNAME,
+      T_ESF_RESSINFO.CLASSID, 
+      (select T_ESF_CODEITEMS.ITEMNAME from T_ESF_CODEITEMS where T_ESF_CODEITEMS.CODETYPE = #classidcode# and T_ESF_CODEITEMS.ITEMVALUE = T_ESF_RESSINFO.CLASSID) 
+	  as CLASSIDNAME,
+      T_ESF_RESSINFO.TAGNAME,
+      T_ESF_RESSINFO.LINKURL, T_ESF_RESSINFO.REALPATH, T_ESF_RESSINFO.DESCR,
+      T_ESF_RESSINFO.ISCHECKPASS, T_ESF_RESSINFO.ISDISPLAY, T_ESF_RESSINFO.ORDERID,
+      T_ESF_RESSINFO.ISDELETE, TO_CHAR(T_ESF_RESSINFO.ADDTIME, 'YYYY-MM-DD HH24:MI:SS') ADDTIME,
+      TO_CHAR(T_ESF_RESSINFO.MODTIME, 'YYYY-MM-DD HH24:MI') MODTIME
+    from T_ESF_RESSINFO
+    <dynamic prepend="where" >
+    	<isNotEmpty prepend="and" property="ressvest" >
+			T_ESF_RESSINFO.RESSVEST = #ressvest#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="restypeid" >
+			T_ESF_RESSINFO.RESTYPEID = #restypeid#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="classid" >
+			T_ESF_RESSINFO.CLASSID = #classid#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="ischeckpass" >
+			T_ESF_RESSINFO.ISCHECKPASS = #ischeckpass#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="isdisplay" >
+			T_ESF_RESSINFO.ISDISPLAY = #isdisplay#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="isdelete" >
+			T_ESF_RESSINFO.ISDELETE = #isdelete#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="keywords" >
+			(T_ESF_RESSINFO.TAGNAME like #keywords# or T_ESF_RESSINFO.LINKURL like #keywords# or T_ESF_RESSINFO.REALPATH like #keywords# T_ESF_RESSINFO.DESCR like #keywords#)
+        </isNotEmpty>
+    </dynamic>
+    order by T_ESF_RESSINFO.ADDTIME desc
+  </select>
+  
+	<select id="T_ESF_RESSINFO_selectAllByMapParam" resultMap="T_ESF_RESSINFO_ListMap" parameterClass="java.util.Map">
+		select T_ESF_RESSINFO.RESSID, T_ESF_RESSINFO.LINKID, T_ESF_RESSINFO.REALPATH
+	  from T_ESF_RESSINFO
+	</select>
+  
+	<update id="updateRssinfoByPath" parameterClass="java.lang.String">
+		update T_ESF_RESSINFO set
+			T_ESF_RESSINFO.ISDELETE = 1,
+			T_ESF_RESSINFO.MODTIME = sysdate
+		where T_ESF_RESSINFO.REALPATH = #path#
+	</update>
+	
+	<update id="updateRssinfoByObject" parameterClass="com.hzfc.superadmin.assist.entity.RessInfo">
+		update T_ESF_RESSINFO set
+			T_ESF_RESSINFO.TAGNAME = #tagname#,
+			T_ESF_RESSINFO.MODTIME = sysdate
+		where T_ESF_RESSINFO.REALPATH = #realpath#
+	</update>
+	
+	<update id="updateRssinfoByHouseid" parameterClass="java.util.Map">
+		update T_ESF_RESSINFO set
+			T_ESF_RESSINFO.ISDELETE = 1,
+			T_ESF_RESSINFO.MODTIME = sysdate
+		where T_ESF_RESSINFO.LINKID = #houseid# 
+		<isNotEmpty prepend="and" property="ressvest" >
+			T_ESF_RESSINFO.RESSVEST = #ressvest#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="restypeid" >
+			T_ESF_RESSINFO.RESTYPEID = #restypeid#
+        </isNotEmpty>
+	</update>
+	
+	<update id="deleteRessInfoByMap" parameterClass="java.util.Map">
+		update T_ESF_RESSINFO set
+			T_ESF_RESSINFO.ISDELETE = 1,
+			T_ESF_RESSINFO.MODTIME = sysdate
+		where T_ESF_RESSINFO.LINKID = $linkid$ 
+		<isNotEmpty prepend="and" property="ressvest" >
+			T_ESF_RESSINFO.RESSVEST = $ressvest$
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="restypeid" >
+			T_ESF_RESSINFO.RESTYPEID = $restypeid$
+        </isNotEmpty>
+	</update>
+	
+  
+</sqlMap>

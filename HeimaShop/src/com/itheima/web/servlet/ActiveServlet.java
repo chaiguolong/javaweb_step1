@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itheima.service.UserService;
 
+
 public class ActiveServlet extends HttpServlet {
 	private static final long serialVersionUID = -345341231532346L;
 
@@ -17,6 +18,8 @@ public class ActiveServlet extends HttpServlet {
 		
 		//获得激活码
 		String activeCode = request.getParameter("activeCode");
+		request.getParameter("activeCode");
+		request.getParameter("activeCode");
 		
 		UserService service = new UserService();
 		service.active(activeCode);

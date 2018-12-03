@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_POSITION">
+  <resultMap class="com.hzfc.superadmin.framework.entity.Position" id="SYS_POSITION_BaseResultMap">
+    <result column="POSITIONID" jdbcType="DECIMAL" nullValue="0" property="positionid" />
+    <result column="DEPARTMENTID" jdbcType="DECIMAL" nullValue="0" property="departmentid" />
+    <result column="POSITIONNAME" jdbcType="VARCHAR" nullValue="" property="positionname" />
+  </resultMap>
+  <select id="SYS_POSITION_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_POSITION_BaseResultMap">
+    select SYS_POSITION.POSITIONID, SYS_POSITION.DEPARTMENTID, SYS_POSITION.POSITIONNAME
+    from   SYS_POSITION
+    where  POSITIONID = #positionid#
+  </select>
+  <delete id="SYS_POSITION_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_POSITION
+    where  POSITIONID = #positionid#
+  </delete>
+  <insert id="SYS_POSITION_insert" parameterClass="com.hzfc.superadmin.framework.entity.Position">
+  	  <selectKey resultClass="long" keyProperty="positionid"> 
+	        select HIBERNATE_SEQUENCE.nextval as positionid from dual 
+	  </selectKey>
+    insert into SYS_POSITION (POSITIONID, DEPARTMENTID, POSITIONNAME)
+    values (#positionid#, #departmentid#, #positionname#)
+  </insert>
+  <insert id="SYS_POSITION_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.Position">
+    insert into SYS_POSITION
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="positionid">
+        POSITIONID
+      </isNotNull>
+      <isNotNull prepend="," property="departmentid">
+        DEPARTMENTID
+      </isNotNull>
+      <isNotNull prepend="," property="positionname">
+        POSITIONNAME
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="positionid">
+        #positionid#
+      </isNotNull>
+      <isNotNull prepend="," property="departmentid">
+        #departmentid#
+      </isNotNull>
+      <isNotNull prepend="," property="positionname">
+        #positionname#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_POSITION_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.Position">
+    update SYS_POSITION
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="departmentid">
+        DEPARTMENTID = #departmentid#
+      </isNotNull>
+      <isNotNull prepend="," property="positionname">
+        POSITIONNAME = #positionname#
+      </isNotNull>
+    </dynamic>
+    where POSITIONID = #positionid#
+  </update>
+  <update id="SYS_POSITION_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.Position">
+    update SYS_POSITION
+    set    DEPARTMENTID = #departmentid#,
+           POSITIONNAME = #positionname#
+    where  POSITIONID = #positionid#
+  </update>
+  <select id="SYS_POSITION_selectPageByQueryCondition" parameterClass="java.util.Map" resultMap="SYS_POSITION_BaseResultMap">
+  	select SYS_POSITION.POSITIONID, SYS_POSITION.DEPARTMENTID, SYS_POSITION.POSITIONNAME
+    from   SYS_POSITION
+    <dynamic prepend="where">
+        <isNotEmpty prepend="and" property="keywords" >
+			SYS_POSITION.POSITIONNAME like #keywords# 
+		</isNotEmpty>
+    </dynamic>
+  </select>
+  <select id="selectIsExistDepartmentPosition" parameterClass="java.util.Map" resultMap="SYS_POSITION_BaseResultMap">
+  	select SYS_POSITION.POSITIONID, SYS_POSITION.DEPARTMENTID, SYS_POSITION.POSITIONNAME
+    from   SYS_POSITION
+    where  SYS_POSITION.DEPARTMENTID = #departmentid#
+  </select>
+</sqlMap>

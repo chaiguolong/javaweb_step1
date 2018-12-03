@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+	<constant name="struts.locale" value="zh_CN" />
+
+    <constant name="struts.devMode" value="false" />
+    <!-- 开发模式下设为true，这样可以打印出更详细的错误信息 -->  
+    
+    <constant name="struts.configuration.xml.reload" value="false" />
+    <!--当struts的配置文件修改后，系统是否自动重新加载该文件，默认值为false，开发阶段最好true -->
+    
+    <constant name="struts.action.extension" value="jspx" />
+    <!-- 该属性指定需要Struts 2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts 2处理。-->
+    
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <!-- 动态方法调用,可以解决多个请求对应一个Servlet的问题,后面详细讲解,默认为true,关闭则设为false -->
+    
+    <constant name="struts.multipart.maxSize" value="50000000" />
+    <!-- struts2默认上传文件大小为2M，扩展上传文件大小至50M -->
+    
+    <!-- struts2上传路径，如果配置错误导致上传功能失败 -->
+    <constant name="struts.multipart.saveDir" value="E:/Workspaces/zwsm/WebRoot/upload"/>
+    
+    <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.ui.templateDir" value="template" />
+    <constant name="struts.ui.templateSuffix" value="ftl" />
+    
+    <!--通配符struts-->
+    <include file="struts-*.xml" />
+</struts>

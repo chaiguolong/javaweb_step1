@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_MENU">
+  <resultMap class="com.hzfc.superadmin.framework.entity.Menu" id="SYS_MENU_BaseResultMap">
+    <result column="MENUID" jdbcType="DECIMAL" nullValue="0" property="menuid" />
+    <result column="PID" jdbcType="DECIMAL" nullValue="0" property="pid" />
+    <result column="MENUNAME" jdbcType="VARCHAR" nullValue="" property="menuname" />
+    <result column="SORTNUMBER" jdbcType="DECIMAL" nullValue="0" property="sortnumber" />
+  </resultMap>
+  <resultMap class="com.hzfc.superadmin.framework.entity.Menu" id="SYS_MENU_ListResultMap">
+  	<result column="LEVELID" jdbcType="DECIMAL" nullValue="0" property="levelid" />
+    <result column="MENUID" jdbcType="DECIMAL" nullValue="0" property="menuid" />
+    <result column="PID" jdbcType="DECIMAL" nullValue="0" property="pid" />
+    <result column="MENUNAME" jdbcType="VARCHAR" nullValue="" property="menuname" />
+    <result column="SORTNUMBER" jdbcType="DECIMAL" nullValue="0" property="sortnumber" />
+  </resultMap>
+  <resultMap class="com.hzfc.superadmin.framework.entity.Menu" id="SYS_MENU_MenuResultMap">
+  	<result column="LEVELID" jdbcType="DECIMAL" nullValue="0" property="levelid" />
+    <result column="MENUID" jdbcType="DECIMAL" nullValue="0" property="menuid" />
+    <result column="PID" jdbcType="DECIMAL" nullValue="0" property="pid" />
+    <result column="MENUNAME" jdbcType="VARCHAR" nullValue="" property="menuname" />
+    <result column="SORTNUMBER" jdbcType="DECIMAL" nullValue="0" property="sortnumber" />
+    <result column="DEFINESTRING" jdbcType="VARCHAR" nullValue="" property="definestring" />
+  </resultMap>
+  <resultMap class="com.hzfc.superadmin.framework.entity.Menu" id="SYS_MENU_FormResultMap">
+    <result column="MENUID" jdbcType="DECIMAL" nullValue="0" property="menuid" />
+    <result column="PID" jdbcType="DECIMAL" nullValue="0" property="pid" />
+    <result column="MENUNAME" jdbcType="VARCHAR" nullValue="" property="menuname" />
+    <result column="SORTNUMBER" jdbcType="DECIMAL" nullValue="0" property="sortnumber" />
+    <result column="RESOURCEID" jdbcType="DECIMAL" nullValue="0" property="resourceid" />
+    <result column="Type" jdbcType="VARCHAR" nullValue="" property="type" />
+    <result column="DEFINESTRING" jdbcType="VARCHAR" nullValue="" property="definestring" />
+    <result column="REMARK" jdbcType="VARCHAR" nullValue="" property="remark" />
+    <result column="ISUSE" jdbcType="DECIMAL" nullValue="0" property="isuse" />
+  </resultMap>
+  <select id="SYS_MENU_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_MENU_FormResultMap">
+    select SYS_MENU.MENUID, SYS_MENU.PID, SYS_MENU.MENUNAME, SYS_MENU.SORTNUMBER,
+           SYS_RESOURCE.TYPE, SYS_RESOURCE.DEFINESTRING, SYS_RESOURCE.REMARK, SYS_RESOURCE.ISUSE, SYS_RESOURCE.RESOURCEID
+    from   SYS_MENU,SYS_RESOURCE
+    where  SYS_MENU.MENUID = SYS_RESOURCE.MENUID AND SYS_MENU.MENUID = #menuid#
+  </select>
+  <delete id="SYS_MENU_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_MENU
+    where  MENUID = #menuid#
+  </delete>
+  <insert id="SYS_MENU_insert" parameterClass="com.hzfc.superadmin.framework.entity.Menu">
+    insert into SYS_MENU (MENUID, PID, MENUNAME, SORTNUMBER)
+    values (#menuid#, #pid#, #menuname#, #sortnumber#)
+  </insert>
+  <insert id="SYS_MENU_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.Menu">
+    insert into SYS_MENU
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="menuid">
+        MENUID
+      </isNotNull>
+      <isNotNull prepend="," property="pid">
+        PID
+      </isNotNull>
+      <isNotNull prepend="," property="menuname">
+        MENUNAME
+      </isNotNull>
+      <isNotNull prepend="," property="sortnumber">
+        SORTNUMBER
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="menuid">
+        #menuid#
+      </isNotNull>
+      <isNotNull prepend="," property="pid">
+        #pid#
+      </isNotNull>
+      <isNotNull prepend="," property="menuname">
+        #menuname#
+      </isNotNull>
+      <isNotNull prepend="," property="sortnumber">
+        #sortnumber#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_MENU_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.Menu">
+    update SYS_MENU
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="pid">
+        PID = #pid#
+      </isNotNull>
+      <isNotNull prepend="," property="menuname">
+        MENUNAME = #menuname#
+      </isNotNull>
+      <isNotNull prepend="," property="sortnumber">
+        SORTNUMBER = #sortnumber#
+      </isNotNull>
+    </dynamic>
+    where MENUID = #menuid#
+  </update>
+  <update id="SYS_MENU_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.Menu">
+    update SYS_MENU
+    set    PID = #pid#,
+      	   MENUNAME = #menuname#,
+      	   SORTNUMBER = #sortnumber#
+    where  MENUID = #menuid#
+  </update>
+  <select id="SYS_MENU_selectByStatementidForSelect" resultMap="SYS_MENU_ListResultMap">
+  	select LEVEL as LEVELID, SYS_MENU.MENUID, SYS_MENU.PID, SYS_MENU.MENUNAME, SYS_MENU.SORTNUMBER
+    from   SYS_MENU
+    start  with SYS_MENU.PID = 0
+	connect by prior SYS_MENU.MENUID=SYS_MENU.PID
+	order siblings by SYS_MENU.SORTNUMBER desc
+  </select>
+  <select id="SYS_MENU_selectAllByMapParam" parameterClass="java.util.Map" resultMap="SYS_MENU_MenuResultMap">
+  	select LEVEL AS LEVELID, SYS_MENU.MENUID, SYS_MENU.PID, SYS_MENU.MENUNAME,SYS_MENU.SORTNUMBER,
+  	       SYS_RESOURCE.DEFINESTRING
+    from   SYS_MENU, SYS_RESOURCE
+    where  SYS_MENU.MENUID = SYS_RESOURCE.MENUID
+    start with SYS_MENU.PID = 0
+	connect by prior SYS_MENU.MENUID=SYS_MENU.PID
+	order siblings by SYS_MENU.SORTNUMBER desc
+  </select>
+  <resultMap id="getZtreeMenuResult" class="com.hzfc.utils.Ztree">
+		<result column="ID" property="id" jdbcType="VARCHAR"/>
+		<result column="PID" property="pid" jdbcType="VARCHAR"/>
+		<result column="RID" property="rid" jdbcType="VARCHAR"/>
+		<result column="NAME" property="name" jdbcType="VARCHAR"/>
+		<result column="OPENVALUE" property="openValue" jdbcType="DECIMAL"/>
+		<result column="ISPARENTVALUE" property="isParentValue" jdbcType="DECIMAL"/>
+  </resultMap>
+  <select id="getZtree" resultMap="getZtreeMenuResult">
+  	select LEVEL as ISPARENTVALUE,SYS_MENU.PID as PID,1 as OPENVALUE,SYS_MENU.MENUNAME as NAME,SYS_MENU.MENUID as ID,
+  		   SYS_RESOURCE.RESOURCEID as RID
+    from SYS_MENU left join SYS_RESOURCE on SYS_MENU.MENUID = SYS_RESOURCE.MENUID
+    start with SYS_MENU.PID = 0
+    connect by prior SYS_MENU.MENUID = SYS_MENU.PID
+    order siblings by SYS_MENU.SORTNUMBER desc
+  </select>
+  <resultMap id="SYS_MENU_CheckResultMap" class="com.hzfc.superadmin.framework.entity.Menu">
+		<result column="MENUID" property="menuid" jdbcType="DECIMAL" nullValue="0"/>
+  </resultMap>
+  <select id="checkSubmenu" parameterClass="java.util.Map" resultMap="SYS_MENU_CheckResultMap">
+  	select SYS_MENU.MENUID
+    from   SYS_MENU
+    where  SYS_MENU.PID = #menuid#
+  </select>
+</sqlMap>

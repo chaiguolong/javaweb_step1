@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WEB_COMMON_ADS" >
+	<!-- 广告公共引用SQL -->
+	<resultMap id="selectWebAdInfoByAdTypeIdResult" class="com.hzfc.web.common.entity.WebCommonAdInfo" >
+	    <result column="ADID" property="adid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="RSSTYPE" property="rsstype" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="ADPATH" property="adpath" jdbcType="VARCHAR" nullValue="" />
+	    <result column="DESCR" property="descr" jdbcType="VARCHAR" nullValue="" />
+	    <result column="LINKURL" property="linkurl" jdbcType="VARCHAR" nullValue="" />
+	</resultMap>
+	<select id="selectWebAdInfoByAdTypeId" resultMap="selectWebAdInfoByAdTypeIdResult" parameterClass="java.util.Map" >
+	    select 
+	    	WEB_ADINFO.ADID, 
+	    	WEB_ADINFO.ADTYPEID, 
+	    	WEB_ADINFO.RSSTYPE, 
+	    	WEB_ADINFO.ADPATH, 
+	      	WEB_ADINFO.DESCR, 
+	      	WEB_ADINFO.LINKURL
+	    from WEB_ADINFO
+	    where 
+	    	WEB_ADINFO.ISDISPLAY = 1
+	    	and trunc(WEB_ADINFO.BEGINTIME) <![CDATA[<=]]> trunc(sysdate)
+	    	and trunc(sysdate) <![CDATA[<=]]>  trunc(WEB_ADINFO.ENDTIME)
+	    	and WEB_ADINFO.ADTYPEID = $adtypeid$
+	    order by WEB_ADINFO.ORDERID asc
+    </select>
+    
+	<!-- 广告按显示顺序排列 -->
+	<resultMap id="selectWebAdInfoByAdTypeIdByOrderResult" class="com.hzfc.web.common.entity.WebCommonAdInfo" >
+	    <result column="ADID" property="adid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="RSSTYPE" property="rsstype" jdbcType="DECIMAL" nullValue="0" />
+	    <result column="ADPATH" property="adpath" jdbcType="VARCHAR" nullValue="" />
+	    <result column="DESCR" property="descr" jdbcType="VARCHAR" nullValue="" />
+	    <result column="LINKURL" property="linkurl" jdbcType="VARCHAR" nullValue="" />
+	    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="" />
+	</resultMap>
+	<select id="selectWebAdInfoByAdTypeIdByOrder" resultMap="selectWebAdInfoByAdTypeIdByOrderResult" parameterClass="java.util.Map" >
+	   
+	   select ROWALL.* FROM
+		(SELECT ROW_.*, ROWNUM AS NUM_  FROM ( select 
+	    	WEB_ADINFO.ADID, 
+	    	WEB_ADINFO.ADTYPEID, 
+	    	WEB_ADINFO.RSSTYPE, 
+	    	WEB_ADINFO.ADPATH, 
+	      	WEB_ADINFO.DESCR, 
+	      	WEB_ADINFO.LINKURL,
+	      	WEB_ADINFO.ORDERID
+	    from WEB_ADINFO
+	    where 
+	    	WEB_ADINFO.ISDISPLAY = 1
+	    	and trunc(WEB_ADINFO.BEGINTIME) <![CDATA[<=]]> trunc(sysdate)
+	    	and trunc(sysdate) <![CDATA[<=]]>  trunc(WEB_ADINFO.ENDTIME)
+	    	and WEB_ADINFO.ADTYPEID = $adtypeid$
+	    	order by WEB_ADINFO.ORDERID asc
+	    	) ROW_ ) ROWALL 
+		WHERE NUM_ > 0  AND NUM_ <![CDATA[<=]]> $counts$
+    </select>
+
+</sqlMap>

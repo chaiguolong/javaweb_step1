@@ -1,0 +1,17 @@
+function _IncludeScriptFull(inc){
+	var script='<'+'script type="text/javascript" src="'+inc+'"'+'><'+'/script>'; 
+	document.writeln(script); 
+}
+
+    // 自定义
+	_IncludeScriptFull('/js/view/viewpage.js');
+	_IncludeScriptFull('/js/view/search.js');
+	_IncludeScriptFull('/js/view/searchComplete.js');
+	_IncludeScriptFull('/js/view/SuperMap.Utility.js');
+	
+	//_IncludeScriptFull('http://map.hzfc365.com/lib/MyAjax.js');
+	//_IncludeScriptFull('http://map.hzfc365.com/utility/URLParam.js');
+	_IncludeScriptFull('http://map.hzfc365.com/lib/MyAjax.js');
+	_IncludeScriptFull('http://map.hzfc365.com/utility/URLParam.js');
+	
+	

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_USERRESOURCE">
+  <resultMap class="com.hzfc.superadmin.framework.entity.Userresource" id="SYS_USERRESOURCE_BaseResultMap">
+    <result column="USERRESOURCEID" jdbcType="DECIMAL" nullValue="0" property="userresourceid" />
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="RESOURCEID" jdbcType="DECIMAL" nullValue="0" property="resourceid" />
+  </resultMap>
+  <select id="SYS_USERRESOURCE_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_USERRESOURCE_BaseResultMap">
+    select SYS_USERRESOURCE.USERRESOURCEID, SYS_USERRESOURCE.ACCOUNTID, SYS_USERRESOURCE.RESOURCEID
+    from SYS_USERRESOURCE
+    where USERRESOURCEID = #userresourceid#
+  </select>
+  <delete id="SYS_USERRESOURCE_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_USERRESOURCE
+    where USERRESOURCEID = #userresourceid#
+  </delete>
+  <insert id="SYS_USERRESOURCE_insert" parameterClass="com.hzfc.superadmin.framework.entity.Userresource">
+  	<selectKey resultClass="long" keyProperty="userresourceid"> 
+	        select HIBERNATE_SEQUENCE.nextval as userresourceid from dual 
+    </selectKey>
+    insert into SYS_USERRESOURCE (USERRESOURCEID, ACCOUNTID, RESOURCEID)
+    values (#userresourceid#, #accountid#, #resourceid#)
+  </insert>
+  <insert id="SYS_USERRESOURCE_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.Userresource">
+    insert into SYS_USERRESOURCE
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userresourceid">
+        USERRESOURCEID
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID
+      </isNotNull>
+      <isNotNull prepend="," property="resourceid">
+        RESOURCEID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userresourceid">
+        #userresourceid#
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="resourceid">
+        #resourceid#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_USERRESOURCE_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.Userresource">
+    update SYS_USERRESOURCE
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID = #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="resourceid">
+        RESOURCEID = #resourceid#
+      </isNotNull>
+    </dynamic>
+    where USERRESOURCEID = #userresourceid#
+  </update>
+  <update id="SYS_USERRESOURCE_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.Userresource">
+    update SYS_USERRESOURCE
+    set ACCOUNTID = #accountid#,
+      RESOURCEID = #resourceid#
+    where USERRESOURCEID = #userresourceid#
+  </update>
+  
+  <delete id="deleteResourceContentByContentid" parameterClass="java.lang.Long">
+  	delete FROM SYS_USERRESOURCE
+    where  SYS_USERRESOURCE.ACCOUNTID = #accountid#
+  </delete>
+</sqlMap>

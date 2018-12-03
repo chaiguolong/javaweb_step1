@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_USEREXT">
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserInfo" id="SYS_USEREXT_BaseResultMap">
+    <result column="USEREXTID" jdbcType="DECIMAL" nullValue="0" property="userextid" />
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="REALNAME" jdbcType="VARCHAR" nullValue="" property="realname" />
+    <result column="SEX" jdbcType="DECIMAL" nullValue="0" property="sex" />
+    <result column="EMAIL" jdbcType="VARCHAR" nullValue="" property="email" />
+    <result column="MOBILE" jdbcType="VARCHAR" nullValue="" property="mobile" />
+    <result column="ADDRESS" jdbcType="VARCHAR" nullValue="" property="address" />
+    <result column="POSTCODE" jdbcType="VARCHAR" nullValue="" property="postcode" />
+    <result column="REMARK" jdbcType="VARCHAR" nullValue="" property="remark" />
+  </resultMap>
+  
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserInfo" id="SYS_USEREXT_ToAccountResultMap">
+    <result column="USEREXTID" jdbcType="DECIMAL" nullValue="0" property="userextid" />
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="REALNAME" jdbcType="VARCHAR" nullValue="" property="realname" />
+    <result column="SEX" jdbcType="DECIMAL" nullValue="0" property="sex" />
+    <result column="EMAIL" jdbcType="VARCHAR" nullValue="" property="email" />
+    <result column="MOBILE" jdbcType="VARCHAR" nullValue="" property="mobile" />
+    <result column="LOGINUSER" jdbcType="VARCHAR" nullValue="" property="loginuser" />
+    <result column="ISENABLE" jdbcType="DECIMAL" nullValue="0" property="isenable" />
+  </resultMap>
+  <select id="SYS_USEREXT_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_USEREXT_BaseResultMap">
+    select SYS_USEREXT.USEREXTID, SYS_USEREXT.ACCOUNTID, SYS_USEREXT.REALNAME, SYS_USEREXT.SEX,
+      SYS_USEREXT.EMAIL, SYS_USEREXT.MOBILE, SYS_USEREXT.ADDRESS, SYS_USEREXT.POSTCODE,
+      SYS_USEREXT.REMARK
+    from SYS_USEREXT
+    where USEREXTID = #userextid#
+  </select>
+  <delete id="SYS_USEREXT_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_USEREXT
+    where USEREXTID = #userextid#
+  </delete>
+  <insert id="SYS_USEREXT_insert" parameterClass="com.hzfc.superadmin.framework.entity.UserInfo">
+  	<selectKey resultClass="long" keyProperty="userextid"> 
+	        select HIBERNATE_SEQUENCE.nextval as userextid from dual 
+    </selectKey>
+    insert into SYS_USEREXT (USEREXTID, ACCOUNTID, REALNAME, SEX, EMAIL, MOBILE, ADDRESS, POSTCODE,
+      REMARK)
+    values (#userextid#, #accountid#, #realname#, #sex#, #email#, #mobile#, #address#, #postcode#,
+      #remark#)
+  </insert>
+  <insert id="SYS_USEREXT_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.UserInfo">
+    insert into SYS_USEREXT
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userextid">
+        USEREXTID
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID
+      </isNotNull>
+      <isNotNull prepend="," property="realname">
+        REALNAME
+      </isNotNull>
+      <isNotNull prepend="," property="sex">
+        SEX
+      </isNotNull>
+      <isNotNull prepend="," property="email">
+        EMAIL
+      </isNotNull>
+      <isNotNull prepend="," property="mobile">
+        MOBILE
+      </isNotNull>
+      <isNotNull prepend="," property="address">
+        ADDRESS
+      </isNotNull>
+      <isNotNull prepend="," property="postcode">
+        POSTCODE
+      </isNotNull>
+      <isNotNull prepend="," property="remark">
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="userextid">
+        #userextid#
+      </isNotNull>
+      <isNotNull prepend="," property="accountid">
+        #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="realname">
+        #realname#
+      </isNotNull>
+      <isNotNull prepend="," property="sex">
+        #sex#
+      </isNotNull>
+      <isNotNull prepend="," property="email">
+        #email#
+      </isNotNull>
+      <isNotNull prepend="," property="mobile">
+        #mobile#
+      </isNotNull>
+      <isNotNull prepend="," property="address">
+        #address#
+      </isNotNull>
+      <isNotNull prepend="," property="postcode">
+        #postcode#
+      </isNotNull>
+      <isNotNull prepend="," property="remark">
+        #remark#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_USEREXT_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.UserInfo">
+    update SYS_USEREXT
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID = #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="realname">
+        REALNAME = #realname#
+      </isNotNull>
+      <isNotNull prepend="," property="sex">
+        SEX = #sex#
+      </isNotNull>
+      <isNotNull prepend="," property="email">
+        EMAIL = #email#
+      </isNotNull>
+      <isNotNull prepend="," property="mobile">
+        MOBILE = #mobile#
+      </isNotNull>
+      <isNotNull prepend="," property="address">
+        ADDRESS = #address#
+      </isNotNull>
+      <isNotNull prepend="," property="postcode">
+        POSTCODE = #postcode#
+      </isNotNull>
+      <isNotNull prepend="," property="remark">
+        REMARK = #remark#
+      </isNotNull>
+    </dynamic>
+    where USEREXTID = #userextid#
+  </update>
+  <update id="SYS_USEREXT_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.UserInfo">
+    update SYS_USEREXT
+    set ACCOUNTID = #accountid#,
+      REALNAME = #realname#,
+      SEX = #sex#,
+      EMAIL = #email#,
+      MOBILE = #mobile#,
+      ADDRESS = #address#,
+      POSTCODE = #postcode#,
+      REMARK = #remark#
+    where USEREXTID = #userextid#
+  </update>
+  <select id="SYS_USEREXT_selectPageByQueryCondition" parameterClass="java.util.Map" resultMap="SYS_USEREXT_BaseResultMap">
+    select SYS_USEREXT.USEREXTID, SYS_USEREXT.ACCOUNTID, SYS_USEREXT.REALNAME, SYS_USEREXT.SEX,
+     	   SYS_USEREXT.EMAIL, SYS_USEREXT.MOBILE, SYS_USEREXT.ADDRESS, SYS_USEREXT.POSTCODE,
+      	   SYS_USEREXT.REMARK
+    from   SYS_USEREXT
+   	<dynamic prepend="where" >
+    	<isNotEmpty prepend="and" property="keywords" >
+			 SYS_USEREXT.REALNAME like #keywords#
+        </isNotEmpty>
+    </dynamic> 
+  </select>
+  <select id="SYS_USEREXT_selectPageByUserToAccountQueryCondition" parameterClass="java.util.Map" resultMap="SYS_USEREXT_ToAccountResultMap">
+    select SYS_USEREXT.USEREXTID, SYS_USEREXT.ACCOUNTID, SYS_USEREXT.REALNAME, SYS_USEREXT.SEX, 
+   	  SYS_USEREXT.EMAIL, SYS_USEREXT.MOBILE, SYS_ACCOUNT.LOGINUSER, SYS_ACCOUNT.ISENABLE
+    from   SYS_USEREXT, SYS_ACCOUNT
+   	where  SYS_USEREXT.ACCOUNTID = SYS_ACCOUNT.ACCOUNTID(+)
+    	<isNotEmpty prepend="and" property="keywords" >
+		   (
+			  SYS_USEREXT.REALNAME like #keywords#
+			  or SYS_USEREXT.EMAIL like #keywords#
+			  or SYS_USEREXT.MOBILE like #keywords#
+			  or SYS_ACCOUNT.LOGINUSER like #keywords#
+		   )	  
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="isenable" >
+			  SYS_ACCOUNT.ISENABLE = $isenable$
+        </isNotEmpty>
+    order by SYS_USEREXT.USEREXTID desc
+  </select>
+  
+  <delete id="deleteUserextContentByContentid" parameterClass="java.lang.Long">
+  	delete from SYS_USEREXT 
+  	where  SYS_USEREXT.ACCOUNTID = #accountid#
+  </delete>
+  
+</sqlMap>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WEB_ADINFO" >
+  <resultMap id="WEB_ADINFO_BaseResultMap" class="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+    <result column="ADID" property="adid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RSSTYPE" property="rsstype" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ADPATH" property="adpath" jdbcType="VARCHAR" nullValue="" />
+    <result column="DESCR" property="descr" jdbcType="VARCHAR" nullValue="" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" nullValue="0" />
+    <result column="BEGINTIME" property="begintime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="ENDTIME" property="endtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="LINKURL" property="linkurl" jdbcType="VARCHAR" nullValue="" />
+    <result column="SEATINFO" property="seatinfo" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  <select id="WEB_ADINFO_selectByPrimaryKey" resultMap="WEB_ADINFO_BaseResultMap" parameterClass="java.lang.Long" >
+    select WEB_ADINFO.ADID, WEB_ADINFO.ADTYPEID, WEB_ADINFO.RSSTYPE, WEB_ADINFO.ADPATH, WEB_ADTYPE.SEATINFO,
+      WEB_ADINFO.DESCR, WEB_ADINFO.ORDERID, WEB_ADINFO.ISDISPLAY, TO_CHAR(WEB_ADINFO.BEGINTIME,
+      'YYYY-MM-DD') BEGINTIME, TO_CHAR(WEB_ADINFO.ENDTIME, 'YYYY-MM-DD')
+      ENDTIME, WEB_ADINFO.LINKURL
+    from WEB_ADINFO ,WEB_ADTYPE
+    where ADID = #adid# and WEB_ADINFO.ADTYPEID = WEB_ADTYPE.ADTYPEID
+  </select>
+  <delete id="WEB_ADINFO_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from WEB_ADINFO
+    where ADID = #adid#
+  </delete>
+  <insert id="WEB_ADINFO_insert" parameterClass="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+    <selectKey resultClass="long" keyProperty="adid"> 
+        select HIBERNATE_SEQUENCE.nextval as adid from dual 
+    </selectKey>
+    insert into WEB_ADINFO (ADID, ADTYPEID, RSSTYPE, ADPATH, DESCR, ORDERID, ISDISPLAY, BEGINTIME,
+      ENDTIME, LINKURL)
+    values (#adid#, #adtypeid#, #rsstype#, #adpath#, #descr#, #orderid#, #isdisplay#,
+      TO_DATE(#begintime#, 'YYYY-MM-DD HH24:MI:SS'), TO_DATE(#endtime#, 'YYYY-MM-DD HH24:MI:SS'),
+      #linkurl#)
+  </insert>
+  <insert id="WEB_ADINFO_insertSelective" parameterClass="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+    insert into WEB_ADINFO
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="adid" >
+        ADID
+      </isNotNull>
+      <isNotNull prepend="," property="adtypeid" >
+        ADTYPEID
+      </isNotNull>
+      <isNotNull prepend="," property="rsstype" >
+        RSSTYPE
+      </isNotNull>
+      <isNotNull prepend="," property="adpath" >
+        ADPATH
+      </isNotNull>
+      <isNotNull prepend="," property="descr" >
+        DESCR
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        ISDISPLAY
+      </isNotNull>
+      <isNotNull prepend="," property="begintime" >
+        BEGINTIME
+      </isNotNull>
+      <isNotNull prepend="," property="endtime" >
+        ENDTIME
+      </isNotNull>
+      <isNotNull prepend="," property="linkurl" >
+        LINKURL
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="adid" >
+        #adid#
+      </isNotNull>
+      <isNotNull prepend="," property="adtypeid" >
+        #adtypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="rsstype" >
+        #rsstype#
+      </isNotNull>
+      <isNotNull prepend="," property="adpath" >
+        #adpath#
+      </isNotNull>
+      <isNotNull prepend="," property="descr" >
+        #descr#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        #isdisplay#
+      </isNotNull>
+      <isNotNull prepend="," property="begintime" >
+        TO_DATE(#begintime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="endtime" >
+        TO_DATE(#endtime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="linkurl" >
+        #linkurl#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="WEB_ADINFO_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+    update WEB_ADINFO
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="adtypeid" >
+        ADTYPEID = #adtypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="rsstype" >
+        RSSTYPE = #rsstype#
+      </isNotNull>
+      <isNotNull prepend="," property="adpath" >
+        ADPATH = #adpath#
+      </isNotNull>
+      <isNotNull prepend="," property="descr" >
+        DESCR = #descr#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID = #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="isdisplay" >
+        ISDISPLAY = #isdisplay#
+      </isNotNull>
+      <isNotNull prepend="," property="begintime" >
+        BEGINTIME = TO_DATE(#begintime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="endtime" >
+        ENDTIME = TO_DATE(#endtime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      <isNotNull prepend="," property="linkurl" >
+        LINKURL = #linkurl#
+      </isNotNull>
+    </dynamic>
+    where ADID = #adid#
+  </update>
+  <update id="WEB_ADINFO_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+    update WEB_ADINFO
+    set ADTYPEID = #adtypeid#,
+      RSSTYPE = #rsstype#,
+      ADPATH = #adpath#,
+      DESCR = #descr#,
+      ORDERID = #orderid#,
+      ISDISPLAY = #isdisplay#,
+      BEGINTIME = TO_DATE(#begintime#, 'YYYY-MM-DD HH24:MI:SS'),
+      ENDTIME = TO_DATE(#endtime#, 'YYYY-MM-DD HH24:MI:SS'),
+      LINKURL = #linkurl#
+    where ADID = #adid#
+  </update>
+  
+   <resultMap id="WEB_ADINFO_selectAllByMapParam_Result" class="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+    <result column="ADID" property="adid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="RSSTYPE" property="rsstype" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ADPATH" property="adpath" jdbcType="VARCHAR" nullValue="" />
+    <result column="DESCR" property="descr" jdbcType="VARCHAR" nullValue="" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ISDISPLAY" property="isdisplay" jdbcType="DECIMAL" nullValue="0" />
+    <result column="BEGINTIME" property="begintime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="ENDTIME" property="endtime" jdbcType="TIMESTAMP" nullValue="" />
+    <result column="LINKURL" property="linkurl" jdbcType="VARCHAR" nullValue="" />
+    <result column="SEATINFO" property="seatinfo" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="WEB_ADINFO_selectAllByMapParam" resultMap="WEB_ADINFO_selectAllByMapParam_Result" parameterClass="java.util.Map" >
+    select WEB_ADINFO.ADID, WEB_ADINFO.ADTYPEID, WEB_ADINFO.RSSTYPE, WEB_ADINFO.ADPATH,
+      WEB_ADINFO.DESCR, WEB_ADINFO.ORDERID, WEB_ADINFO.ISDISPLAY, TO_CHAR(WEB_ADINFO.BEGINTIME,
+      'YYYY-MM-DD') BEGINTIME, TO_CHAR(WEB_ADINFO.ENDTIME, 'YYYY-MM-DD')
+      ENDTIME, WEB_ADINFO.LINKURL, WEB_ADTYPE.SEATINFO
+    from WEB_ADINFO,WEB_ADTYPE
+     where WEB_ADINFO.ADTYPEID = WEB_ADTYPE.ADTYPEID
+     <isNotEmpty prepend="and" property="keywords" >
+     (	
+		WEB_ADTYPE.SEATINFO like #keywords#
+		or WEB_ADINFO.DESCR like #keywords#
+	 )
+    </isNotEmpty> 
+  </select>
+  
+  <select id="WEB_ADINFO_selectPageByQueryCondition" resultMap="WEB_ADINFO_selectAllByMapParam_Result" parameterClass="java.util.Map" >
+    select WEB_ADINFO.ADID, WEB_ADINFO.ADTYPEID, WEB_ADINFO.RSSTYPE, WEB_ADINFO.ADPATH,
+      WEB_ADINFO.DESCR, WEB_ADINFO.ORDERID, WEB_ADINFO.ISDISPLAY, TO_CHAR(WEB_ADINFO.BEGINTIME,
+      'YYYY-MM-DD HH24:MI:SS') BEGINTIME, TO_CHAR(WEB_ADINFO.ENDTIME, 'YYYY-MM-DD HH24:MI:SS')
+      ENDTIME, WEB_ADINFO.LINKURL, WEB_ADTYPE.SEATINFO
+    from WEB_ADINFO,WEB_ADTYPE
+     where WEB_ADINFO.ADTYPEID = WEB_ADTYPE.ADTYPEID
+      <isNotEmpty prepend="and" property="keywords" >
+     (	
+		WEB_ADTYPE.SEATINFO like #keywords#
+		or WEB_ADINFO.DESCR like #keywords#
+	 )
+    </isNotEmpty> 
+    <isNotEmpty prepend="and" property="adtypeid" >
+			WEB_ADINFO.ADTYPEID = #adtypeid#
+    </isNotEmpty>
+    <isNotEmpty prepend="and" property="rsstype" >
+		WEB_ADINFO.RSSTYPE = #rsstype#
+    </isNotEmpty>
+    <isNotEmpty prepend="and" property="isdisplay" >
+		WEB_ADINFO.ISDISPLAY = #isdisplay#
+    </isNotEmpty>
+    <isNotEmpty prepend="and" property="starttime" >
+	    WEB_ADINFO.ENDTIME >= TO_DATE(#starttime#,'YYYY-MM-DD HH24:MI:SS')
+	</isNotEmpty>
+	<isNotEmpty prepend="and" property="endtime" >
+		WEB_ADINFO.ENDTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD HH24:MI:SS')+1
+    </isNotEmpty>
+    order by WEB_ADINFO.ADID desc
+  </select>
+</sqlMap>

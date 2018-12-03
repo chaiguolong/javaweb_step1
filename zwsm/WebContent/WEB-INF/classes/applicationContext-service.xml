@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	
+	<!--配置service层-->
+	<bean name="superService" class="com.hzfc.common.service.impl.SuperServiceImpl"
+		scope="prototype">
+		<property name="superDao" ref="superDao" />
+	</bean>
+	
+	<!-- 新界面菜单 -->
+	<bean name="superMenuService" class="com.hzfc.superadmin.framework.service.impl.SuperMenuServiceImpl"
+		scope="prototype">
+		<property name="superMenuDao" ref="superMenuDao" />
+	</bean>
+
+	<!-- 辅助信息管理 -->
+	<bean name="assistService" class="com.hzfc.superadmin.assist.service.impl.AssistServiceImpl"
+		scope="prototype">
+		<property name="superDao" ref="superDao"/>	
+		<property name="assistDao" ref="assistDao" />
+	</bean>
+	
+	<!-- 资讯新闻 -->
+	<bean name="newsContentService" class="com.hzfc.superadmin.newscontent.service.impl.NewsContentServiceImpl"
+		scope="prototype">
+		<property name="superDao" ref="superDao"/>	
+		<property name="newsContentDao" ref="newsContentDao" />
+	</bean>
+	
+	
+	<!-- 用户信息 -->
+	<bean name="userInfomationService" class="com.hzfc.superadmin.framework.service.impl.UserInfomationServiceImpl"
+		scope="prototype">
+		<property name="superDao" ref="superDao"></property>
+		<property name="userInfomationDao" ref="userInfomationDao"></property>		
+	</bean>
+	
+	<!-- 广告管理 -->
+	<bean name="webAdMangerService" class="com.hzfc.superadmin.ad.service.impl.WebAdMangerServiceImpl"
+		scope="prototype">
+		<property name="superDao" ref="superDao"></property>
+		<property name="webAdMangerDao" ref="webAdMangerDao"></property>		
+	</bean>
+	
+	<!-- 菜单资源管理 -->
+	<bean id="menuResourceService" class="com.hzfc.superadmin.framework.service.impl.MenuResourceServiceImpl" scope="prototype">
+		<property name="superDao" ref="superDao" />
+		<property name="menuResourceDao" ref="menuResourceDao"/>
+	</bean>
+	
+	<!-- Dic字典模块 -->
+	<bean id="dicService" class="com.hzfc.superadmin.framework.service.impl.DicServiceImpl" scope="prototype">
+		<property name="superDao" ref="superDao" />
+	</bean>	
+	
+	<!-- 前台 -->
+	<bean name="categoryService" class="com.hzfc.web.service.impl.CategoryServiceImpl" scope="prototype">
+		<property name="categoryDao" ref="categoryDao"/>
+	</bean>
+	<bean name="contentCategoryService" class="com.hzfc.web.service.impl.ContentCategoryServiceImpl" scope="prototype">
+		<property name="contentCategoryDao" ref="contentCategoryDao"/>
+	</bean>
+	<bean name="contentService" class="com.hzfc.web.service.impl.ContentServiceImpl" scope="prototype">
+		<property name="contentDao" ref="contentDao"/>
+	</bean>
+	<bean name="d30Service" class="com.hzfc.web.service.impl.D30ServiceImpl" scope="prototype">
+		<property name="d30Dao" ref="d30Dao"/>
+	</bean>
+	<bean name="complaintService" class="com.hzfc.web.service.impl.ComplaintServiceImpl" scope="prototype">
+		<property name="complaintDao" ref="complaintDao"/>
+	</bean>
+	<bean name="developerService" class="com.hzfc.web.service.impl.DeveloperServiceImpl" scope="prototype">
+		<property name="developerDao" ref="developerDao"/>
+	</bean>
+	<bean name="presellService" class="com.hzfc.web.service.impl.PresellServiceImpl" scope="prototype">
+		<property name="superDao" ref="presellDao"/>
+	</bean>
+	<bean name="noticeService" class="com.hzfc.web.service.impl.NoticeServiceImpl" scope="prototype">
+	</bean>
+	<bean name="contractContinuousService" class="com.hzfc.web.service.impl.ContractContinuousServiceImpl" scope="prototype">
+		<property name="superDao" ref="contractContinuousDao"/>
+	</bean>
+	<bean name="contractRevokeService" class="com.hzfc.web.service.impl.ContractRevokeServiceImpl" scope="prototype">
+		<property name="superDao" ref="contractRevokeDao"/>
+	</bean>
+</beans>

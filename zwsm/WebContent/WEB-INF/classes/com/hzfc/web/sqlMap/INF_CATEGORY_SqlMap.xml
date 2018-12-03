@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WEB_INF_CATEGORY">
+	<resultMap class="com.hzfc.web.entity.Category" id="WEB_INF_CATEGORY_BaseResultMap">
+		<result column="CATEGORYID" jdbcType="DECIMAL" nullValue="0" property="categoryid" />
+		<result column="PID" jdbcType="DECIMAL" nullValue="0" property="pid" />
+		<result column="NAME" jdbcType="VARCHAR" nullValue="" property="name" />
+		<result column="ISDISPLAY" jdbcType="DECIMAL" nullValue="0" property="isdisplay" />
+		<result column="ISSINGLE" jdbcType="DECIMAL" nullValue="0" property="issingle" />
+		<result column="SORTNUMBER" jdbcType="DECIMAL" nullValue="0" property="sortnumber" />
+		<result column="REAMRK" jdbcType="OTHER" nullValue="" property="reamrk" />
+		<result column="WEBSITEID" jdbcType="DECIMAL" nullValue="0" property="websiteid" />
+		<result column="URL" jdbcType="VARCHAR" nullValue="" property="url" />
+	</resultMap>
+	<select id="WEB_INF_CATEGORY_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="WEB_INF_CATEGORY_BaseResultMap">
+		select INF_CATEGORY.CATEGORYID, INF_CATEGORY.PID, INF_CATEGORY.NAME, INF_CATEGORY.ISDISPLAY,
+			INF_CATEGORY.ISSINGLE, INF_CATEGORY.SORTNUMBER, INF_CATEGORY.REAMRK, INF_CATEGORY.WEBSITEID, INF_CATEGORY.URL
+		from INF_CATEGORY
+		where CATEGORYID = #categoryid#
+	</select>
+	<select id="WEB_INF_CATEGORY_selectCategoryListByMap" parameterClass="java.util.Map" resultMap="WEB_INF_CATEGORY_BaseResultMap">
+		select INF_CATEGORY.CATEGORYID, INF_CATEGORY.PID, INF_CATEGORY.NAME, INF_CATEGORY.ISDISPLAY,
+			INF_CATEGORY.ISSINGLE, INF_CATEGORY.SORTNUMBER, INF_CATEGORY.REAMRK, INF_CATEGORY.WEBSITEID, INF_CATEGORY.URL
+		from INF_CATEGORY
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="menu">
+				ISDISPLAY = 1
+				and (PID = 1 or PID in (select CATEGORYID from INF_CATEGORY where PID = 1))
+			</isNotNull>
+			<isNotNull prepend="and" property="djmenu">
+				ISDISPLAY = 1
+				and (PID = 101 or PID in (select CATEGORYID from INF_CATEGORY where PID = 101))
+			</isNotNull>
+			<isNotNull prepend="and" property="pid">
+				PID = #pid#
+			</isNotNull>
+			<isNotNull prepend="and" property="sid">
+				PID = (select PID from INF_CATEGORY where CATEGORYID = #sid#)
+			</isNotNull>
+			<isNotNull prepend="and" property="dj_pid">
+				(PID = #dj_pid#
+				or
+				PID in (select CATEGORYID from INF_CATEGORY where PID = #dj_pid#))
+			</isNotNull>
+			<isNotNull prepend="and" property="name">
+				NAME = #name#
+			</isNotNull>
+			<isNotNull prepend="and" property="isdisplay">
+				ISDISPLAY = #isdisplay#
+			</isNotNull>
+			<isNotNull prepend="and" property="issingle">
+				ISSINGLE = #issingle#
+			</isNotNull>
+			<isNotNull prepend="and" property="sortnumber">
+				SORTNUMBER = #sortnumber#
+			</isNotNull>
+			<isNotNull prepend="and" property="reamrk">
+				REAMRK = #reamrk#
+			</isNotNull>
+			<isNotNull prepend="and" property="websiteid">
+				WEBSITEID = #websiteid#
+			</isNotNull>
+		</dynamic>
+		order by PID, SORTNUMBER
+	</select>
+	<delete id="WEB_INF_CATEGORY_deleteByPrimaryKey" parameterClass="java.lang.Long">
+		delete from INF_CATEGORY
+		where CATEGORYID = #categoryid#
+	</delete>
+	<insert id="WEB_INF_CATEGORY_insert" parameterClass="com.hzfc.web.entity.Category">
+		insert into INF_CATEGORY (CATEGORYID, PID, NAME, ISDISPLAY, ISSINGLE, SORTNUMBER, REAMRK,
+			WEBSITEID, URL)
+		values (#categoryid#, #pid#, #name#, #isdisplay#, #issingle#, #sortnumber#, #reamrk#,
+			#websiteid#, #url#)
+	</insert>
+	<insert id="WEB_INF_CATEGORY_insertSelective" parameterClass="com.hzfc.web.entity.Category">
+		insert into INF_CATEGORY
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="categoryid">
+				CATEGORYID
+			</isNotNull>
+			<isNotNull prepend="," property="pid">
+				PID
+			</isNotNull>
+			<isNotNull prepend="," property="name">
+				NAME
+			</isNotNull>
+			<isNotNull prepend="," property="isdisplay">
+				ISDISPLAY
+			</isNotNull>
+			<isNotNull prepend="," property="issingle">
+				ISSINGLE
+			</isNotNull>
+			<isNotNull prepend="," property="sortnumber">
+				SORTNUMBER
+			</isNotNull>
+			<isNotNull prepend="," property="reamrk">
+				REAMRK
+			</isNotNull>
+			<isNotNull prepend="," property="websiteid">
+				WEBSITEID
+			</isNotNull>
+			<isNotNull prepend="," property="url">
+				URL
+			</isNotNull>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="categoryid">
+				#categoryid#
+			</isNotNull>
+			<isNotNull prepend="," property="pid">
+				#pid#
+			</isNotNull>
+			<isNotNull prepend="," property="name">
+				#name#
+			</isNotNull>
+			<isNotNull prepend="," property="isdisplay">
+				#isdisplay#
+			</isNotNull>
+			<isNotNull prepend="," property="issingle">
+				#issingle#
+			</isNotNull>
+			<isNotNull prepend="," property="sortnumber">
+				#sortnumber#
+			</isNotNull>
+			<isNotNull prepend="," property="reamrk">
+				#reamrk#
+			</isNotNull>
+			<isNotNull prepend="," property="websiteid">
+				#websiteid#
+			</isNotNull>
+			<isNotNull prepend="," property="url">
+				#url#
+			</isNotNull>
+			)
+		</dynamic>
+	</insert>
+	<update id="WEB_INF_CATEGORY_updateByPrimaryKeySelective" parameterClass="com.hzfc.web.entity.Category">
+		update INF_CATEGORY
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="pid">
+				PID = #pid#
+			</isNotNull>
+			<isNotNull prepend="," property="name">
+				NAME = #name#
+			</isNotNull>
+			<isNotNull prepend="," property="isdisplay">
+				ISDISPLAY = #isdisplay#
+			</isNotNull>
+			<isNotNull prepend="," property="issingle">
+				ISSINGLE = #issingle#
+			</isNotNull>
+			<isNotNull prepend="," property="sortnumber">
+				SORTNUMBER = #sortnumber#
+			</isNotNull>
+			<isNotNull prepend="," property="reamrk">
+				REAMRK = #reamrk#
+			</isNotNull>
+			<isNotNull prepend="," property="websiteid">
+				WEBSITEID = #websiteid#
+			</isNotNull>
+			<isNotNull prepend="," property="url">
+				URL = #url#
+			</isNotNull>
+		</dynamic>
+		where CATEGORYID = #categoryid#
+	</update>
+	<update id="WEB_INF_CATEGORY_updateByPrimaryKey" parameterClass="com.hzfc.web.entity.Category">
+		update INF_CATEGORY
+		set PID = #pid#,
+			NAME = #name#,
+			ISDISPLAY = #isdisplay#,
+			ISSINGLE = #issingle#,
+			SORTNUMBER = #sortnumber#,
+			REAMRK = #reamrk#,
+			WEBSITEID = #websiteid#,
+			URL = #url#
+		where CATEGORYID = #categoryid#
+	</update>
+	<select id="WEB_INF_CATEGORY_selectFdcxhCategoryListByMap" parameterClass="java.util.Map" resultMap="WEB_INF_CATEGORY_BaseResultMap">
+		select INF_CATEGORY.CATEGORYID, INF_CATEGORY.PID, INF_CATEGORY.NAME, INF_CATEGORY.ISDISPLAY,
+			INF_CATEGORY.ISSINGLE, INF_CATEGORY.SORTNUMBER, INF_CATEGORY.REAMRK, INF_CATEGORY.WEBSITEID, INF_CATEGORY.URL
+		from INF_CATEGORY
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="menu">
+				ISDISPLAY = 1
+				and (PID = 28020155 or PID in (select CATEGORYID from INF_CATEGORY where PID = 28020155))
+			</isNotNull>
+			<isNotNull prepend="and" property="pid">
+				PID = #pid#
+			</isNotNull>
+			<isNotNull prepend="and" property="sid">
+				PID = (select PID from INF_CATEGORY where CATEGORYID = #sid#)
+			</isNotNull>
+			<isNotNull prepend="and" property="name">
+				NAME = #name#
+			</isNotNull>
+			<isNotNull prepend="and" property="isdisplay">
+				ISDISPLAY = #isdisplay#
+			</isNotNull>
+			<isNotNull prepend="and" property="issingle">
+				ISSINGLE = #issingle#
+			</isNotNull>
+			<isNotNull prepend="and" property="sortnumber">
+				SORTNUMBER = #sortnumber#
+			</isNotNull>
+			<isNotNull prepend="and" property="reamrk">
+				REAMRK = #reamrk#
+			</isNotNull>
+			<isNotNull prepend="and" property="websiteid">
+				WEBSITEID = #websiteid#
+			</isNotNull>
+		</dynamic>
+		order by PID, SORTNUMBER desc
+	</select>
+	
+	<select id="WEB_INF_CATEGORY_selectZjxhCategoryListByMap" parameterClass="java.util.Map" resultMap="WEB_INF_CATEGORY_BaseResultMap">
+		select INF_CATEGORY.CATEGORYID, INF_CATEGORY.PID, INF_CATEGORY.NAME, INF_CATEGORY.ISDISPLAY,
+			INF_CATEGORY.ISSINGLE, INF_CATEGORY.SORTNUMBER, INF_CATEGORY.REAMRK, INF_CATEGORY.WEBSITEID, INF_CATEGORY.URL
+		from INF_CATEGORY
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="menu">
+				ISDISPLAY = 1
+				and (PID = 1000 or PID in (select CATEGORYID from INF_CATEGORY where PID = 1000))
+			</isNotNull>
+		</dynamic>
+		order by PID, SORTNUMBER desc
+	</select>
+</sqlMap>

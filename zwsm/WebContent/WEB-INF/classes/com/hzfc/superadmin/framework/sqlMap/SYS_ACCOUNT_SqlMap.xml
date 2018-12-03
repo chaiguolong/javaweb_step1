@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_ACCOUNT">
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserAccount" id="SYS_ACCOUNT_BaseResultMap">
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="LOGINUSER" jdbcType="VARCHAR" nullValue="" property="loginuser" />
+    <result column="LOGINPASS" jdbcType="VARCHAR" nullValue="" property="loginpass" />
+    <result column="ISENABLE" jdbcType="DECIMAL" nullValue="0" property="isenable" />
+  </resultMap>
+  
+  <resultMap class="com.hzfc.superadmin.framework.entity.UserAccount" id="SYS_ACCOUNT_UserLoginInfoResultMap">
+    <result column="ACCOUNTID" jdbcType="DECIMAL" nullValue="0" property="accountid" />
+    <result column="LOGINUSER" jdbcType="VARCHAR" nullValue="" property="loginuser" />
+    <result column="LOGINPASS" jdbcType="VARCHAR" nullValue="" property="loginpass" />
+    <result column="ISENABLE" jdbcType="DECIMAL" nullValue="0" property="isenable" />
+    <result column="USERDEPARTMENTID" jdbcType="DECIMAL" nullValue="0" property="userdepartmentid" />
+    <result column="DEPARTMENTID" jdbcType="DECIMAL" nullValue="0" property="departmentid" />
+    <result column="USERPOSITIONID" jdbcType="DECIMAL" nullValue="0" property="userpositionid" />
+    <result column="POSITIONID" jdbcType="DECIMAL" nullValue="0" property="positionid" />
+    <result column="USEREXTID" jdbcType="DECIMAL" nullValue="0" property="userextid" />
+    <result column="REALNAME" jdbcType="VARCHAR" nullValue="" property="realname" />
+    <result column="SEX" jdbcType="DECIMAL" nullValue="0" property="sex" />
+    <result column="EMAIL" jdbcType="VARCHAR" nullValue="" property="email" />
+    <result column="MOBILE" jdbcType="VARCHAR" nullValue="" property="mobile" />
+    <result column="ADDRESS" jdbcType="VARCHAR" nullValue="" property="address" />
+    <result column="POSTCODE" jdbcType="VARCHAR" nullValue="" property="postcode" />
+    <result column="REMARK" jdbcType="VARCHAR" nullValue="" property="remark" />
+  </resultMap>
+  <select id="SYS_ACCOUNT_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_ACCOUNT_BaseResultMap">
+    select SYS_ACCOUNT.ACCOUNTID, SYS_ACCOUNT.LOGINUSER, SYS_ACCOUNT.LOGINPASS, SYS_ACCOUNT.ISENABLE
+    from SYS_ACCOUNT
+    where ACCOUNTID = #accountid#
+  </select>
+  <delete id="SYS_ACCOUNT_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_ACCOUNT
+    where ACCOUNTID = #accountid#
+  </delete>
+  <insert id="SYS_ACCOUNT_insert" parameterClass="com.hzfc.superadmin.framework.entity.UserAccount">
+    insert into SYS_ACCOUNT (ACCOUNTID, LOGINUSER, LOGINPASS, ISENABLE)
+    values (#accountid#, #loginuser#, #loginpass#, #isenable#)
+  </insert>
+  <insert id="SYS_ACCOUNT_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.UserAccount">
+    insert into SYS_ACCOUNT
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="accountid">
+        ACCOUNTID
+      </isNotNull>
+      <isNotNull prepend="," property="loginuser">
+        LOGINUSER
+      </isNotNull>
+      <isNotNull prepend="," property="loginpass">
+        LOGINPASS
+      </isNotNull>
+      <isNotNull prepend="," property="isenable">
+        ISENABLE
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="accountid">
+        #accountid#
+      </isNotNull>
+      <isNotNull prepend="," property="loginuser">
+        #loginuser#
+      </isNotNull>
+      <isNotNull prepend="," property="loginpass">
+        #loginpass#
+      </isNotNull>
+      <isNotNull prepend="," property="isenable">
+        #isenable#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_ACCOUNT_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.UserAccount">
+    update SYS_ACCOUNT
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="loginuser">
+        LOGINUSER = #loginuser#
+      </isNotNull>
+      <isNotNull prepend="," property="loginpass">
+        LOGINPASS = #loginpass#
+      </isNotNull>
+      <isNotNull prepend="," property="isenable">
+        ISENABLE = #isenable#
+      </isNotNull>
+    </dynamic>
+    where ACCOUNTID = #accountid#
+  </update>
+  <update id="SYS_ACCOUNT_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.UserAccount">
+    update SYS_ACCOUNT
+    set LOGINUSER = #loginuser#,
+      LOGINPASS = #loginpass#,
+      ISENABLE = #isenable#
+    where ACCOUNTID = #accountid#
+  </update>
+  
+  <select id="SYS_ACCOUNT_selectByUsername" parameterClass="java.lang.String" resultMap="SYS_ACCOUNT_BaseResultMap">
+    select SYS_ACCOUNT.ACCOUNTID, SYS_ACCOUNT.LOGINUSER, SYS_ACCOUNT.LOGINPASS, SYS_ACCOUNT.ISENABLE
+    from SYS_ACCOUNT
+    where LOGINUSER = #loginuser#
+  </select>
+  
+  <resultMap id="getRoleListForUserInfoResult" class="com.hzfc.superadmin.framework.entity.UserAccount" >
+    <result column="ROLEID" property="roleid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="ROLENAME" property="rolename" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="getRoleListByKeyword" resultMap="getRoleListForUserInfoResult" parameterClass="java.util.Map">
+  	select ROWALL.* FROM 
+		(select ROW_.*, ROWNUM AS NUM_  FROM (
+	  	select SYS_ROLE.ROLEID, SYS_ROLE.ROLENAME from SYS_ROLE 
+	  	<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="keyword" >
+			(SYS_ROLE.ROLENAME like '%$keyword$%')
+			</isNotEmpty>
+		</dynamic>
+		order by SYS_ROLE.ROLEID desc
+  	) ROW_ ) ROWALL 
+	where NUM_ > 0  AND NUM_ <![CDATA[<=]]> 10
+  </select>
+  
+  <select id="getLinkedRoleListByContentid" resultMap="getRoleListForUserInfoResult" parameterClass="java.util.Map">
+     select SYS_ROLE.ROLEID, SYS_ROLE.ROLENAME
+ 	 from   SYS_ROLE 
+ 	 where  SYS_ROLE.ROLEID in (
+ 	 	    select SYS_USERROLE.ROLEID from SYS_USERROLE 
+ 	 	    where SYS_USERROLE.ACCOUNTID = #accountid#
+		    )
+  </select>
+  
+  <resultMap id="getResourceListForUserInfoResult" class="com.hzfc.superadmin.framework.entity.UserAccount" >
+    <result column="RESOURCEID" property="resourceid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="getResourceListByKeyword" resultMap="getResourceListForUserInfoResult" parameterClass="java.util.Map">
+  	select ROWALL.* FROM 
+		(select ROW_.*, ROWNUM AS NUM_  FROM (
+	  	select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME from SYS_RESOURCE 
+	  	<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="keywords" >
+			(SYS_RESOURCE.NAME like '%$keywords$%')
+			</isNotEmpty>
+		</dynamic>
+		order by SYS_RESOURCE.RESOURCEID desc
+  	) ROW_ ) ROWALL 
+	where NUM_ > 0  AND NUM_ <![CDATA[<=]]> 10
+  </select>
+  
+  <select id="getLinkedResourceListByContentid" resultMap="getResourceListForUserInfoResult" parameterClass="java.util.Map">
+     select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME
+ 	 from   SYS_RESOURCE 
+ 	 where  SYS_RESOURCE.RESOURCEID in (
+ 	 	    select SYS_USERRESOURCE.RESOURCEID from SYS_USERRESOURCE 
+ 	 	    where  SYS_USERRESOURCE.ACCOUNTID = #accountid#
+		    )
+  </select>
+  
+  <resultMap id="getDepartmentListForResult" class="com.hzfc.superadmin.framework.entity.UserAccount" >
+    <result column="DEPARTMENTID" property="departmentid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="DEPARTMENTNAME" property="departmentname" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="SelectByAccountidForDepartmentname" resultMap="getDepartmentListForResult" parameterClass="java.util.Map">
+  	select SYS_DEPARTMENT.DEPARTMENTID, DEPARTMENTNAME
+    from   SYS_USEREXT,  SYS_USERDEPARTMENT, SYS_DEPARTMENT
+    where  SYS_USEREXT.ACCOUNTID = SYS_USERDEPARTMENT.ACCOUNTID
+    and    SYS_USERDEPARTMENT.DEPARTMENTID = SYS_DEPARTMENT.DEPARTMENTID
+  </select>
+  
+  <select id="SYS_ACCOUNT_selectUserLoginInfoByContentid" parameterClass="java.util.Map" resultMap="SYS_ACCOUNT_UserLoginInfoResultMap">
+    select SYS_ACCOUNT.ACCOUNTID, SYS_ACCOUNT.LOGINUSER, SYS_ACCOUNT.LOGINPASS, SYS_ACCOUNT.ISENABLE,
+       	   SYS_USEREXT.USEREXTID, SYS_USEREXT.REALNAME, SYS_USEREXT.SEX, SYS_USEREXT.EMAIL, SYS_USEREXT.MOBILE, SYS_USEREXT.ADDRESS, SYS_USEREXT.POSTCODE,SYS_USEREXT.REMARK,
+       	   SYS_USERPOSITION.USERPOSITIONID, SYS_USERPOSITION.POSITIONID,
+       	   SYS_USERDEPARTMENT.USERDEPARTMENTID, SYS_USERDEPARTMENT.DEPARTMENTID
+	from   SYS_ACCOUNT, SYS_USEREXT, SYS_USERPOSITION, SYS_USERDEPARTMENT      
+	where  SYS_ACCOUNT.ACCOUNTID =  SYS_USEREXT.ACCOUNTID 
+	and    SYS_ACCOUNT.ACCOUNTID = SYS_USERPOSITION.ACCOUNTID 
+	and    SYS_ACCOUNT.ACCOUNTID  = SYS_USERDEPARTMENT.ACCOUNTID
+	and    SYS_ACCOUNT.ACCOUNTID = #accountid#
+  </select>
+</sqlMap>

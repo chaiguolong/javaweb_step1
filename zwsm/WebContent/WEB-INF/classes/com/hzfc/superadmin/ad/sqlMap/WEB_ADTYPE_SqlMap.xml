@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="WEB_ADTYPE" >
+  <resultMap id="WEB_ADTYPE_BaseResultMap" class="com.hzfc.superadmin.ad.entity.WebAdType" >
+    <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="WEBSEATID" property="webseatid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="SEATINFO" property="seatinfo" jdbcType="VARCHAR" nullValue="" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="TYPERMK" property="typermk" jdbcType="VARCHAR" nullValue="" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" nullValue="" />
+  </resultMap>
+  
+   <resultMap id="WEB_ADTYPE_ListResultMap" class="com.hzfc.superadmin.ad.entity.WebAdType" >
+    <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="SEATINFO" property="seatinfo" jdbcType="VARCHAR" nullValue="" />
+  </resultMap>
+  
+  <select id="WEB_ADTYPE_selectByPrimaryKey" resultMap="WEB_ADTYPE_BaseResultMap" parameterClass="java.lang.Long" >
+    select WEB_ADTYPE.ADTYPEID, WEB_ADTYPE.WEBSEATID, WEB_ADTYPE.SEATINFO, WEB_ADTYPE.ORDERID,
+      WEB_ADTYPE.TYPERMK, TO_CHAR(WEB_ADTYPE.UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+    from WEB_ADTYPE 
+    where ADTYPEID = #adtypeid# 
+  </select>
+  <delete id="WEB_ADTYPE_deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    delete from WEB_ADTYPE
+    where ADTYPEID = #adtypeid#
+  </delete>
+  <insert id="WEB_ADTYPE_insert" parameterClass="com.hzfc.superadmin.ad.entity.WebAdType" >
+  	<selectKey resultClass="long" keyProperty="adtypeid"> 
+        select HIBERNATE_SEQUENCE.nextval as adtypeid from dual 
+    </selectKey>
+    insert into WEB_ADTYPE (ADTYPEID, WEBSEATID, SEATINFO, ORDERID, TYPERMK, UPDATETIME)
+    values (#adtypeid#, #webseatid#, #seatinfo#, #orderid#, #typermk#, sysdate)
+  </insert>
+  <insert id="WEB_ADTYPE_insertSelective" parameterClass="com.hzfc.superadmin.ad.entity.WebAdType" >
+    insert into WEB_ADTYPE
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="adtypeid" >
+        ADTYPEID
+      </isNotNull>
+      <isNotNull prepend="," property="webseatid" >
+        WEBSEATID
+      </isNotNull>
+      <isNotNull prepend="," property="seatinfo" >
+        SEATINFO
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID
+      </isNotNull>
+      <isNotNull prepend="," property="typermk" >
+        TYPERMK
+      </isNotNull>
+      <isNotNull prepend="," property="updatetime" >
+        UPDATETIME
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="adtypeid" >
+        #adtypeid#
+      </isNotNull>
+      <isNotNull prepend="," property="webseatid" >
+        #webseatid#
+      </isNotNull>
+      <isNotNull prepend="," property="seatinfo" >
+        #seatinfo#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="typermk" >
+        #typermk#
+      </isNotNull>
+      <isNotNull prepend="," property="updatetime" >
+        TO_DATE(#updatetime#, 'YYYY-MM-DD HH24:MI:SS')
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="WEB_ADTYPE_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.ad.entity.WebAdType" >
+    update WEB_ADTYPE
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="webseatid" >
+        WEBSEATID = #webseatid#
+      </isNotNull>
+      <isNotNull prepend="," property="seatinfo" >
+        SEATINFO = #seatinfo#
+      </isNotNull>
+      <isNotNull prepend="," property="orderid" >
+        ORDERID = #orderid#
+      </isNotNull>
+      <isNotNull prepend="," property="typermk" >
+        TYPERMK = #typermk#
+      </isNotNull>
+      <isNotNull prepend="," property="updatetime" >
+        UPDATETIME = $updatetime$
+      </isNotNull>
+    </dynamic>
+    where ADTYPEID = #adtypeid#
+  </update>
+  <update id="WEB_ADTYPE_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.ad.entity.WebAdType" >
+    update WEB_ADTYPE
+    set WEBSEATID = #webseatid#,
+      SEATINFO = #seatinfo#,
+      ORDERID = #orderid#,
+      TYPERMK = #typermk#,
+      UPDATETIME = $UPDATETIME$
+    where ADTYPEID = #adtypeid#
+  </update>
+  
+  <resultMap id="WEB_ADTYPE_selectAllByMapParam_Result" class="com.hzfc.superadmin.ad.entity.WebAdType">
+	 <result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="WEBSEATID" property="webseatid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="SEATINFO" property="seatinfo" jdbcType="VARCHAR" nullValue="" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="TYPERMK" property="typermk" jdbcType="VARCHAR" nullValue="" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" nullValue="" />
+  </resultMap>
+  
+    
+  <resultMap id="WEB_ADTYPE_selectAllByMapParamResult" class="com.hzfc.superadmin.ad.entity.WebAdType">
+	<result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="WEBSEATID" property="webseatid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="SEATINFO" property="seatinfo" jdbcType="VARCHAR" nullValue="" />
+    <result column="ORDERID" property="orderid" jdbcType="DECIMAL" nullValue="0" />
+    <result column="TYPERMK" property="typermk" jdbcType="VARCHAR" nullValue="" />
+    <result column="UPDATETIME" property="updatetime" jdbcType="TIMESTAMP" nullValue="" />
+  </resultMap>
+  
+  
+  <select id="WEB_ADTYPE_selectPageByQueryCondition" resultMap="WEB_ADTYPE_selectAllByMapParamResult" parameterClass="java.util.Map">
+  	 select WEB_ADTYPE.ADTYPEID, WEB_ADTYPE.WEBSEATID, WEB_ADTYPE.SEATINFO, WEB_ADTYPE.ORDERID,
+      WEB_ADTYPE.TYPERMK, TO_CHAR(WEB_ADTYPE.UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+    from WEB_ADTYPE
+    <dynamic prepend="where" > 
+	    <isNotEmpty prepend="and" property="keywords" >
+			($keywords$)
+	    </isNotEmpty>
+    </dynamic>
+    order by WEB_ADTYPE.ORDERID asc
+  </select>
+  
+  <select id="WEB_ADTYPE_selectAllByMapParamForSelect" resultMap="WEB_ADTYPE_selectAllByMapParam_Result" parameterClass="java.util.Map">
+  	 select WEB_ADTYPE.ADTYPEID, WEB_ADTYPE.WEBSEATID, WEB_ADTYPE.SEATINFO, WEB_ADTYPE.ORDERID,
+      WEB_ADTYPE.TYPERMK, TO_CHAR(WEB_ADTYPE.UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+    from WEB_ADTYPE 
+    order by WEB_ADTYPE.ADTYPEID asc
+  </select>
+  
+  <select id="selectStaticAdSeatList" resultMap="WEB_ADTYPE_selectAllByMapParam_Result" parameterClass="java.lang.Long">
+  	 select WEB_ADTYPE.ADTYPEID, WEB_ADTYPE.WEBSEATID, WEB_ADTYPE.SEATINFO, WEB_ADTYPE.ORDERID,
+      WEB_ADTYPE.TYPERMK, TO_CHAR(WEB_ADTYPE.UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+    from WEB_ADTYPE 
+    order by WEB_ADTYPE.ADTYPEID asc
+  </select>
+  
+  <select id="WEB_ADTYPE_selectAllByMapParamForAdInfoSelect" resultMap="WEB_ADTYPE_selectAllByMapParam_Result" parameterClass="java.util.Map">
+  	 select WEB_ADTYPE.ADTYPEID, WEB_ADTYPE.WEBSEATID, WEB_ADTYPE.SEATINFO, WEB_ADTYPE.ORDERID,
+      WEB_ADTYPE.TYPERMK, TO_CHAR(WEB_ADTYPE.UPDATETIME, 'YYYY-MM-DD HH24:MI:SS') UPDATETIME
+    from WEB_ADTYPE
+    WHERE not Exists
+    (Select * From  WEB_ADINFO where WEB_ADTYPE.ADTYPEID = WEB_ADINFO.ADTYPEID 
+     <isNotEmpty prepend="and" property="adtypeid" >
+    	WEB_ADINFO.ADTYPEID <![CDATA[<>]]>  #adtypeid#
+    </isNotEmpty>
+    and WEB_ADINFO.ENDTIME >  sysdate )	
+    order by WEB_ADTYPE.ADTYPEID asc
+  </select>
+  
+  <resultMap id="checkAdTypeUsedForWebAdInfoResult" class="com.hzfc.superadmin.ad.entity.WebAdInfo" >
+	<result column="ADTYPEID" property="adtypeid" jdbcType="DECIMAL" nullValue="0" />
+  </resultMap>
+  <select id="checkAdTypeUsedForWebAdInfo" resultMap="checkAdTypeUsedForWebAdInfoResult" parameterClass="java.lang.Long">
+  	select ADTYPEID from WEB_ADINFO where ADTYPEID = #adtypeid#
+  </select>
+  
+  <select id="WEB_ADTYPE_selectSeatinfoPageByQueryCondition" resultMap="WEB_ADTYPE_ListResultMap" parameterClass="java.util.Map">
+  	select WEB_ADTYPE.ADTYPEID,WEB_ADTYPE.SEATINFO
+    from WEB_ADTYPE
+    <dynamic prepend="where" >
+	   	<isNotEmpty prepend="and" property="keywords" >
+				WEB_ADTYPE.SEATINFO like #keywords# 
+	    </isNotEmpty>
+    </dynamic>
+    order by WEB_ADTYPE.ADTYPEID asc
+  </select>
+</sqlMap>

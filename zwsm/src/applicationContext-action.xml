@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+    
+    <!--配置Action层-->
+    <bean name="SuperUploadAction" class="com.hzfc.common.action.SuperUploadAction" scope="prototype" />
+    
+    <!-- ckeditor 相关action -->
+	<bean name="CkEditorUploadAction" class="com.hzfc.common.action.CkEditorUploadAction" />
+	
+	<!-- 新后台界面加载 -->
+	<bean name="FrameworkAction" class="com.hzfc.superadmin.framework.action.FrameworkAction"
+		scope="prototype">
+		<property name="superMenuAdpater" ref="superMenuAdpater" />
+	</bean>
+	
+	<!-- 用户信息 -->
+	<bean name="UserInfoAction" class="com.hzfc.superadmin.framework.action.UserInfoAction"
+		scope="prototype">
+		<property name="userInfomationAdpater" ref="userInfomationAdpater" />
+	</bean>
+	
+	<!-- 辅助功能管理 -->
+	<bean name="DicAction" class="com.hzfc.superadmin.assist.action.DicAction"
+		scope="prototype">
+		<property name="assistAdpater" ref="assistAdpater"/>	
+	</bean>
+	
+	<!-- 菜单资源管理 -->
+	<bean name="MenuResourceAction" class="com.hzfc.superadmin.framework.action.MenuResourceAction" scope="prototype">
+		<property name="menuResourceAdpater" ref="menuResourceAdpater"/>	
+	</bean>
+
+	<!-- 广告模块 -->
+	<bean name="WebAdMangerAction" class="com.hzfc.superadmin.ad.action.WebAdMangerAction"
+		scope="prototype">
+		<property name="webAdMangerAdpater" ref="webAdMangerAdpater"/>
+	</bean>
+	
+	<!-- 资讯新闻 -->
+	<bean name="NewsCategoryAction" class="com.hzfc.superadmin.newscontent.action.NewsCategoryAction" scope="prototype">
+		<property name="newsContentAdpater" ref="newsContentAdpater"/>	
+	</bean>
+	
+	<!-- 资讯模块 -->
+	<bean name="NewsContentAction" class="com.hzfc.superadmin.newscontent.action.NewsContentAction" scope="prototype">
+		<property name="newsContentAdpater" ref="newsContentAdpater"/>	
+	</bean>
+	
+
+	<!-- 前台 -->
+	<bean name="WebAction" class="com.hzfc.web.action.WebAction" scope="prototype">
+		<property name="webAdpater" ref="webAdpater"/>
+	</bean>
+	
+	<!-- 党建 -->
+	<bean name="WebDjAction" class="com.hzfc.web.action.WebDjAction" scope="prototype">
+		<property name="webDjAdpater" ref="webDjAdpater"/>
+	</bean>
+	
+	<!-- 静态化任务 -->
+	<bean name="WebStatictaskAction" class="com.hzfc.superadmin.ad.action.WebStatictaskAction"
+		scope="prototype">
+		<property name="webAdMangerAdpater" ref="webAdMangerAdpater" />
+		<property name="webAdpater" ref="webAdpater" />
+	</bean>
+	
+	<!-- 静态化任务 -->
+	<bean name="ComplaintAction" class="com.hzfc.superadmin.newscontent.action.ComplaintAction" scope="prototype">
+		<property name="newsContentAdpater" ref="newsContentAdpater" />
+	</bean>
+	
+	<!-- 房地产协会 -->
+	<bean name="WebFdcxhAction" class="com.hzfc.web.action.WebFdcxhAction" scope="prototype">
+		<property name="webAdpater" ref="webAdpater" />
+	</bean>
+	
+	<!-- 中介协会 -->
+	<bean name="WebZjxhAction" class="com.hzfc.web.action.WebZjxhAction" scope="prototype">
+		<property name="webAdpater" ref="webAdpater" />
+	</bean>
+</beans>

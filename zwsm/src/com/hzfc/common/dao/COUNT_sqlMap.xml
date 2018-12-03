@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="RESULTCOUNT">
+	<!-- 分页专用 -->
+	<resultMap id="countResult" class="com.hzfc.utils.Page">
+		<result column="RESULTCOUNT" property="totalrows" jdbcType="DECIMAL"/>
+	</resultMap>
+	
+	<select id="getOracleSequencesBySeqName" resultClass="java.lang.Long" parameterClass="java.lang.String">
+		select $seqname$ from dual 
+	</select>
+	
+	<select id="WEB_AD_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from WEB_AD
+	    <dynamic prepend="where" >
+	    	<isNotEmpty prepend="and" property="keywords">
+				WEB_AD.WEBPOSITIONDEF like #keywords#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="starttime" >
+				WEB_AD.BEGINDATE >= TO_DATE(#starttime#,'YYYY-MM-DD')
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="endtime" >
+				WEB_AD.ENDDATE <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD')+1
+	        </isNotEmpty>
+	    </dynamic>
+	</select>
+	
+	<!-- dic字典 -->
+	<select id="T_ESF_CODETYPE_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from T_ESF_CODETYPE
+	    <dynamic prepend="where" >
+	    	<isNotEmpty prepend="and" property="keywords" >
+				T_ESF_CODETYPE.CODENAME like #keywords#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="starttime" >
+				T_ESF_CODETYPE.MODTIME >= TO_DATE(#starttime#,'YYYY-MM-DD')
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="endtime" >
+				T_ESF_CODETYPE.MODTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD')+1
+	        </isNotEmpty>
+    	</dynamic>
+	</select>
+	
+	<select id="T_ESF_CODEITEMS_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from T_ESF_CODEITEMS
+	    <dynamic prepend="where" >
+	    	<isNotEmpty prepend="and" property="codeid" >
+				T_ESF_CODEITEMS.CODEID = #codeid#
+	        </isNotEmpty>
+    	</dynamic>
+	</select>
+
+   
+    <select id="WEB_STATICTASK_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+     select COUNT(1) AS RESULTCOUNT
+	  from  WEB_STATICTASK
+     where  WEB_STATICTASK.STATICTASKID in (select WEB_STATICTASK_ROLE.STATICTASKID from WEB_STATICTASK_ROLE 
+         where WEB_STATICTASK_ROLE.ACCOUNTID = #accountid#)
+    <isNotEmpty prepend="and" property="stattype" >
+			WEB_STATICTASK.STATTYPE = #stattype#
+    </isNotEmpty>
+   	<isNotEmpty prepend="and" property="keywords" >
+		(
+		   WEB_STATICTASK.DYNAMICURL like #keywords# 
+		   or WEB_STATICTASK.STATICURL like #keywords# 
+		   or WEB_STATICTASK.STATICPATH like #keywords#
+		)
+    </isNotEmpty>
+    </select>
+   
+   <select id="WEB_STATICTASK_selectListPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+	  select COUNT(1) AS RESULTCOUNT
+	   from  WEB_STATICTASK,T_WEBSITE
+      where  WEB_STATICTASK.SITEID = T_WEBSITE.SITEID
+    <isNotEmpty prepend="and" property="stattype" >
+			WEB_STATICTASK.STATTYPE = #stattype#
+    </isNotEmpty>
+   	<isNotEmpty prepend="and" property="keywords" >
+	   (
+		   WEB_STATICTASK.DYNAMICURL like #keywords# 
+		   or WEB_STATICTASK.STATICURL like #keywords# 
+		   or WEB_STATICTASK.STATICPATH like #keywords#
+		) 
+    </isNotEmpty>
+    <isNotEmpty prepend="and" property="siteid" >
+		  WEB_STATICTASK.SITEID = #siteid#
+    </isNotEmpty> 
+    </select>
+   
+  
+  <select id="WEB_ADTYPE_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from WEB_ADTYPE
+    <dynamic prepend="where" > 
+	    <isNotEmpty prepend="and" property="keywords" >
+			($keywords$)
+	    </isNotEmpty>
+    </dynamic>
+  </select>
+  
+  <select id="WEB_ADINFO_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from WEB_ADINFO,WEB_ADTYPE
+     where WEB_ADINFO.ADTYPEID = WEB_ADTYPE.ADTYPEID
+      <isNotEmpty prepend="and" property="keywords" >
+     (	
+		WEB_ADTYPE.SEATINFO like #keywords#
+		or WEB_ADINFO.DESCR like #keywords#
+	 )
+    </isNotEmpty> 
+    <isNotEmpty prepend="and" property="adtypeid" >
+		WEB_ADINFO.ADTYPEID = #adtypeid#
+    </isNotEmpty>
+    <isNotEmpty prepend="and" property="rsstype" >
+		WEB_ADINFO.RSSTYPE = #rsstype#
+    </isNotEmpty> 
+    <isNotEmpty prepend="and" property="isdisplay" >
+		WEB_ADINFO.ISDISPLAY = #isdisplay#
+    </isNotEmpty>
+    <isNotEmpty prepend="and" property="starttime" >
+	    WEB_ADINFO.ENDTIME >= TO_DATE(#starttime#,'YYYY-MM-DD HH24:MI:SS')
+	</isNotEmpty>
+	<isNotEmpty prepend="and" property="endtime" >
+		WEB_ADINFO.ENDTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD HH24:MI:SS')+1
+    </isNotEmpty>
+  </select>
+  
+  <select id="INF_CONTENT_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from INF_CONTENT
+		<dynamic prepend="where" >
+			<isNotEmpty prepend="and" property="categoryid" >
+				INF_CONTENT.CONTENTID in (
+					select INF_CONTENTCATEGORY.CONTENTID from INF_CONTENTCATEGORY
+					where INF_CONTENTCATEGORY.CATEGORYID in (
+						select INF_CATEGORY.CATEGORYID 
+						from INF_CATEGORY
+						start with INF_CATEGORY.CATEGORYID = #categoryid#
+						connect by prior INF_CATEGORY.CATEGORYID = INF_CATEGORY.PID
+					)
+				)
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="hotflag" >
+	        	INF_CONTENT.HOTFLAG = #hotflag#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="recommendflag" >
+	        	INF_CONTENT.RECOMMENDFLAG = #recommendflag#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="releasemark" >
+	        	INF_CONTENT.RELEASEMARK = #releasemark#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="state" >
+	        	INF_CONTENT.RELEASEMARK <![CDATA[<=]]> -2
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="starttime" >
+			    INF_CONTENT.ENTRYDATE >= TO_DATE(#starttime#,'YYYY-MM-DD')
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="endtime" >
+		    	INF_CONTENT.ENTRYDATE <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD') + 1
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="keywords" >
+		    	(
+		    		INF_CONTENT.CONTENTID like #keywords#
+		    		or INF_CONTENT.TITLE like #keywords#
+		    		or INF_CONTENT.DESCR like #keywords#
+		    		or INF_CONTENT.TAG like #keywords#
+		    		or INF_CONTENT.RELEASENAME like #keywords#
+	    		or INF_CONTENT.CONTENTID like #keywords#
+		    	)
+		    </isNotEmpty>
+		</dynamic>
+  </select>
+  
+  <select id="INF_CONTENTCOMMENT_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+		from INF_CONTENTCOMMENT,INF_CONTENT
+		where INF_CONTENTCOMMENT.CONTENTID=INF_CONTENT.CONTENTID
+	        <isNotEmpty prepend="and" property="starttime" >
+			    INF_CONTENTCOMMENT.COMMENTTIME >= TO_DATE(#starttime#,'YYYY-MM-DD')
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="endtime" >
+		    	INF_CONTENTCOMMENT.COMMENTTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD') + 1
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="keywords" >
+		    	(
+		    		INF_CONTENT.TITLE like #keywords#
+		    		or INF_CONTENTCOMMENT.COMMENTTITLE like #keywords#
+		    	)
+		    </isNotEmpty>
+  </select>
+  
+  <select id="WEB_INF_CONTENT_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+	 	select COUNT(1) AS RESULTCOUNT
+		from INF_CONTENT
+		where INF_CONTENT.RELEASEMARK = 1
+	    <isNotEmpty prepend="and" property="categoryids">
+	         INF_CONTENT.CONTENTID in (
+	         	select INF_CONTENTCATEGORY.CONTENTID 
+	         	from INF_CONTENTCATEGORY 
+	         	where INF_CONTENTCATEGORY.CATEGORYID in ($categoryids$)
+	         ) 
+	    </isNotEmpty>
+		<isNotEmpty prepend="and" property="thumbnail">
+			INF_CONTENT.THUMBNAIL is not null
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="thumbnailno">
+			INF_CONTENT.THUMBNAIL is null
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="areaid" >
+			INF_CONTENT.AREAID = $areaid$
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="districtid" >
+			INF_CONTENT.DISTRICTID = $districtid$
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="houseTypeid" >
+			INF_CONTENT.HOUSETYPEID = $houseTypeid$
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="hotflag" >
+			INF_CONTENT.HOTFLAG = $hotflag$
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="recommendflag" >
+			INF_CONTENT.RECOMMENDFLAG = $recommendflag$
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="keywords" >
+			(INF_CONTENT.TITLE like #keywords# or INF_CONTENT.DESCR like #keywords# or INF_CONTENT.TAG like #keywords#) 
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="propertyid" >
+			INF_CONTENT.CONTENTID in (
+				select INF_PROPERTYCONTENT.CONTENTID from INF_PROPERTYCONTENT
+				where INF_PROPERTYCONTENT.RELATEDTYPE = 1 
+				and INF_PROPERTYCONTENT.RELATEDID = $propertyid$
+			)
+		</isNotEmpty>
+  </select>
+  
+
+  <!-- 用户信息 -->
+    <select id="SYS_USEREXT_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+	   select  COUNT(1) AS RESULTCOUNT
+	   from    SYS_USEREXT
+    	<dynamic prepend="where" >
+    	<isNotEmpty prepend="and" property="keywords" >
+			 SYS_USEREXT.REALNAME like #keywords#
+        </isNotEmpty>
+    </dynamic> 
+    </select>
+    
+    <select id="SYS_USEREXT_selectPageByUserToAccountQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+	    select  COUNT(1) AS RESULTCOUNT
+	    from    SYS_USEREXT, SYS_ACCOUNT
+        where   SYS_USEREXT.ACCOUNTID = SYS_ACCOUNT.ACCOUNTID(+)
+    	<isNotEmpty prepend="and" property="keywords" >
+				(
+			  		SYS_USEREXT.REALNAME like #keywords#
+			 		or SYS_USEREXT.EMAIL like #keywords#
+			 		or SYS_USEREXT.MOBILE like #keywords#
+			  		or SYS_ACCOUNT.LOGINUSER like #keywords#
+		   		)	
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="isenable" >
+			  SYS_ACCOUNT.ISENABLE = $isenable$
+        </isNotEmpty>
+    </select>
+
+   <select id="WEB_INF_CONTENT_selectSpecialsubjectListBySpecialtype_count" resultMap="countResult" parameterClass="java.util.Map">
+  	 select COUNT(1) AS RESULTCOUNT
+  	 from   INF_SPECIALSUBJECT
+		    where INF_SPECIALSUBJECT.RELEASEMARK = 1
+			<isNotEmpty prepend="and" property="siteid" >
+				INF_SPECIALSUBJECT.SITEID = $siteid$
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="type" >
+				INF_SPECIALSUBJECT.TYPE = $type$
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="flag" >
+				INF_SPECIALSUBJECT.FLAG = $flag$
+			</isNotEmpty>
+  </select>
+
+	<!-- 菜单资源管理 -->
+	<select id="SYS_ROLE_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   SYS_ROLE
+	    <dynamic prepend="where">
+	    	<isNotEmpty prepend="and" property="roleid" >
+				SYS_ROLE.ROLEID = #roleid#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="rolename" >
+				SYS_ROLE.ROLENAME = #rolename#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="roleremark" >
+				SYS_ROLE.ROLEREMARK = #roleremark#
+	        </isNotEmpty>
+	        <isNotEmpty prepend="and" property="keywords" >
+	        (
+			SYS_ROLE.ROLENAME like #keywords# 
+			or SYS_ROLE.ROLEREMARK like #keywords#
+			)
+			</isNotEmpty>
+	    </dynamic>
+	</select>
+	
+	<select id="SYS_DEPARTMENT_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   SYS_DEPARTMENT
+	    <dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+	        (
+			SYS_DEPARTMENT.DEPARTMENTNAME like #keywords# 
+			)
+			</isNotEmpty>
+	    </dynamic>
+	</select>
+	
+	<select id="SYS_POSITION_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   SYS_POSITION
+	    <dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+				SYS_POSITION.POSITIONNAME like #keywords# 
+			</isNotEmpty>
+	    </dynamic>
+	</select>
+	
+	<!-- 字典模块 -->
+	<select id="DIC_PROPERTYSTATE_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   DIC_PROPERTYSTATE
+	    <dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+				DIC_PROPERTYSTATE.PROPERTYSTATENAME like #keywords# 
+			</isNotEmpty>
+	    </dynamic>
+	</select>
+	
+	<select id="DIC_AREA_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   DIC_AREA
+	    <dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+				DIC_AREA.AREANAME like #keywords# 
+			</isNotEmpty>
+	    </dynamic>
+	</select>
+	
+	<select id="DIC_HOUSETYPE_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+   		select COUNT(1) AS RESULTCOUNT
+	    from   DIC_HOUSETYPE
+    	<dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+				DIC_HOUSETYPE.HOUSETYPENAME like #keywords# 
+			</isNotEmpty>
+	    </dynamic>
+    </select>
+    
+    <select id="DIC_HOUSESTATE_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   DIC_HOUSESTATE
+	    <dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+				DIC_HOUSESTATE.HOUSESTATENAME like #keywords# 
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="DIC_DISTRICT_selectPageByQueryCondition_count" parameterClass="java.util.Map" resultMap="countResult">
+	  	select COUNT(1) AS RESULTCOUNT
+	    from   DIC_DISTRICT
+	    <dynamic prepend="where">
+	        <isNotEmpty prepend="and" property="keywords" >
+				DIC_DISTRICT.DISTRICTNAME like #keywords# 
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="WEB_ADTYPE_selectSeatinfoPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+	  select COUNT(1) AS RESULTCOUNT
+	    from WEB_ADTYPE
+    <dynamic prepend="where" >
+   	<isNotEmpty prepend="and" property="keywords" >
+			WEB_ADTYPE.SEATINFO like #keywords# 
+    </isNotEmpty>
+    </dynamic>
+    </select>
+    
+    <select id="WEB_COMPLAINT_selectPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+	  select COUNT(1) AS RESULTCOUNT
+	    from WEB_COMPLAINT
+	    <dynamic prepend="where" >
+	    	<isNotEmpty prepend="and" property="starttime" >
+			    WEB_COMPLAINT.ADDTIME >= TO_DATE(#starttime#,'YYYY-MM-DD')
+		    </isNotEmpty>
+		    <isNotEmpty prepend="and" property="endtime" >
+		    	WEB_COMPLAINT.ADDTIME <![CDATA[<=]]> TO_DATE(#endtime#,'YYYY-MM-DD') + 1
+		    </isNotEmpty>
+	        <isNotEmpty prepend="and" property="isdisplay" >
+				WEB_COMPLAINT.ISDISPLAY like #isdisplay# 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="state" >
+				WEB_COMPLAINT.STATE like #state# 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="keywords" >
+				(
+		    		WEB_COMPLAINT.COMPLAINTNAME like #keywords# 
+		    		or WEB_COMPLAINT.DEVELOPERNAME like #keywords#
+		    		or WEB_COMPLAINT.INFOTITLE like #keywords#
+		    		or WEB_COMPLAINT.REPLYNAME like #keywords#
+		    	)
+			</isNotEmpty>
+		</dynamic>
+    </select>
+    
+    <select id="WEB_INF_CONTENT_selectFdcPageByQueryCondition_count" resultMap="countResult" parameterClass="java.util.Map">
+		select COUNT(1) AS RESULTCOUNT
+	    from   INF_CONTENT
+    	<dynamic prepend="where">
+      		<isNotNull prepend="and" property="categoryid">
+		        CATEGORYID = #categoryid#
+		        or
+		        CONTENTID in (select CONTENTID from INF_CONTENTCATEGORY where INF_CONTENTCATEGORY.CATEGORYID = #categoryid#)
+      		</isNotNull>
+	        <isNotNull prepend="and" property="pid">
+	       		CATEGORYID in (select CATEGORYID from INF_CATEGORY where PID = #pid#)
+	       </isNotNull>
+    	</dynamic>
+  </select>
+</sqlMap>

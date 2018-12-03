@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+
+	<package name="web" namespace="/" extends="struts-default">
+		<action name="*" class="WebAction" method="{1}">
+			<result name="index">/upload/index/index.html</result>
+			<result name="newslist">/newslist.jsp</result>
+			<result name="news">/news.jsp</result>
+			<result name="agency">/agency.jsp</result>
+			<result name="law">/law.jsp</result>
+			<result name="lawcontent">/lawcontent.jsp</result>
+			<result name="credit">/credit.jsp</result>
+			<result name="creditlist">/creditlist.jsp</result>
+			<result name="complaint">/complaint.jsp</result>
+			<result name="editcomplaint">/editcomplaint.jsp</result>
+			<result name="search">/search.jsp</result>
+			<result name="bzcx">/bzcx.jsp</result>
+			<result name="preselllist">/preselllist.jsp</result>
+			<result name="404">/404.html</result>
+			
+		</action>
+	</package>
+	
+	<package name="web_dj" namespace="/dj" extends="struts-default">
+		<action name="*" class="WebDjAction" method="{1}">
+			<result name="index">/dj/index.jsp</result>
+			<result name="newslist">/dj/newslist.jsp</result>
+			<result name="news">/dj/news.jsp</result>
+		</action>
+	</package>
+	
+	<package name="fdcxh" namespace="/xh" extends="struts-default">
+		<!-- 房地产协会 -->
+        <action name="WebFdcxhAction_*" class="WebFdcxhAction" method="{1}">
+			<result name="index">/fdcxh/index.jsp</result>
+			<result name="newslist">/fdcxh/xh_newslist.jsp</result>
+			<result name="news">/fdcxh/xh_news.jsp</result>
+			<result name="404">/404.html</result>
+		</action>
+	</package>
+	
+	<package name="zjxh" namespace="/zjxh" extends="struts-default">
+		<!-- 房地产协会 -->
+        <action name="*" class="WebZjxhAction" method="{1}">
+			<result name="index">/zjxh/index.jsp</result>
+			<result name="newslist">/zjxh/xh_newslist.jsp</result>
+			<result name="news">/zjxh/xh_news.jsp</result>
+			<result name="404">/404.html</result>
+		</action>
+	</package>
+	
+	<package name="super" namespace="/super" extends="struts-default">
+		<action name="Framework_*" class="FrameworkAction" method="{1}">
+        	<result name="main">/super/pages/main/main.jsp</result>
+        	<result name="login">/super/pages/login/login.jsp</result>
+        	<result name="password">/super/pages/main/modifyPassword.jsp</result>
+        </action>
+	</package>
+
+	<package name="ckeditor" namespace="/ckeditor" extends="struts-default">
+		<action name="*" class="CkEditorUploadAction" method="{1}"></action>
+	</package>
+	
+    <package name="esf" namespace="/esf" extends="struts-default">
+    
+        <action name="SuperUpload_*" class="SuperUploadAction" method="{1}"></action>
+        
+        <!-- dic字典 -->
+        <action name="DicAction_*" class="DicAction" method="{1}">
+        	<result name="list">/super/pages/assist/diclist.jsp</result>
+        	<result name="info">/super/pages/assist/dicform.jsp</result>
+        	<result name="itemslist">/super/pages/assist/dicitemslist.jsp</result>
+        	<result name="infoItems">/super/pages/assist/dicitems.jsp</result>       	
+        </action>
+        
+        <!-- 用户信息 -->
+        <action name="UserInfoAction_*" class="UserInfoAction" method="{1}">
+        	<result name="list">/super/pages/framework/userInfoList.jsp</result>
+        	<result name="info">/super/pages/framework/userInfoForm.jsp</result>
+        </action>
+        
+        <!-- 菜单资源管理 -->
+        <action name="MenuResourceAction_*" class="MenuResourceAction" method="{1}">
+        	<result name="detailslist">/super/pages/framework/resourceMenuList.jsp</result>
+        	<result name="detailsinfo">/super/pages/framework/resourceMenuForm.jsp</result>
+        	<result name="rolelist">/super/pages/framework/resourceRoleList.jsp</result>
+        	<result name="departmentlist">/super/pages/framework/resourceDepartmentList.jsp</result>
+        	<result name="positionlist">/super/pages/framework/resourcePositionList.jsp</result>
+        </action>
+        
+        <!-- 图片新闻管理模块 -->
+        <action name="PicNews_*" class="PicNewsAction" method="{1}">
+        	<result name="typelist">/super/pages/news/picTypeList.jsp</result>
+        	<result name="typeinfo">/super/pages/news/picTypeForm.jsp</result>
+        	<result name="newslist">/super/pages/news/picNewsList.jsp</result>
+        	<result name="newsinfo">/super/pages/news/picNewsForm.jsp</result>
+        </action>
+        
+        <!-- 广告模块 -->
+        <action name="WebAd_*" class="WebAdMangerAction" method="{1}">
+        	<result name="typelist">/super/pages/ad/adTypeList.jsp</result>
+        	<result name="typeinfo">/super/pages/ad/adTypeForm.jsp</result>
+        	<result name="adinfolist">/super/pages/ad/adInfoList.jsp</result>
+        	<result name="adinfo">/super/pages/ad/adInfoForm.jsp</result>
+        </action>
+        
+        <!-- 新闻发布 -->
+        <action name="NewsCategory_*" class="NewsCategoryAction" method="{1}">
+        	<result name="categorylist">/super/pages/news/newsCategoryList.jsp</result>
+        	<result name="categoryinfo">/super/pages/news/newsCategoryForm.jsp</result>
+        </action>
+        
+        <!-- 资讯模块 -->
+        <action name="NewsContent_*" class="NewsContentAction" method="{1}">
+        	<result name="contentinfo">/super/pages/news/newsContentInfo.jsp</result>
+        	<result name="contentlist">/super/pages/news/newsContentList.jsp</result>
+      	    <result name="contentlista">/super/pages/news/newsContentList1.jsp</result>
+      	    <result name="contentlistb">/super/pages/news/newsContentList2.jsp</result>
+      	    <result name="contentlistc">/super/pages/news/newsContentList3.jsp</result>
+      	    <result name="contentlistd">/super/pages/news/newsContentList4.jsp</result>
+      	    <result name="contentcommentlist">/super/pages/news/newsContentCommentList.jsp</result>
+      	    <result name="contentsinglelist">/super/pages/news/newsContentSingleList.jsp</result>
+      	    <result name="contentsingleinfo">/super/pages/news/newsContentSingleForm.jsp</result>
+        </action>
+        
+        <!-- 静态化任务 -->
+        <action name="WebStatic_*" class="WebStatictaskAction" method="{1}">
+        	<result name="statictasklist">/super/pages/ad/staticTaskList.jsp</result>
+        	<result name="statictaskinfo">/super/pages/ad/staticTaskForm.jsp</result>
+        </action>
+        
+        <!-- 投诉管理 -->
+        <action name="ComplaintAction_*" class="ComplaintAction" method="{1}">
+        	<result name="catelist">/super/pages/news/complaintList.jsp</result>
+        	<result name="cateinfo">/super/pages/news/complaintForm.jsp</result>
+        </action>
+    </package>
+</struts>

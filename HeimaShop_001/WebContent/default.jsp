@@ -9,7 +9,7 @@
 <body>
 	<%
 		// response.sendRedirect(request.getContextPath()+"/product?method=index");
-		response.sendRedirect(request.getContextPath()+"/productServlet_002?method=index");
+		response.sendRedirect(request.getContextPath()+"/productServlet_001?method=index");
 	%>
 </body>
 </html>

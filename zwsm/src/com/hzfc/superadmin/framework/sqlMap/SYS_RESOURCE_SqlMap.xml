@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SYS_RESOURCE">
+  <resultMap class="com.hzfc.superadmin.framework.entity.Resource" id="SYS_RESOURCE_BaseResultMap">
+    <result column="RESOURCEID" jdbcType="DECIMAL" nullValue="0" property="resourceid" />
+    <result column="NAME" jdbcType="VARCHAR" nullValue="" property="name" />
+    <result column="TYPE" jdbcType="VARCHAR" nullValue="" property="type" />
+    <result column="DEFINESTRING" jdbcType="VARCHAR" nullValue="" property="definestring" />
+    <result column="REMARK" jdbcType="VARCHAR" nullValue="" property="remark" />
+    <result column="ISUSE" jdbcType="DECIMAL" nullValue="0" property="isuse" />
+    <result column="ISMENU" jdbcType="DECIMAL" nullValue="0" property="ismenu" />
+    <result column="MENUID" jdbcType="DECIMAL" nullValue="0" property="menuid" />
+    <result column="CATEGORYID" jdbcType="DECIMAL" nullValue="0" property="categoryid" />
+  </resultMap>
+  <select id="SYS_RESOURCE_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="SYS_RESOURCE_BaseResultMap">
+    select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME, SYS_RESOURCE.TYPE, SYS_RESOURCE.DEFINESTRING,
+           SYS_RESOURCE.REMARK, SYS_RESOURCE.ISUSE, SYS_RESOURCE.ISMENU, SYS_RESOURCE.MENUID,
+           SYS_RESOURCE.CATEGORYID
+    from   SYS_RESOURCE
+    where  RESOURCEID = #resourceid#
+  </select>
+  <delete id="SYS_RESOURCE_deleteByPrimaryKey" parameterClass="java.lang.Long">
+    delete from SYS_RESOURCE
+    where  RESOURCEID = #resourceid#
+  </delete>
+  <insert id="SYS_RESOURCE_insert" parameterClass="com.hzfc.superadmin.framework.entity.Resource">
+      <selectKey resultClass="long" keyProperty="resourceid"> 
+	        select HIBERNATE_SEQUENCE.nextval as menuid from dual 
+	  </selectKey>
+    insert into SYS_RESOURCE (RESOURCEID, NAME, TYPE, DEFINESTRING, REMARK, ISUSE, ISMENU, MENUID,CATEGORYID)
+    values (#resourceid#, #name#, #type#, #definestring#, #remark#, #isuse#, #ismenu#, #menuid#,#categoryid#)
+  </insert>
+  <insert id="SYS_RESOURCE_insertSelective" parameterClass="com.hzfc.superadmin.framework.entity.Resource">
+    insert into SYS_RESOURCE
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="resourceid">
+        RESOURCEID
+      </isNotNull>
+      <isNotNull prepend="," property="name">
+        NAME
+      </isNotNull>
+      <isNotNull prepend="," property="type">
+        TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="definestring">
+        DEFINESTRING
+      </isNotNull>
+      <isNotNull prepend="," property="remark">
+        REMARK
+      </isNotNull>
+      <isNotNull prepend="," property="isuse">
+        ISUSE
+      </isNotNull>
+      <isNotNull prepend="," property="ismenu">
+        ISMENU
+      </isNotNull>
+      <isNotNull prepend="," property="menuid">
+        MENUID
+      </isNotNull>
+      <isNotNull prepend="," property="categoryid">
+        CATEGORYID
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(">
+      <isNotNull prepend="," property="resourceid">
+        #resourceid#
+      </isNotNull>
+      <isNotNull prepend="," property="name">
+        #name#
+      </isNotNull>
+      <isNotNull prepend="," property="type">
+        #type#
+      </isNotNull>
+      <isNotNull prepend="," property="definestring">
+        #definestring#
+      </isNotNull>
+      <isNotNull prepend="," property="remark">
+        #remark#
+      </isNotNull>
+      <isNotNull prepend="," property="isuse">
+        #isuse#
+      </isNotNull>
+      <isNotNull prepend="," property="ismenu">
+        #ismenu#
+      </isNotNull>
+      <isNotNull prepend="," property="menuid">
+        #menuid#
+      </isNotNull>
+      <isNotNull prepend="," property="categoryid">
+        #categoryid#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <update id="SYS_RESOURCE_updateByPrimaryKeySelective" parameterClass="com.hzfc.superadmin.framework.entity.Resource">
+    update SYS_RESOURCE
+    <dynamic prepend="set">
+      <isNotNull prepend="," property="name">
+        NAME = #name#
+      </isNotNull>
+      <isNotNull prepend="," property="type">
+        TYPE = #type#
+      </isNotNull>
+      <isNotNull prepend="," property="definestring">
+        DEFINESTRING = #definestring#
+      </isNotNull>
+      <isNotNull prepend="," property="remark">
+        REMARK = #remark#
+      </isNotNull>
+      <isNotNull prepend="," property="isuse">
+        ISUSE = #isuse#
+      </isNotNull>
+      <isNotNull prepend="," property="ismenu">
+        ISMENU = #ismenu#
+      </isNotNull>
+      <isNotNull prepend="," property="menuid">
+        MENUID = #menuid#
+      </isNotNull>
+      <isNotNull prepend="," property="categoryid">
+        CATEGORYID = #categoryid#
+      </isNotNull>
+    </dynamic>
+    where RESOURCEID = #resourceid#
+  </update>
+  <update id="SYS_RESOURCE_updateByPrimaryKey" parameterClass="com.hzfc.superadmin.framework.entity.Resource">
+    update SYS_RESOURCE
+    set NAME = #name#,
+        TYPE = #type#,
+        DEFINESTRING = #definestring#,
+        REMARK = #remark#,
+        ISUSE = #isuse#,
+        ISMENU = #ismenu#,
+        MENUID = #menuid#,
+        CATEGORYID = #categoryid#
+    where RESOURCEID = #resourceid#
+  </update> 
+  <select id="SYS_RESOURCE_selectObjectByMapParam" parameterClass="java.util.Map" resultMap="SYS_RESOURCE_BaseResultMap">
+	select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME, SYS_RESOURCE.TYPE, SYS_RESOURCE.DEFINESTRING,
+           SYS_RESOURCE.REMARK, SYS_RESOURCE.ISUSE, SYS_RESOURCE.ISMENU, SYS_RESOURCE.MENUID,
+           SYS_RESOURCE.CATEGORYID
+    from   SYS_RESOURCE,SYS_MENU
+    where  SYS_RESOURCE.MENUID = SYS_MENU.MENUID AND SYS_MENU.MENUID = $menuid$
+  </select>
+  <select id="SYS_RESOURCE_selectByStatementidForSelect" parameterClass="java.lang.Long" resultMap="SYS_RESOURCE_BaseResultMap">
+    select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME, SYS_RESOURCE.TYPE, SYS_RESOURCE.DEFINESTRING,
+           SYS_RESOURCE.REMARK, SYS_RESOURCE.ISUSE, SYS_RESOURCE.ISMENU, SYS_RESOURCE.MENUID,
+           SYS_RESOURCE.CATEGORYID
+    from   SYS_RESOURCE
+    where  RESOURCEID = #resourceid#
+  </select>
+  <select id="SYS_RESOURCE_selectPageByQueryCondition" parameterClass="java.util.Map" resultMap="SYS_RESOURCE_BaseResultMap">
+    select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME, SYS_RESOURCE.TYPE, SYS_RESOURCE.DEFINESTRING,
+      SYS_RESOURCE.REMARK, SYS_RESOURCE.ISUSE, SYS_RESOURCE.ISMENU, SYS_RESOURCE.MENUID,
+      SYS_RESOURCE.CATEGORYID
+    from   SYS_RESOURCE
+    <dynamic prepend="where">
+    	<isNotEmpty prepend="and" property="pid" >
+			SYS_RESOURCE.RESOURCEID = #resourceid#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="menuname" >
+			SYS_RESOURCE.NAME = #name#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="sortnumber" >
+			SYS_RESOURCE.TYPE = #type#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="menuname" >
+			SYS_RESOURCE.DEFINESTRING = #definestring#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="sortnumber" >
+			SYS_RESOURCE.REMARK = #remark#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="menuname" >
+			SYS_RESOURCE.ISUSE = #isuse#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="sortnumber" >
+			SYS_RESOURCE.ISMENU = #ismenu#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="menuname" >
+			SYS_RESOURCE.MENUID = #menuid#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="sortnumber" >
+			SYS_RESOURCE.CATEGORYID = #categoryid#
+        </isNotEmpty>
+    </dynamic>
+  </select>
+  <select id="selectResourceByResourceid" parameterClass="java.lang.Long" resultMap="SYS_RESOURCE_BaseResultMap">
+    select SYS_RESOURCE.RESOURCEID, SYS_RESOURCE.NAME, SYS_RESOURCE.TYPE, SYS_RESOURCE.DEFINESTRING,
+           SYS_RESOURCE.REMARK, SYS_RESOURCE.ISUSE, SYS_RESOURCE.ISMENU, SYS_RESOURCE.MENUID,
+           SYS_RESOURCE.CATEGORYID
+    from   SYS_RESOURCE
+    where  RESOURCEID = #resourceid#
+  </select>
+  <delete id="deleteResourceByMenuid" parameterClass="java.lang.Long">
+    delete from SYS_RESOURCE
+    where  MENUID = #menuid#
+  </delete>
+</sqlMap>

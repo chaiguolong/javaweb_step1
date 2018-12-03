@@ -1,0 +1,1 @@
+<%response.sendRedirect("/super/Framework_checkLogin.jspx"); %>

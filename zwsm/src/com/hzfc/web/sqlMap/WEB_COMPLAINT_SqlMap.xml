@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WEB_COMPLAINT">
+	<resultMap class="com.hzfc.web.entity.Complaint" id="WEB_WEB_COMPLAINT_BaseResultMap">
+		<result column="COMPLAINTID" jdbcType="DECIMAL" nullValue="0" property="complaintid" />
+		<result column="COMPLAINTNAME" jdbcType="VARCHAR" nullValue="" property="complaintname" />
+		<result column="TELNO" jdbcType="VARCHAR" nullValue="" property="telno" />
+		<result column="ADDTIME" jdbcType="TIMESTAMP" nullValue="" property="addtime" />
+		<result column="DEVELOPERNAME" jdbcType="VARCHAR" nullValue="" property="developername" />
+		<result column="PROPERTYNAME" jdbcType="VARCHAR" nullValue="" property="propertyname" />
+		<result column="INFOTITLE" jdbcType="VARCHAR" nullValue="" property="infotitle" />
+		<result column="INFOCONTENT" jdbcType="VARCHAR" nullValue="" property="infocontent" />
+		<result column="ISDISPLAY" jdbcType="DECIMAL" nullValue="0" property="isdisplay" />
+		<result column="STATE" jdbcType="DECIMAL" nullValue="0" property="state" />
+		<result column="REPLYTIME" jdbcType="TIMESTAMP" nullValue="" property="replytime" />
+		<result column="REPLYCONTENT" jdbcType="VARCHAR" nullValue="" property="replycontent" />
+		<result column="REPLYNAME" jdbcType="VARCHAR" nullValue="" property="replyname" />
+	</resultMap>
+	<select id="WEB_WEB_COMPLAINT_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="WEB_WEB_COMPLAINT_BaseResultMap">
+		select WEB_COMPLAINT.COMPLAINTID, WEB_COMPLAINT.COMPLAINTNAME, WEB_COMPLAINT.TELNO,
+			TO_CHAR(WEB_COMPLAINT.ADDTIME, 'YYYY-MM-DD') ADDTIME, WEB_COMPLAINT.DEVELOPERNAME,
+			WEB_COMPLAINT.PROPERTYNAME, WEB_COMPLAINT.INFOTITLE, WEB_COMPLAINT.INFOCONTENT,
+			WEB_COMPLAINT.ISDISPLAY, WEB_COMPLAINT.STATE, TO_CHAR(WEB_COMPLAINT.REPLYTIME, 'YYYY-MM-DD') REPLYTIME, 
+			WEB_COMPLAINT.REPLYCONTENT, WEB_COMPLAINT.REPLYNAME
+		from WEB_COMPLAINT
+		where COMPLAINTID = #complaintid#
+	</select>
+	<select id="WEB_WEB_COMPLAINT_selectByMap" parameterClass="java.lang.Long" resultMap="WEB_WEB_COMPLAINT_BaseResultMap">
+		select WEB_COMPLAINT.COMPLAINTID, WEB_COMPLAINT.COMPLAINTNAME, WEB_COMPLAINT.TELNO,
+			TO_CHAR(WEB_COMPLAINT.ADDTIME, 'YYYY-MM-DD') ADDTIME, WEB_COMPLAINT.DEVELOPERNAME,
+			WEB_COMPLAINT.PROPERTYNAME, WEB_COMPLAINT.INFOTITLE, WEB_COMPLAINT.INFOCONTENT,
+			WEB_COMPLAINT.ISDISPLAY, WEB_COMPLAINT.STATE, TO_CHAR(WEB_COMPLAINT.REPLYTIME, 'YYYY-MM-DD') REPLYTIME,
+			WEB_COMPLAINT.REPLYCONTENT, WEB_COMPLAINT.REPLYNAME
+		from WEB_COMPLAINT
+		where ISDISPLAY = 1
+		order by WEB_COMPLAINT.REPLYTIME desc,  WEB_COMPLAINT.COMPLAINTID desc
+	</select>
+	<delete id="WEB_WEB_COMPLAINT_deleteByPrimaryKey" parameterClass="java.lang.Long">
+		delete from WEB_COMPLAINT
+		where COMPLAINTID = #complaintid#
+	</delete>
+	<insert id="WEB_WEB_COMPLAINT_insert" parameterClass="com.hzfc.web.entity.Complaint">
+		<selectKey resultClass="long" keyProperty="complaintid"> 
+	        select HIBERNATE_SEQUENCE.nextval as complaintid from dual 
+	    </selectKey>
+		insert into WEB_COMPLAINT (COMPLAINTID, COMPLAINTNAME, TELNO, ADDTIME, DEVELOPERNAME,
+			PROPERTYNAME, INFOTITLE, INFOCONTENT, ISDISPLAY, STATE)
+		values (#complaintid#, #complaintname#, #telno#, SYSDATE,
+			#developername#, #propertyname#, #infotitle#, #infocontent#, 1, 0)
+	</insert>
+	<insert id="WEB_WEB_COMPLAINT_insertSelective" parameterClass="com.hzfc.web.entity.Complaint">
+		insert into WEB_COMPLAINT
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="complaintid">
+				COMPLAINTID
+			</isNotNull>
+			<isNotNull prepend="," property="complaintname">
+				COMPLAINTNAME
+			</isNotNull>
+			<isNotNull prepend="," property="telno">
+				TELNO
+			</isNotNull>
+			<isNotNull prepend="," property="addtime">
+				ADDTIME
+			</isNotNull>
+			<isNotNull prepend="," property="developername">
+				DEVELOPERNAME
+			</isNotNull>
+			<isNotNull prepend="," property="propertyname">
+				PROPERTYNAME
+			</isNotNull>
+			<isNotNull prepend="," property="infotitle">
+				INFOTITLE
+			</isNotNull>
+			<isNotNull prepend="," property="infocontent">
+				INFOCONTENT
+			</isNotNull>
+			<isNotNull prepend="," property="isdisplay">
+				ISDISPLAY
+			</isNotNull>
+			<isNotNull prepend="," property="state">
+				STATE
+			</isNotNull>
+			<isNotNull prepend="," property="replytime">
+				REPLYTIME
+			</isNotNull>
+			<isNotNull prepend="," property="replycontent">
+				REPLYCONTENT
+			</isNotNull>
+			<isNotNull prepend="," property="replyname">
+				REPLYNAME
+			</isNotNull>
+			)
+		</dynamic>
+		values
+		<dynamic prepend="(">
+			<isNotNull prepend="," property="complaintid">
+				#complaintid#
+			</isNotNull>
+			<isNotNull prepend="," property="complaintname">
+				#complaintname#
+			</isNotNull>
+			<isNotNull prepend="," property="telno">
+				#telno#
+			</isNotNull>
+			<isNotNull prepend="," property="addtime">
+				TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS')
+			</isNotNull>
+			<isNotNull prepend="," property="developername">
+				#developername#
+			</isNotNull>
+			<isNotNull prepend="," property="propertyname">
+				#propertyname#
+			</isNotNull>
+			<isNotNull prepend="," property="infotitle">
+				#infotitle#
+			</isNotNull>
+			<isNotNull prepend="," property="infocontent">
+				#infocontent#
+			</isNotNull>
+			<isNotNull prepend="," property="isdisplay">
+				#isdisplay#
+			</isNotNull>
+			<isNotNull prepend="," property="state">
+				#state#
+			</isNotNull>
+			<isNotNull prepend="," property="replytime">
+				TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS')
+			</isNotNull>
+			<isNotNull prepend="," property="replycontent">
+				#replycontent#
+			</isNotNull>
+			<isNotNull prepend="," property="replyname">
+				#replyname#
+			</isNotNull>
+			)
+		</dynamic>
+	</insert>
+	<update id="WEB_WEB_COMPLAINT_updateByPrimaryKeySelective" parameterClass="com.hzfc.web.entity.Complaint">
+		update WEB_COMPLAINT
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="complaintname">
+				COMPLAINTNAME = #complaintname#
+			</isNotNull>
+			<isNotNull prepend="," property="telno">
+				TELNO = #telno#
+			</isNotNull>
+			<isNotNull prepend="," property="addtime">
+				ADDTIME = TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS')
+			</isNotNull>
+			<isNotNull prepend="," property="developername">
+				DEVELOPERNAME = #developername#
+			</isNotNull>
+			<isNotNull prepend="," property="propertyname">
+				PROPERTYNAME = #propertyname#
+			</isNotNull>
+			<isNotNull prepend="," property="infotitle">
+				INFOTITLE = #infotitle#
+			</isNotNull>
+			<isNotNull prepend="," property="infocontent">
+				INFOCONTENT = #infocontent#
+			</isNotNull>
+			<isNotNull prepend="," property="isdisplay">
+				ISDISPLAY = #isdisplay#
+			</isNotNull>
+			<isNotNull prepend="," property="state">
+				STATE = #state#
+			</isNotNull>
+			<isNotNull prepend="," property="replytime">
+				REPLYTIME = TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS')
+			</isNotNull>
+			<isNotNull prepend="," property="replycontent">
+				REPLYCONTENT = #replycontent#
+			</isNotNull>
+			<isNotNull prepend="," property="replyname">
+				REPLYNAME = #replyname#
+			</isNotNull>
+		</dynamic>
+		where COMPLAINTID = #complaintid#
+	</update>
+	<update id="WEB_WEB_COMPLAINT_updateByPrimaryKey" parameterClass="com.hzfc.web.entity.Complaint">
+		update WEB_COMPLAINT
+		set COMPLAINTNAME = #complaintname#,
+			TELNO = #telno#,
+			ADDTIME = TO_DATE(#addtime#, 'YYYY-MM-DD HH24:MI:SS'),
+			DEVELOPERNAME = #developername#,
+			PROPERTYNAME = #propertyname#,
+			INFOTITLE = #infotitle#,
+			INFOCONTENT = #infocontent#,
+			ISDISPLAY = #isdisplay#,
+			STATE = #state#,
+			REPLYTIME = TO_DATE(#replytime#, 'YYYY-MM-DD HH24:MI:SS'),
+			REPLYCONTENT = #replycontent#,
+			REPLYNAME = #replyname#
+		where COMPLAINTID = #complaintid#
+	</update>
+</sqlMap>

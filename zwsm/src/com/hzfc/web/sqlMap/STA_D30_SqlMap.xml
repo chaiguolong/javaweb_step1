@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="STA_D30">
+	<resultMap class="com.hzfc.web.entity.D30" id="STA_D30_BaseResultMap">
+		<result column="D30ID" jdbcType="DECIMAL" nullValue="0" property="d30id" />
+		<result column="DISTRICTID" jdbcType="DECIMAL" nullValue="0" property="districtid" />
+		<result column="DISTRICTNAME" jdbcType="VARCHAR" nullValue="" property="districtname" />
+		<result column="PLANNUM" jdbcType="DECIMAL" nullValue="0" property="plannum" />
+		<result column="PLANAREA" jdbcType="DECIMAL" nullValue="0" property="planarea" />
+		<result column="DEALPRICE" jdbcType="DECIMAL" nullValue="0" property="dealprice" />
+		<result column="DEALMONEY" jdbcType="DECIMAL" nullValue="0" property="dealmoney" />
+		<result column="DEALNUM" jdbcType="DECIMAL" nullValue="0" property="dealnum" />
+		<result column="DEALAREA" jdbcType="DECIMAL" nullValue="0" property="dealarea" />
+		<result column="SHOWDATE" jdbcType="TIMESTAMP" nullValue="" property="showdate" />
+		<result column="ISCOH" jdbcType="DECIMAL" nullValue="0" property="iscoh" />
+		<result column="SHOWSORT" jdbcType="DECIMAL" nullValue="0" property="showsort" />
+		<result column="RESIDEDEALNUM" jdbcType="DECIMAL" nullValue="0" property="residedealnum" />
+		<result column="RESIDEDEALAREA" jdbcType="DECIMAL" nullValue="0" property="residedealarea" />
+		<result column="TOTALAVANUM" jdbcType="DECIMAL" nullValue="0" property="totalavanum" />
+		<result column="TOTALAVAAREA" jdbcType="DECIMAL" nullValue="0" property="totalavaarea" />
+		<result column="TOTALPLANNUM" jdbcType="DECIMAL" nullValue="0" property="totalplannum" />
+		<result column="TOTALPLANAREA" jdbcType="DECIMAL" nullValue="0" property="totalplanarea" />
+		<result column="TOTALDEALNUM" jdbcType="DECIMAL" nullValue="0" property="totaldealnum" />
+		<result column="TOTALDEALAREA" jdbcType="DECIMAL" nullValue="0" property="totaldealarea" />
+		<result column="SIGNPRICE" jdbcType="DECIMAL" nullValue="0" property="signprice" />
+		<result column="SIGNMONEY" jdbcType="DECIMAL" nullValue="0" property="signmoney" />
+		<result column="SIGNNUM" jdbcType="DECIMAL" nullValue="0" property="signnum" />
+		<result column="SIGNAREA" jdbcType="DECIMAL" nullValue="0" property="signarea" />
+		<result column="RESIDESIGNNUM" jdbcType="DECIMAL" nullValue="0" property="residesignnum" />
+		<result column="RESIDESIGNAREA" jdbcType="DECIMAL" nullValue="0" property="residesignarea" />
+		<result column="TOTALSIGNAREA" jdbcType="DECIMAL" nullValue="0" property="totalsignarea" />
+		<result column="TOTALSIGNNUM" jdbcType="DECIMAL" nullValue="0" property="totalsignnum" />
+	</resultMap>
+	<resultMap class="com.hzfc.web.entity.D30" id="STA_D30_StatisticResultMap">
+		<result column="DISTRICTNAME" jdbcType="VARCHAR" nullValue="" property="districtname" />
+		<result column="DEALMONEY" jdbcType="DECIMAL" nullValue="0" property="dealmoney" />
+		<result column="DEALNUM" jdbcType="DECIMAL" nullValue="0" property="dealnum" />
+		<result column="DEALAREA" jdbcType="DECIMAL" nullValue="0" property="dealarea" />
+	</resultMap>
+	<select id="WEB_STA_D30_selectByPrimaryKey" parameterClass="java.lang.Long" resultMap="STA_D30_BaseResultMap">
+		select STA_D30.D30ID, STA_D30.DISTRICTID, STA_D30.DISTRICTNAME, STA_D30.PLANNUM,
+			STA_D30.PLANAREA, STA_D30.DEALPRICE, STA_D30.DEALMONEY, STA_D30.DEALNUM, STA_D30.DEALAREA,
+			TO_CHAR(STA_D30.SHOWDATE, 'YYYY-MM-DD HH24:MI:SS') SHOWDATE, STA_D30.ISCOH, STA_D30.SHOWSORT,
+			STA_D30.RESIDEDEALNUM, STA_D30.RESIDEDEALAREA, STA_D30.TOTALAVANUM, STA_D30.TOTALAVAAREA,
+			STA_D30.TOTALPLANNUM, STA_D30.TOTALPLANAREA, STA_D30.TOTALDEALNUM, STA_D30.TOTALDEALAREA,
+			STA_D30.SIGNPRICE, STA_D30.SIGNMONEY, STA_D30.SIGNNUM, STA_D30.SIGNAREA,
+			STA_D30.RESIDESIGNNUM, STA_D30.RESIDESIGNAREA, STA_D30.TOTALSIGNAREA, STA_D30.TOTALSIGNNUM
+		from STA_D30
+		where D30ID = #d30id#
+	</select>
+	<select id="WEB_STA_D30_selectStatisticForDay" parameterClass="java.lang.Long" resultMap="STA_D30_StatisticResultMap">
+		select STA_D30.DISTRICTNAME, sum(STA_D30.DEALNUM) as DEALNUM, sum(STA_D30.DEALMONEY) as DEALMONEY, sum(STA_D30.DEALAREA) as DEALAREA
+			from STA_D30
+		where trunc(STA_D30.SHOWDATE) = trunc(sysdate)
+			and STA_D30.Iscoh = 1
+			and DEALNUM > 0
+		group by STA_D30.DISTRICTNAME
+	</select>
+	
+	<resultMap class="com.hzfc.web.entity.D30" id="WEB_STA_D30_selectUsedStatisticForDayResultMap">
+		<result column="DISTRICTNAME" jdbcType="VARCHAR" nullValue="" property="districtname" />
+		<result column="SIGNNUM" jdbcType="DECIMAL" nullValue="0" property="signnum" />
+		<result column="SIGNAREA" jdbcType="DECIMAL" nullValue="0" property="signarea" />
+	</resultMap>
+		
+	<select id="WEB_STA_D30_selectUsedStatisticForDay" parameterClass="java.lang.Long" resultMap="WEB_STA_D30_selectUsedStatisticForDayResultMap">
+		select STA_D30.DISTRICTNAME, sum(STA_D30.SIGNNUM) as SIGNNUM, sum(STA_D30.SIGNAREA) as SIGNAREA
+			from STA_D30
+		where trunc(STA_D30.SHOWDATE) = trunc(sysdate)
+			and STA_D30.Iscoh = 0
+		group by STA_D30.DISTRICTNAME
+	</select>
+	
+	<select id="WEB_STA_D30_selectStatisticForMonth" parameterClass="java.lang.Long" resultMap="STA_D30_StatisticResultMap">
+		select STA_D30.DISTRICTNAME, sum(STA_D30.DEALNUM) as DEALNUM, sum(STA_D30.DEALMONEY) as DEALMONEY, sum(STA_D30.DEALAREA) as DEALAREA
+			from STA_D30
+		where 
+			trunc(STA_D30.SHOWDATE) > trunc(last_day(add_months(sysdate,-2))) 
+			and trunc(STA_D30.SHOWDATE) <![CDATA[<=]]> trunc(last_day(add_months(sysdate,-1)))      
+			and STA_D30.Iscoh = 1
+			and STA_D30.Dealnum > 0
+			group by STA_D30.DISTRICTNAME
+	</select>
+</sqlMap>
