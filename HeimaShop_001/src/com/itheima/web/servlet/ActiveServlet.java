@@ -18,6 +18,7 @@ public class ActiveServlet extends HttpServlet {
 		
 		//获得激活码
 		String activeCode = request.getParameter("activeCode");
+		System.out.println("Study Git");
 
 
 		
