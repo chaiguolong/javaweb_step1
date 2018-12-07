@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Cart {
 
+
 	//该购物车中存储的n个购物项
 	private Map<String,CartItem> cartItems = new HashMap<String,CartItem>();
 	
