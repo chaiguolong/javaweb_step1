@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="./jquery-2.1.1.js"></script>
+<script type="text/javascript">
+/**
+ * ajax get请求，通过url传递参数
+ * 后台接收到json的字符串，可以自行转换成对象
+ */
+function sendGet(){
+	var data = {'userName':'aaa','password':'0000'};
+	var json = JSON.stringify(data);
+	$.ajax({
+		method : 'GET',
+		data:{'json':json},
+		url : '/com.maven.web/ajax/get',
+		dataType : 'json',//返回数据格式
+		success : function(result) {
+			alert('success');
+		},
+		error : function(err) {
+			alert("error");
+		}
+	});
+};
+ 
+/**
+ * post请求，传递json格式数据，后台可以直接用实体bean接收
+ * contentType : 'application/json'
+ */
+function sendPost(){
+	var data = {'userName':'aaa','password':'0000'};
+	var json = JSON.stringify(data);
+	$.ajax({
+		method : 'POST',
+		url : '/com.maven.web/ajax/post',
+		data : json,
+		dataType : 'json',//返回数据格式
+		contentType : 'application/json',//必须为false
+		success : function(result) {
+			alert('success');
+		},
+		error : function(err) {
+			alert("error");
+		}
+	});
+};
+ 
+/**
+ * post 传递json格式数据，后台如果不用实体bean接收，可以直接用String接收
+ * 获取到json串然后自行转换成对象
+ */
+function sendPostParams(){
+	var data = {'userName':'aaa','password':'0000'};
+	var json = JSON.stringify(data);
+	$.ajax({
+		method : 'POST',
+		url : '/com.maven.web/ajax/post/params',
+		data : json,
+		dataType : 'json',//返回数据格式
+		contentType : 'application/json',
+		success : function(result) {
+			alert('success');
+		},
+		error : function(err) {
+			alert("error");
+		}
+	});
+};
+ 
+/**
+ * 通过json字符串的格式传递数组，后台需要手动获取参数转换成数组
+ * 如果只有一个参数，后台可以直接获取，但是如果有多个，后台必须封装成java bean来获取
+ * 属性对应json传递的参数名
+ */
+function sendPostArr(){
+	var _list = [];  
+	  
+	for (var i = 0; i < 5; i++) {  
+	    _list[i] = 'a'+i;  
+	} 
+	var data = {'params':_list};
+	var json = JSON.stringify(_list);
+	$.ajax({
+		method : 'POST',
+		url : '/com.maven.web/ajax/post/arr',
+		data : json,
+		dataType : 'json',//返回数据格式
+		contentType : 'application/json',
+		success : function(result) {
+			alert('success');
+		},
+		error : function(err) {
+			alert("error");
+		}
+	});
+};
+ 
+/**
+ * 直接传递数组对象，后台可以用数组直接接收
+ * 这是模拟表单提交数据，可以直接传递参数
+ * 注意，传递数组的话，必须设置traditional: true
+ * 这里设置get,post请求都一样
+ */
+function sendPostArr2(){
+	var _list = [];  
+	  
+	for (var i = 0; i < 5; i++) {  
+	    _list[i] = 'a'+i;  
+	} 
+	$.ajax({
+		method : 'GET',
+		url : '/com.maven.web/ajax/post/arr2',
+		data : {'params':_list,'name':'aaa'},
+		traditional: true,//当设置成true的时候就会用传统方式序列化参数
+		dataType : 'json',
+		success : function(result) {
+			alert('success');
+		},
+		error : function(err) {
+			alert("error");
+		}
+	});
+};
+ 
+</script>
+</head>
+<body>
+<span style="font-size: 12px;color:red;">ajax请求发送json字符串，后台不能直接用参数名获取</span>
+<br/>
+<a href="#" onclick="sendGet()">ajax get请求,后台可以直接用参数名接收</a>
+<br/>
+<br/>
+<a href="#" onclick="sendPost()">ajax post请求,后台用注解@RequestBody+java bean接收参数</a>
+<br/>
+<br/>
+<a href="#" onclick="sendPostParams()">ajax post请求,后台用注解@RequestBody+String接收整个json串</a>
+<br/>
+<br/>
+<a href="#" onclick="sendPostArr()">ajax post请求通过json字符串的格式传递数组，后台需要手动获取参数转换成数组</a>
+<br/>
+<br/>
+<a href="#" onclick="sendPostArr2()">ajax直接传递数组对象，后台可以用数组直接接收，post,get请求都一样</a>
+</body>
+</html>
