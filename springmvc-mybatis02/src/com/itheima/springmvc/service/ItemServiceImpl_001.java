@@ -29,7 +29,6 @@ public class ItemServiceImpl_001 implements ItemService_001{
 
 	public void updateItemsById(Items items){
 		items.setCreatetime(new Date());
-		System.out.println("-----3333-----");
 		itemsMapper.updateByPrimaryKeyWithBLOBs(items);
 	}
 }

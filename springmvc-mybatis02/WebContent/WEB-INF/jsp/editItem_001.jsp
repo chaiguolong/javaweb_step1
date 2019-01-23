@@ -25,12 +25,9 @@
 					<td> <textarea rows="3" cols="30" name="detail" >${items.detail}</textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2" align="center"> <input type="submit" name="name" id="name" value="提交"></td>
+					<td colspan="2" align="center"> <input type="submit"  value="提交"></td>
 				</tr>
-
-
-
-
+				<input type="hidden" name="id" value="${items.id}">
 			</table>
 		</form>
 	</body>
