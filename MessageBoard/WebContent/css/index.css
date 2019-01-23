@@ -1,0 +1,64 @@
+*{
+	margin:0;
+	padding:0;
+}
+ul li{
+	list-style:none;
+}
+
+li{
+	position:relative;
+}
+
+li span{
+	float:right
+}
+html,body{
+	width:100%;
+	height:100%;
+}
+h1{
+	text-align:center;
+	letter-spacing:30px;
+	color:#008888;
+}
+h3{
+	font-size:20px;
+	color:#565f69;
+	font-weight:bold;
+}
+.wrapper{
+	width:600px;
+	height:300px;
+	position:relative;
+	top:50px;
+	margin:auto;
+}
+.left{
+	width:600px;
+	margin-top:20px;
+	display:inline-block;
+}
+.leave_context{
+	width:600px;
+	height:300px;
+	border:1px solid black;
+	background:moccasin;
+}
+#text{
+	width:200px;
+	height:40px;
+	margin-top:20px;
+	background:snow;
+	font-size:18px;
+}
+#submit{
+	width:200px;
+	height:40px;
+	margin-top:20px;
+	float:right;
+	background:snow;
+	font-size:20px;
+	letter-spacing:55px;
+	text-align:right;
+}

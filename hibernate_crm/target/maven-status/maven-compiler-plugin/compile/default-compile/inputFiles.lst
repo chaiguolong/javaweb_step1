@@ -1,0 +1,8 @@
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/web/AddCustomerServlet.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/service/impl/CustomerServiceImpl.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/service/CustomerService.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/dao/impl/CustomerDaoImpl.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/dao/CustomerDao.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/web/filter/GenericEncodingFilter.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/domain/Customer.java
+/Users/mymac/Documents/JavaWeb01/hibernate_crm/src/main/java/cn/itheima/utils/HibernateUtils.java
