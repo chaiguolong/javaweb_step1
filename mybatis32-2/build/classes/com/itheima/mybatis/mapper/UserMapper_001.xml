@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.mybatis.mapper.UserMapper_001">
+	<sql id="selector">
+		select * from user
+	</sql>
+
+
+	<!-- 根据用户名模糊查询 -->
+	<select id="findUserByQueryVo" parameterType="QueryVo" resultType="User">
+		select * from user where username like "%"#{user.username}"%"
+	</select>
+
+
+	<select id="countUser" resultType="Integer">
+		select count(*) from user;
+	</select>
+
+
+	<!-- 根据性别和名字查询用户 -->
+	<select id="selectUserBySexAndUsername" parameterType="User" resultType="User">
+		<!-- select * from user  -->
+		<include refid="selector"></include>
+		<where>
+			<if test="sex !=null and sex !=''">
+				sex=#{sex} 		
+			</if>
+			<if test="username != null and username != ''">
+				and username=#{username}
+			</if>
+		</where>
+	</select>
+
+
+	<select id="selectUserByIds" parameterType="QueryVo" resultType="User">
+		<include refid="selector"></include>
+		<where>
+			id in
+			<foreach collection="idsList" item="id" separator="," open="(" close=")">
+				#{id}
+			</foreach>
+		</where>
+	</select>
+
+
+
+</mapper>

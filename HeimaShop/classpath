@@ -1,0 +1,10 @@
+.:/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jd
+k/Contents/Home/lib/tools.jar:/Users/mymac/.vim/bundle/myTools.vim/bin/:/Users/mymac/Documents/JavaWeb01/hibernate_day01/build/
+classes:/Users/mymac/Documents/JavaWeb01/hibernate_day01/WebContent/WEB-INF/lib/*:.:/Users/mymac/Documents/JavaWeb01/HeimaShop/
+build/classes:/Users/mymac/Documents/JavaWeb01/HeimaShop/WebContent/WEB-INF/lib/*:.
+
+====================================================================================================
+
+.:/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/lib/dt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jd
+k/Contents/Home/lib/tools.jar:/Users/mymac/.vim/bundle/myTools.vim/bin/:/Users/mymac/Documents/JavaWeb01/hibernate_day01/build/
+classes:/Users/mymac/Documents/JavaWeb01/hibernate_day01/WebContent/WEB-INF/lib/*:.
