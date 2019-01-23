@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.itheima.springmvc.pojo.Items;
+import com.itheima.springmvc.pojo.QueryVo;
 import com.itheima.springmvc.service.ItemService_002;
 
 
@@ -21,23 +22,26 @@ public class ItemController_002 {
 	@Autowired
 	private ItemService_002 itemService_002;
 
-
-	// @RequestMapping(value="/item/itemList_002.action")
-	// public ModelAndView itemList(){
-	// 	List<Items> list  = itemService_002.selectItemsList();
-	// 	ModelAndView mav = new ModelAndView();
-	// 	mav.addObject("itemList",list);
-	// 	mav.setViewName("itemList_002");
-	// 	return mav;
-	// }
-
-
 	@RequestMapping(value="/item/itemList_002.action")
 	public String itemList(Model model){
 		List<Items> list = itemService_002.selectItemsList();
 		model.addAttribute("itemList",list);
 		return "itemList_002";
 	}
+
+	@RequestMapping(value="/itemEdit_002.action")
+	public String toEdit(@RequestParam(value="id",required=false)Integer id,Model model){
+		Items items = itemService_002.selectItemsById(id);
+		model.addAttribute("items",items);
+		return "editItem_002";
+	}
+
+	@RequestMapping(value="/updateitem_002.action")
+	public String updateitem(Items items,Model model){
+		itemService_002.updateItemsById(items);
+		return "success";
+	}
+
 
 	@RequestMapping(value="/deletes_002.action")
 	public ModelAndView deletes(@RequestParam("ids") Integer[] ids){
@@ -47,8 +51,18 @@ public class ItemController_002 {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("success");
 		return mav;
-
 	}
+
+	@RequestMapping(value="/updates_002.action")
+	public String updates(QueryVo vo){
+		for (int i = 0; i < vo.getItemsList().size(); i++) {
+			System.out.println(vo.getItemsList().get(i).getName());
+			itemService_002.updateItemsById(vo.getItemsList().get(i));
+		}
+		return "success";
+	}
+
+
 
 
 }

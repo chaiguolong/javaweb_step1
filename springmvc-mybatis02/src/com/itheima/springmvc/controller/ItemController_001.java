@@ -33,22 +33,19 @@ public class ItemController_001 {
 		return "itemList_001";
 	}
 
-	@RequestMapping(value="/updateitem_001.action")
-	public String updateitem(Items items,HttpServletRequest request,Model model) throws Exception{
-		request.setCharacterEncoding("UTF-8");
-		itemService_001.updateItemsById(items);
-
-		return "success";
-	}
-@RequestMapping(value="/itemEdit_001.action")
+	@RequestMapping(value="/itemEdit_001.action")
 	public String toEdit(@RequestParam("id") Integer id,Model model){
 		Items items = itemService_001.selectItemsById(id);
 		model.addAttribute("items",items);
 		return "editItem_001";
 	}
 
-
-
+	@RequestMapping(value="/updateitem_001.action")
+	public String updateitem(Items items,HttpServletRequest request,Model model) throws Exception{
+		request.setCharacterEncoding("UTF-8");
+		itemService_001.updateItemsById(items);
+		return "success";
+	}
 
 	@RequestMapping(value="/deletes_001.action")
 	public ModelAndView deletes(@RequestParam("ids") Integer[] ids){
@@ -59,6 +56,17 @@ public class ItemController_001 {
 		mav.setViewName("success");
 		return mav;
 	}
+
+	//修改
+	@RequestMapping(value="/updates_001.action")
+	public String updates(QueryVo vo){
+		for (int i=0; i < vo.getItemsList().size(); i++) {
+			System.out.println(vo.getItemsList().get(i).getId());
+			itemService_001.updateItemsById(vo.getItemsList().get(i));
+		}
+		return "success";
+	}
+
 
 	
 

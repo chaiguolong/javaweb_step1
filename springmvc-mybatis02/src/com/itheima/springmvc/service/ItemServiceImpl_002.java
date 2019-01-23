@@ -1,6 +1,7 @@
 package com.itheima.springmvc.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,17 @@ public class ItemServiceImpl_002 implements ItemService_002{
 	@Override
 	public List<Items> selectItemsList() {
 		return itemsMapper.selectByExampleWithBLOBs(null);
+	}
+
+	public Items selectItemsById(Integer id){
+		Items items = new Items();
+		items = itemsMapper.selectByPrimaryKey(id);
+		return items;
+	}
+
+	public void updateItemsById(Items items){
+		items.setCreatetime(new Date());
+		itemsMapper.updateByPrimaryKeyWithBLOBs(items);
 	}
 }
 
