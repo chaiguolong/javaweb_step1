@@ -35,7 +35,6 @@ public class ItemController_001 {
 
 	@RequestMapping(value="/updateitem_001.action")
 	public String updateitem(Items items,HttpServletRequest request,Model model) throws Exception{
-		System.out.println("------1111-----");
 		request.setCharacterEncoding("UTF-8");
 		itemService_001.updateItemsById(items);
 
