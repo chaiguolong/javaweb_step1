@@ -11,7 +11,6 @@
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 <!-- 引入自定义css文件 style.css -->
 <link rel="stylesheet" href="css/style.css" type="text/css" />
-
 <style>
 body {
 	margin-top: 20px;
