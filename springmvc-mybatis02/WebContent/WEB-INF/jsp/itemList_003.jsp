@@ -16,7 +16,7 @@
 				</tr>
 			</table>
 		</form>
-		<form action="${pageContext.request.contextPath}/deletes_003.action" method="post" accept-charset="utf-8">
+		<form action="${pageContext.request.contextPath}/updates_003.action" method="post" accept-charset="utf-8">
 			<table width="100%" border=1>
 				<tr>
 					<td><input type="checkbox" name="" id=""></td>
@@ -26,14 +26,15 @@
 					<td>商品描述</td>
 					<td>操作</td>
 				</tr>
-				<c:forEach items="${itemList}" var="item" varStatus="index">
+				<c:forEach items="${itemList}" var="item" varStatus="s">
 				<tr>
 					<td><input type="checkbox" name="ids" id="ids" value="${item.id}"></td>
-					<td><input type="text" name="name" id="name" value="${item.name}"></td>
-					<td><input type="text" name="price" id="price" value="${item.price}"></td>
-					<td><input type="text" name="createtime" id="createtime" value="${item.createtime}"></td>
-					<td><input type="text" name="detail" id="detail" value="${item.detail}"></td>
-					<td><a href="#">修改</a></td>
+					<td><input type="text" name="itemsList[${s.index}].name" id="name" value="${item.name}"></td>
+					<td><input type="text" name="itemsList[${s.index}].price" id="price" value="${item.price}"></td>
+					<td><input type="text" name="itemsList[${s.index}].createtime" id="createtime" value="${item.createtime}"></td>
+					<td><input type="text" name="itemsList[${s.index}].detail" id="detail" value="${item.detail}"></td>
+					<td><a href="${pageContext.request.contextPath}/itemEdit_003.action?id=${item.id}">修改</a></td>
+					<input type="hidden" name="itemsList[${s.index}].id" value="${item.id}">
 				</tr>
 				</c:forEach>
 			</table>
