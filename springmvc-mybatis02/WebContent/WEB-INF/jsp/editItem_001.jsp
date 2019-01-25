@@ -6,6 +6,22 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>商品修改信息</title>
+		<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.4.4.min.js"></script>
+		<script charset="utf-8">
+			$(function(){
+				var params = '{"id": 1,"name": "测试商品","price": 99.9,"detail": "测试商品描述","pic": "123456.jpg"}';
+				$.ajax({
+					url : "${pageContext.request.contextPath}/json_001.action",
+					data : params,
+					contentType : "application/json;charset=UTF-8",//发送数据的格式
+					type : "post",
+					dataType : "json",//回调
+					success : function(data){
+						alert(data.name);
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<%-- <form id="itemForm" action="" method="post" enctype="multipart/form-data"> --%>
