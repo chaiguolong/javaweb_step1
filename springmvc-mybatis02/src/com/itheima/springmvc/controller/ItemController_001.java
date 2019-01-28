@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,7 +31,9 @@ public class ItemController_001 {
 
 
 	@RequestMapping(value="/item/itemList_001.action")
-	public String itemList(Model model){
+	public String itemList(Model model,HttpSession httpSession){
+		String session = (String)httpSession.getAttribute("USER_SESSION");
+		System.out.println(session);
 		List<Items> list = itemService_001.selectItemsList();
 		model.addAttribute("itemList",list);
 		return "itemList_001";
@@ -76,7 +79,17 @@ public class ItemController_001 {
 		return items;
 	}
 
+	//去登录的页面
+	@RequestMapping(value="/login_001.action",method = RequestMethod.GET)
+	public String login(){
+		return "login_001";
+	}
 
+	@RequestMapping(value="/login_001.action",method = RequestMethod.POST)
+	public String login(@RequestParam("username") String username,HttpSession httpSession){
+		httpSession.setAttribute("USER_SESSION",username);
+		return "redirect:/item/itemList_001.action";
+	}
 	
 
 
