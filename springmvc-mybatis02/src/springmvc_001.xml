@@ -18,10 +18,26 @@
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 
+	<!-- SPringmvc的拦截器 -->
+	<mvc:interceptors>
+		<!-- 多个拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"></mvc:mapping>
+			<!-- 自定义的拦截器类 -->
+			<bean class="com.itheima.springmvc.interceptor.Interceptor1_001"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"></mvc:mapping>
+			<!-- 自定义的拦截器类 -->
+			<bean class="com.itheima.springmvc.interceptor.Interceptor2_001"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
+
 
 </beans>

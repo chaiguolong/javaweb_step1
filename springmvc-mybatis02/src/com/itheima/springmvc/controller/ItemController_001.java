@@ -31,9 +31,7 @@ public class ItemController_001 {
 
 
 	@RequestMapping(value="/item/itemList_001.action")
-	public String itemList(Model model,HttpSession httpSession){
-		String session = (String)httpSession.getAttribute("USER_SESSION");
-		System.out.println(session);
+	public String itemList(Model model){
 		List<Items> list = itemService_001.selectItemsList();
 		model.addAttribute("itemList",list);
 		return "itemList_001";

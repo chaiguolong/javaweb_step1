@@ -2,12 +2,15 @@ package com.itheima.springmvc.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.servlet.ModelAndView;
@@ -60,6 +63,18 @@ public class ItemController_002 {
 			itemService_002.updateItemsById(vo.getItemsList().get(i));
 		}
 		return "success";
+	}
+
+	@RequestMapping(value="/login_002.action",method = RequestMethod.GET)
+	public String login(){
+		return "login_002";
+	}
+
+	@RequestMapping(value="/login_002.action",method = RequestMethod.POST)
+	public String login(@RequestParam("username")String username,HttpSession httpSession){
+		System.out.println(username);
+		httpSession.setAttribute("USER_SESSION",username);
+		return "redirect:/item/itemList_002.action";
 	}
 
 
