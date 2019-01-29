@@ -4,14 +4,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.web.servlet.ModelAndView;
 
@@ -63,6 +67,22 @@ public class ItemController_003 {
 			itemService_003.updateItemsById(vo.getItemsList().get(i));
 		}
 		return "success";
+	}
+
+	@RequestMapping(value="/json_003.action")
+	public @ResponseBody Items json(@RequestBody Items items){
+		return items;
+	}
+
+	@RequestMapping(value="/login_003.action",method=RequestMethod.GET)
+	public String login(){
+		return "login_003";
+	}
+
+	@RequestMapping(value="/login_003.action",method=RequestMethod.POST)
+	public String login(@RequestParam("username") String username,HttpSession httpSession){
+		httpSession.setAttribute("USER_SESSION",username);
+		return "redirect:/item/itemList_003.action";
 	}
 
 
