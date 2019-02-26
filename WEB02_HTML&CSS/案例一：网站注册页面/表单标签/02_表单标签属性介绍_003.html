@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>02_表单标签属性介绍_003</title>
+	</head>
+	<body>
+		<form action="#" method="get">
+			隐藏字段:<input type="hidden" name="id" id="id" value=""><br />
+			用户名: <input type="text" name="username" id="username" value="zhangsan" size="40px" maxlength="5" placeholder="请输入用户名">
+			密码: <input type="password" name="password" id="password" value="" required="required"><br />
+			确认密码: <input type="password" name="repassword" id="" value=""><br />
+			性别: <input type="radio" name="sex" id="" value="男" />男
+			<input type="radio" name="sex" id="" value="女">女<br />
+			爱好: <input type="checkbox" name="hobby" id="" value="钓鱼">钓鱼
+			<input type="checkbox" name="hobby" id="" value="打电动">打电动
+			<input type="checkbox" name="hobby" id="" value="写代码" checked="checked">写代码<br />
+			头像: <input type="file" name="file" id="" value=""><br />
+			籍贯: <select name="province" id="">
+				<option value="">--请选择--</option>
+				<option value="北京">北京</option>
+				<option value="上海" selected="selected">上海</option>
+				<option value="广州">广州</option>
+			</select>
+			自我介绍:
+			<textarea name="zwjs" id=""></textarea><br />
+			提交按钮: <input type="submit" name="" id="" value="注册"><br />
+			普通按钮: <input type="button" name="" id="" value="zhuce"><br />
+			重置按钮: <input type="reset" name="" id="" value=""><br />
+		</form>
+	</body>
+</html>
