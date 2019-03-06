@@ -3,76 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>注册页面</title>
-		<!--<script>
-			function checkForm(){
-				//alert("aa");
-				/**校验用户名*/
-				//1.获取用户输入的数据
-				var uValue = document.getElementById("user").value;
-				//alert(uValue);
-				if(uValue==""){
-					//2.给出错误提示信息
-					alert("用户名不能为空!");
-					return false;
-				}
-				
-				/*校验密码*/
-				var pValue = document.getElementById("password").value;
-				if(pValue==""){
-					alert("密码不能为空!");
-					return false;
-				}
-				
-				/**校验确认密码*/
-				var rpValue = document.getElementById("repassword").value;
-				if(rpValue!=pValue){
-					alert("两次密码输入不一致!");
-					return false;
-				}
-				
-				/*校验邮箱*/
-				var eValue = document.getElementById("eamil").value;
-				if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(eValue)){
-					alert("邮箱格式不正确!");
-					return false;
-				}
-				
-			}
-		</script>-->
-		
-		<script>
-			/*function showTips(){
-				document.getElementById("userspan").innerHTML="<font color='gray'>用户名必填！</font>";
-			}
-			
-			
-			function checkUser(){
-				//1.获取用户输入的用户名数据
-				var uValue = document.getElementById("user").value;
-				//2.进行校验
-				if(uValue==""){
-					document.getElementById("userspan").innerHTML="<font color='red'>用户名不能为空!</font>";
-				}else{
-					document.getElementById("userspan").innerHTML="";
-				}
-			}*/
-			
-			function showTips(id,info){
-				document.getElementById(id+"span").innerHTML="<font color='gray'>"+info+"</font>";
-			}
-			
-			
-			function check(id,info){
-				//1.获取用户输入的用户名数据
-				var uValue = document.getElementById(id).value;
-				//2.进行校验
-				if(uValue==""){
-					document.getElementById(id+"span").innerHTML="<font color='red'>"+info+"</font>";
-				}else{
-					document.getElementById(id+"span").innerHTML="";
-				}
-			}
-		</script>
+		<script src="../js/js004.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<table border="1px" align="center" width="1300px" cellpadding="0px" cellspacing="0px">
