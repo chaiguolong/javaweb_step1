@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>切换图片_003</title>
+		<style type="text/css" media="screen">
+			div{
+				border:1px solid white;
+				width:500px;
+				height:350px;
+				margin:auto;
+				text-align:center;
+			}
+		</style>
+		<script charset="utf-8">
+			var i = 1;
+			function changeImg(){
+				i++;
+				document.getElementById("img1").src="../../img/"+i+".jpg";
+				if(i == 3){
+					i = 0;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<input type="button" name="" id="" value="下一张" onclick="changeImg()">
+			<img src="../../img/1.jpg" width="100%" height="100%" id="img1"/>
+		</div>
+	</body>
+</html>
