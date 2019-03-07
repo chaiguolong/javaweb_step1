@@ -3,26 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>表格隔行换色</title>
-		<script>
-			window.onload = function(){
-				//1.获取表格
-				var tblEle = document.getElementById("tbl");
-				//2.获取表格中tbody里面的行数(长度)
-				var len = tblEle.tBodies[0].rows.length;
-				//alert(len);
-				//3.对tbody里面的行进行遍历
-				for(var i=0;i<len;i++){
-					if(i%2==0){
-						//4.对偶数行设置背景颜色
-						tblEle.tBodies[0].rows[i].style.backgroundColor="pink";
-					}else{
-						//5.对奇数行设置背景颜色
-						tblEle.tBodies[0].rows[i].style.backgroundColor="gold";
-					}
-				}
-			}
-		</script>
-
+		<script src="../js/js001-01.js" charset="utf-8"></script>
 	</head>
 	<body>
 		<table border="1" width="500" height="50" align="center" id="tbl">
@@ -34,7 +15,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr >
+				<tr>
 					<td>1</td>
 					<td>张三</td>
 					<td>22</td>

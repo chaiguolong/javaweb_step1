@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>03_onload事件测试_003</title>
+		<script charset="utf-8">
+			window.onload = function(){
+				document.getElementById("btn").onclick = function(){
+					location.href = "惊喜.html";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="点我有惊喜!">
+	</body>
+</html>
