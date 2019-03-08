@@ -1,0 +1,52 @@
+#parent{
+	border:1px solid red;
+	width:1300px;
+	height:2190px;
+	margin:auto;
+}
+.top{
+	border:1px solid green;
+	width:33.1%;
+	height:50px;
+	float:left;
+}
+
+#top{
+	padding-top:13px;
+	height:37px;
+}
+.clear{
+	clear:both;
+}
+
+#menu{
+	border:1px solid blue;
+	height:50px;
+	background-color:black;
+}
+
+ul{
+	margin-top:2px;
+}
+
+ul li{
+	display:inline;
+	color:white;
+}
+
+#container{
+	border:1px solid red;
+	height:700px;
+	background:url(../img/regist_bg.jpg);
+	position:relative;
+}
+#content{
+	border:5px solid gray;
+	width:50%;
+	height:60%;
+	background-color:white;
+	position:absolute;
+	left:300px;
+	top:100px;
+	padding-top:50px;
+}

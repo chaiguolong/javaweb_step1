@@ -1,0 +1,53 @@
+#parent{
+	border:1px solid red;
+	width:1300px;
+	height:2190px;
+	margin:auto;
+}
+.top{
+	border:1px solid green;
+	width:33.1%;
+	height:50px;
+	float:left;
+}
+#top{
+	border:1px solid blue;
+	height:37px;
+	padding-top:13px;
+}
+.clear{
+	clear:both;
+}
+#menu{
+	border:1px solid red;
+	width:99.9%;
+	height:50px;
+	background-color:black;
+}
+ul li{
+	display:inline;
+	color:white;
+}
+ul{
+	margin-top:3px;
+}
+#container{
+	border:1px solid green;
+	height:700px;
+	background:url(../img/regist_bg.jpg);
+	position:relative;
+}
+#content{
+	border:5px solid gray;
+	width:50%;
+	height:60%;
+	position:absolute;
+	left:300px;
+	top:100px;
+	background-color:white;
+	padding-top:50px;
+}
+#bottom{
+	text-align:center;
+}
+

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>01_省市二级联动_001</title>
+		<link rel="stylesheet" href="../css/style003-01_001.css" type="text/css" media="all">
+		<script src="../js/js003-01_001.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="parent">
+			<!--1.logo部分的div-->
+			<div>
+				<div class="top">
+					<img src="../img/logo2.png" height="47px"/>
+				</div>
+				<div class="top">
+					<img src="../img/header.png" height="47px"/>
+				</div>
+				<div class="top" id="top">
+					<a href="#">登录</a>
+					<a href="#">注册</a>
+					<a href="#">购物车</a>
+				</div>
+			</div>
+			<div class="clear">
+			</div>
+			<!--2.导航栏部分的div-->
+			<div id="menu">
+				<ul>
+					<a href="#"><li style="font-size:20px">首页</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>电脑办公</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>手机数码</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>孕婴保健</li></a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>鞋靴箱包</li></a>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<!--3.中间注册表单部分div-->
+			<div id="container">
+				<div id="content">
+					<table border="1px" align="center" cellpadding="0px" cellspacing="0px" width="70%" height="70%" bgcolor="white">
+						<form action="#" method="get" onsubmit="return checkForm()">
+							<tr>
+								<td colspan="2" align="center">
+									<span style="font-size:20px;">会员注册</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									用户名:
+								</td>
+								<td>
+									<input type="text" name="username" id="username" value="" onfocus="showTips('username','必须以字母开头')" onblur="check('username','用户名必须为空')"><span id="usernamespan"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									密码:
+								</td>
+								<td>
+									<input type="password" name="password" id="password" value="" onfocus="showTips('password','密码长度不能低于6位!')" onblur="check('password','密码不能为空!')"><span id="passwordspan"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									确认密码:
+								</td>
+								<td>
+									<input type="password" name="repassword" id="repassword" value="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									email:
+								</td>
+								<td>
+									<input type="text" name="email" id="email" value="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									姓名:
+								</td>
+								<td>
+									<input type="text" name="" id="" value="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									籍贯:
+								</td>
+								<td>
+									<select onchange="changeCity(this.value)">
+										<option>--请选择--</option>
+										<option value="0">湖北</option>
+										<option value="1">湖南</option>
+										<option value="2">河北</option>
+										<option value="3">河南</option>
+									</select>
+									<select id="city">
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									性别:
+								</td>
+								<td>
+									<input type="radio" name="sex" id="sex" value="男">男
+									<input type="radio" name="sex" id="sex" value="女">女
+								</td>
+							</tr>
+							<tr>
+								<td>
+									出生日期:
+								</td>
+								<td>
+									<input type="text" name="birthday" id="birthday" value="">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									验证码:
+								</td>
+								<td>
+									<input type="text" name="yanzhengma" id="yanzhengma" value="">
+									<img src="../img/yanzhengma.png"/>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<input type="submit" name="" id="" value="注册">
+								</td>
+							</tr>
+						</form>
+					</table>
+				</div>
+			</div>
+			<!--4.广告图片的div-->
+			<div>
+				<img src="../img/footer.jpg" width="99%"/>
+			</div>
+			<!--5.超链接与版权信息的div-->
+			<div id="bottom">
+				<a href="#">关于我们</a>
+				<a href="#">联系我们</a>
+				<a href="#">招贤纳士</a>
+				<a href="#">法律声明</a>
+				<a href="#">友情链接</a>
+				<a href="#">支付方式</a>
+				<a href="#">配送方式</a>
+				<a href="#">服务声明</a>
+				<a href="#">广告声明</a>
+				<p>
+					Copyright © 2005-2016 传智商城 版权所有
+				</p>
+			</div>
+
+		</div>
+	</body>
+</html>

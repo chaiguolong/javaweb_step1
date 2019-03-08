@@ -1,0 +1,41 @@
+.top{
+	border: 1px solid red;
+	width: 32.9%;
+	height: 50px;
+	float: left;
+}
+
+#clear{
+	clear: both;
+}
+#menu{
+	border: 1px solid blue;
+	width: 99%;
+	height: 40px;
+	background-color: black;
+}
+#menu ul li{
+	display: inline;
+	color: white;
+	font-size: 19px;
+}
+#bottom{
+	text-align: center;
+}
+#contanier{
+	border: 1px solid red;
+	width: 99%;
+	height: 600px;
+	background: url(../img/regist_bg.jpg);
+	position: relative;
+}
+#content{
+	border: 5px solid gray;
+	width: 50%;
+	height: 60%;
+	position: absolute;
+	top: 100px;
+	left: 300px;
+	background-color: white;
+	padding-top: 50px;
+}
