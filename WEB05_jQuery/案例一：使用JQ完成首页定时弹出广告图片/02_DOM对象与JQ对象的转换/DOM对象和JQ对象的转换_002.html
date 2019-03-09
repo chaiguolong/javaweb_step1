@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Dom对象和jq对象的转换_002</title>
+		<script type="text/javascript" src="../../js/jquery-1.8.3.js" ></script>
+		<script charset="utf-8">
+			function write1(){
+				document.getElementById("span1").innerHTML = "萌萌哒！";
+
+				var spanEle = document.getElementById("span1");
+
+				$(spanEle).html("思密达");
+			}
+
+			$(function(){
+				$("#span1").html("呵呵哒！");
+
+				//JQ对象向DOM对象转换方式一
+				$("#span1").get(0).innerHTML="美美哒！";
+
+				//JQ对象向DOM对象转换方式二
+				$("#span1")[0].innerHTML="棒棒哒！";
+
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="JS写入" onclick="write1()">
+		<input type="button" name="btn" id="btn" value="JQ写入">
+		班长:<span id="span1">你好帅！</span>
+	</body>
+</html>
