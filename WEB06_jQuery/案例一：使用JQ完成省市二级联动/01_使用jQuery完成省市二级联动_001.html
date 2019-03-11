@@ -56,38 +56,34 @@
 				cities[1] = new Array("长沙市","郴州市","株洲市","岳阳市");
 				cities[2] = new Array("石家庄市","邯郸市","廊坊市","保定市");
 				cities[3] = new Array("郑州市","洛阳市","开封市","安阳市");
-				
+
 				$("#province").change(function(){
 					//10.清除第二个下拉列表的内容
 					$("#city").empty();
-					
+
 					//1.获取用户选择的省份
-					var val = this.value;
-					//alert(val);
+					var val = $(this).val();
 					//3.遍历二维数组中的省份
 					$.each(cities,function(i,n){
-						//alert(i+":"+n);
 						//4.判断用户选择的省份和遍历的省份
-						if(val==i){
+						if(val == i){
 							//5.遍历该省份下的所有城市
-							$.each(cities[i], function(j,m) {
-								//alert(m);
+							$.each(cities[i],function(j,m){
 								//6.创建城市文本节点
 								var textNode = document.createTextNode(m);
 								//7.创建option元素节点
 								var opEle = document.createElement("option");
 								//8.将城市文本节点添加到option元素节点中去
-								$(opEle).append(textNode);
+								opEle.append(textNode);
 								//9.将option元素节点追加到第二个下拉列表中去
-								$(opEle).appendTo($("#city"));
+								$("#city").append(opEle);
 							});
 						}
 					});
-					
 				});
+
 			});
 		</script>
-			
 	</head>
 	<body>
 		<div>

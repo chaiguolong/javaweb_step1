@@ -134,11 +134,12 @@
 							required:"性别必须勾选!"
 						}
 					},
-					errorElement: "label", //用来创建错误提示信息标签,validate插件默认的就是label
-					success: function(label) { //验证成功后的执行的回调函数
+					errorElement:"label",//用来创建错误提示信息标签,validate插件默认的就是label
+					success:function(label){//验证成功后的执行的回调函数
 						//label指向上面那个错误提示信息标签label
-						label.text(" ") //清空错误提示消息
-							.addClass("success"); //加上自定义的success类
+						//清空错误提示消息
+						//加上自定义的success类
+						label.text(" ").addClass("success");
 					}
 				});
 			});
