@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+<title>Overlay</title>
+<style>
+img
+{
+  padding: 5px;
+}
+
+#outer
+{
+  width: 100%; height: 100%;
+}
+.overlay
+{
+   background-color: #000;
+   opacity: .7;
+   filter: alpha(opacity=70);
+   position: fixed; top: 0; left: 0;
+   width: 100%; height: 100%;
+   z-index: 10;
+}
+
+.overlayimg
+{
+  position: absolute;
+  z-index: 11;
+  left: 50px;
+  top: 50px;
+}
+</style>
+<script>
+
+function expandPhoto() {
+
+   var overlay = document.createElement("div");
+   overlay.setAttribute("id","overlay");
+   overlay.setAttribute("class", "overlay"); 
+
+   //IE 7
+   //overlay.id="overlay";
+   //overlay.className = "overlay";
+
+   document.body.appendChild(overlay);   
+
+   var img = document.createElement("img");
+   img.setAttribute("id","img");
+   img.src = this.getAttribute("data-larger");
+
+   img.setAttribute("class","overlayimg");
+
+   // IE 7
+   //img.className = "overlayimg";
+
+   img.onclick=restore;
+
+   document.body.appendChild(img);
+}
+
+function restore() {
+
+ document.body.removeChild(document.getElementById("overlay")); 
+ document.body.removeChild(document.getElementById("img"));
+}
+           
+
+window.onload=function() {
+   var imgs = document.getElementsByTagName("img");
+   imgs[0].focus();
+   for (var i = 0; i < imgs.length; i++) {
+     imgs[i].onclick=expandPhoto;
+     imgs[i].onkeydown=expandPhoto;
+   }
+}
+  
+</script>
+
+</head>
+<body>
+<div id="outer">
+  <p>Mouse click on image to expand the photo. To close expanded photo, mouse click on image.</p>
+  <img src="dragonfly2.thumbnail.jpg" data-larger="dragonfly2.jpg" alt="image of common dragonfly on bright green and pink flowers" />
+  <img src="dragonfly4.thumbnail.jpg" data-larger="dragonfly4.jpg" alt="Dark orange dragonfly on water lily" />
+  <img src="dragonfly6.thumbnail.jpg" data-larger="dragonfly6.jpg" alt="Dark orange dragonfly on purple water lily" />
+  <img src="dragonfly8.thumbnail.jpg" data-larger="dragonfly8.jpg" alt="Dragonfly on bright pink water lily" />
+</div>
+</body>

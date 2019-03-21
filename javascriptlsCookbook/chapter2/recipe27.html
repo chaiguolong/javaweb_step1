@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+
+var testString = "   this is the string    ";
+alert("before:" + testString);
+
+// trim white space from the beginning
+testString = testString.replace(/^\s+/,"");
+
+// trim white space from the end
+testString = testString.replace(/\s+$/,"");
+
+alert("after:" + testString);
+}
+</script>
+
+</head>
+<body>
+</body>

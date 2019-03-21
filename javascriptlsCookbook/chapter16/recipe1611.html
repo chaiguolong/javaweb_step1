@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+var jscbObject = {
+   
+   // return element
+   getElem : function (identifier) {
+      return document.getElementById(identifier);
+   },
+
+   stripslashes : function(str) {
+      return str.replace(/\\/g, '');
+   },
+
+   removeAngleBrackets: function(str) {
+      return str.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+   }
+};
+
+var incoming = jscbObject.getElem("incoming");
+var content = incoming.innerHTML;
+
+var result = jscbObject.stripslashes(content);
+result = jscbObject.removeAngleBrackets(result);
+
+jscbObject.getElem("result").innerHTML=result;
+
+}
+</script>
+
+</head>
+<body>
+<div id="incoming">This is a <em>test</em> of \object\ literal</div>
+<div id="result"></div>
+</body>

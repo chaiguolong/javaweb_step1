@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Accessing numbers in table</title>
+<script type="text/javascript">
+//<![CDATA[
+
+window.onload=function() {
+
+   var sum = 0;
+
+   var dataTable = document.getElementById("table1");
+
+   // use querySelector to find all second table cells
+   var cells = document.querySelectorAll("td + td");
+   
+   for (var i = 0; i < cells.length; i++)
+      sum+=parseFloat(cells[i].firstChild.data);
+
+   // now add sum to end of table
+   var newRow = document.createElement("tr");
+
+   // first cell
+   var firstCell = document.createElement("td");
+   var firstCellText = document.createTextNode("Sum:");
+   firstCell.appendChild(firstCellText);
+   newRow.appendChild(firstCell);
+
+   // second cell with sum
+   var secondCell = document.createElement("td");
+   var secondCellText = document.createTextNode(sum);
+   secondCell.appendChild(secondCellText);
+   newRow.appendChild(secondCell);
+
+   // add row to table
+   dataTable.appendChild(newRow);
+
+}
+
+//--><!]]>
+</script>
+</head>
+<body>
+<table id="table1">
+<tr>
+<td>Washington</td><td>145</td>
+</tr>
+<tr>
+<td>Oregon</td><td>233</td>
+</tr>
+<tr>
+<td>Missouri</td><td>833</td>
+</tr>
+</table>
+</body>
+</html>

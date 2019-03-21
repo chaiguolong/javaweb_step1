@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>
+<title>Object Properties</title>
+<script type="text/javascript">
+
+// Book custom object
+function Book (title, author) {
+  var title = title;
+  var author = author;
+  this.getTitle=function() {
+     return "Title: " + title;
+  }
+  this.getAuthor=function() {
+     return "Author: " + author;
+  }
+}
+
+// TechBook, inheriting from Book
+function TechBook (title, author, category) {
+
+   var category = category;
+   this.getCategory = function() {
+     return "Technical Category: " + category;
+   }
+
+   Book.apply(this,arguments);
+   this.getBook=function() {
+     return this.getTitle() + " " + author + " " + this.getCategory();
+   }
+}
+
+window.onload=function() {
+
+   try {
+
+      // DOM test, Webkit bites the dust on this one
+      var img = new Image();
+
+      // add new property and descriptor
+      Object.defineProperty(img, "geolatitude", {
+        get: function() { return geolatitude; },
+        set: function(val) { geolatitude = val;},
+        enumerable: true,
+        configurable: true});
+
+      // test configurable and enumerable attrs
+      var props = "Image has ";
+      for (var prop in img) {
+        props+=prop + " ";
+      }
+      alert(props);
+
+   } catch(e) {
+      alert(e);
+   }
+  
+  try {
+     // now we lose IE8
+
+     // chain the object constructors
+     TechBook.prototype = new Book();
+
+     // add new property and property descriptor
+     Object.defineProperty(TechBook, "experience", {
+       get: function () { return category; },
+       set: function (value) { category = value; },
+       enumerable: false,
+       configurable: true});
+
+     // get property descriptor and print
+     var val = Object.getOwnPropertyDescriptor(TechBook,"experience");
+     alert(JSON.stringify(val));
+
+     // test configurable and enumerable
+     props = "TechBook has ";
+     for (var prop in TechBook) {
+        props+=prop + " ";
+     }
+     alert(props);
+
+     Object.defineProperty(TechBook, "experience", {
+        enumerable: true});
+
+     props = "TechBook now has ";
+     for (var prop in TechBook) {
+        props+=prop + " ";
+     }
+     alert(props);
+
+     // create TechBook instance 
+     var newBook = new TechBook("The JavaScript Cookbook", "Shelley Powers", "Programming");
+
+     // test new setter
+     newBook.experience="intermediate";
+     alert(newBook.experience);
+
+     // test data descriptor
+     Object.defineProperty(newBook, "publisher", {
+         value: "O'Reilly",
+         writable: false,
+         enumerable: true,
+         configurable: true});
+
+     // test writable
+     newBook.publisher="Some Other";
+     alert(newBook.publisher);
+
+   } catch(e) {
+      alert(e);
+   }
+}
+
+
+</script>
+</head>
+<body>
+<p>some content</p>
+</body>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+var origArray = new Array(4);
+origArray[0] = new Array("one","two");
+origArray[1] = new Array("three","four");
+origArray[2] = new Array("five","six");
+origArray[3] = new Array("seven","eight");
+
+var newArray = origArray.slice(1,3);
+alert(newArray); // prints out three,four,five,six
+
+// modify original
+origArray[1][0] = "octopus";
+
+// print out new
+alert(newArray); // prints out octopus,four,five,six
+
+// modify new
+newArray[1][1] = "kitten";
+
+// print out old
+alert(origArray); // prints out one,two,octopus,four,five,kitten,seven,eight
+
+</script>
+
+</head>
+<body>
+</body>

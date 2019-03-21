@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+function removeChars(element,index,array) {
+   return (element !== "**");
+}
+
+var charSet = new Array("**","bb","cd","**","cc","**","dd","**");
+
+var newArray = charSet.filter(removeChars);
+alert(newArray);
+
+</script>
+
+</head>
+<body>
+</body>

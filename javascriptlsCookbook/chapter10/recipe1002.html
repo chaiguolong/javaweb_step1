@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+function sumNumbers(numArray) {
+  var result = 0;
+
+  // sum numbers in array
+  // unless array is empty, or non-number reached
+  if (numArray.length > 0) {
+    for (var i = 0; i < numArray.length; i++) {
+      if (typeof numArray[i] == "number") {
+        result+=numArray[i];
+      }
+      else {
+        result = NaN;
+        break;
+      }
+    }
+  }
+  else {
+     result = NaN;
+  }
+  return result;
+}
+
+window.onload=function() {
+  var ary = new Array(1,15,"three",5,5);
+  var res = sumNumbers(ary); // res is NaN
+  if (isNaN(res)) alert("Encountered a bad array or array element");
+}
+</script>
+
+</head>
+<body>
+</body>

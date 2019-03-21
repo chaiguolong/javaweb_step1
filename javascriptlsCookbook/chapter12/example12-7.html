@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+<title>Changing style</title>
+<meta charset="utf-8" />
+<style>
+#elem
+{
+  width: 200px; background-color: lime;
+}
+</style>
+<script type="text/javascript">
+
+
+function getStyle(elem, cssprop, cssprop2){
+
+ // IE
+ if (elem.currentStyle) { 
+   return elem.currentStyle[cssprop];
+
+ // other browsers
+ } else if (document.defaultView && 
+                   document.defaultView.getComputedStyle) {
+   return document.defaultView.getComputedStyle(elem, null).getPropertyValue(cssprop2);
+
+ // fallback
+ } else {
+   return null;
+ }
+}
+
+window.onload=function() {
+
+   // setting and accessing style properties
+   var elem = document.getElementById("elem");
+
+   var color = getStyle(elem,"backgroundColor", "background-color");
+   alert(color); // rgb(0,255,0)
+
+   elem.style.width = "500px";
+   elem.style.backgroundColor="yellow";
+
+   alert(elem.style.width); // 500px
+   alert(elem.style.backgroundColor); // yellow
+
+   // array notation
+   elem.style["fontFamily"] = "Courier";
+
+   // demonstrating overwriting properties
+   var style = elem.getAttribute("style");
+   alert(style); // should display color: purple; width: 500px; background-color: yellow;
+
+   elem.setAttribute("style","height: 100px");
+   var style = elem.getAttribute("style");
+   alert(style); // now only displays height, resets styles
+
+   var font = getStyle(elem,"fontFamily", "font-family");
+   alert(font); // default font family
+   
+}
+</script>
+</head>
+<body>
+<div id="elem" style="color: purple">
+testing
+</div>
+</body>

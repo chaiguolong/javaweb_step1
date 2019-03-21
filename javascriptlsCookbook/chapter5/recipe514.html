@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+var elemSet = new Array("**",123,"aaa","abc","-",46,"AAA");
+
+// testing function 
+function textValue (element,index,array) {
+   var textExp = /^[a-zA-Z]+$/;
+   return textExp.test(element);
+}
+
+// run test
+alert(elemSet.every(textValue)); // false
+
+var elemSet = new Array("**",123,"aaa","abc","-",46,"AAA");
+
+// run test
+alert(elemSet.some(textValue)); // true
+
+</script>
+
+</head>
+<body>
+</body>

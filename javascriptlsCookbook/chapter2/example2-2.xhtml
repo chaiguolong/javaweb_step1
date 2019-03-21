@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Searching for strings</title>
+<style>
+#searchSubmit
+{
+   background-color: #ff0;
+   width: 200px;
+   text-align: center;
+   padding: 10px;
+   border: 2px inset #ccc;
+}
+.found
+{
+   background-color: #ff0;
+}
+</style>
+<script>
+//<![CDATA[
+
+window.onload=function() {
+   document.getElementById("searchSubmit").onclick=doSearch;
+}
+
+function doSearch() {
+   // get pattern
+   var pattern = document.getElementById("pattern").value;
+   var re = new RegExp(pattern,"g");
+
+   // get string
+   var searchString = document.getElementById("incoming").value;
+
+   // replace
+   var resultString = searchString.replace(re,"<span class='found'>$&</span>");
+
+   // insert into page
+   document.getElementById("searchResult").innerHTML = resultString;
+}
+
+//--><!]]>
+</script>
+</head>
+<body>
+<form id="textsearch">
+<textarea id="incoming" cols="100" rows="10">
+</textarea>
+<p>
+Search pattern: <input id="pattern" type="text" /></p>
+</form>
+<p id="searchSubmit">Search for pattern</p>
+<div id="searchResult"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+// set array length
+var arrayLength = 3;
+
+// create array
+var multiArray = new Array(arrayLength);
+for (var i = 0; i < multiArray.length; i++) {
+  multiArray[i] = new Array(arrayLength);
+}
+
+// add items to first array index
+multiArray[0][0] = "apple";
+multiArray[0][1] = "banana";
+multiArray[0][2] = "cherry";
+
+// second
+multiArray[1][0] = 2;
+multiArray[1][1] = 56;
+multiArray[1][2] = 83;
+
+// third
+multiArray[2][0] = ['test','again'];
+multiArray[2][1] = ['Java','script'];
+multiArray[2][2] = ['read','books'];
+
+alert(multiArray); // printed out in first index order
+alert(multiArray[2]); // prints out subarray
+alert(multiArray[2][2][0]); // individual item
+
+</script>
+
+</head>
+<body>
+</body>

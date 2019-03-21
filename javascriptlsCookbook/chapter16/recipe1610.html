@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+"use strict";
+  var Test = {
+    value1 : "one",
+    value2 : function() {
+      return this.value1;
+    }
+  }
+
+try {
+  // freeze the object
+  Object.freeze(Test);
+ 
+  // the following would throw an error in Strict Mode
+  Test.value2 = "two";
+
+   // so would the following
+   Test.newProperty = "value";
+
+   // and so would the following
+   Object.defineProperty(Title, "category", {
+      get: function () { return category; },
+      set: function (value) { category = value; },
+      enumerable: true,
+      configurable: true});
+} catch(e) {
+   alert(e);
+}
+}
+</script>
+
+</head>
+<body>
+</body>

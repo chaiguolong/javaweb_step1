@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+<title>recipe</title>
+<meta charset="utf-8" />
+<style>
+elem
+{
+  padding: 10px;
+  border: 1px solid #000000;
+}
+</style>
+<script type="text/javascript">
+
+
+window.onload=function() {
+   // setting and accessing style properties
+   var elem = document.getElementById("elem");
+   alert(elem.id);
+   alert(elem.className);
+
+   var index = elem.getAttribute("data-index");
+   alert(index);
+
+   var role = elem.getAttribute("role");
+   alert(role);
+
+   var field = document.getElementById("field");
+   alert(field.checked);
+   alert(field.value);
+   alert(field.type);
+
+}
+</script>
+</head>
+<body>
+<div id="elem" class="test" role="article" data-index="1">
+testing
+</div>
+<form>
+<input id="field" type="check" checked="checked" value="test" />
+</body>

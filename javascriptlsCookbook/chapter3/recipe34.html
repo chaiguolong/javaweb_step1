@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+
+ var dtstr= "2009-10-15T14:42:51Z";
+  
+  dtstr = dtstr.replace(/\D/g," ");
+  var dtcomps = dtstr.split(" ");
+
+  // modify month between 1 based ISO 8601 and zero based Date
+  dtcomps[1]--;
+  
+  var convdt = new Date(Date.UTC(dtcomps[0],dtcomps[1],dtcomps[2],dtcomps[3],dtcomps[4],dtcomps[5]));
+  alert(convdt);
+}
+</script>
+
+</head>
+<body>
+<div id="date"></div>
+</body>

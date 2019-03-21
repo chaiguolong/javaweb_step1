@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Prevent Duplication Form Submission</title>
+<style>
+#refresh
+{
+   display: none;
+   width: 200px; height: 20px;
+   background-color: #ffff00;
+}
+</style>
+<script>
+//<![CDATA[
+
+var inprocess=false;
+
+window.onload=function() {
+   document.forms["picker"].onsubmit=validateSubmit;
+   document.getElementById("refresh").onclick=startOver;
+}
+
+function validateSubmit() {
+ 
+  // prevent duplicate form submission 
+  if (inprocess) return;
+  inprocess=true;
+  document.getElementById("submitbutton").disabled=true;
+
+  // for example only
+  document.getElementById("refresh").style.display="block";
+  document.getElementById("message").innerHTML="<p>We're now processing your request. It can take up to one minute.</p>";
+
+  // validation stuff
+  return false; 
+}
+
+function startOver() {
+   inprocess=false;
+   document.getElementById("submitbutton").disabled=false;
+   document.getElementById("message").innerHTML="";
+   document.getElementById("refresh").style.display="none";
+} 
+  
+//--><!]]>
+</script>
+</head>
+<body>
+<form id="picker" method="post" action="">
+Group 1: <input type="radio" name="group1" value="one" />
+Group 2: <input type="radio" name="group1" value="two" />
+Group 3: <input type="radio" name="group1" value="three" /><br /><br />
+Input 1: <input type="text" id="intext" />
+Input 2: <input type="text" id="intext2"  />
+Input 3: <input type="text" id="intext3"  /><br /><br />
+<input type="submit" id="submitbutton" value="Send form" />
+</form>
+<div id="refresh">
+<p>Click to reset example</p>
+</div>
+<div id="message">
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<style>
+#redbox
+{
+  width: 100px; height: 100px;
+  background-color: red;
+  position: absolute;
+  left: 0; top: 100px;
+}
+</style>
+<script>
+
+window.onload=function() {
+
+var x = 10;
+var intervalId=setInterval(function() {
+          x+=5;
+          var left = x + "px";
+          document.getElementById("redbox").style.left=left;}, 100);
+}
+}
+</script>
+
+</head>
+<body>
+<div id="redbox"></div>
+</body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+#date
+{
+  width: 200px;
+  height: 20px;
+  background-color: #ffff00;
+  padding: 10px;
+}
+</style>
+<script>
+
+var firstDate;
+window.onload=startTimer;
+
+function startTimer(){
+  firstDate = new Date();
+  document.getElementById("date").onclick=doEvent;
+}
+
+function doEvent() {
+  var secondDate = new Date();
+  alert((secondDate - firstDate) / 1000);
+}
+</script>
+
+</head>
+<body>
+<div id="date">Click Me</div>
+</body>

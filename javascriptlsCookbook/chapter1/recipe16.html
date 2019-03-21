@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+// true if variable exists, is a string, and has a length greater than zero
+
+  if(((typeof   unknownVariable  !=  "undefined") &&
+     (typeof  unknownVariable.valueOf() ==  "string")) &&
+    (unknownVariable.length > 0)) {
+    alert("OK 1");
+  }
+
+  var unknownVariable;
+  if(((typeof   unknownVariable  !=  "undefined") &&
+     (typeof  unknownVariable.valueOf() ==  "string")) &&
+    (unknownVariable.length > 0)) {
+    alert("OK 2");
+  }
+
+  unknownVariable = "test";
+  if(((typeof   unknownVariable  !=  "undefined") &&
+     (typeof  unknownVariable.valueOf() ==  "string")) &&
+    (unknownVariable.length > 0)) {
+    alert("OK 3");
+  }
+
+  
+}
+
+</script>
+
+</head>
+<body>
+</body>

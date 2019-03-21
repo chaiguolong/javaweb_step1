@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<title>Testing Library</title>
+<script src="jsunit/app/jsUnitCore.js"></script>
+<script src="test.js"></script>
+<script>
+//<![CDATA[
+
+function testConcatWithSpace() {
+  inform("Testing concatWithSpace");
+  assertEquals("Checking equality", "Shelley Powers",BBTest.concatWithSpace("Shelley","Powers"));
+}
+
+function testDiscoverNumber() {
+  inform("Testing discoverNumber");
+  assertEquals("Checking valid params",5,BBTest.discoverNumber("found5value",5));
+}
+
+function testDivideNumbers() {
+  inform("Testing divideNumbers");
+  assertNaN("Checking numeric ops with no numbers", BBTest.divideNumbers("five","2"));
+  assertNotEquals("Checking not equals","5",BBTest.divideNumbers(10,2));
+}
+
+function testAddAndRound() {
+  inform("Testing addAndRound");
+  assertNaN("Checking NaN",BBTest.addAndRound("four","Three Quarter"));
+  assertEquals("Checking correct values",6,BBTest.addAndRound(2.33,3.45));
+}
+
+//]]>
+</script>
+
+</head>
+<body>
+<p>Running tests of test.js. View source to see tests.</p>
+</body>
+

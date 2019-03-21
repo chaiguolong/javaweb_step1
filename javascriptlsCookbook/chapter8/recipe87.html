@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+  var items = location.pathname.substr(1).split("/");
+  var breadcrumbTrail = "<p>";
+  for (var i = 0; i < items.length; i++) {
+    breadcrumbTrail+=" -> " + items[i];
+  }
+  breadcrumbTrail+="</p>";
+
+  document.getElementById("output").innerHTML=breadcrumbTrail;
+}
+</script>
+
+</head>
+<body>
+<div id="output"></div>
+</body>

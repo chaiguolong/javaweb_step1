@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+</head>
+<body>
+<form id="form1">
+<input type="text" id="pattern" />
+</form>
+<button id="test">Test</button>
+<script>
+
+document.getElementById("test").onclick=function() {
+  var ssn = document.getElementById("pattern").value;
+  var pattern = /^\d{3}-\d{2}-\d{4}$/;
+  if (ssn.match(pattern))
+    alert("OK");
+  else
+    alert("Not OK");
+
+}
+</script>
+
+</body>

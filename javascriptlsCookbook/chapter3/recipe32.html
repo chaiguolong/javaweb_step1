@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+
+var dateElement = document.getElementById("date");
+var today = new Date();
+var utcDate = today.toUTCString();
+dateElement.innerHTML = "<p>local datetime: " + today + " UTC datetime: " + utcDate + "</p>";
+
+}
+</script>
+
+</head>
+<body>
+<div id="date"></div>
+</body>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+ var jsonobj = '{"test" : "value1", "test2" : 3.44, "test3" : true}';
+ var obj = eval("(" + jsonobj + ")");
+ alert(obj.test2); // prints out 3.44
+
+ eval("var obj2="+jsonobj);
+ alert(obj2.test);
+
+var obj3 = {
+   prop1 : "test",
+   result : true,
+   num : 5.44,
+   name : "Joe",
+   cts : [45,62,13]};
+var result = JSON.stringify(obj3);
+document.getElementById("result").innerHTML=result;
+
+}
+</script>
+
+</head>
+<body>
+<div id="result"></div>
+</body>

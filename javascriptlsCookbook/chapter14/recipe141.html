@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+#msg
+{
+   background-color: #ffff00;
+   font-weight: bold;
+}
+#msg[aria-hidden="true"]
+{
+   display: none;
+}
+</style>
+<script>
+
+window.onload=function() {
+   document.getElementById("button1").onclick=hideshow;
+   document.getElementById("msg").setAttribute("aria-hidden","true");
+}
+
+function hideshow() {
+  var msg = document.getElementById("msg");
+  var hidden = msg.getAttribute("aria-hidden");
+  if (hidden == "true") {
+     msg.setAttribute("aria-hidden", "false");
+  } else { 
+     msg.setAttribute("aria-hidden", "true");
+  }
+}
+</script>
+
+</head>
+<body>
+<div id="msg">
+<p>Elements have different CSS display settings, depending on type of element, and to some extend, the user agent. For browsers like Opera or Firefox, a span has an inline display value, while a div element has a block display value. Regardless of element type, though, setting the display to none removes the element completely from the document's formatting structure. Visually, this means the element is removed from view and does not take up any page space or impact on how any other element displays, other than its own child elements. </p>
+</div>
+<button id="button1">Hide/Show</button>
+</body>

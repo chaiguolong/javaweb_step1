@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<title>Persisting via Cookies</title>
+<style>
+div
+{
+  margin: 5px;
+}
+</style>
+<script>
+// if cookie enabled
+window.onload=function() {
+
+   if (navigator.cookieEnabled) {
+     document.getElementById("set").onclick=setCookie;
+     document.getElementById("get").onclick=readCookie;
+     document.getElementById("erase").onclick=eraseCookie;
+   }
+
+}
+// set cookie expiration date in year 2010
+function setCookie() {
+
+   var cookie = document.getElementById("cookie").value;
+   var value = document.getElementById("value").value;
+
+   var futureDate = new Date();
+   futureDate.setDate(futureDate.getDate() + 10);
+   
+   var tmp=cookie + "=" + encodeURI(value) + "; expires=" +        
+                   futureDate.toGMTString() + "; path=/";
+   document.cookie=tmp;
+}
+
+// each cookie separated by semicolon;
+function readCookie() {
+
+  var key = document.getElementById("cookie").value;
+
+  var cookie = document.cookie;
+  var first = cookie.indexOf(key+"=");
+
+  // cookie exists
+  if (first >= 0) {
+    var str = cookie.substring(first,cookie.length);
+    var last = str.indexOf(";");
+
+    // if last cookie
+    if (last < 0) last = str.length;
+
+    // get cookie value
+    str = str.substring(0,last).split("=");
+    alert(decodeURI(str[1]));
+  } else {
+    alert("none found");
+  }
+}
+// set cookie date to the past to erase
+function eraseCookie () {
+
+   var key = document.getElementById("cookie").value;
+
+   var cookieDate = new Date();
+   cookieDate.setDate(cookieDate.getDate() - 10);
+
+   document.cookie=key + "= ; expires="+cookieDate.toGMTString()+"; path=/";
+}
+</script>
+</head>
+<body>
+<form>
+<label for="cookie"> Enter cookie:</label> <input type="text" id="cookie" /> <br /> <br />
+<label for="value">Cookie Value:</label> <input type="text" id="value" /><br /><br />
+</form>
+<div>
+<button id="set">Set Cookie</button>
+<button id="get">Get Cookie</button>
+<button id="erase">Erase Cookie</button>
+</div>
+</body>

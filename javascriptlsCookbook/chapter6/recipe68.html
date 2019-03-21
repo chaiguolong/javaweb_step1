@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+function curry (fn, scope) {
+    var scope = scope || window;
+    var args = [];
+    for (var i=2, len = arguments.length; i < len; ++i) {
+        args.push(arguments[i]);
+    };
+    return function() {
+        var args2 = [];
+        for (var i = 0; i < arguments.length; i++) {
+            args2.push(arguments[i]);
+         }
+         var argstotal = args.concat(args2); 
+	 return fn.apply(scope, argstotal);
+    };
+}
+
+function diffPoint(x1, y1, x2, y2) {
+  return [Math.abs(x2 - x1), Math.abs(y2 - y1)];
+}
+
+window.onload=function() {
+
+  var diffOrigin = curry(diffPoint,null, 3.0, 4.0);
+  var newPt = diffOrigin(6.42, 8.0);
+  alert(newPt);
+
+  var farPoint = curry(diffPoint, null, 183.66, 98.77);
+  var ptA = farPoint(1.33, 2.11);
+  alert(ptA); 
+}   
+</script>
+
+</head>
+<body>
+</body>

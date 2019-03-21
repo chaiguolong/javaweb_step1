@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+
+  var para = document.getElementsByTagName("p");
+  var parent = para[0].parentNode;
+  parent.insertBefore(para[para.length-1], para[0]);
+}
+</script>
+
+</head>
+<body>
+<div id="target">
+<p>This is the first paragraph</p>
+<p>This is the second paragraph</p>
+<p>This is the third paragraph</p>
+<p>This is the fourth paragraph</p>
+</div>
+</body>

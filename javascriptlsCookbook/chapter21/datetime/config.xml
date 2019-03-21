@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<widget>
+  <widgetname>Date and Time</widgetname>
+  <description>Prints out current date and time</description>
+  <width>440</width>
+  <height>200</height>
+  <author>
+    <name>Shelley Powers</name>
+    <email>shelleyp@burningbird.net</email>
+    <link>http://burningbird.net</link>
+    <organization>Burningbird</organization>
+  </author>
+  <id>
+    <host>burningbid.net</host>
+    <name>DateTime</name>
+    <revised>2010-03</revised>
+  </id>
+</widget>

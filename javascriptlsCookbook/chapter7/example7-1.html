@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+<title>Box Click Box Move</title>
+<style type="text/css">
+
+#info
+{
+  width: 100px; height: 100px;
+  background-color: #ff0000;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+</style>
+<script>
+
+window.onload=function() {
+  document.onclick=processClick;
+}
+
+function processClick(evt) {
+  evt = evt || window.event;
+  var x = 0; var y = 0;
+  if (evt.pageX) {
+    x = evt.pageX;
+    y = evt.pageY;
+  } else if (evt.clientX) {
+    var offsetX = 0; offsetY = 0;
+    if (document.documentElement.scrollLeft) {
+       offsetX = document.documentElement.scrollLeft;
+       offsetY = document.documentElement.scrollTop;
+    } else if (document.body) {
+       offsetX = document.body.scrollLeft;
+       offsetY = document.body.scrollTop;
+    }
+
+    x = evt.clientX + offsetX;
+    y = evt.clientY + offsetY;
+  }
+
+  var style = "left: " + x + "px; top: " + y + "px";
+  var box = document.getElementById("info");
+  box.setAttribute("style", style);
+
+  // IE7
+  // box.style.left=x + "px";
+  // box.style.top=y + "px";
+}
+</script>
+</head>
+<body>
+<div id="info"></div>
+</body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+// first approach
+
+var targetNode = document.getElementById("target");
+var newAttr = document.createAttribute("newattr");
+newAttr.nodeValue = "red";
+targetNode.setAttributeNode(newAttr);
+alert(targetNode.getAttribute("newattr"));
+
+// second approach
+targetNode.setAttribute("newattr2","blue");
+alert(targetNode.getAttribute("newattr2"));
+
+}
+</script>
+
+</head>
+<body>
+<div id="target">This is a paragraph in a div element</div>
+</body>

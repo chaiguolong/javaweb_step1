@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script type="text/javascript">
+
+function Book (title, author) {
+  var title = title;
+  this.author = author;
+  this.getTitle=function() {
+     return "Title: " + title;
+  }
+  this.getAuthor=function() {
+     return "Author: " + author;
+  }
+}
+
+function TechBook (title, author, category) {
+
+   var category = category;
+   this.getCategory = function() {
+     return "Technical Category: " + category;
+   }
+
+   Book.apply(this,arguments);
+   this.getBook=function() {
+     return this.getTitle() + " " + author + " " + this.getCategory();
+   }
+}
+
+function iterateProperties(newBook) {
+
+  var str = "";
+  for (var prop in newBook) {
+     str = str + prop + " ";
+  }
+
+  alert(str);
+
+  // new Object method
+  try {
+     alert(Object.keys(newBook).join(" "));
+  } catch(e) {
+    alert(e);
+  }
+
+  // another new Object method
+  try {
+     var props = Object.getOwnPropertyNames(newBook);
+     alert(props.join(" "));
+  } catch (e) {
+     alert(e);
+  }
+}
+
+window.onload=function() {
+
+  // chain the object constructors
+  TechBook.prototype = new Book();
+
+  // create new tech book
+  var newBook = new TechBook("The JavaScript Cookbook", "Shelley Powers", "Programming");
+
+  iterateProperties(newBook);
+
+  // test data descriptor
+  Object.defineProperty(newBook, "title", {
+         writable: true,
+         enumerable: true,
+         configurable: true});
+
+  iterateProperties(newBook);
+
+   alert(newBook.title);
+
+   iterateProperties(TechBook);
+
+   Object.defineProperty(newBook,"category", {
+          writable: true,
+          enumerable: false,
+          configurable: true});
+
+   iterateProperties(newBook);
+}
+
+</script>
+</head>
+<body>
+<p>some content</p>
+</body>

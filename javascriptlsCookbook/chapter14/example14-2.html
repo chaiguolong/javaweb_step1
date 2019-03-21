@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+<title>Overlay</title>
+<style>
+img
+{
+  padding: 5px;
+  border-style: none;
+}
+
+.overlay
+{
+   background-color: #000;
+   opacity: .7;
+   filter: alpha(opacity=70);
+   position: absolute; top: 0; left: 0;
+   width: 100%; height: 100%;
+   z-index: 10;
+}
+.overlayimg
+{
+   position: absolute;
+   z-index: 11;
+   left: 50px;
+   top: 50px;
+}
+</style>
+<script>
+
+// expand photo when a/img is clicked
+function imgClick() {
+   var img = this.firstChild;
+   expandPhoto(img.getAttribute("data-larger"));
+   return false;
+}
+
+// if overlay is open, and ESC, close overlay
+function imgKeyDown(evnt) {
+   evnt = (evnt) ? evnt : ((window.event) ? window.event : "");
+   var keycode = (evnt.which) ? evnt.which : evnt.keyCode;
+   if (document.getElementById("overlay")) {
+      if (keycode === 27) {
+       restore();
+       return false;
+     }
+   } else {
+     if (keycode == 13) {
+        var img = this.firstChild;
+        var src = img.getAttribute("data-larger");
+        expandPhoto(src);
+        return false;
+     }
+   }
+   return true;
+}
+
+// create overlay, expand photo
+function expandPhoto(src) {
+
+   // create overlay element
+   var overlay = document.createElement("div");
+   overlay.setAttribute("id","overlay");
+   overlay.setAttribute("class", "overlay");
+
+   // IE7
+   // overlay.id="overlay";
+   // overlay.className = "overlay";
+
+   document.body.appendChild(overlay);
+
+   // add image
+   var img = document.createElement("img");
+   img.src = src;
+   img.setAttribute("id","img");
+
+   // set tabindex, for focus
+   img.setAttribute("tabindex","-1");
+
+   // style image
+   img.setAttribute("class","overlayimg");
+
+   // IE7
+   // img.className = "overlayimg";
+
+   img.onclick=restore;
+   img.onkeydown=imgKeyDown;
+
+   document.body.appendChild(img);
+
+   // focus on image in overlay
+   img.focus();
+}
+
+// remove overlay and image
+function restore() {
+
+ document.body.removeChild(document.getElementById("overlay"));
+ document.body.removeChild(document.getElementById("img"));
+}
+
+
+// add click and keyboard events
+window.onload=function() {
+   var aimgs = document.getElementsByTagName("a");
+   aimgs[0].focus();
+   for (var i = 0; i < aimgs.length; i++) {
+     aimgs[i].onclick=imgClick;
+   }
+}
+
+</script>
+
+</head>
+<body>
+<p>Mouse click on image, or use keyboard to move to photo and hit ENTER to expand the photo. To close expanded photo, hit ESC or mouse click on image.</p>
+<a href="dragonfly2.jpg"><img src="dragonfly2.thumbnail.jpg" data-larger="dragonfly2.jpg" alt="image of common dragonfly on bright green and pink flowers" /></a>
+<a href="dragonfly4.jpg"><img src="dragonfly4.thumbnail.jpg" data-larger="dragonfly4.jpg" alt="Dark orange dragonfly on water lily" /></a>
+<a href="dragonfly6.jpg"><img src="dragonfly6.thumbnail.jpg" data-larger="dragonfly6.jpg" alt="Dark orange dragonfly on purple water lily" /></a>
+<a href="dragonfly8.jpg"><img src="dragonfly8.thumbnail.jpg" data-larger="dragonfly8.jpg" alt="Dragonfly on bright pink water lily" /></a>
+</body>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<parcel language="JavaScript" xmlns:parcel="scripting.dtd">
+
+    <script language="JavaScript">
+        <locale lang="en">
+            <displayname value="Shelley's Hello World"/>
+            <description>
+                Adds the the string "Hello World, from Shelley!" into the current text doc.
+            </description>
+        </locale>
+        <functionname value="helloworldfromshelley.js"/>
+        <logicalname value="ShelleyHelloWorld.JavaScript"/>
+    </script>
+
+</parcel>

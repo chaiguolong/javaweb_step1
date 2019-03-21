@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script src="html5.js"></script>
+<script>
+
+window.onload=function() {
+  var imgString = "";
+
+  // get all imgs in articles
+  var imgs = document.querySelectorAll("article img");
+  // print out src
+  for (var j = 0; j < imgs.length; j++) {
+     var img = imgs[j];
+     imgString+=img.src + "<br />";
+   }
+   document.getElementById("result").innerHTML=imgString;
+}
+</script>
+
+</head>
+<body>
+<div id="result"></div>
+<article>
+<p><img src="orchids12.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+<p><img src="orchids6.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+<p><img src="orchids9.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+
+</article>
+<article>
+<p><img src="orchids4.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+</article>
+</body>

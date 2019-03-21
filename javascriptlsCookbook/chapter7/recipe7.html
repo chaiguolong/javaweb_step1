@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+#box
+{
+   width: 100px; height: 100px; background-color: #0f0;
+}
+</style>
+<script>
+
+function listenEvent(eventObj, event, eventHandler) {
+   if (eventObj.addEventListener) {
+      eventObj.addEventListener(event, eventHandler,false);
+   } else if (eventObj.attachEvent) {
+      event = "on" + event;
+      eventObj.attachEvent(event, eventHandler);
+   } else {
+      eventObj["on" + event] = eventHandler;
+   }
+}
+
+function stopListening (eventObj,event,eventHandler) {
+   if (eventObj.removeEventListener) {
+      eventObj.removeEventListener(event,eventHandler,false);
+   } else if (eventObj.detachEvent) {
+      event = "on" + event;
+      eventObj.detachEvent(event,eventHandler);
+   } else {
+      eventObj["on" + event] = null;
+   }
+}
+
+// cancel event
+function  cancelEvent (event) {
+   if (event.preventDefault) {
+      event.preventDefault();
+   } else {
+      event.returnValue = false;
+   }
+}
+
+listenEvent(window,"load",function() {
+    var theform = document.getElementById("theform");
+    listenEvent(theform,"submit",validateForm);
+     });
+
+function validateForm(evt) {
+   
+   evt = evt || window.event;
+
+   // pretend form is invalid
+   cancelEvent(evt);
+}
+
+</script>
+
+</head>
+<body>
+<form id="theform" method="GET" >
+<input type="text" name="test" /> <br />
+<button type="submit">Submit</button>
+</form>
+</body>

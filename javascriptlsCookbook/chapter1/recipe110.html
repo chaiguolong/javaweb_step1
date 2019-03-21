@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+  document.getElementById("preview").onclick=processText;
+}
+
+function processText() {
+var   txtBox  = document.getElementById("test");
+var  lines  = txtBox.value.split("\n");
+var  resultString = "";
+
+for (var i = 0; i < lines.length; i++) {
+   var strng = lines[i].trim();
+   resultString += strng + "-";
+}
+ 
+document.getElementById("result").innerHTML=resultString; 
+}
+
+</script>
+</head>
+<body>
+<textarea id="test" rows="10" cols="40"></textarea>
+<div><button id="preview">Preview</button></div>
+<div id="result"></div>
+</body>

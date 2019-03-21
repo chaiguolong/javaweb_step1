@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+<title>Element Height</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+  var elem = document.getElementById("it");
+  var rect = elem.getBoundingClientRect();
+  var ht;
+  if (rect.height)
+     ht = rect.height;
+  else
+     ht = rect.bottom - rect.top;
+ 
+  alert(ht + "px");
+
+
+}
+
+</script>
+
+</head>
+<body>
+<div id="it">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et ligula ac mi bibendum tempus quis sit amet libero. Mauris blandit, lectus et hendrerit eleifend, lorem mi fringilla sapien, non eleifend mauris felis nec felis. Pellentesque vel ultrices sapien. Cras vel lacus ut est aliquet pulvinar quis sit amet nunc. Sed libero dolor, vehicula vel porta sit amet, aliquam ut turpis. Sed bibendum tempus venenatis. Pellentesque molestie, felis at eleifend auctor, tellus metus pretium risus, eget egestas velit urna nec tortor. Morbi eu enim vel purus cursus imperdiet. Integer sagittis nisi nec ligula varius non elementum libero rutrum. Nullam egestas pellentesque ipsum, a accumsan enim tincidunt id. Suspendisse lorem enim, ullamcorper sed pellentesque ac, aliquet vitae orci.
+</p>
+</div>
+</body>

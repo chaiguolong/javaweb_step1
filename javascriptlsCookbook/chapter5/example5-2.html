@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+var charSets = new Array("ab","bb","cd","ab","cc","ab","dd","ab");
+
+// replace element
+while (charSets.indexOf("ab") != -1) {
+   charSets.splice(charSets.indexOf("ab"),1,"**");
+}
+alert(charSets); // **,bb,cd,**,cc,dd,**
+
+// delete new element
+while(charSets.indexOf("**") != -1) {
+   charSets.splice(charSets.indexOf("**"),1);
+}
+alert(charSets); // bb,cd,cc,dd
+
+</script>
+
+</head>
+<body>
+</body>

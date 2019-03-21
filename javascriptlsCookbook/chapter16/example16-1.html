@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+<title>Tune Object</title>
+<script>
+
+
+  function Tune(song,artist) {
+    var title = song;
+    var artist = artist;
+    this.concat = function() {
+      return title + " " + artist;
+    }
+  }
+
+window.onload=function() {
+  // create instance, print out values
+  var happySong = new Tune("Putting on the Ritz", "Ella Fitzgerald");
+
+  // extend the object
+  Tune.prototype.addCategory = function(categoryName) {
+      this.category = categoryName;
+  }
+
+  // add category
+  happySong.addCategory("Swing");
+
+  // print song out to new paragraph
+  var song = "Title and artist: " + happySong.concat() + 
+             " Category: " + happySong.category;
+  var p = document.createElement("p");
+  var txt = document.createTextNode(song);
+  p.appendChild(txt);
+  document.getElementById("song").appendChild(p);
+}
+
+</script>
+
+</head>
+<body>
+<h1>Tune</h1>
+<div id="song">
+</div>
+</body>
+</html>

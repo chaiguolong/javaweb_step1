@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>NodeList</title>
+<script type="text/javascript">
+//<![CDATA[
+
+window.onload=function() {
+   var imgs = document.getElementsByTagName('img');
+   alert(imgs.length);
+   var p = document.createElement("p");
+   var img = document.createElement("img");
+   img.src="orchids4.preview.jpg";
+   p.appendChild(img);
+   
+   var paras = document.getElementsByTagName('p');
+   paras[0].parentNode.appendChild(p);
+
+   alert(imgs.length);
+}
+//]]>
+</script>
+</head>
+<body>
+<p><img src="orchids12.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+<p><img src="orchids6.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+<p><img src="orchids9.preview.jpg" alt="Orchid from MBG 2009 orchid show" /></p>
+</body>
+</html>

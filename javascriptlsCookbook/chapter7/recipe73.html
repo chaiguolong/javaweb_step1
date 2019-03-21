@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+#box
+{
+   width: 100px; height: 100px; background-color: #0f0;
+}
+</style>
+<script>
+
+function listenEvent(eventObj, event, eventHandler) {
+   if (eventObj.addEventListener) {
+      eventObj.addEventListener(event, eventHandler,false);
+   } else if (eventObj.attachEvent) {
+      event = "on" + event;
+      eventObj.attachEvent(event, eventHandler);
+   } else {
+      eventObj["on" + event] = eventHandler;
+   }
+}
+
+function stopListening (eventObj,event,eventHandler) {
+   if (eventObj.removeEventListener) {
+      eventObj.removeEventListener(event,eventHandler,false);
+   } else if (eventObj.detachEvent) {
+      event = "on" + event;
+      eventObj.detachEvent(event,eventHandler);
+   } else {
+      eventObj["on" + event] = null;
+   }
+}
+
+function startListening() {
+   var box = document.getElementById("box");
+   listenEvent(box,"click",clickBox);
+}
+
+function stopClick() {
+   var box = document.getElementById("box");
+   stopListening(box,"click", clickBox);
+}
+
+function clickBox() {
+  alert("click!");
+}
+
+listenEvent(window,"load",function() {
+     var bttn1 = document.getElementById("start");
+     listenEvent(bttn1,"click",startListening);
+
+     var bttn2 = document.getElementById("stop");
+     listenEvent(bttn2, "click", stopClick);
+     });
+
+</script>
+
+</head>
+<body>
+<div id="box"><p>The Box</p></div>
+<div>
+<button id="start">Start Listening</button>
+<button id="stop">Stop Listening</button>
+</body>

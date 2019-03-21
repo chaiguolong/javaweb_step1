@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Anonymous Function</title>
+<script>
+//<![CDATA[
+
+window.onload=function() {
+
+  var func = prompt("Enter function body:","");
+  var x = prompt("Enter value for x:","");
+  var y = prompt("Enter value for y:","");
+
+  var newFun = new Function("x","y",func);
+  var result = newFun(x,y);
+
+}
+
+
+//--><!]]>
+</script>
+</head>
+<body>
+</body>
+</html>

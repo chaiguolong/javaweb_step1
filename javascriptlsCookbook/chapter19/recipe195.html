@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+function convertBoolToNums(key, value) {
+     if (typeof value == 'boolean') {
+        if (value) 
+           value = 1;
+         else 
+           value = 0;
+      }
+      return value;
+};
+
+window.onload=function() {
+
+  var obj = {"test" : "value1", "test2" : 3.44, "test3" : false};
+  var jsonobj = JSON.stringify(obj, convertBoolToNums, 3);
+
+  alert(jsonobj); // test3 : 0
+
+  var whitelist = ["test","test2"];
+
+  var obj2 = {"test" : "value1", "test2" : 3.44, "test3" : false};
+  var jsonobj = JSON.stringify(obj2, whitelist, "***");
+
+  alert(jsonobj); // not test3 
+
+}
+</script>
+
+</head>
+<body>
+</body>

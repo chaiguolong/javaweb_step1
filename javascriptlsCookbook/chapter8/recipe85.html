@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<link rel="stylesheet" title="default" href="blue.css" type="text/css" media="screen" />
+<link rel="alternate stylesheet" title="yellow" href="yellow.css" type="text/css" media="screen" />
+
+<script>
+
+function setActiveStyleSheet(title) {
+   var a;
+   for(var i=0; (a = document.getElementsByTagName("link")[i]); i++) {
+     if(a.getAttribute("rel").indexOf("style") != -1
+        && a.getAttribute("title")) {
+       a.disabled = true;
+       if(a.getAttribute("title") == title) a.disabled = false;
+     }
+   }
+}
+</script>
+
+</head>
+<body>
+<ul id="menu">
+<li><a href="#"
+onclick="setActiveStyleSheet('default');
+return false;">Blue</a></li>
+<li><a href="#"
+onclick="setActiveStyleSheet('yellow');
+return false;">Yellow</a></li>
+</ul>
+</body>

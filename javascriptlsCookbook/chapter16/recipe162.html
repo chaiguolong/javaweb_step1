@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+function Tune(song,artist) {
+   var title = song;
+   var artist = artist;
+   this.concat = function() {
+      return title + " " + artist;
+   }
+}
+
+window.onload=function() {
+
+   var happySongs = new Array();
+    happySongs[0] = new Tune("Putting on the Ritz", "Ella Fitzgerald");
+
+   try {
+
+     // error 
+     alert(happySongs[0].title);
+   } catch(e) {
+     alert(e);
+   }
+
+   // prints out correct title and artist
+   alert(happySongs[0].concat());
+}
+</script>
+
+</head>
+<body>
+</body>

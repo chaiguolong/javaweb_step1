@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Hide/Show</title>
+<style>
+</style>
+<script>
+//<![CDATA[
+
+var inprocess=false;
+
+window.onload=function() {
+
+  document.getElementById("hidden_elements").style.display="none";
+
+  //  attach the click event handler to the radio buttons
+  var radios = document.forms[0].elements["group1"];
+  for (var i = [0]; i < radios.length; i++)
+    radios[i].onclick=radioClicked;
+}
+
+function radioClicked() {
+   if (this.value == "two") {
+     document.getElementById("hidden_elements").style.display="block";
+   } else {
+     document.getElementById("hidden_elements").style.display="none";
+   }
+}  
+
+//--><!]]>
+</script>
+</head>
+<body>
+<form id="picker" method="post" action="">
+Item 1: <input type="radio" name="group1" value="one" />
+Item 2: <input type="radio" name="group1" value="two" />
+Item 3: <input type="radio" name="group1" value="three" /><br /><br />
+<div id="hidden_elements">
+Input 1: <input type="text" id="intext" />
+Input 2: <input type="text" id="intext2"  />
+Input 3: <input type="text" id="intext3"  /><br /><br />
+</div>
+<input type="submit" id="submitbutton" value="Send form" />
+</form>
+</body>
+</html>

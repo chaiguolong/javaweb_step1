@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+  <style>
+  #test 
+  {
+    background-color: #0000ff;
+    width: 500px;
+    padding: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: larger;
+  }
+  </style>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="basic.js"></script>
+
+    <script type="text/javascript">
+
+       $(document).ready(function() {
+         $("#test").click(function() {
+             $(this).flashBlueRed().increaseWidth();
+         });
+       });
+    </script>
+  </head>
+  <body>
+  <div id="test">
+    hi, click me to change color
+  </div>
+  </body>
+</html>

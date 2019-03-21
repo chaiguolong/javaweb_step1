@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>breadcrumb trail</title>
+<script>
+//<![CDATA[
+
+
+window.onload=function() {
+  // split relative path
+  var items = location.pathname.substr(1).split("/");
+
+  // build main path
+  var mainpath = "<a href='" + location.protocol + "//" + location.hostname + "/";
+
+  // begin breadcrumb
+  var breadcrumbTrail = "<p>";
+  for (var i = 0; i < items.length; i++) {
+
+    // trailing slash
+    if (items[i].length == 0 ) break;
+
+    // extend main path for new level
+    mainpath+=items[i];
+
+    // add slash after all but last item
+    if (i < items.length-1)
+      mainpath+="/";
+
+    // create breadcrumb component
+    // add arrows for interior items only
+    if (i > 0 && i < items.length)
+      breadcrumbTrail+=" -> ";
+
+    // add crumb
+    breadcrumbTrail+= mainpath + "'>" + items[i] + "</a>";
+  }
+
+  // insert into page
+  breadcrumbTrail+="</p>";
+  document.getElementById("breadcrumb").innerHTML=breadcrumbTrail;
+
+}
+
+//--><!]]>
+</script>
+</head>
+<body>
+<div id="breadcrumb"></div>
+</body>
+</html>

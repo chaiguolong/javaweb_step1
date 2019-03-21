@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+
+   var browser = navigator.userAgent;
+  var info = "<p>Browser: " + browser + "</p>";
+
+  var platform = navigator.platform;
+  info+="<p>Platform: " + platform + "</p>";
+  
+  document.getElementById("output").innerHTML=info;
+ }
+</script>
+
+</head>
+<body>
+<div id="output"></div>
+</body>

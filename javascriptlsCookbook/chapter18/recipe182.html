@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+function postEncodeURIComponent(str) {
+   str=encodeURIComponent(str);
+   return str.replace(/%20/g,"+");
+}
+
+window.onload=function() {
+   var input = prompt("enter a string to encode","");
+   alert(postEncodeURIComponent(input));
+}
+</script>
+
+</head>
+<body>
+</body>

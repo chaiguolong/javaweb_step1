@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+   document.getElementById("button1").onclick=checkChecks;
+}
+
+function checkChecks() {
+  var str = "checked values ";
+  try {
+    var checked = document.querySelectorAll("#checks input[type='checkbox']:checked");
+    for (var i = 0; i < checked.length; i++) {
+      str+=checked[i].value + " ";
+    }
+  } catch(e) {
+    var inputs = document.querySelectorAll("#checks input");
+    for (var j = 0; j < inputs.length; j++) {
+       if (inputs.item(j).type == "checkbox" && inputs.item(j).checked) {
+         str+=inputs.item(j).value + " ";
+       }
+    }
+  }
+  document.getElementById("results").innerHTML=str;
+}
+
+</script>
+
+</head>
+<body>
+<form id="checks" onsubmit="return false">
+<label for="test">Test</lable><input type="radio" id="test" name="test" value="test" /><br />
+<input type="radio" id="test" name="test" value="nottest" /><br />
+<label for="one">One</label><input type="checkbox" id="one" name="one" value="one" /><br />
+<label for="two">Two</label><input type="checkbox" id="two" name="two" value="two" /><br />
+<label for="three">Three</label><input type="checkbox" id="three" name="three" value="three" /><br />
+</form>
+<div><button id="button1">Check checks</button></div>
+<div id="results"></div>
+
+</body>

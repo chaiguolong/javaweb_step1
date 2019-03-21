@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+#num
+{
+   height: 100px;
+   width: 100px;
+   background-color: #000000;
+}
+</style>
+<script>
+
+window.onload=function() {
+  document.onclick=ranNumber;
+}
+
+function randomVal(val) {
+  return Math.floor(Math.random() * val);
+}
+
+function randomColor() {
+   return "rgb(" + randomVal(255) + "," + randomVal(255) + "," + randomVal(255) + ")";
+}
+
+function ranNumber() {
+   var rgb = randomColor();
+   document.getElementById("num").setAttribute("style","background-color: " + rgb);
+}
+</script>
+
+</head>
+<body>
+<div id="num"></div>
+</body>

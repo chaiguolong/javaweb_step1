@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 3">
+ <defs>
+    <style type="text/css">
+      path {
+        stroke: black;
+        stroke-width: 0.02;
+        fill: none;
+      }
+      line {
+        stroke-linecap: round;
+      }
+
+      #seconds {
+        stroke: red;
+        stroke-width: 0.01;
+      }
+      #minutes {
+        stroke: black;
+        stroke-width: 0.03;
+      }
+      #hours {
+        stroke: black;
+        stroke-width: 0.03;
+      }
+    </style>
+  </defs>
+        <g transform="rotate(-90) translate(-1.3,1.3) ">
+
+                <circle cx="0" cy="0" r="1.0" fill="white" />
+
+                <!-- decorative border -->
+                <circle cx="0" cy="0" r="1.0" fill-opacity="0"  stroke-width="0.02" stroke="black" />
+
+
+        <!-- clock hands -->
+  <line id="hours"   x1="0" y1="0" x2="0.70" y2="0" stroke-width="1"/>
+  <line id="minutes" x1="0" y1="0" x2="0.85" y2="0"/>
+  <line id="seconds" x1="0" y1="0" x2="0.90" y2="0"/>
+  </g>
+  <script>
+    var seconds = document.getElementById("seconds");
+    var minutes = document.getElementById("minutes");
+    var hours   = document.getElementById("hours");
+
+    function setClock(date) {
+      var s = (date.getSeconds() + date.getMilliseconds() / 1000) * Math.PI / 30;
+      var m = date.getMinutes() * Math.PI / 30 + s / 60;
+      var h = date.getHours() * Math.PI / 6 + m / 12;
+
+      seconds.setAttribute("x2", 0.90 * Math.cos(s));
+      seconds.setAttribute("y2", 0.90 * Math.sin(s));
+      minutes.setAttribute("x2", 0.65 * Math.cos(m));
+      minutes.setAttribute("y2", 0.65 * Math.sin(m));
+      hours  .setAttribute("x2", 0.40 * Math.cos(h));
+      hours  .setAttribute("y2", 0.40 * Math.sin(h));
+    }
+
+    setInterval("setClock(new Date())", 1000);
+  </script>
+</svg>

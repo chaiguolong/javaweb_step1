@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+#redbox
+{
+  width: 100px; height: 100px;
+  background-color: red;
+  position: absolute;
+  left: 0; top: 100px;
+}
+</style>
+<script>
+
+window.onload=function() {
+var x = 0;
+setInterval(moveElement,1000);
+
+function moveElement() {
+  x+=10;
+  var left = x + "px";
+  document.getElementById("redbox").style.left=left;
+}
+}
+</script>
+
+</head>
+<body>
+<div id="redbox"></div>
+</body>

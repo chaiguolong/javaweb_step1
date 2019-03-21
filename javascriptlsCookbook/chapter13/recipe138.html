@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+<title>Elastic</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<style>
+#wrap
+{
+  width: 800px;
+  margin: 0 auto;
+}
+#main
+{
+  float: left;
+  width: 500px;
+}
+#sidebar
+{
+  float: right;
+  width: 240px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+#sidebar p
+{
+   margin-left: 15px;
+}
+#x
+{
+   display: none;
+}
+</style>
+<script>
+
+window.onload=function() {
+
+ var x = document.getElementById("x");
+ x.setAttribute("style","display: block");
+
+ // IE7
+ //x.style.display="block";
+
+ x.onclick=expandOrShrink;
+ x.onkeypress=expandOrShrink;
+}
+
+function expandOrShrink() {
+   if (this.getAttribute("data-expand") == "true") {
+      document.getElementById("sidebar").setAttribute("style","width: 50px");
+      document.getElementById("main").setAttribute("style", "width: 700px");
+
+      // IE7
+      // document.getElementById("sidebar").style.width="50px";
+      // document.getElementById("main").style.width="700px";
+
+      this.setAttribute("data-expand", "false");
+   } else {
+      document.getElementById("sidebar").setAttribute("style", "width: 240px");
+      document.getElementById("main").setAttribute("style", "width: 500px");
+
+      // IE7
+      // document.getElementById("sidebar").style.width="240px";
+      // document.getElementById("main").style.width="500px";
+
+      this.setAttribute("data-expand", "true");
+   }
+}
+
+</script>
+
+</head>
+<body>
+<div id="wrap">
+   <div id="main">
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer venenatis, justo ullamcorper congue adipiscing, diam lacus dapibus nisl, accumsan ullamcorper leo elit eget orci. Proin convallis erat sit amet dui imperdiet tincidunt. Nunc ac tortor arcu, vitae cursus lorem. Curabitur in odio diam, eget rutrum ligula. Etiam nisl sem, bibendum vitae vestibulum vel, accumsan a turpis. Aliquam risus orci, tristique sed sollicitudin sed, sollicitudin vel massa. Sed porta pellentesque tellus quis sagittis. Quisque sodales tellus diam, malesuada condimentum nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus laoreet justo nec lectus sodales ut pulvinar tellus volutpat. Fusce a augue non sapien accumsan egestas. Donec ac mauris ante, eget suscipit nisl. Suspendisse ullamcorper, nulla sodales lobortis malesuada, urna elit tristique lorem, vitae ultricies lorem neque et lectus. Nam dolor ligula, eleifend quis congue sit amet, tincidunt sed massa. Nullam metus sapien, volutpat sit amet lobortis eu, tempus sed mi. In nisl nisl, scelerisque eu aliquet a, bibendum vitae urna. In eget tellus sem, at varius mauris. Nulla facilisi. In hac habitasse platea dictumst. Proin molestie risus ac arcu accumsan pretium.
+</p><p>
+Integer et leo augue, ac pharetra nisi. Quisque ante felis, venenatis a ultricies in, aliquet condimentum diam. Integer bibendum justo lectus, id tempus elit. Integer mi nunc, bibendum vitae posuere sit amet, interdum in nibh. Etiam odio mauris, ultricies id eleifend in, condimentum sit amet massa. In ipsum mauris, condimentum id tempus sit amet, laoreet auctor augue. Nunc rhoncus consequat nisi non dictum. Donec sodales mollis eros, in tempus justo vulputate quis. Vivamus mauris felis, malesuada et vulputate quis, volutpat id felis. Duis et lorem augue, ut placerat eros. In aliquet luctus congue. Aenean placerat nulla quis risus eleifend ac mattis mi mattis. Donec at erat sed lectus molestie hendrerit eu vel diam. Vestibulum enim justo, lobortis ut pulvinar a, semper in risus. Vestibulum euismod felis sed risus tempor tincidunt. Maecenas pharetra, tortor a venenatis commodo, sapien diam lobortis turpis, nec commodo magna leo nec ante. In hac habitasse platea dictumst. Phasellus faucibus sem vitae lorem mollis placerat. Phasellus eu odio ante.
+</p><p>
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In nisi neque, congue non pretium quis, aliquam nec arcu. Donec suscipit suscipit mi in elementum. Proin ullamcorper turpis in est vestibulum rutrum. Cras pellentesque felis in risus placerat hendrerit. Etiam ac eros nec urna elementum suscipit egestas eget libero. Vivamus a tincidunt nulla. Praesent mollis ante quis massa eleifend commodo. Sed non faucibus enim. Nulla rhoncus, odio vitae accumsan sodales, neque ligula sodales massa, eget ornare urna neque vitae urna. Mauris ligula ante, adipiscing sed laoreet nec, sagittis vitae felis. Fusce facilisis, arcu at ultrices tristique, ligula ligula varius sapien, commodo ultrices libero velit sit amet augue. Quisque placerat suscipit elit id rhoncus. Vestibulum tristique accumsan rutrum. Vivamus dictum, augue eget ullamcorper vulputate, augue mauris feugiat velit, eu bibendum ligula risus eu turpis.
+</p><p>
+Vestibulum eu massa ligula. Morbi sagittis molestie molestie. Cras tempus posuere enim sit amet posuere. Nulla eleifend mauris a urna luctus non vestibulum nibh auctor. Duis luctus, sapien a posuere porta, tellus lorem interdum dui, vel viverra felis metus non metus. Vestibulum eleifend sollicitudin lobortis. Sed orci erat, interdum quis tempor sit amet, porta ac odio. Fusce in nisi non risus viverra tempor. Praesent porttitor, tortor in egestas scelerisque, enim neque lobortis dolor, vitae viverra eros urna in mauris. Suspendisse ipsum risus, varius sed rutrum in, cursus sit amet purus. Aliquam condimentum consectetur leo eget euismod. Nam scelerisque laoreet est, id condimentum elit ultrices non. Integer eget purus tortor, ut ultricies nulla. Etiam non metus at urna consectetur luctus quis nec nulla. Proin in est massa, in ultricies dui.
+</p><p>
+Fusce posuere risus sit amet nunc eleifend facilisis quis sit amet est. Praesent posuere scelerisque pellentesque. Integer nibh felis, dignissim id egestas vitae, eleifend eget eros. Etiam eu aliquam eros. Nullam metus metus, semper vel tempor vitae, luctus ac neque. Quisque nec ligula velit, vitae scelerisque magna. Morbi sed tristique leo. Integer in risus nec dolor mollis ullamcorper eget non sapien. Donec enim sem, sollicitudin nec ultrices posuere, tempus et diam. Curabitur id leo et sapien commodo hendrerit vitae in eros. Maecenas vitae magna magna, id euismod eros. Maecenas nisl mauris, facilisis eu lobortis ut, lacinia quis nisi. Praesent ultrices magna et neque tincidunt sodales. Fusce at turpis sapien, quis fringilla est. Praesent ut leo ut lorem lacinia dapibus.
+</p>
+   </div>
+   <div id="sidebar">
+   <div>
+   <p id="x" data-expand="true" tabindex="0"><span style="text-decoration: underline">X</span> Collapse sidebar</p>
+   </div>
+   <ul>
+   <li>One </li>
+   <li>Two </li>
+   <li>Three</li>
+   </ul>
+   <ul>
+   <li>One </li>
+   <li>Two </li>
+   <li>Three</li>
+   </ul>
+   <ul>
+   <li>One </li>
+   <li>Two </li>
+   <li>Three</li>
+   </ul>
+
+   <ul>
+   <li>One </li>
+   <li>Two </li>
+   <li>Three</li>
+   </ul>
+   <ul>
+   <li>One </li>
+   <li>Two </li>
+   <li>Three</li>
+   </ul>
+   <ul>
+   <li>One </li>
+   <li>Two </li>
+   <li>Three</li>
+   </ul>
+
+   </div>
+</div>
+</body>

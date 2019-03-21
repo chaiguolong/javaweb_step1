@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Collapsed Form Elements</title>
+<style>
+[aria-hidden="true"]
+{
+  display: none;
+}
+.elements
+{
+  width: 350px;
+  padding: 10px;
+  display: block;
+  border: 1px solid #000;
+}
+.label
+{
+  background-image: url(label.png);
+  text-align: center;
+  height: 33px;
+  width: 370px;
+  color: #fff;
+  font-weight: bold;
+  display: none;
+  padding-top: 10px;
+}
+.label 
+{
+  cursor: pointer;
+}
+.label a
+{
+  text-decoration: none;
+  color: #fff;
+}
+fieldset
+{
+  width: 370px;
+  border-width: 0;
+  padding: 0; margin: 0;
+}
+</style>
+</head>
+<body>
+<form>
+<div role="tablist" aria-multiselectable="true">
+<fieldset>
+<legend class="label" aria-controls="panel1" role="tab" aria-expanded="true" id="label_1" >
+<a href="">Checkboxes</a>
+</legend>
+<div  class="elements" id="panel_1" role="tabpanel" aria-labeledby="label_1">
+<input type="checkbox" name="box1" id="box1" value="one" /><label for="box1">One</label><br />
+<input type="checkbox" name="box2" id="box2" value="two" /><label for="box2">Two</label><br />
+<input type="checkbox" name="box3" id="box3" value="three" /><label for="box3">Three</label><br />
+<input type="checkbox" name="box4" id="box4" value="four" /><label for="box4">Four</label><br />
+<input type="checkbox" name="box5" id="box5" value="five" /><label for="box5">Five</label><br />
+</div>
+</fieldset>
+<fieldset>
+<legend class="label" aria-controls="panel2" role="tab" aria-expanded="true" id="label_2" >
+<a href="">Buttons</a>
+</legend>
+<div class="elements" id="panel_2" role="tabpanel" aria_labeledby="label_2">
+<input type="radio" name="button1" id="b1" value="b one" /><label>button one</label><br />
+<input type="radio" name="button1" id="b2" value="b two" /><label>button two</label><br />
+<input type="radio" name="button1" id="b3" value="b three" /><label>button three</label><br />
+<input type="radio" name="button1" id="b4" value="b four" /><label>button four</label><br />
+<input type="radio" name="button1" id="b5" value="b five" /><label>button five</label><br /><br />
+<input type="submit" value="submit" />
+</div>
+</fieldset>
+</div>
+</form>
+<script type="text/javascript">
+
+// process tab panel elements
+var elements = document.querySelectorAll(".elements");
+for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display="none";
+    elements[i].setAttribute("aria-hidden","true");
+}
+
+// process tab elements
+var labels = document.querySelectorAll(".label");
+for (var j = 0; j < labels.length; j++) { 
+    labels[j].onclick=switchDisplay;
+    labels[j].style.display="block";
+    labels[j].setAttribute("aria-expanded","false");
+}
+
+// when tab is clicked or enter key clicked
+function switchDisplay() {
+  
+  var parent = this.parentNode;
+  var targetid = "panel_" + this.id.split("_")[1];
+  var target = document.getElementById(targetid);
+
+  if (this.getAttribute("aria-expanded") == "true") {
+    this.setAttribute("aria-expanded","false");
+    target.style.display="none";
+    target.setAttribute("aria-hidden","true");
+  } else {
+    this.setAttribute("aria-expanded","true");
+    target.style.display="block";
+    target.setAttribute("aria-hidden","false");
+  }
+  return false;
+}
+</script>
+</body>
+</html>

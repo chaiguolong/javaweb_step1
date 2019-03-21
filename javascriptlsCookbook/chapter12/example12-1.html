@@ -1,0 +1,50 @@
+<!DOCTYPE html">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Inserting an object</title>
+<style type="text/css">
+div
+{
+  width: 50%;
+  height: 20px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#div1
+{
+  background-color: #ffff00;
+  }
+
+.divclass
+{
+  background-color: #ccffcc;
+}
+
+</style>
+<script type="text/javascript">
+
+window.onload=function() {
+  document.getElementById("div1").onclick=addDiv;
+}
+
+function addDiv() {
+
+  // get parent
+  var parent = this.parentNode;
+
+  // create new div
+  var newDiv = document.createElement("div");
+  newDiv.className = "divclass";
+  newDiv.innerHTML = "<p>I'm here, I'm in the page</p>";
+
+  // add to page
+  parent.insertBefore(newDiv,this);
+}
+</script>
+</head>
+<body>
+  <div id="div1">
+     <p>Click me to add new element</p>
+  </div>
+</body>

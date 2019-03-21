@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+</head>
+<body>
+<div id="result"></div>
+<script>
+
+   var prefLineLength = 20;
+   var oldStr = "This is a string";
+
+   var diff = prefLineLength - oldStr.length;
+   var filler = '&nbsp;';
+
+   for (var i = 0; i < diff; i++) {
+      oldStr=filler + oldStr;
+   }
+
+  document.getElementById("result").innerHTML=oldStr;
+
+</script>
+
+</body>

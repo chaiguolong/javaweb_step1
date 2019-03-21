@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+function greetingMaker(greeting) {
+   
+   function addName(name) {
+      return greeting + " " + name;
+   }
+   return addName;
+}
+
+window.onload=function() {
+
+  var daytimeGreeting = greetingMaker("Good Day to you");
+  var nightGreeting = greetingMaker("Good Evening");
+
+  var name = prompt("Please enter your name","");
+
+  // if daytime
+  alert(daytimeGreeting(name));
+
+  // if night
+  alert(nightGreeting(name));
+}
+</script>
+
+</head>
+<body>
+</body>

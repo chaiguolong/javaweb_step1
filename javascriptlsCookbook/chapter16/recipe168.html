@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+"use strict";
+
+var Test = {
+    value1 : "one",
+    value2 : function() {
+      return this.value1;
+    }
+};
+
+try {
+   Object.preventExtensions(Test);
+
+   // the following fails, and throws an exception in Strict mode
+  Test.value3 = "test";
+
+} catch(e) {
+   alert(e);
+}
+}
+</script>
+
+</head>
+<body>
+</body>

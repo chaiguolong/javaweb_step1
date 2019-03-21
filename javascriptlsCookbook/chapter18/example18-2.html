@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+<title>Sender</title>
+<script>
+
+function manageEvent(eventObj, event, eventHandler) {
+   if (eventObj.addEventListener) {
+      eventObj.addEventListener(event, eventHandler,false);
+   } else if (eventObj.attachEvent) {
+      event = "on" + event;
+      eventObj.attachEvent(event, eventHandler);
+   }
+}
+
+window.onload=function() {
+
+  manageEvent(document.getElementById("button1"),"click",sendMessage);
+  manageEvent(window,"message",receive);
+
+}
+
+// make sure to change URL to your location
+function sendMessage() {
+  try {
+    var farAwayWindow = document.getElementById("widgetId").contentWindow;
+    farAwayWindow.postMessage("dragonfly6.thumbnail.jpg,Dragonfly on flower",
+                              'http://jscb.burningbird.net');
+  } catch (e) {
+    alert(e);
+  }
+};
+
+// change URL to your location
+function receive(e) {
+  if (e.origin == "http://jscb.burningbird.net")
+    alert(e.data);
+}
+</script>
+
+</head>
+<body>
+<div><button id="button1">Load the photo</button></div>
+<iframe src="example18-3.html" id="widgetId"></iframe>
+</body>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<title>ePub Reader</title>
+<meta charset="utf-8" />
+<style>
+#result
+{
+  width: 500px;
+  margin: 30px;
+}
+</style>
+<script>
+
+window.onload=function() {
+
+  var ctarray = ["apple","bear","cherries","movie"];
+  var worker = new Worker("reverse.js");
+  worker.onmessage=receiveResult;
+  worker.postMessage(ctarray);
+}
+
+function receiveResult(event) {
+     document.getElementById("result").innerHTML = event.data;
+}
+</script>
+
+</head>
+<body>
+<div id="result"></div>
+</body>

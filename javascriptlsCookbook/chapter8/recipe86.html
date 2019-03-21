@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+  if (window.screen.availWidth >= 800) {
+    var imgs = document.getElementsByTagName("img");
+    for (var i = 0; i < imgs.length; i++) {
+      var name = imgs[i].src.split("-");
+      var newname = name[0] + "-big.jpg";
+      imgs[i].src = newname;
+    }
+  }
+}
+
+</script>
+
+</head>
+<body>
+<img src="test-thumb.jpg" alt="" />
+</body>

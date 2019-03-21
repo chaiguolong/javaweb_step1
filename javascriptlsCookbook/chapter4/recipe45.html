@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+ 
+  var rows = document.getElementById("table1").children[0].rows;
+  var numArray = new Array();
+
+  for (var i = 0; i < rows.length; i++) {
+     numArray[numArray.length] = parseInt(rows[i].cells[1].firstChild.data);
+  }
+
+  alert(numArray.toString());
+}
+</script>
+
+</head>
+<body>
+<table id="table1">
+<tr><td>4.5</td><td>5.3</td><td>2</td></tr>
+</table>
+</body>

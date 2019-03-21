@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+function makeHello(name) {
+   name[name.length] = "Hello " + name[0] + " " + name[1];
+};
+
+window.onload=function () {
+  var name = new Array('Ima','Reader');
+  makeHello(name);
+  alert(name[2]); // displays Hello Ima Reader
+};
+</script>
+
+</head>
+<body>
+</body>

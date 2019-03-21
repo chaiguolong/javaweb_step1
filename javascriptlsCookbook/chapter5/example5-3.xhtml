@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Associative Array</title>
+<script type="text/javascript">
+//<![CDATA[
+
+// get the form element names and values
+function getVals() {
+  var elems = document.getElementById("picker").elements;
+  var elemArray = new Object();
+  for (var i = 0; i < elems.length; i++) {
+    if (elems[i].type == "text")
+       elemArray[elems[i].id] = elems[i].value;
+  }
+  checkVals(elemArray);
+  return false;
+}
+
+// check values
+function checkVals(elemArray) {
+
+  var str = "";
+  for (var key in elemArray) {
+    str+=key + "," + elemArray[key] + " ";
+  }
+
+ document.getElementById("result").innerHTML = str;
+}
+
+//--><!]]>
+</script>
+</head>
+<body>
+<form id="picker" onsubmit="return getVals()">
+<label>Value 1:</label> <input type="text" id="first" /><br />
+<label>Value 2:</label> <input type="text" id="second" /><br />
+<label>Value 3:</label> <input type="text" id="third"  /><br />
+<label>Value 4:</label> <input type="text" id="four"  /><br />
+<input type="submit" value="Validate" />
+</form>
+<div id="result"></div>
+</body>
+</html>

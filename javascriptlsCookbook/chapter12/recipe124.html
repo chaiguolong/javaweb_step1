@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+// get the target div
+var div = document.getElementById("target");
+
+// retrieve a collection of all the div's paragraphs
+var paras = div.getElementsByTagName("p");
+
+// if a third para exists, insert the new element before
+// otherwise, append the paragraph to the end of the div
+var newPara = document.createElement("p");
+if (paras[3]) { 
+   div.insertBefore(newPara, paras[3]);
+} else {
+   div.appendChild(newPara);
+}
+
+// add content to paragraph
+newPara.innerHTML="This is the new paragraph";
+} 
+</script>
+
+</head>
+<body>
+<div id="target">
+<p>This is the first paragraph</p>
+<p>This is the second paragraph</p>
+<p>This is the third paragraph</p>
+<p>This is the fourth paragraph</p>
+</div>
+</body>

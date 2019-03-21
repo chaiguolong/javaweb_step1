@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+function otherFunction(x,y,z) {
+  x(y,z);
+};
+
+window.onload=function() {
+   var param = function(arg1, arg2) { alert(arg1 + " " + arg2); };
+   otherFunction(param, "Hello", "World");
+
+   otherFunction(function(arg1,arg2) { alert(arg1 + ' ' + arg2); }, "Hello","World");
+};
+</script>
+
+</head>
+<body>
+</body>

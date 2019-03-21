@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+<title>Locating Elements</title>
+<style type="text/css">
+div#a
+{
+   width: 500px;
+}
+div
+{
+  border: 1px solid #000;
+  padding: 10px;
+}
+#cursor
+{
+  position: absolute;
+  background-color: #ffff00;
+  width: 20px;
+  height: 20px;
+  left: 50px;
+  top: 300px;
+}
+</style>
+<script type="text/javascript">
+
+function positionObject(obj) {
+   var rect = obj.getBoundingClientRect();
+   return [rect.left,rect.top];
+}
+
+window.onload=function() {
+   var tst = document.documentElement.getBoundingClientRect();
+   var cont = "A";
+   var cursor = document.getElementById("cursor");
+   while (cont) {
+      cont = prompt("Where do you want to move the cursor block?","A");
+      if (cont) {
+         cont=cont.toLowerCase();
+         if (cont == "a" || cont == "b" || cont == "c") {
+            var elem = document.getElementById(cont);
+            var pos = positionObject(elem);
+            cursor.setAttribute("style","top: " + pos[1] + "px; left : " + pos[0] + "px");
+
+            // IE7
+            // cursor.style.left = pos[0] - 2 + "px";
+            // cursor.style.top = pos[1] - 2 + "px";
+          }
+       }
+    }
+}
+</script>
+</head>
+<body>
+  <div id="a">
+    <p>A</p>
+    <div id="b">
+      <p>B</p>
+      <div id="c">
+         <p>C</p>
+      </div>
+     </div>
+  </div>
+  <div id="cursor"></div>
+</body>

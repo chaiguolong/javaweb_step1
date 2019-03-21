@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+[role="alert"]
+{
+  display: block;
+  background-color: #ffeeee;
+  font-weight: bold;
+  padding: 5px;
+  border: 1px dashed #000;
+  width: 300px;
+  margin: 20px;
+}
+</style>
+<script>
+
+function addPopUp(txt) {
+   // remove old alert, in case
+   var msg = document.getElementById("msg");
+   if (msg) 
+      document.body.removeChild(msg);
+
+   // create new text and div elements and set
+   // Aria and class values and id
+   var txtNd = document.createTextNode(txt);
+   msg = document.createElement("div");
+   msg.setAttribute("role","alert");
+   msg.setAttribute("id","msg");
+   msg.setAttribute("class","alert"); 
+   
+   // append text to div, div to document
+   msg.appendChild(txtNd);
+   document.body.appendChild(msg);
+};
+
+window.onload=function() {
+   document.getElementById("button1").onclick=function() {
+      var msg = prompt("What do you want the alert to say?");
+      addPopUp(msg);
+   };
+};
+
+</script>
+
+</head>
+<body>
+<button id="button1">Click to Create Alert</button>
+</body>

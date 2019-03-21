@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+<title>Canvas Squares</title>
+<meta charset="utf-8" />
+<style>
+div
+{
+  padding: 10px;
+  border: 1px solid #000000;
+}
+</style>
+<script type="text/javascript">
+
+window.onload=function() {
+ 
+var imgcanvas = document.getElementById("imgcanvas");
+
+if (imgcanvas.getContext) {
+   var ctx = imgcanvas.getContext('2d');
+   ctx.fillStyle="rgba(255,0,0,.1)";
+   ctx.strokeStyle="#000000";
+
+   // rect one
+   ctx.fillRect(0,0,100,100);
+   ctx.strokeRect(0,0,100,100);
+
+   // rect two
+   ctx.fillRect(50,50,100,200);
+
+   // rect three
+   ctx.strokeRect(80,130,200,100);
+
+ }
+}
+
+</script>
+</head>
+<body>
+<canvas id="imgcanvas" width="400" height="250">
+<img src="park11.jpg" "Painted Lady butterfly on milkweed" />
+</canvas>
+</body>

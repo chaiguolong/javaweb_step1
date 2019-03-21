@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<script>
+
+window.onload=function() {
+// get the existing element
+var refElement = document.getElementById("sister");
+
+// get the element's parent node
+var parent = refElement.parentNode;
+
+// create new div element
+var newDiv = document.createElement("div");
+
+// attach to page before sister element
+parent.insertBefore(newDiv, refElement);
+
+// give it some content
+newDiv.innerHTML = "<p>This is the new div element</p>";
+}
+</script>
+
+</head>
+<body>
+<div id="sister"><p>This is the old content</p></div>
+</body>

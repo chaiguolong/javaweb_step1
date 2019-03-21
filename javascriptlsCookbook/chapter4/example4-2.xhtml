@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Using Math method to fit a circle</title>
+<style type="text/css">
+#elem
+{
+   width: 400px;
+   height: 200px;
+   border: 1px solid #000;
+}
+</style>
+<script type="text/javascript">
+
+//<![CDATA[
+function compStyle(elemId,property) {
+   var elem = document.getElementById(elemId);
+   var style;
+   if (window.getComputedStyle)
+     style=window.getComputedStyle(elem,null).getPropertyValue(property);
+   else if (elem.currentStyle)      style=elem.currentStyle[property];   return style;
+}
+window.onload=function() {
+  var height = parseInt(compStyle("elem","height"));
+  var width = parseInt(compStyle("elem","width"));
+  
+  var x = width / 2;
+  var y = height / 2;
+
+  var circleRadius = Math.min(width,height) / 2;
+
+  var circ = document.getElementById("circ");
+  circ.setAttribute("r",circleRadius);
+  circ.setAttribute("cx",x);
+  circ.setAttribute("cy",y);  
+}
+//--><!]]>
+</script>
+
+</head>
+<body>
+<div id="elem">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600">
+<circle id="circ" width="10" height="10" r="10" fill="red" />
+</svg>
+</div>
+</body>
+</html>

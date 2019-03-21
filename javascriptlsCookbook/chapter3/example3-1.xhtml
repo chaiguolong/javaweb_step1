@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Converting ISO 8601 date</title>
+<style type="text/css">
+#dateSubmit
+{
+   background-color: #ff0;
+   width: 200px;
+   text-align: center;
+   border: 1px solid #ccc;
+}
+</style>
+<script type="text/javascript">
+//<![CDATA[
+
+window.onload=function() {
+  document.getElementById("dateSubmit").onclick=convertDate;
+}
+
+function convertDate() {
+  var dtstr = document.getElementById("datestring").value;
+  var convdate = convertISO8601toDate(dtstr);
+  document.getElementById("result").innerHTML=convdate;
+}
+
+function convertISO8601toDate(dtstr) {
+
+  // replace anything but numbers by spaces
+  dtstr = dtstr.replace(/\D/g," ");
+
+  // trim any hanging white space
+  dtstr = dtstr.replace(/\s+$/,"");
+
+  // split on space
+  var dtcomps = dtstr.split(" ");
+
+  // not all ISO 8601 dates can convert, as is
+  // unless month and date specified, invalid
+  if (dtcomps.length < 3) return "invalid date";
+  // if time not provided, set to zero
+  if (dtcomps.length < 4) {
+    dtcomps[3] = 0;
+    dtcomps[4] = 0;
+    dtcomps[5] = 0;
+  }
+
+  // modify month between 1 based ISO 8601 and zero based Date
+  dtcomps[1]--;
+
+  var convdt = new Date(Date.UTC(dtcomps[0],dtcomps[1],dtcomps[2],dtcomps[3],dtcomps[4],dtcomps[5]));
+
+  return convdt.toUTCString();
+}
+
+//--><!]]>
+</script>
+</head>
+<body>
+<form>
+<p>Datestring in ISO 8601 format: <input type="text" id="datestring" /></p>
+</form>
+<div id="dateSubmit"><p>Convert Date</p></div>
+<div id="result"></div>
+</body>
+</html>

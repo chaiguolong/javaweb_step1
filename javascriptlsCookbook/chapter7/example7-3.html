@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<title>Filtering Input</title>
+<script>
+
+var badChar;
+
+function listenEvent(eventTarget, eventType, eventHandler) {
+   if (eventTarget.addEventListener) {
+      eventTarget.addEventListener(eventType, eventHandler,false);
+   } else if (eventTarget.attachEvent) {
+      eventType = "on" + eventType;
+      eventTarget.attachEvent(eventType, eventHandler);
+  } else {
+     eventTarget["on" + eventType] = eventHandler;
+  }
+}
+
+// cancel event
+function  cancelEvent (event) {
+   if (event.preventDefault) {
+      event.preventDefault();
+   } else {
+      event.returnValue = false;
+   }
+}
+
+window.onload=function() {
+   badChar = prompt("Enter the ASCII value of the keyboard key you want to filter","");
+   var inputTA = document.getElementById("source");
+   listenEvent(inputTA,"keypress",processClick);
+}
+function processClick(evt) {
+   evt = evt || window.event;
+   var key = evt.charCode ? evt.charCode : evt.keyCode;
+
+   // zap that bad boy
+   if (key == badChar) cancelEvent(evt);
+}
+
+</script>
+</head>
+<body>
+<form>
+<textarea id="source" rows="20" cols="50"></textarea>
+</form>
+</body>

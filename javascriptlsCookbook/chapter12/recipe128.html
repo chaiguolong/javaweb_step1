@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+window.onload=function() {
+
+// first approach
+
+var targetNode = document.getElementById("target");
+if (targetNode.hasAttribute("class")) {
+   alert(targetNode.getAttribute("class"));
+}
+}
+</script>
+
+</head>
+<body>
+<div id="target" class="target">This is a paragraph in a div element</div>
+</body>

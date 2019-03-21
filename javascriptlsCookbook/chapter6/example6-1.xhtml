@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Function test</title>
+<script>
+//<![CDATA[
+
+window.onload=function() {
+  var items = new Array('apple','orange','cherry','lime');
+  var sep = '*';
+  concatenateString(items,sep);
+
+  alert(items);
+  alert(sep);
+}
+
+function concatenateString(strings, separator) {
+  var result="";
+  for (var i = 0; i < strings.length; i++) {
+    result+=strings[i] + separator;
+  }
+
+  // assign result to separator
+  separator = result;
+
+  // and array
+  strings[strings.length]=result;
+}
+  
+
+//--><!]]>
+</script>
+</head>
+<body>
+</body>
+</html>

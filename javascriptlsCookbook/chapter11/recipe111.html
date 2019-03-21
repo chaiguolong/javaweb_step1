@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<style>
+.demo
+{
+   background-color: #00f;
+   color: #ffff00;
+   width: 200px;
+   height: 100px;
+}
+</style>
+<script>
+
+window.onload=function() {
+   var outputString = "";
+
+   var div = document.getElementById("demodiv");
+   var classnm = div.getAttribute("class");
+
+   // IE 7
+   // classnm = div.className;
+   outputString+="demodiv has class " + classnm + "<br />";
+  
+   var parent = div.parentNode;
+   outputString+=" parent node is " + parent.nodeName + "<br />";
+
+   if (div.hasChildNodes()) {
+      var children = div.childNodes;
+      for (var i = 0; i < children.length; i++) {
+         outputString+=" has child " + children[i].nodeName + "<br />";
+      }
+   }  
+  
+  document.getElementById("result").innerHTML = outputString;  
+}
+</script>
+
+</head>
+<body>
+<div id="demodiv" class="demo">
+<p>Some text</p>
+<p>Some more text</p>
+</div>
+<div id="result"></div>
+</body>

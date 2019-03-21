@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="en">
+<head>
+<title>Accessing Inline SVG</title>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+</head>
+<body>
+<svg:svg width="600" height="600">
+  <script type="text/ecmascript">
+    <![CDATA[
+
+      // set element onclick event handler
+      window.onload=function () {
+
+         var square = document.getElementById("square");
+
+         // onclick event handler, change circle radius
+         square.onclick = function() {
+            var color = this.getAttribute("fill");
+            if (color == "#ff0000") {
+               this.setAttribute("fill","#0000ff");
+            } else {
+               this.setAttribute("fill","#ff0000");
+            }
+         }
+      }
+    ]]>
+  </script>
+  <svg:rect id="square" width="400" height="400" fill="#ff0000" x="10" y="10" />
+</svg:svg>
+</body>
+</html>

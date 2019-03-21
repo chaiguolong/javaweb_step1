@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+<title>Recipe</title>
+<meta charset="utf-8" />
+<script>
+
+var http;
+
+window.onload=function() {
+  document.getElementById("submit1").onclick=sendData;
+}
+
+function sendData(evt) {
+
+  // cancel default form submittal
+  evt = evt || window.event;
+  if (evt.preventDefault)
+    evt.preventDefault();
+  else
+    evt.returnValue = false;
+
+  // get input data
+  var one = encodeURIComponent(document.getElementById("one").value).replace(/%20/g,'+');
+  var two = encodeURIComponent(document.getElementById("two").value).replace(/%20/g,'+');
+  var params = "one=" + one + "&two=" + two;
+
+  // prep request
+  if (!http) {
+     http = new XMLHttpRequest();
+  }
+  var url = "ajaxserver.php";
+  http.open("POST", url, true)
+
+  // set up Ajax headers
+  http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  http.setRequestHeader("Content-length", params.length);
+  http.setRequestHeader("Connection", "close");
+
+  // callback function
+  http.onreadystatechange=processResult;
+
+  // make Ajax call with params
+  http.send(params);
+}
+
+function processResult() {
+   if (http.readyState == 4 && http.status == 200) {
+      document.getElementById("result").innerHTML=http.responseText;
+   }
+}
+
+</script>
+
+</head>
+<body>
+  <form>
+    <label for="one"><input type="text" name="one" id="one" /><br />
+    <label for="two"><input type="text" name="two" id="two" /><br />
+    <button id="submit1">Send Data via POST</button>
+  </form>
+  <div id="result"></div>
+</body>

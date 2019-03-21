@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<title>recipe</title>
+<meta charset="utf-8" />
+<style>
+div
+{
+  padding: 10px;
+  border: 1px solid #000000;
+}
+.red
+{
+  color: red;
+}
+</style>
+<script type="text/javascript">
+
+window.onload=function() {
+  if (document.getElementsByClassName) {
+     var elems = document.getElementsByClassName("red");
+     alert("found " + elems.length + " elements");
+  }
+
+  elems = document.querySelectorAll(".red");
+  alert("found " + elems.length + " elements");
+}
+</script>
+</head>
+<body>
+  <div>
+     <p class="red">Paragraph one</p>
+     <p>Paragraph two</p>
+     <p>Paragraph three</p>
+  </div>
+  <div>
+     <p>Paragraph one</p>
+     <p class="red">Paragraph two</p>
+  </div>
+  <div>
+     <ul>
+        <li>List item one</li>
+        <li>List item two</li>
+     </ul>
+     <p class="red">Paragraph one</p>
+     <p>Paragraph two</p>
+  </div>
+</body>

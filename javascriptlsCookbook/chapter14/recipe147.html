@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+<title>Tabbed Pages</title>
+<style>
+  .tabcontainer
+  {
+    padding: 5px; width: 500px;
+    margin: 20px;
+  }
+  .tabnavigation ul
+  {
+    padding: 0; margin: 0; display: none;
+  }
+  .tabnavigation ul li 
+  {
+    padding: 3px; display: inline; 
+    border: 1px solid #000; background-color: #fff; 
+  }
+  .tabnavigation ul li:hover
+  {
+    cursor: pointer;
+  }
+  .tabnavigation ul li a
+  {
+    text-decoration: none;
+    color: #000;
+  }
+  .tabpages
+  {
+    position: relative; z-index: 2;
+    border: 1px solid #000; background-color: #fff;
+  }
+  .tabpage
+  {
+    margin: 0 10px; 
+  }
+</style>
+<script>
+
+// set up display
+// for each container display navigation
+// hide all but first page, highlight first tab
+window.onload=function() {
+
+  // for each container
+  var containers = document.querySelectorAll(".tabcontainer");
+  for (var j = 0; j < containers.length; j++) {
+    
+    
+    // display and hide elements
+    var nav = containers[j].querySelector(".tabnavigation ul");
+    nav.style.display="block";
+
+    // set current tab
+    var navitem = containers[j].querySelector(".tabnavigation ul li");
+    var ident = navitem.id.split("_")[1];
+    navitem.parentNode.setAttribute("data-current",ident);
+    navitem.setAttribute("style","background-color: #ccf");
+
+    // set displayed tab panel
+    var pages = containers[j].querySelectorAll(".tabpage");
+    for (var i = 1; i < pages.length; i++) {
+      pages[i].style.display="none";
+      pages[i].setAttribute("aria-hidden","true");
+    }
+
+    // for each tab, attach event handler function
+    var tabs = containers[j].querySelectorAll(".tabnavigation ul li");
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].onclick=displayPage;
+    }
+  }
+}
+
+// click on tab 
+function displayPage() {
+
+  // hide old selection
+  var current = this.parentNode.getAttribute("data-current");
+  var oldpanel = document.getElementById("tabpage_" + current);
+
+  document.getElementById("tabnav_" + current).setAttribute("style","background-color: #fff");
+  oldpanel.style.display="none"; 
+  oldpanel.setAttribute("aria-hidden","true");
+
+
+  // display new selection
+  var ident = this.id.split("_")[1];
+  this.setAttribute("style","background-color: #ccf");
+  var newpanel = document.getElementById("tabpage_" + ident);
+
+  newpanel.style.display="block";
+  newpanel.setAttribute("aria-hidden","false");
+  this.parentNode.setAttribute("data-current",ident);
+
+  return false;
+}
+</script>
+</head>
+<body>
+<div class="tabcontainer" role="tablist">
+   <div class="tabnavigation" role="tab">
+      <ul>
+         <li id="tabnav_1" role="tab"><a href="">Page One</a></li>
+         <li id="tabnav_2" role="tab"><a href="">Page Two</a></li>
+         <li id="tabnav_3" role="tab"><a href="">Page Three</a></li>
+      </ul>
+   </div>
+
+   <div class="tabpages">
+      <div class="tabpage" role="tabpanel" aria-labeledby="tabnav_1" aria-hidden="false" id="tabpage_1">
+         <p>page 1</p>
+      </div>
+      <div class="tabpage" role="tabpanel" aria-labeledby="tabnav_2" aria-hidden="true" id="tabpage_2">
+         <p>page 2</p>
+      </div>
+      <div class="tabpage" role="tabpanel" aria-labeledby="tabnav_3" aria-hidden="true" id="tabpage_3">
+         <p>page 3</p>
+      </div>
+   </div>
+</div>
+</body>

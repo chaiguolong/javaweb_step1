@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Date/Time</title>
+    <style>
+      body 
+      {
+          background-color: #006600;
+          color: #ffff00;
+          font-weight: bold;
+          font-size: 24px;
+      }
+      span
+      {
+          padding: 10px;
+      }
+      p a
+      {
+        color: #fff;
+      }
+    </style> 
+    <script type="text/javascript">
+      window.addEventListener("load", function () {
+           // print out date
+           var dt = new Date();
+           var dtStr = dt.toDateString();
+           document.getElementById("date").innerHTML=dtStr;
+
+           // time
+           var timeStr = dt.toTimeString();
+           document.getElementById("time").innerHTML=timeStr;
+
+        }, false);
+    </script>
+  </head>
+  <body>
+     <div id="datetime"><span id="date"></span><br /><span id="time"></span></div>
+  </body>
+</html>

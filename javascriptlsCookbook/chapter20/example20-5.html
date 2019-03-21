@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<title>localstore</title>
+<style>
+</style>
+<script>
+   window.onload=function() {
+     try {
+        var elems = document.getElementsByTagName("input");
+
+        // capture submit to clear storage
+        document.getElementById("inputform").onsubmit=clearStored;
+
+        for (var i = 0; i < elems.length; i++) {
+
+           if (elems[i].type == "text") {
+
+              // restore
+              var value = localStorage.getItem(elems[i].id);
+              if (value) elems[i].value = value;
+
+              // change event
+              elems[i].onchange=processField;
+           }
+         }
+       } catch (e) {
+       alert(e);
+     }
+   }
+
+   // store field values
+   function processField() {
+     localStorage.setItem(window.location.href,"true");
+     localStorage.setItem(this.id, this.value);
+   }
+
+   // clear individual fields
+   function clearStored() {
+     var elems = document.getElementsByTagName("input");
+     for (var i = 0; i < elems.length; i++) {
+
+       if (elems[i].type == "text") {
+          localStorage.removeItem(elems[i].id);
+       }
+     }
+   }
+
+</script>
+</head>
+<body>
+   <form id="inputform">
+      <label for="field1">Enter field1:</label> <input type="text" id="field1" /> <br /> <br />
+      <label for="field2">Enter field2:</label> <input type="text" id="field2" /><br /><br />
+      <label for="field3">Enter field1:</label> <input type="text" id="field3" /> <br /> <br />
+      <label for="field4">Enter field1:</label> <input type="text" id="field4" /> <br /> <br />
+      <input type="submit" value="Save" />
+</body> 
