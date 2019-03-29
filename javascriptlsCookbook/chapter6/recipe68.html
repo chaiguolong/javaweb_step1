@@ -14,7 +14,7 @@ function curry (fn, scope) {
         for (var i = 0; i < arguments.length; i++) {
             args2.push(arguments[i]);
          }
-         var argstotal = args.concat(args2); 
+        var argstotal = args.concat(args2); 
 	 return fn.apply(scope, argstotal);
     };
 }
