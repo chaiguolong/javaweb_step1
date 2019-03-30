@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Example7_4_001</title>
+		<style type="text/css" media="screen">
+			#drop{
+				width:300px;
+				height:200px;
+				background-color:#f00;
+				padding:5px;
+				border:2px solid #000;
+			}
+			#item{
+				width:100px;
+				height:100px;
+				background-color:#ff0;
+				padding:5px;
+				margin:20px;
+				border:1px dashed #000;
+			}
+			*[draggable=true]{
+				-moz-user-select:none;
+				-khtml-user-drag:element;
+				cursor:move;
+			}
+
+			*:-khtml-drag{
+				background-color:rgba(238,238,238,0.5);
+			}
+		</style>
+		<script src="js/example7_4_001.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div>
+			<p>Drag the small yellow box with the dash border to the larger red box with the solid border</p>
+		</div>
+		<div id="item" draggable="true">
+		</div>
+		<div id="drop">
+		</div>
+	</body>
+</html>
