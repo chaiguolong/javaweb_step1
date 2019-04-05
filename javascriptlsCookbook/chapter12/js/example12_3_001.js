@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<head>
-<title>Moving Links</title>
-<style>
- ul li
-  {
-    list-style-type: none;
-    padding-bottom: 5px;
-  }
-</style>
-<script type="text/javascript">
-
 window.onload=function() {
 
   var links = document.querySelectorAll("a");
@@ -46,11 +34,7 @@ window.onload=function() {
   }
 
   document.getElementsByTagName("body")[0].appendChild(footnote);}
-</script>
-</head>
-<body>
-  <div id="target">
-    <p>A favorite place of mine to visit in St. Louis is the <a href="http://http://www.mobot.org/">Missouri Botanical Gardens</a>. Great flowers all year round, and one of the finest annual orchid shows. My most visited places, though, are the <a href="http://www.stlzoo.org/">St. Louis Zoo</a>, the <a href="http://www.nps.gov/jeff/index.htm"><em>Gateway Arch</em></a>, the new <a href="http://www.citygardenstl.org/">City Garden</a>, and the <a href="http://mdc.mo.gov/areas/cnc/powder/">Powder Valley Conservation Nature Center</a>.
-    </p>
-  </div>
-</body>
+
+
+
+
