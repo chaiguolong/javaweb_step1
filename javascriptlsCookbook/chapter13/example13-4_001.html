@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Example13_4_001</title>
+		<style type="text/css" media="screen">
+			.tabcontainer{
+				padding: 5px;
+				width:500px;
+				margin: 20px;
+			}
+			.tabnavigation ul{
+				padding: 0;
+				margin: 0;
+				display:none;
+			}
+			.tabnavigation ul li{
+				padding: 0px;
+				display: inline;
+				border: 1px solid #000;
+				background-color: #fff;
+			}
+			.tabnavigation ul li:hover{
+				cursor: pointer;
+			}
+			.tabpages{
+				positon: relative;
+				z-index: 2;
+				border: 1px solid #000;
+				background-color:#fff;
+			}
+			.tabpage{
+				margin: 0 10px;
+			}
+		</style>
+		<script src="js/example13_4_001.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="tabcontainer">
+			<div class="tabnavigation">
+				<ul>
+					<li id="tabnav_1">Page One</li>
+					<li id="tabnav_2">Page Two</li>
+					<li id="tabnav_3">Page Three</li>
+				</ul>
+			</div>
+
+			<div class="tabpages">
+				<div class="tabpage" id="tabpage_1">
+					<p>Page 1</p>
+				</div>
+				<div class="tabpage" id="tabpage_2">
+					<p>Page 2</p>
+				</div>
+				<div class="tabpage" id="tabpage_3">
+					<p>Page 3</p>
+				</div>
+			</div>
+		</div>
+		<div class="tabcontainer">
+			<div class="tabnavigation">
+				<ul>
+					<li id="tabnav_4">Page Two One</li>
+					<li id="tabnav_5">Page Two Two</li>
+				</ul>
+			</div>
+
+			<div class="tabpages">
+				<div class="tabpage" id="tabpage_4">
+					<p>Page 4</p>
+				</div>
+				<div class="tabpage" id="tabpage_5">
+					<p>Page 5</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
