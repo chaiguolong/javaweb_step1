@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Recipe147_001</title>
+		<style type="text/css" media="screen">
+			.tabcontainer{
+				padding:5px;
+				width:500px;
+				margin:20px;
+			}
+			.tabnavigation ul{
+				padding: 0;
+				margin: 0;
+				display:none;
+			}
+			.tabnavigation ul li{
+				padding: 3px;
+				display: inline;
+				border: 1px solid #000;
+				background-color: #fff;
+			}
+			.tabnavigation ul li:hover{
+				cursor: pointer;
+			}
+			.tabnavigation ul li a{
+				text-decoration:none;
+				color: #000;
+			}
+			.tabpages{
+				position: relative;
+				z-index: 2;
+				border: 1px solid #000;
+				background-color:#fff;
+			}
+			.tabpage{
+				margin: 0 10px;
+			}
+		</style>
+		<script src="js/recipe147_001.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="tabcontainer" role="tablist">
+			<div class="tabnavigation" role="tab">
+				<ul>
+					<li id="tabnav_1" role="tab"><a href="">Page One</a></li>
+					<li id="tabnav_2" role="tab"><a href="">Page Two</a></li>
+					<li id="tabnav_3" role="tab"><a href="">Page Three</a></li>
+				</ul>
+			</div>
+
+			<div class="tabpages">
+				<div class="tabpage" role="tabpanel" aria-labeldby="tabnav_1" aria-hidden="false" id="tabpage_1">
+					<p>page 1</p>
+				</div>
+				<div class="tabpage" role="tabpanel" aria-labeledby="tabnav_2" aria-hidden="true" id="tabpage_2">
+					<p>page 2</p>
+				</div>
+				<div class="tabpage" role="tabpanel" aria-labeledby="tabnav_3" aria-hidden="true" id="tabpage_3">
+					<p>page 3</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
