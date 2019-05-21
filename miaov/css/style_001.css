@@ -1,4 +1,38 @@
+ul{
+	margin:0px;
+	padding:0px;
+	list-style: none;
+	width: 277px;
+	height: 118px;
+}
 .box{
-	background-color: #DDD;
-	color: rgb(255,255,255);
+	width: 334px;
+	height: 392px;
+	background-color: #31295c;
+	margin: 30px auto;
+}
+.box2{
+	width: 277px;
+	height: 325px;
+	padding: 34px 27px;
+}
+.img{
+	width: 277px;
+	height: 206px;
+	vertical-align:top;
+}
+.li_t{
+	width: 277px;
+	height: 39px;
+	background: url(../imgs/li_t.gif);
+}
+.li_m{
+	width: 277px;
+	height: 40px;
+	background: url(../imgs/li_m.gif);
+}
+.li_b{
+	width: 277px;
+	height: 40px;
+	background: url(../imgs/li_m.gif);
 }
