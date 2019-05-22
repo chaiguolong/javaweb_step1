@@ -1,0 +1,54 @@
+body{
+	background-color: black;
+	margin:0px;
+	padding: 0px;
+}
+ul{
+	margin: 0px;
+	padding: 0px;
+}
+ul li{
+	list-style: none;
+}
+.box{
+	width: 275px;
+	height: 204px;
+	margin: 30px auto;
+}
+
+ul{
+	width: 275px;
+	height: 204px;
+	margin: 30px auto;
+	border: 2px solid #6bcdf0;
+}
+ul li{
+	width: 275px;
+	height: 40px;
+	background: #191d20;
+}
+.li_one{
+	border-bottom: 2px solid #6bcdf0;
+}
+.li_three{
+	background-color: #6bcdf0;
+}
+.img01{
+	padding: 12px 0px 0px 14px;
+}
+.img02{
+	float: right;
+	padding: 8px 10px 0px 0px;
+}
+.img03{
+	padding: 10px 0px 0px 14px;
+}
+.img04{
+	padding: 10px 0px 0px 14px;
+}
+.img05{
+	padding: 10px 0px 0px 14px;
+}
+.img06{
+	padding: 10px 0px 0px 14px;
+}
