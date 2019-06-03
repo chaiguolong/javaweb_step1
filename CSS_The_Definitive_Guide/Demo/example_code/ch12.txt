@@ -1,0 +1,316 @@
+chapter: Lists and Generated Content
+==================
+ol li {list-style-type: decimal;}
+li.off {list-style-type: none;}
+
+<ol>
+<li>Item the first
+<li class="off">Item the second
+<li>Item the third
+<li class="off">Item the fourth
+<li>Item the fifth
+</ol>
+    
+    
+====================================
+ul {list-style-type: disc;}
+ul ul {list-style-type: circle;}
+ul ul ul {list-style-type: square;}
+    
+    
+====================================
+ul li {list-style-image: url(ohio.gif);}
+    
+    
+====================================
+ul li {list-style-image: url(big-ohio.gif);}
+    
+    
+====================================
+ul li {list-style-image: url(ohio.png); list-style-type: square;}
+    
+    
+====================================
+ul {list-style-image: url(ohio.gif); list-style-type: square;}
+ul ul {list-style-image: none;}
+    
+    
+====================================
+li.first {list-style-position: inside;}
+li.second {list-style-position: outside;}
+    
+    
+====================================
+li {list-style: url(ohio.gif) square inside;}
+    
+    
+====================================
+li.norm {list-style: url(img42.gif);}
+li.odd {list-style: url(img42.gif) disc outside;} /* the same thing */
+    
+    
+====================================
+li {list-style-type: square;}
+li.norm {list-style: url(img42.gif);}
+li.odd {list-style: url(img42.gif) disc outside;} /* the same thing */
+    
+    
+====================================
+ul, ol {margin-left: 40px;}
+    
+    
+====================================
+ul, ol {padding-left: 40px;}
+    
+    
+====================================
+ul {margin-left: 0; padding-left: 1em;}
+    
+    
+====================================
+ul {margin-left: 1em; padding-left: 0;}
+    
+    
+====================================
+a[href]:before {content: "(link)";}
+    
+    
+====================================
+a[href]:before {content: "(link) ";}
+    
+    
+====================================
+a.pdf-doc:after {content: url(pdf-doc-icon.gif);}
+    
+    
+====================================
+a.pdf-doc {border: 1px solid gray;}
+    
+    
+====================================
+em:after {content: " (!) "; display: block;}
+    
+    
+====================================
+h1:before {content: "New Section"; display: block; color: gray;}
+    
+    
+====================================
+p {color: green;}
+p:before {content: "::: ";}
+    
+    
+====================================
+p:before {content: "::: "; color: purple;}
+    
+    
+====================================
+h1 {border-top: 3px solid black; padding-top: 0.25em;}
+h1:before {content: "New Section"; display: block; color: gray;
+  border-bottom: 1px dotted black; margin-bottom: 0.5em;}
+    
+    
+====================================
+h1 {border-top: 3px solid black; padding-top: 0.25em;}
+h1:before {content: "New Section"; display: inline; color: gray;
+  border-bottom: 1px dotted black; margin-bottom: 0.5em;}
+    
+    
+====================================
+h2:before {content: "<em>&para;</em> "; color: gray;}
+    
+    
+====================================
+h2:before {content: "We insert this text before all H2 elements because \
+it is a good idea to show how these things work. It may be a bit long \
+but the point should be clearly made.  "; color: gray;}
+    
+    
+====================================
+a[href] {content: attr(href);}
+    
+    
+====================================
+a[href] {content: " [" attr(href) "]";}
+    
+    
+====================================
+blockquote:after {content: "(" attr(cite) ")"; display: block;
+  text-align: right; font-style: italic;}
+    
+    
+====================================
+body:before {content: "Text: " attr(text) " | Link: " attr(link)
+  " | Visited: " attr(vlink) " | Active: " attr(alink);
+  display: block; padding: 0.33em;
+  border: 1px solid black; text-align: center;}
+    
+    
+====================================
+quotes: '"' "'";  /* valid */
+quotes: '"';  /* NOT VALID */
+    
+    
+====================================
+<quotation>
+ <quote>I hate quotations.</quote>
+ <quotee>Ralph Waldo Emerson</quotee>
+</quotation>
+    
+    
+====================================
+quotation: display: block;}
+quote {quotes: '"' '"';}
+quote:before {content: open-quote;}
+quote:after {content: close-quote;}
+quotee:before {content: " (";}
+quotee:after {content: ")";}
+    
+    
+====================================
+quote {quotes: '\201C' '\201D';}
+    
+    
+====================================
+quotation: display: block;}
+quote {quotes: '\201C' '\201D' '\2018' '\2019';}
+quote:before, q:before{content: open-quote;}
+quote:after, q:after {content: close-quote;}
+    
+    
+====================================
+<quotation>
+ <quote> In the beginning, there was nothing. And God said: <q>Let there
+  be light!</q> And there was still nothing, but you could see it.</quote>
+</quotation>
+    
+    
+====================================
+quote {quotes: '\201C' '\201D';}
+    
+    
+====================================
+blockquote {quotes: '"' '"' "'" "'" '"' '"';}
+blockquote p:before   {content: open-quote;}
+blockquote p:after  {content: no-close-quote;}
+    
+    
+====================================
+h1 {counter-reset: chapter;}
+    
+    
+====================================
+h1#ch4 {counter-reset: Chapter 4;}
+    
+    
+====================================
+h1 {counter-reset: Chapter 4 section -1 subsec figure 1;}
+   /* 'subsec' is reset to 0 */
+    
+    
+====================================
+ol {counter-reset: ordered;}  /* defaults to 0 */
+ol li {counter-increment: ordered;}  /* defaults to 1 */
+    
+    
+====================================
+ol {counter-reset: ordered;}  /* defaults to 0 */
+ol li {counter-increment: ordered -1;}
+    
+    
+====================================
+<list type="ordered">
+ <item>First item</item>
+ <item>Item two</item>
+ <item>The third item</item>
+</list>
+    
+    
+====================================
+list[type="ordered"] {counter-reset: ordered;}  /* defaults to 0 */
+list[type="ordered"] item {display: block;}
+list[type="ordered"] item:before {counter-increment: ordered;
+ content: counter(ordered) ". "; margin: 0.25em 0;}
+    
+    
+====================================
+h1:before {counter-reset: section subsec;
+  counter-increment: chapter;
+  content: counter(chapter) ". ";}
+h2:before {counter-reset: subsec;
+  counter-increment: section;
+  content: counter(chapter )"." counter(section) ". ";}
+h3:before {counter-increment: subsec;
+  content: counter(chapter) "." counter(section) "." counter(subsec) ". ";}
+    
+    
+====================================
+h1:before, h2:before, h3:before {
+  content: counter(chapter) "." counter(section) "." counter(subsec) ". ";}
+h1 {counter-reset: section subsec;
+  counter-increment: chapter;}
+    
+    
+====================================
+body {counter-reset: chapter -1;}
+h1:before {counter-increment: chapter; content: counter(chapter) ". ";}
+    
+    
+====================================
+<code type="BASIC">
+ <line>PRINT "Hello world!"</line>
+ <line>REM This is what the kids are calling a "comment"</line>
+ <line>GOTO 10</line>
+</code>
+    
+    
+====================================
+code[type="BASIC"] {counter-reset: linenum; font-family: monospace;}
+code[type="BASIC"] line {display: block;}
+code[type="BASIC"] line:before {counter-increment: linenum;
+  content: counter(linenum 10) ": ";}
+    
+    
+====================================
+h1:before {counter-reset: section subsec;
+  counter-increment: chapter;
+  content: counter(chapter,upper-alpha) ". ";}
+h2:before {counter-reset: subsec;
+  counter-increment: section;
+  content: counter(chapter,upper-alpha)"." counter(section) ". ";}
+h3:before {counter-increment: subsec;
+  content: counter(chapter,upper-alpha) "." counter(section) "."
+  counter(subsec,lower-roman) ". ";}
+    
+    
+====================================
+.suppress {counter-increment: cntr; display: none;}
+  /* 'cntr' is NOT incremented */
+.invisible {counter-increment: cntr; visibility: hidden;}
+  /* 'cntr' IS incremented */
+    
+    
+====================================
+ol ol ol ol ol li:before {counter-increment: ord1 ord2 ord3 ord4 ord5;
+  content: counter(ord1) "." counter(ord2) "." counter(ord3) "."
+   counter(ord4) "." counter(ord5) ".";}
+    
+    
+====================================
+ol {counter-reset: ordered;}
+ol li:before {counter-increment: ordered;
+ content: counter(ordered) ". ";}
+    
+    
+====================================
+ol {counter-reset: ordered;}
+ol li:before {counter-increment: ordered;
+ content: counters(ordered,".") " - ";}
+    
+    
+====================================
+ol li:before {counter-increment: ordered;
+ content: counters(ordered,".",lower-alpha) ": ";}
+    
+    
+==================

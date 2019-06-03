@@ -1,0 +1,467 @@
+chapter: Basic Visual Formatting
+==================
+<body>
+ <div>
+  <p>This is a paragraph.</p>
+ </div>
+</body>
+    
+    
+====================================
+<p style="width: 200px;">wideness?</p>
+    
+    
+====================================
+<p style="width: 200px; padding: 10px; margin: 20px;">wideness?</p>
+    
+    
+====================================
+p {margin-left: auto; margin-right: 100px;
+  width: 100px;}   /* 'auto' left margin evaluates to 200px */
+    
+    
+====================================
+p {margin-left: 100px; margin-right: 100px;
+  width: 100px;}   /* right margin forced to be 200px */
+    
+    
+====================================
+p {margin-left: 100px; margin-right: 100px; width: auto;}
+    
+    
+====================================
+p {margin-left: 100px; margin-right: 100px;} /* same as before */
+    
+    
+====================================
+p {width: 100px; margin-left: auto; margin-right: auto;}
+    
+    
+====================================
+p {margin-left: auto; margin-right: 100px;
+ width: auto;}  /* left margin evaluates to 0 */
+    
+    
+====================================
+div {padding: 30px; background: silver;}
+p {margin: 20px; padding: 20; background: white;}
+    
+    
+====================================
+div {width: 400px; border: 3px solid black;}
+p.wide {margin-left: 10px; width: auto; margin-right: -50px; }
+    
+    
+====================================
+div {width: 400px; border: 3px solid black;}
+p.wide {margin-left: 10px; width: auto; margin-right: -50px;
+  border: 3px solid gray;}
+    
+    
+====================================
+div {width: 400px; border: 3px solid black;}
+p.wide {margin-left: 10px; width: 500px; margin-right: auto;
+  border: 3px solid gray;}
+    
+    
+====================================
+div {width: 400px; border: 3px solid black;}
+p.wide {margin-left: -50px; width: auto; margin-right: 10px;
+  border: 3px solid gray;}
+    
+    
+====================================
+<p style="width: 67%; padding-right: 5%; padding-left: 5%; margin-right: auto;
+margin-left: 5%;">playing percentages</p>
+    
+    
+====================================
+<p style="width: 67%; padding-right: 2em; padding-left: 2em; margin-right: auto;
+margin-left: 5em;">mixed lengths</p>
+    
+    
+====================================
+<p style="width: 67%; padding-right: 15px; padding-left: 10px; margin-right: auto;
+margin-left: 5em;">more mixed lengths</p>
+    
+    
+====================================
+<img src="smile.png" style="display: block; width: auto; margin: 0;">
+    
+    
+====================================
+<img src="smile.png" style="display: block; width: 25px; margin: 0;">
+<img src="smile.png" style="display: block; width: 50px; margin: 0;">
+<img src="smile.png" style="display: block; width: 100px; margin: 0;">
+    
+    
+====================================
+<p style="height: 10em;">
+    
+    
+====================================
+<p style="height: 3em;">
+    
+    
+====================================
+<div style="height: 6em;">
+ <p style="height: 50%;">Half as tall</p>
+</div>
+    
+    
+====================================
+<div style="height: auto;">
+ <p style="height: 50%;">NOT half as tall; height reset to auto</p>
+</div>
+    
+    
+====================================
+<div style="height: auto; background: silver;">
+<p style="margin-top: 2em; margin-bottom: 2em;">A paragraph!</p>
+</div>
+<div style="height: auto; border-top: 1px solid; border-bottom: 1px solid;
+background: silver;">
+<p style="margin-top: 2em; margin-bottom: 2em;">Another paragraph!</p>
+</div>
+    
+    
+====================================
+li {margin-top: 10px; margin-bottom: 15px;}
+    
+    
+====================================
+ul {margin-bottom: 15px;}
+li {margin-top: 10px; margin-bottom: 20px;}
+h1 {margin-top: 28px;}
+    
+    
+====================================
+ul {margin-bottom: 15px; border: 1px solid;}
+li {margin-top: 10px; margin-bottom: 20px;}
+h1 {margin-top: 28px;}
+    
+    
+====================================
+p.neg {margin-top: -50px; margin-right: 10px;
+  margin-left: 10px; margin-bottom: 0;
+  border: 3px solid gray;}
+
+<div style="width: 420px; background-color: silver;
+   padding: 10px; margin-top: 50px; border: 1px solid;">
+<p class="neg">
+A paragraph.
+</p>
+A div.
+</div>
+    
+    
+====================================
+p.neg {margin-bottom: -50px; margin-right: 10px;
+  margin-left: 10px; margin-top: 0;
+  border: 3px solid gray;}
+
+<div style="width: 420px; margin-top: 50px;">
+<p class="neg">
+A paragraph.
+</p>
+</div>
+<p>
+The next paragraph.
+</p>
+    
+    
+====================================
+li {margin-bottom: 20px;}
+ul {margin-bottom: -15px;}
+h1 {margin-top: -18px;}
+    
+    
+====================================
+span {border: 1px dashed black;}
+    
+    
+====================================
+<p style="line-height: 0.25em;"></p>
+    
+    
+====================================
+<p>
+<line>This is a paragraph with a number of</line>
+<line>lines of text which make up the</line>
+<line>contents.</line>
+</p>
+    
+    
+====================================
+<p style="font-size: 12px; line-height: 12px;">
+This is text, <em>some of which is emphasized</em>, plus other text<br>
+which is <strong style="font-size: 24px;">strongly emphasized</strong>
+and which is<br>
+larger than the surrounding text.
+</p>
+    
+    
+====================================
+<p style="font-size: 12px; line-height: 12px;">
+This is text, <em>some of which is emphasized</em>, plus other text<br>
+that is <strong style="font-size: 24px; vertical-align: 4px;">strongly
+emphasized</strong> and that is<br>
+larger than the surrounding text.
+</p>
+    
+    
+====================================
+<p style="font-size: 12px; line-height: 12px;">
+this is text, <em>some of which is emphasized</em>, plus other text<br>
+that is <strong style="font-size: 24px;">strong</strong>
+and <span style="vertical-align: top;">tall</span> and that is<br>
+larger than the surrounding text.
+</p>
+    
+    
+====================================
+<p style="font-size: 12px; line-height: 12px;">
+This is text, <em>some of which is emphasized</em>, plus other text<br>
+that is <strong style="font-size: 24px;">strong</strong>
+and <span style="vertical-align: top; line-height: 4px;">tall</span>
+and that is<br>
+larger than the surrounding text.
+</p>
+    
+    
+====================================
+<p style="font-size: 12px; line-height: 12px;">
+This is text, <em>some of which is emphasized</em>, plus other text<br>
+that is <strong style="font-size: 24px;">strong</strong>
+and <span style="vertical-align: top; line-height: 18px;">tall</span>
+and that is<br>
+larger than the surrounding text.
+</p>
+    
+    
+====================================
+p {font-size: 14px; line-height: 1em;}
+big {font-size: 250%; line-height: 1em;}
+
+<p>
+Not only does this paragraph have "normal" text, but it also<br>
+contains a line in which <big>some big text </big> is found.<br>
+This large text helps illustrate our point.
+</p>
+    
+    
+====================================
+p {font-size: 14px; line-height: 1;}
+big {font-size: 250%;}
+    
+    
+====================================
+a:link {border: 5px solid blue;}
+    
+    
+====================================
+p {font-size: 14px; line-height: 24px;}
+a:link {border: 5px solid blue;}
+    
+    
+====================================
+p {font-size: 14px; line-height: 24px;}
+a:link {border: 5px solid blue;}
+big {font-size: 150%; line-height: 1.5em;}
+    
+    
+====================================
+body {line-height: 1.5;}
+    
+    
+====================================
+p {font-size: 15px; line-height: 1.5;}
+small {font-size: 66%;}
+big {font-size: 200%;}
+
+<p>This paragraph has a line-height of 1.5 times its font-size. In addition,
+any elements within it <small>such as this small element</small> also have
+line-heights 1.5 times their font-size...and that includes <big>this big
+element right here</big>. By using a scaling factor, line-heights scale
+to match the font-size of any element.</p>
+    
+    
+====================================
+p {font-size: 15px; line-height: 1.5;}
+small {font-size: 66%;}
+big {font-size: 200%; line-height: 1em;}
+    
+    
+====================================
+span {border: 1px solid black; padding: 4px;}
+    
+    
+====================================
+p {font-size: 15px; line-height: 1em;}
+p span {background: #999; padding-top: 10px; padding-bottom: 10px;}
+    
+    
+====================================
+p {font-size: 15px; line-height: 18px;}
+img {height: 30px; margin: 0; padding: 0; border: none;}
+    
+    
+====================================
+p {font-size: 15px; line-height: 18px;}
+img {vertical-align: 50%;}
+
+<p>The image in this sentence <img src="test.gif" alt="test image">
+will be raised 9 pixels.</p>
+    
+    
+====================================
+img {height: 20px; width: 20px;}
+img.one {margin: 0; padding: 0; border: 1px dotted;}
+img.two {margin: 5px; padding: 3px; border: 1px solid;}
+    
+    
+====================================
+img.two {margin-top: -10px;}
+    
+    
+====================================
+td {font-size: 12px;}
+
+<td><img src="spacer.gif" height="1" width="10"></td>
+    
+    
+====================================
+td {font-size: 12px;}
+img.block {display: block;}
+
+<td><img src="spacer.gif" height="1" width="10" class="block"></td>
+    
+    
+====================================
+p img {margin-bottom: -10px;}
+    
+    
+====================================
+<div id="navigation">
+<a href="index.html">WidgetCo Home</a><a href="products.html">Products</a>
+<a href="services.html">Services</a><a href="fun.html">Widgety Fun!</a>
+<a href="support.html">Support</a><a href="about.html" id="current">About Us</a>
+<a href="contact.html">Contact</a>
+</div>
+    
+    
+====================================
+div#navigation a {display: block;}
+    
+    
+====================================
+<ul id="rollcall">
+<li>Bob C.</li>
+<li>Marcio G.</li>
+<li>Eric M.</li>
+<li>Kat M.</li>
+<li>Tristan N.</li>
+<li>Arun R.</li>
+<li>Doron R.</li>
+<li>Susie W.</li>
+</ul>
+    
+    
+====================================
+#rollcall li {display: inline; border-right: 1px solid; padding: 0 0.33em;}
+#rollcall li:first-child {border-left: 1px solid;}
+    
+    
+====================================
+<a href="http://www.example.net" style="display: block;">
+<p style="display: inline;">this is wrong!</p>
+</a>
+    
+    
+====================================
+<div id="one">
+This text is the content of a block-level level element.  Within this
+block-level element is another block-level element.  <p>Look, it's a block-level
+paragraph.</p>  Here's the rest of the DIV, which is still block-level.
+</div>
+<div id="two">
+This text is the content of a block-level level element.  Within this
+block-level element is an inline element.  <p>Look, it's an inline
+paragraph.</p>  Here's the rest of the DIV, which is still block-level.
+</div>
+<div id="three">
+This text is the content of a block-level level element.  Within this
+block-level element is an inline-block element.  <p>Look, it's an inline-block
+paragraph.</p>  Here's the rest of the DIV, which is still block-level.
+</div>
+    
+    
+====================================
+div {margin: 1em 0; border: 1px solid;}
+p {border: 1px dotted;}
+div#one p {display: block; width: 6em; text-align: center;}
+div#two p {display: inline; width: 6em; text-align: center;}
+div#three p {display: inline-block; width: 6em; text-align: center;}
+    
+    
+====================================
+ div#three p {display: inline-block; height: 2em;}
+    
+    
+====================================
+#navbar a {display: inline-block; width: 20%;}
+    
+    
+====================================
+<h3 style="display: run-in; border: 1px dotted; font-size: 125%;
+  font-weight: bold;">Run-in Elements</h3>
+<p style="border-top: 1px solid black; padding-top: 0.5em;">
+Another interesting block/inline hybrid is the value <code>run-in</code>, introduced
+in CSS2, which has the ability to take block-level elements and make them an inline
+part of a following element. This is useful for certain heading effects that are
+quite common in print typography, where a heading will appear as part of a paragraph
+of text.
+</p>
+    
+    
+====================================
+<p style="border-top: 1px solid black; padding-top: 0.5em;">
+<span style="border: 1px dotted; font-size: 125%; font-weight: bold;">Run-in
+Elements</span> Another interesting block/inline hybrid is the value <code>run-in</
+code>, introduced in CSS2, which has the ability to take block-level elements and
+make them an inline part of a following element. This is useful for certain heading
+effects that are quite common in print typography, where a heading will appear as
+part of a paragraph of text.
+</p>
+    
+    
+====================================
+<div style="color: silver;">
+<h3 style="display: run-in; border: 1px dotted; font-size: 125%;
+  font-weight: bold;">Run-in Elements</h3>
+<p style="border-top: 1px solid black; padding-top: 0.5em; color: black;">
+Another interesting block/inline hybrid is the value <code>run-in</code>, introduced
+in CSS2, which has the ability to take block-level elements and make them an inline
+part of a following element.
+</p>
+%lt;/div>
+    
+    
+====================================
+<h3 style="display: run-in;">Prices</h3>
+<table>
+<tr><th>Apples</th><td>$0.59</td></tr>
+<tr><th>Peaches</th><td>$0.79</td></tr>
+<tr><th>Pumpkin</th><td>$1.29</td></tr>
+<tr><th>Pie</th><td>$6.99</td></tr>
+</table>
+    
+    
+====================================
+<p>
+This is a <em>really</em> odd thing to do, <strong>but</strong> you could do it
+if you were so inclined.
+</p>
+    
+    
+==================

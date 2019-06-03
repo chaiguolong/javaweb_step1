@@ -1,0 +1,614 @@
+chapter: Selectors
+==================
+<h2><font color="gray">This is h2 text</font></h2>
+    
+    
+====================================
+h2 {color: gray;}
+    
+    
+====================================
+h2 {color: silver;}
+    
+    
+====================================
+QUOTE {color: gray;}
+BIB {color: red;}
+BOOKTITLE {color: purple;}
+MYElement {color: red;}
+    
+    
+====================================
+html {color: black;}
+h1 {color: gray;}
+h2 {color: silver;}
+    
+    
+====================================
+html {color: black;}
+p {color: gray;}
+h2 {color: silver;}
+    
+    
+====================================
+brain-size: 2cm;  /* unknown property */
+color: ultraviolet;  /* unknown value */
+    
+    
+====================================
+p {font: medium Helvetica;}
+    
+    
+====================================
+rainbow: red orange yellow green blue indigo violet;
+    
+    
+====================================
+rainbow: infrared red orange yellow green blue indigo violet ultraviolet;
+    
+    
+====================================
+h2 {font: large/150% sans-serif;}
+    
+    
+====================================
+h2, p {color: gray;}
+    
+    
+====================================
+body, table, th, td, h1, h2, h3, h4, p, pre, strong, em, b, i {color: gray;}
+    
+    
+====================================
+h1 {color: purple;}
+h2 {color: purple;}
+h3 {color: purple;}
+h4 {color: purple;}
+h5 {color: purple;}
+h6 {color: purple;}
+
+h1, h2, h3, h4, h5, h6 {color: purple;}
+    
+    
+====================================
+/* group 1 */
+h1 {color: silver; background: white;}
+h2 {color: silver; background: gray;}
+h3 {color: white; background: gray;}
+h4 {color: silver; background: white;}
+b {color: gray; background: white;}
+
+/* group 2 */
+h1, h2, h4 {color: silver;}
+h2, h3 {background: gray;}
+h1, h4, b {background: white;}
+h3 {color: white;}
+b {color: gray;}
+
+/* group 3 */
+h1, h4 {color: silver; background: white;}
+h2 {color: silver;}
+h3 {color: white;}
+h2, h3 {background: gray;}
+b {color: gray; background: white;}
+    
+    
+====================================
+* {color: red;}
+    
+    
+====================================
+h1 {font: 18px Helvetica;}
+h1 {color: purple;}
+h1 {background: aqua;}
+    
+    
+====================================
+h1 {font: 18px Helvetica; color: purple; background: aqua;}
+    
+    
+====================================
+h1 {
+  font: 18px Helvetica;
+  color: purple;
+  background: aqua;
+}
+    
+    
+====================================
+h1 {
+  font: 18px Helvetica;
+  color: purple  background: aqua;
+}
+    
+    
+====================================
+h1, h2, h3, h4, h5, h6 {color: gray; background: white; padding: 0.5em;
+  border: 1px solid black; font-family: Charcoal, sans-serif;}
+    
+    
+====================================
+h1 {color: gray;}
+h2 {color: gray;}
+h3 {color: gray;}
+h4 {color: gray;}
+h5 {color: gray;}
+h6 {color: gray;}
+h1 {background: white;}
+h2 {background: white;}
+h3 {background: white;}
+    
+    
+====================================
+p {font-weight: bold;}
+    
+    
+====================================
+<p class="warning">When handling plutonium, care must be taken to avoid
+the formation of a critical mass.</p>
+<p>With plutonium, <span class="warning">the possibility of implosion is
+very real, and must be avoided at all costs</span>. This can be accomplished
+by keeping the various masses separate.</p>
+    
+    
+====================================
+*.warning {font-weight: bold;}
+    
+    
+====================================
+p.warning {font-weight: bold;}
+    
+    
+====================================
+p.warning {font-weight: bold;}
+span.warning {font-style: italic;}
+    
+    
+====================================
+.warning {font-style: italic;}
+span.warning {font-weight: bold;}
+    
+    
+====================================
+<p class="urgent warning">When handling plutonium, care must be taken to
+avoid the formation of a critical mass.</p>
+<p>With plutonium, <span class="warning">the possibility of implosion is
+very real, and must be avoided at all costs</span>. This can be accomplished
+by keeping the various masses separate.</p>
+    
+    
+====================================
+.warning {font-weight: bold;}
+.urgent {font-style: italic;}
+.warning.urgent {background: silver;}
+    
+    
+====================================
+p.warning.help {background: red;}
+    
+    
+====================================
+<p class="urgent warning help">Help me!</p>
+    
+    
+====================================
+*#first-para {font-weight: bold;}
+    
+    
+====================================
+*#lead-para {font-weight: bold;}
+
+<p id="lead-para">This paragraph will be boldfaced.</p>
+<p>This paragraph will NOT be bold.</p>
+    
+    
+====================================
+#lead-para {font-weight: bold;}
+    
+    
+====================================
+#mostImportant {color: red; background: yellow;}
+    
+    
+====================================
+<h1 id="mostImportant">This is important!</h1>
+<em id="mostImportant">This is important!</em>
+<ul id="mostImportant">This is important!</ul>
+    
+    
+====================================
+p.criticalInfo {font-weight: bold;}
+
+<p class="criticalinfo">Don't look down.</p>
+    
+    
+====================================
+h1[class] {color: silver;}
+    
+    
+====================================
+<h1 class="hoopla">Hello</h1>
+<h1 class="severe">Serenity</h1>
+<h1 class="fancy">Fooling</h1>
+    
+    
+====================================
+planet[moons] {font-weight: bold;}
+    
+    
+====================================
+<planet>Venus</planet>
+<planet moons="1">Earth</planet>
+<planet moons="2">Mars</planet>
+    
+    
+====================================
+img[alt] {border: 3px solid red;}
+    
+    
+====================================
+*[title] {font-weight: bold;}
+    
+    
+====================================
+a[href][title] {font-weight: bold;}
+    
+    
+====================================
+<a href="http://www.w3.org/" title="W3C Home">W3C</a><br />
+<a href="http://www.webstandards.org">Standards Info</a><br />
+<a title="Not a link">dead.letter</a>
+    
+    
+====================================
+a[href="http://www.css-discuss.org/about.html"] {font-weight: bold;}
+    
+    
+====================================
+planet[moons="1"] {font-weight: bold;}
+    
+    
+====================================
+<planet>Venus</planet>
+<planet moons="1">Earth</planet>
+<planet moons="2">Mars</planet>
+    
+    
+====================================
+a[href="http://www.w3.org/"][title="W3C Home"] {font-size: 200%;}
+    
+    
+====================================
+<a href="http://www.w3.org/" title="W3C Home">W3C</a><br />
+<a href="http://www.webstandards.org"
+  title="Web Standards Organization">Standards Info</a><br />
+<a href="http://www.example.org/" title="W3C Home">dead.link</a>
+    
+    
+====================================
+<planet type="barren rocky">Mercury</planet>
+    
+    
+====================================
+planet[type="barren rocky"] {font-weight: bold;}
+    
+    
+====================================
+<p class="urgent warning">When handling plutonium, care must be taken to
+avoid the formation of a critical mass.</p>
+    
+    
+====================================
+p[class="urgent warning"] {font-weight: bold;}
+    
+    
+====================================
+<p class="urgent warning">When handling plutonium, care must be taken to
+avoid the formation of a critical mass.</p>
+    
+    
+====================================
+p[class~="warning"] {font-weight: bold;}
+    
+    
+====================================
+<span class="barren rocky">Mercury</span>
+<span class=" cloudy barren">Venus</span>
+<span class="life-bearing cloudy">Earth</span>
+    
+    
+====================================
+span[class~="barren"] {font-style: italic;}
+    
+    
+====================================
+img[title~="Figure"] {border: 1px solid gray;}
+    
+    
+====================================
+span[class*="cloud"] {font-style: italic;}
+span[class^="bar"] {background: silver;}
+span[class$="y"] {font-weight: bold;}
+
+<span class="barren rocky">Mercury</span>
+<span class="cloudy barren">Venus</span>
+<span class="life-bearing cloudy">Earth</span>
+    
+    
+====================================
+a[href*="oreilly.com"] {font-weight: bold;}
+    
+    
+====================================
+img[src*="space"] {border: 5px solid red;}
+    
+    
+====================================
+*[lang|="en"] {color: white;}
+    
+    
+====================================
+<h1 lang="en">Hello!</h1>
+<p lang="en-us">Greetings!</p>
+<div lang="en-au">G'day!</div>
+<p lang="fr">Bonjour!</p>
+<h4 lang="cy-en">Jrooana!</h4>
+    
+    
+====================================
+img[src|="figure"] {border: 1px solid gray;}
+    
+    
+====================================
+<html>
+<head>
+ <base href="http://www.meerkat.web/">
+ <title>Meerkat Central</title>
+</head>
+<body>
+ <h1>Meerkat <em>Central</em></h1>
+ <p>
+ Welcome to Meerkat <em>Central</em>, the <strong>best meerkat web site
+ on <a href="inet.html">the <em>entire</em> Internet</a></strong>!</p>
+ <ul>
+  <li>We offer:
+   <ul>
+    <li><strong>Detailed information</strong> on how to adopt a meerkat</li>
+    <li>Tips for living with a meerkat</li>
+    <li><em>Fun</em> things to do with a meerkat, including:
+     <ol>
+      <li>Playing fetch</li>
+      <li>Digging for food</li>
+      <li>Hide and seek</li>
+     </ol>
+    </li>
+   </ul>
+  </li>
+  <li>...and so much more!</li>
+ </ul>
+ <p>
+ Questions? <a href="mailto:suricate@meerkat.web">Contact us!</a>
+ </p>
+</body>
+</html>
+    
+    
+====================================
+h1 em {color: gray;}
+    
+    
+====================================
+ul ol ul em {color: gray;}
+    
+    
+====================================
+td.sidebar {background: blue;}
+td.main {background: white;}
+td.sidebar a:link {color: white;}
+td.main a:link {color: blue;}
+    
+    
+====================================
+blockquote b, p b {color: gray;}
+    
+    
+====================================
+<ul>
+<li>List item 1
+<ol>
+<li>List item 1-1</li>
+<li>List item 1-2</li>
+<li>List item 1-3
+<ol>
+<li>List item 1-3-1</li>
+<li>List item <em>1-3-2</em></li>
+<li>List item 1-3-3</li>
+</ol></li>
+<li>List item 1-4</li>
+</ol></li>
+</ul>
+    
+    
+====================================
+h1 > strong {color: red;}
+    
+    
+====================================
+<h1>This is <strong>very</strong> important.</h1>
+<h1>This is <em>really <strong>very</strong></em> important.</h1>
+    
+    
+====================================
+h1 + p {margin-top: 0;}
+    
+    
+====================================
+<div>
+<ol>
+<li>List item 1</li>
+<li>List item 1</li>
+<li>List item 1</li>
+</ol>
+This is some text that is part of the 'div'.
+<ul>
+<li>A list item</li>
+<li>Another list item</li>
+<li>Yet another list item</li>
+</ul>
+</div>
+    
+    
+====================================
+html > body table + ul{margin-top: 1.5em;}
+    
+    
+====================================
+a.visited {color: red;}
+
+<a href="http://www.w3.org/" class="visited">W3C Web site</a>
+    
+    
+====================================
+a:visited {color: red;}
+    
+    
+====================================
+a {color: blue;}
+a:visited {color: red;}
+    
+    
+====================================
+<a name="section4">4. The Lives of Meerkats</a>
+    
+    
+====================================
+a:link {color: blue;}    /* unvisited links are blue */
+a:visited {color: red;}   /* visited links are red */
+    
+    
+====================================
+<body link="purple" vlink="silver">
+    
+    
+====================================
+a:link {color: purple;}
+a:visited {color: silver;}
+    
+    
+====================================
+a:visited {color: silver; text-decoration: line-through; font-style: italic;}
+    
+    
+====================================
+<a href="http://www.mysite.net/">My home page</a>
+<a href="http://www.site.net/" class="external">Another home page</a>
+    
+    
+====================================
+a.external:link, a.external:visited {color: maroon;}
+    
+    
+====================================
+a#footer-copyright:link{font-weight: bold;}
+a#footer-copyright:visited {font-weight: normal;}
+    
+    
+====================================
+a:link {color: navy;}
+a:visited {color: gray;}
+a:hover {color: red;}
+a:active {color: yellow;}
+    
+    
+====================================
+input:focus {background: silver; font-weight: bold;}
+    
+    
+====================================
+body *:hover {background: yellow;}
+    
+    
+====================================
+a:link, a:visited {font-size: 13px;}
+a:hover {font-size: 20px;}
+    
+    
+====================================
+<div>
+<p>These are the necessary steps:</p>
+<ul>
+<li>Insert key</li>
+<li>Turn key <strong>clockwise</strong></li>
+<li>Push accelerator</li>
+</ul>
+<p>
+Do <em>not</em> push the brake at the same time as the accelerator.
+</p>
+</div>
+    
+    
+====================================
+p:first-child {font-weight: bold;}
+li:first-child {text-transform: uppercase;}
+    
+    
+====================================
+<div>
+<p class="first-child">These are the necessary steps:</p>
+<ul>
+<li class="first-child">Insert key</li>
+<li>Turn key <strong class="first-child">clockwise</strong></li>
+<li>Push accelerator</li>
+</ul>
+<p>
+Do <em class="first-child">not</em> push the brake at the same time as the
+accelerator.
+</p>
+</div>
+    
+    
+====================================
+*:lang(fr) {font-style: italic;}
+    
+    
+====================================
+a:link:hover {color: red;}
+a:visited:hover {color: maroon;}
+    
+    
+====================================
+a:link:hover:lang(de) {color: gray;}
+a:visited:hover:lang(de) {color: silver;}
+    
+    
+====================================
+p:first-letter {color: red;}
+    
+    
+====================================
+h2:first-letter {font-size: 200%;}
+    
+    
+====================================
+<h2><h2:first-letter>T</h2:first-letter>his is an h2 element</h2>
+    
+    
+====================================
+p:first-line {color: purple;}
+    
+    
+====================================
+<p><p:first-line>This is a paragraph of text that has only</p:first-line>
+one stylesheet applied to it. That style
+causes the first line to be purple. No other ...
+    
+    
+====================================
+h2:before {content: "]]"; color: silver;}
+    
+    
+====================================
+body:after {content: "  The End.";}
+    
+    
+==================

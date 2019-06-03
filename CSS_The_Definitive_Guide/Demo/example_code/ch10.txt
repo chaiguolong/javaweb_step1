@@ -1,0 +1,520 @@
+chapter: Floating and Positioning
+==================
+<img src="b4.gif" style="float: left;" alt="b4">
+    
+    
+====================================
+p.aside {float: right; width: 15em; margin: 0 1em 1em; padding: 0.25em;
+  border: 1px solid;}
+    
+    
+====================================
+p img {float: left; margin: 25px;}
+    
+    
+====================================
+<h1>Test</h1>
+<p>
+This is paragraph text, but you knew that.  Within the content of this
+paragraph is an image that's been floated.
+<img src="testy.gif" style="float: right;">
+The containing block for the floated image is the paragraph.
+</p>
+    
+    
+====================================
+<div style="float: left; width: 100%;">
+  <img src="hay.gif" style="float: left;">
+  The 'div' will stretch around the floated image
+  because the 'div' has been floated.
+</div>
+    
+    
+====================================
+<img src="testy.gif" class="sideline">
+<p class="box">
+This paragraph, unremarkable in most ways, does contain an inline element.
+This inline contains some <strong>strongly emphasized text, which is
+so marked to make an important point</strong>.  The rest of the element's
+content is normal anonymous inline content.
+</p>
+<p>
+This is a second paragraph.  There's nothing remarkable about it, really.
+Please move along.
+</p>
+<h2 id="jump-up">A Heading!</h2>
+    
+    
+====================================
+img.sideline {float: left; margin: 10px -15px 10px 10px;}
+p.box {border: 1px solid gray; padding: 0.5em;}
+p.box strong {border: 3px double black; background: silver; padding: 2px;}
+h2#jump-up {margin-top: -15px; background: silver;}
+    
+    
+====================================
+h3 {clear: left;}
+    
+    
+====================================
+h3 {clear: both;}
+    
+    
+====================================
+h3 {clear: both;}
+
+<h3 style="clear: none;">What's With All The Latin?</h3>
+    
+    
+====================================
+img.sider {float: left; margin: 0;}
+h3 {border: 1px solid gray; clear: left; margin-top: 15px;}
+
+<img src="boxer.gif" class="sider" height="50" width="50">
+<img src="stripe.gif" height="10" width="100">
+<h3>Why Doubt Salmon?</h3>
+    
+    
+====================================
+img.sider {float: left; margin: 0 0 15px;}
+h3 {border: 1px solid gray; clear: left;}
+    
+    
+====================================
+top: 50%; bottom: 0; left: 50%; right: 0;
+    
+    
+====================================
+top: 50%; bottom: 0; left: 50%; right: 0; margin: 10em;
+top: 60%; bottom: 10%; left: 60%; right: 10%; margin: 0;
+    
+    
+====================================
+top: -5em; bottom: 50%; left: 75%; right: -3em;
+    
+    
+====================================
+top: 0; bottom: 0; left: 0; right: 50%;
+    
+    
+====================================
+top: 0; bottom: 0; left: 0; right: 50%; width: 50%; height: 100%;
+    
+    
+====================================
+top: 0; bottom: 0; left: 0; right: 50%; width: 50%; height: 100%;
+  padding: 2em;
+    
+    
+====================================
+top: 10%; bottom: 20%; left: 50%; right: 10%;
+  min-width: 10em; min-height: 20em;
+    
+    
+====================================
+top: 10%; bottom: auto; left: 50%; right: 10%; height: auto;
+  min-width: 15em;
+    
+    
+====================================
+left: 0%; right: auto; width: 75%; max-width: 400px;
+    
+    
+====================================
+p.aside {float: left; width: 40em; max-width: 40%;}
+    
+    
+====================================
+div#sidebar {position: absolute; top: 0; left: 0; width: 25%; height: 7em;
+  background: #BBB; overflow: visible;}
+    
+    
+====================================
+div#sidebar {position: absolute; top: 0; left: 0; width: 15%; height: 7em;
+  overflow: scroll;}
+    
+    
+====================================
+div#sidebar {position: absolute; top: 0; left: 0; width: 15%; height: 7em;
+  overflow: hidden;}
+    
+    
+====================================
+clip: rect(0, auto, auto, 0);
+    
+    
+====================================
+rect(0, 20px, 20px, 0)
+    
+    
+====================================
+clip: rect(auto, auto, 10px, 1em);
+clip: rect(0, 0, 10px, 1em);
+    
+    
+====================================
+div#sidebar {position: absolute; top: 0; bottom: 50%; right: 50%; left: 0;
+  clip: rect(1em,4em,6em,1em);}
+    
+    
+====================================
+div#sidebar {position: absolute; top: 0; left: 0; width: 5em; height: 7em;
+  clip: rect(1em,4em,6em,1em);}
+    
+    
+====================================
+clip: rect(-0.25in, auto, auto, -0.25in);
+    
+    
+====================================
+div#sidebar {position: absolute; top: 0; left: 0; width: 5em; height: 7em;
+  clip: rect(0,6em,9em,0);}
+    
+    
+====================================
+em.trans {visibility: hidden; border: 3px solid gray; background: silver;
+  margin: 2em; padding: 1em;}
+
+<p>
+This is a paragraph that should be visible. Lorem ipsum, dolor sit amet,
+<em class="trans">consectetuer adipiscing elit, sed diam nonummy nibh </em>
+euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+</p>
+    
+    
+====================================
+p.clear {visibility: hidden;}
+p.clear em {visibility: visible;}
+    
+    
+====================================
+p.contain {position: relative;}
+    
+    
+====================================
+p {margin: 2em;}
+p.contain {position: relative;}   /* establish a containing block*/
+b {position: absolute; top: auto; right: 0; bottom: 0; left: auto;
+   width: 8em; height: 5em; border: 1px solid gray;}
+
+<body>
+<p>
+This paragraph does <em>not</em> establish a containing block for any of its
+descendant elements that are absolutely positioned.  Therefore, the absolutely
+positioned <b>boldface </b> element it contains will be positioned with
+respect to the initial containing block.
+</p>
+<p class="contain">
+Thanks to 'position: relative', this paragraph establishes a containing
+block for any of its descendant elements that are absolutely positioned.
+Since there is such an element-- <em>that is to say, <b>a boldfaced element
+that is absolutely positioned,</b> placed with respect to its containing
+block (the paragraph)</em>, it will appear within the element box generated
+by the paragraph.
+</p>
+</body>
+    
+    
+====================================
+body {position: relative;}
+    
+    
+====================================
+<p style="position: absolute; top: 0; right: 25%; left: 25%; bottom: auto;
+ width: 50%; height: auto; background: silver;">...</p>
+    
+    
+====================================
+div {position: relative; width: 100%; height: 10em;
+   border: 1px solid; background: #EEE;}
+div.a {position: absolute; top: 0; right: 0; width: 15em; height: 100%;
+   margin-left: auto; background: #CCC;}
+div.b {position: absolute; bottom: 0; left: 0; width: 10em; height: 50%;
+   margin-top: auto; background: #AAA;}
+
+<div>
+  <div class="a">absolutely positioned element A
+    <div class="b">absolutely positioned element B</div>
+  </div>
+  containing block
+</div>
+    
+    
+====================================
+#masthead h1 {position: absolute; top: 1em; left: 1em; right: 25%; bottom: 10px;
+  margin: 0; padding: 0; background: silver;}
+    
+    
+====================================
+#masthead h1 {position: absolute; top: 0; left: 1em; right: 10%; bottom: 0;
+  margin: 0; padding: 0; height: 1em; width: 50%; background: silver;}
+    
+    
+====================================
+#masthead h1 {position: absolute; top: auto; left: auto;}
+    
+    
+====================================
+<p>
+When we consider the effect of positioning, it quickly becomes clear that authors
+can do a great deal of damage to layout, just as they can do very interesting
+things.<span style="position: absolute; top: auto; left: 0;">[4]</span>
+This is usually the case with useful technologies: the sword always has
+at least two edges, both of them sharp.
+</p>
+    
+    
+====================================
+<p>
+When we consider the effect of positioning, it quickly becomes clear that authors
+can do a great deal of damage to layout, just as they can do very interesting
+things.<span style="position: absolute; top: auto; left: auto;">[4]</span>
+This is usually the case with useful technologies: the sword always has
+at least two edges, both of them sharp.
+</p>
+    
+    
+====================================
+<p>
+When we consider the effect of positioning, it quickly becomes clear that authors
+can do a great deal of damage to layout, just as they can do very interesting
+things.<span style="position: absolute; top: auto; left: auto; right: 0;
+bottom: 0; height: 2em; width: 5em;">[4]</span>  This is usually the case with
+useful technologies: the sword always has at least two edges, both of them sharp.
+</p>
+    
+    
+====================================
+<div style="position: relative; width: 25em; border: 1px dotted;">
+An absolutely positioned element can have its content
+<span style="position: absolute; top: 0; left: 0; right: auto; width: auto;
+  background: silver;">shrink-wrapped</span>
+thanks to the way positioning rules work.
+</div>
+    
+    
+====================================
+<div style="position: relative; width: 25em; border: 1px dotted;">
+An absolutely positioned element can have its content
+<span style="position: absolute; top: 0; left: 1em; right: 1em; width: 10em;
+  margin: 0 auto; background: silver;">shrink-wrapped</span>
+thanks to the way positioning rules work.
+</div>
+    
+    
+====================================
+<div style="position: relative; width: 25em; border: 1px dotted;">
+An absolutely positioned element can have its content
+<span style="position: absolute; top: 0; left: 1em; right: 1em; width: 10em;
+  margin-left: 1em; margin-right: 1em; background: silver;">shrink-wrapped</span>
+thanks to the way positioning rules work.
+</div>
+    
+    
+====================================
+<span style="position: absolute; top: 0; left: 1em; right: 12em; width: 10em;
+  margin-left: 1em; margin-right: 1em; background: silver;">shrink-wrapped</span>
+    
+    
+====================================
+<span style="position: absolute; top: 0; left: 1em; right: 1em; width: 10em;
+  margin-left: 1em; margin-right: auto; background: silver;">shrink-wrapped</span>
+    
+    
+====================================
+<span style="position: absolute; top: 0; left: 1em; right: 1em; width: 10em;
+  margin-left: auto; margin-right: 1em; background: silver;">shrink-wrapped</span>
+    
+    
+====================================
+<span style="position: absolute; top: 0; left: 1em; right: 1em; width: auto;
+  margin-left: 1em; margin-right: 1em; background: silver;">shrink-wrapped</span>
+    
+    
+====================================
+<div style="position: relative; width: 30em; height: 10em;
+  border: 1px solid;">
+<div style="position: absolute; left: 0; width: 30%; background: #CCC;
+  top: 0;">
+element A
+</div>
+<div style="position: absolute; left: 35%; width: 30%; background: #AAA;
+  top: 0; height: 50%;">
+element B
+</div>
+<div style="position: absolute; left: 70%; width: 30%; background: #CCC;
+  height: 50%; bottom: 0;">
+element C
+</div>
+</div>
+    
+    
+====================================
+<div style="position: relative; width: 10em; height: 10em;
+  border: 1px solid;">
+<div style="position: absolute; left: 0; width: 100%; background: #CCC;
+  top: 0; height: 5em; bottom: 0; margin: auto 0;">
+element D
+</div>
+</div>
+    
+    
+====================================
+<div style="position: relative; width: 10em; height: 10em;
+  border: 1px solid;">
+<div style="position: absolute; left: 0; width: 100%; background: #CCC;
+  top: 0; height: 5em; bottom: 0; margin: 0;">
+element D
+</div>
+</div>
+    
+    
+====================================
+<div style="width: 200px; height: 50px; border: 1px dotted gray;">
+ <img src="frown.gif" alt="a frowny face"
+  style="position: absolute; top: 0; left: 50px; margin: 0;">
+ <div style="position: absolute; top: 0; left: 50px;
+   width: 100px; height: 100px; margin: 0;">
+   it's a div!
+ </div>
+</div>
+    
+    
+====================================
+<div style="position: relative; width: 300px;">
+ <img src="frown.gif" alt="a frowny face"
+  style="position: absolute; top: 0; left: 50px; right: 125px; width: 200px;
+    margin: 0;">
+</div>
+    
+    
+====================================
+<div style="position: relative; height: 200px; width: 200px; border: 1px solid;">
+<img src="one.gif" alt="one" width="25" height="25"
+  style="position: absolute;
+  top: 0; left: 0; margin: 0;">
+<img src="two.gif" alt="two" width="25" height="25"
+  style="position: absolute;
+   top: 0; left: 60px; margin: 10px 0; bottom: 4377px;">
+<img src="three.gif" alt=" three" width="25" height="25"
+  style="position: absolute;
+   left: 0; width: 100px; margin: 10px; bottom: 0;">
+<img src="four.gif" alt=" four" width="25" height="25"
+  style="position: absolute;
+   top: 0; height: 100px; right: 0; width: 50px;">
+<img src="five.gif" alt="five" width="25" height="25"
+  style="position: absolute;
+   top: 0; left: 0; bottom: 0; right: 0; margin: auto;">
+</div>
+    
+    
+====================================
+p#first {position: absolute; top: 0; left: 0;
+  width: 20%; height: 10em; z-index: 8;}
+p#second {position: absolute; top: 0; left: 10%;
+  width: 30%; height: 5em; z-index: 4;}
+p#third {position: absolute; top: 15%; left: 5%;
+  width: 15%; height: 10em; z-index: 1;}
+p#fourth {position: absolute; top: 10%; left: 15%;
+  width: 40%; height: 10em; z-index: 0;}
+    
+    
+====================================
+p {border: 1px solid; background: #DDD; margin: 0;}
+b {background: #808080;}
+em {background: #BBB;}
+#one {position: absolute; top: 0; left: 0; width: 50%; height: 10em;
+  z-index: 10;}
+#two {position: absolute; top: 5em; left: 25%; width: 50%; height: 10em;
+  z-index: 7;}
+#three {position: absolute; top: 11em; left: 0; width: 50%; height: 10em;
+  z-index: 1;}
+#one b {position: absolute; right: -5em; top: 4em; width: 20em;
+  z-index: -404;}
+#two b {position: absolute; right: -3em; top: auto;
+  z-index: 36;}
+#two em {position: absolute; bottom: -0.75em; left: 7em; right: -2em;
+  z-index: -42;}
+#three b {position: absolute; left: 3em; top: 3.5em; width: 25em;
+  z-index: 23;}
+    
+    
+====================================
+p#one        10
+p#one b      10,-404
+p#two b      7,36
+p#two        7
+p#two em     7,-42
+p#three b    1,23
+p#three      1
+    
+    
+====================================
+p#one        10,0
+p#one b      10,-404
+p#two b      7,36
+p#two        7,0
+p#two em     7,-42
+p#three b    1,23
+p#three      1,0
+    
+    
+====================================
+<body>
+ <p style="position: absolute; z-index: -1;">Where am I?</p>
+</body>
+    
+    
+====================================
+div#header {position: fixed; top: 0; bottom: 80%; left: 20%; right: 0;
+  background: gray;}
+div#sidebar {position: fixed; top: 0; bottom: 0; left: 0; right: 80%;
+  background: silver;}
+    
+    
+====================================
+div#main {position: absolute; top: 20%; bottom: 0; left: 20%; right: 0;
+  overflow: scroll; background: white;}
+    
+    
+====================================
+body {background: black; color: silver;}  /* colors for safety's sake */
+div#header {position: fixed; top: 0; bottom: 80%; left: 20%; right: 0;
+  background: gray; margin-bottom: 2px; color: yellow;}
+div#sidebar {position: fixed; top: 0; bottom: 0; left: 0; right: 80%;
+  background: silver; margin-right: 2px; color: maroon;}
+div#main {position: absolute; top: 20%; bottom: 0; left: 20%; right: 0;
+  overflow: auto; background: white; color: black;}
+    
+    
+====================================
+div#footer {position: fixed; bottom: 0; width: 100%; height: auto;}
+    
+    
+====================================
+img {position: relative; top: -20px; left: -20px;}
+    
+    
+====================================
+em {position: relative; top: 8em; color: gray;}
+    
+    
+====================================
+img.slide {position: relative; left: 30px;}
+
+<p>
+In this paragraph, we will find that there is an image that has been pushed to
+the right.  It will therefore <img src="star.gif" alt="A star!" class="slide">
+overlap content nearby, assuming that it is not the last element in its line box.
+</p>
+    
+    
+====================================
+strong {position: relative; top: 10px; bottom: 20px;}
+    
+    
+====================================
+strong {position: relative; top: 10px; bottom: -10px;}
+    
+    
+==================

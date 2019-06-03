@@ -1,0 +1,352 @@
+chapter: Colors and Backgrounds
+==================
+h1 {color: green;}
+h2 {color: blue;}
+h2.dkblue {color: navy;}
+a {color: maroon;}   /* a good dark red color */
+    
+    
+====================================
+#navbar a {color: yellow;}
+    
+    
+====================================
+<p style="color: gray;">This paragraph has a gray foreground.</p>
+<p>This paragraph has the default foreground.</p>
+    
+    
+====================================
+p.warn {color: red;}
+    
+    
+====================================
+p.warn {color: red;}
+p.warn a:link {color: green;}
+    
+    
+====================================
+p.warn {color: #666;}
+p.warn a:link {color: #AAA;}
+    
+    
+====================================
+b, strong {color: maroon;}
+    
+    
+====================================
+td.highlight {color: #FF9;}
+    
+    
+====================================
+<body text="black" link="#808080" alink="silver" vlink="#333333">
+
+body {color: black;}     /* replacement css */
+a:link {color: #808080;}
+a:active {color: silver;}
+a:visited {color: #333333;}
+    
+    
+====================================
+body {color: black;}
+a:link {color: #808080;}      /* medium gray */
+a.external:link {color: silver;}
+a:active {color: silver;}
+a:visited {color: #333;}   /* a very dark gray */
+    
+    
+====================================
+body {color: black;}
+a:link {color: #808080;}      /* medium gray */
+a.external:link  {color: #666;}
+a:active {color: silver;}
+a:visited {color: #333;}   /* a very dark gray */
+a.external:visited {color: black;}
+    
+    
+====================================
+p.aside {color: gray; border-style: solid;}
+    
+    
+====================================
+p.aside {color: gray; border-style: solid; border-color: black;}
+    
+    
+====================================
+img.type1 {color: gray; border-style: solid;}
+img.type2 {border-color: gray; border-style: solid;}
+    
+    
+====================================
+select {color: rgb(33%,33%,33%);}
+    
+    
+====================================
+select {color: rgb(33%,33%,33%);}
+input {color: gray;}
+    
+    
+====================================
+input.radio {color: #666;}
+input.check {color: #CCC;}
+
+<input type="radio" name="r2" value="a" class="radio" />
+<input type="checkbox" name="c3" value="one" class="check" />
+    
+    
+====================================
+input[type="radio"] {color: #333;}
+input[type="checkbox"] {color: #666;}
+
+<input type="radio" name="r2" value="a " />
+<input type="checkbox" name="c3" value="one "/>
+    
+    
+====================================
+em {color: gray;}
+p {color: black;}
+    
+    
+====================================
+body, table, td, th {color: red;}
+    
+    
+====================================
+p {background-color: gray; padding: 10px;}
+    
+    
+====================================
+a {color: white; background-color: transparent;}
+    
+    
+====================================
+body {background: silver;}
+p {background-color: gray; padding: 0.1px; border: 1px solid silver;}
+    
+    
+====================================
+h1 {color: white; background-color: rgb(20%,20%,20%);
+  font-family: Arial, sans-serif;}
+    
+    
+====================================
+body {color: black; background-color: white;}
+h1, h2 {color: yellow; background-color: rgb(0,51,0);}
+p {color: #555;}
+a:link {color: black; background-color: silver;}
+a:visited {color: gray; background-color: white;}
+    
+    
+====================================
+<BODY BACKGROUND="bg23.gif">
+    
+    
+====================================
+body {background-image: url(bg23.gif);}
+    
+    
+====================================
+p.starry {background-image: url(http://www.site.web/pix/stars.gif);
+   color: white;}
+a.grid {background-image: url(smallgrid.gif);}
+
+<p class="starry">It's the end of autumn, which means the stars will be
+brighter than ever!  <a href="join.html" class="grid">Join us</a> for
+a fabulous evening of planets, stars, nebulae, and more...
+    
+    
+====================================
+td.nav {background-image: url(darkgrid.gif);}
+    
+    
+====================================
+* {background-image: url(yinyang.gif);}
+    
+    
+====================================
+body {background-image: url(yinyang.gif);}
+* {background-image: inherit;}
+    
+    
+====================================
+p.starry {background-image: url(http://www.site.web/pix/stars.gif);
+   background-color: black; color: white;}
+a.grid {background-image: url(smallgrid.gif);}
+
+<p class="starry">It's the end of autumn, which means the stars will be
+brighter than ever!  <a href="join.html" class="grid">Join us</a> for
+a fabulous evening of planets, stars, nebulae, and more...
+    
+    
+====================================
+body {background-image: url(yinyang.gif);
+   background-repeat: repeat-y;}
+    
+    
+====================================
+body {background-image: url(yinyang.gif);
+   background-repeat: repeat-x;}
+    
+    
+====================================
+body {background-image: url(yinyang.gif);
+   background-repeat: no-repeat;}
+    
+    
+====================================
+body {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;}
+    
+    
+====================================
+h1 {background-image: url(triplebor.gif); background-repeat: repeat-y;}
+h2 {background-image: url(wavybord.gif); background-repeat: repeat-x;
+    background-color: #CCC;}
+    
+    
+====================================
+body {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: center;}
+    
+    
+====================================
+p {background-image: url(yinyang.gif);
+   background-repeat: no-repeat;
+   background-position: top right;}
+    
+    
+====================================
+p {background-image: url(yinyang.gif);
+   background-repeat: no-repeat;
+   background-position: top;}
+    
+    
+====================================
+p {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: 50% 50%;}
+    
+    
+====================================
+p {background-image: url(oransqr.gif);
+   background-repeat: no-repeat;
+   padding: 5px;  border: 1px dotted gray;}
+p.c1 {background-position: 0% 0%;}
+p.c2 {background-position: 50% 50%;}
+p.c3 {background-position: 100% 100%;}
+p.c4 {background-position: 0% 100%;}
+p.c5 {background-position: 100% 0%;}
+    
+    
+====================================
+p {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: 33% 66%;}
+    
+    
+====================================
+p {background-image: url(yinyang.gif);
+   background-repeat: no-repeat;
+   background-position: 25%;}
+    
+    
+====================================
+p {background-image: url(yinyang.gif);
+   background-repeat: no-repeat;
+   background-position: 20px 30px;
+   border: 1px dotted gray;}
+    
+    
+====================================
+p {background-image: url(bg23.gif);
+   background-repeat: no-repeat;
+   background-position: 100% 10px;
+   border: 1px dotted gray;}
+    
+    
+====================================
+p {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: -200px -200px;
+   border: 1px dotted gray;}
+    
+    
+====================================
+p {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: -150px 50%;
+   border: 1px dotted gray;}
+    
+    
+====================================
+p {background-image: url(pix/bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: -10% -10%;
+   border: 1px dotted gray;
+   width: 500px;}
+    
+    
+====================================
+p {background-image: url(bigyinyang.gif);
+   background-position: -150px 50%;
+   border: 1px dotted gray;}
+    
+    
+====================================
+p {background-image: url(yinyang.gif);
+   background-position: center;
+   border: 1px dotted gray;}
+p.c1 {background-repeat: repeat-y;}
+p.c2 {background-repeat: repeat-x;}
+    
+    
+====================================
+body {background-image: url(bigyinyang.gif);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-attachment: fixed;}
+    
+    
+====================================
+body {background-image: url(grid1.gif); background-repeat: repeat;
+   background-attachment: fixed;}
+h1 {background-image: url(grid2.gif); background-repeat: repeat;
+   background-attachment: fixed;}
+    
+    
+====================================
+body {background-color: white; background-image: url(yinyang.gif);
+   background-position: top left; background-repeat: repeat-y;
+   background-attachment: fixed;}
+body {background: white url(yinyang.gif) top left repeat-y fixed;}
+body {background: fixed url(yinyang.gif) white top left repeat-y;}
+body {background: url(yinyang.gif) white repeat-y fixed top left;}
+    
+    
+====================================
+body {background: white url(yinyang.gif;}
+body {background: white url(yinyang.gif) top left repeat scroll;}
+    
+    
+====================================
+body {background: white;}
+    
+    
+====================================
+body {background: url(yinyang.gif) bottom left repeat-y;}
+h1 {background: silver;}
+h2 {background: url(h2bg.gif) center repeat-x;}
+p {background: url(parabg.gif);}
+    
+    
+====================================
+h1, h2 {background: gray url(thetrees.jpg) center repeat-x;}
+h2 {background: silver;}
+    
+    
+====================================
+h1, h2 {background: gray url(trees.jpg) center repeat-x;}
+h2 {background-color: silver;}
+    
+    
+==================

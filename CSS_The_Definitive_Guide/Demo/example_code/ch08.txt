@@ -1,0 +1,368 @@
+chapter: Padding, Borders, and Margins
+==================
+a:link {color: red; background: silver; height: 15px; width: 60px;}
+    
+    
+====================================
+h1 {margin: 0.25in; background-color: silver;}
+    
+    
+====================================
+p {background-color: silver; margin: 10px;}
+    
+    
+====================================
+img {margin: 1em;}
+    
+    
+====================================
+h1 {margin: 10px 20px 15px 5px;}
+    
+    
+====================================
+margin:top right bottom left
+    
+    
+====================================
+h2 {margin: 14px 5em 0.1in 3ex;}  /* value variety! */
+    
+    
+====================================
+p {margin: 10%;}
+
+<div style="width: 200px; border: 1px dotted;">
+<p>This paragraph is contained within a DIV that has a width of 200 pixels,
+so its margin will be 10% of the width of the paragraph's parent (the DIV).
+Given the declared width of 200 pixels, the margin will be 20 pixels on
+all sides.</p>
+</div>
+<div style="width: 100px;  border: 1px dotted;">
+<p>This paragraph is contained within a DIV with a width of 100 pixels,
+so its margin will still be 10% of the width of the paragraph's parent.
+There will, therefore, be half as much margin on this paragraph as that
+on the first paragraph.</p>
+</div>
+    
+    
+====================================
+div p {margin-top: 10%;}
+
+<div style="width: 500px;">
+<p>This is a paragraph, and its top margin is 10% the width of its parent
+element.</p>
+</div>
+    
+    
+====================================
+h1 {margin: 0.5em 10% 0.5em 10%;}
+    
+    
+====================================
+h1 {margin: 0.5em 10% 0.5em 10%;}
+    
+    
+====================================
+p {margin: 0.25em 1em 0.25em 1em;}
+    
+    
+====================================
+p {margin: 0.25em 1em;}
+    
+    
+====================================
+h1 {margin: 0.25em 0 0.5em;} /* same as '0.25em 0 0.5em 0' */
+h2 {margin: 0.15em 0.2em;}  /* same as '0.15em 0.2em 0.15em 0.2em' */
+p {margin: 0.5em 10px;}    /* same as '0.5em 10px 0.5em 10px' */
+p.close {margin: 0.1em;}  /* same as '0.1em 0.1em 0.1em 0.1em' */
+    
+    
+====================================
+h1 {margin: 10px 20px 20px 10px;} /* can't be any shorter */
+    
+    
+====================================
+h2 {margin: auto auto auto 3em;}
+    
+    
+====================================
+h2 {margin-left: 3em;}
+    
+    
+====================================
+h2 {margin-left: 3em; margin-bottom: 2em;
+  margin-right: 0; margin-top: 0;
+  background: silver;}
+    
+    
+====================================
+h2 {margin: 0 0 2em 3em;}
+    
+    
+====================================
+div {border: 1px dotted gray; margin: 1em;}
+p {margin: 1em; border: 1px dashed silver;}
+p.one {margin:  0 -1em;}
+p.two {margin: -1em 0;}
+    
+    
+====================================
+div {background: silver; border: 1px solid;}
+p {margin: 1em;}
+p.punch {background: white; margin: 1em -1px 1em 25%;
+  border: 1px solid; border-right: none; text-align: center;}
+p.mond {background: #333; color: white; margin: 1em 3em -3em -3em;}
+    
+    
+====================================
+p {margin: 15px 0;}
+    
+    
+====================================
+h2 {margin-bottom: 0;}
+h2 + p {margin-top: 0;}
+    
+    
+====================================
+h2 {margin-bottom: 0;}
+p {margin: 0 0 1em;}
+    
+    
+====================================
+strong {margin-top: 25px; margin-bottom: 50px;}
+    
+    
+====================================
+strong {margin-left: 25px; background: silver;}
+    
+    
+====================================
+strong {margin: 25px; background: silver;}
+    
+    
+====================================
+strong {margin: 25px; background: silver;}
+    
+    
+====================================
+strong {margin: -25px; background: silver;}
+    
+    
+====================================
+h1 {margin-bottom: 0;}
+p {margin-top: 0;}
+    
+    
+====================================
+body {color: purple;}
+    
+    
+====================================
+a:link img {border-style: outset;}
+    
+    
+====================================
+a:link img {border-style: outset; color: silver;}
+    
+    
+====================================
+p.aside {border-style: solid dashed dotted solid;}
+    
+    
+====================================
+p.new1 {border-style: solid dashed none;}
+p.new2 {border-style: solid dashed none dashed;}
+    
+    
+====================================
+h1 {border-style: solid solid solid none;}
+  /* the method above is the same as the one below */
+h1 {border-style: solid; border-left-style: none;}
+    
+    
+====================================
+p {margin: 5px; background-color: silver;
+   border-style: solid;}
+    
+    
+====================================
+p {margin: 5px; background-color: silver;
+   border-style: solid; border-width: thick;}
+    
+    
+====================================
+p {margin: 5px; background-color: silver;
+   border-style: solid; border-width: 50px;}
+    
+    
+====================================
+h1 {border-style: dotted; border-width: thin 0;}
+p {border-style: solid; border-width: 15px 2px 7px 4px;}
+    
+    
+====================================
+p {margin: 5px; border-style: none; border-width: 20px;}
+    
+    
+====================================
+h1 {border-width: 20px;}
+    
+    
+====================================
+h1 {border-style: solid; border-width: thin thick; border-color: black gray;}
+p {border-style: solid; border-color: gray;}
+    
+    
+====================================
+p {border-style: solid; border-width: thick;
+  border-color: black rgb(25%,25%,25%) #808080 silver;}
+    
+    
+====================================
+p.shade1 {border-style: solid; border-width: thick; color: gray;}
+p.shade2 {border-style: solid; border-width: thick; color: gray;
+   border-color: black;}
+    
+    
+====================================
+h1 {border-style: solid; border-color: black; border-right-color: gray;}
+    
+    
+====================================
+a:link, a:visited {border-style: solid; border-width: 5px;
+  border-color: transparent;}
+a:hover {border-color: gray;}
+    
+    
+====================================
+h1 {border-bottom-width: thick;   /* option #1 */
+  border-bottom-style: solid;
+  border-bottom-color: gray;}
+
+h1 {border-width: 0 0 thick;     /* option #2 */
+  border-style: none none solid;
+  border-color: gray;}
+    
+    
+====================================
+h1 {border-bottom: thick solid gray;}
+    
+    
+====================================
+h1 {border-left: 3px solid gray;
+  border-right: black 0.25em dotted;
+  border-top: thick silver inset;
+  border-bottom: double rgb(33%,33%,33%) 10px;}
+    
+    
+====================================
+h1 {border-bottom: 3px solid gray;}
+h2 {border-bottom: solid gray 3px;}
+h3 {border-bottom: 3px gray solid;}
+    
+    
+====================================
+h3 {color: gray; border-bottom: 3px solid;}
+    
+    
+====================================
+p.roof {border-top: dashed;}
+    
+    
+====================================
+h3 {border-top: thin thick solid purple;}  /* two width values--WRONG */
+    
+    
+====================================
+h1 {border: thick silver solid;}
+    
+    
+====================================
+h1 {border-top: thick silver solid;
+  border-bottom: thick silver solid;
+  border-right: thick silver solid;
+  border-left: thick silver solid;}  /* same as previous example */
+    
+    
+====================================
+H1 {border: thick silver solid;
+  border-left-width: 20px;}
+    
+    
+====================================
+h4 {border-style: dashed solid double;}
+h4 {border: medium green;}
+    
+    
+====================================
+strong {border-top: 10px solid gray; border-bottom: 5px solid silver;}
+    
+    
+====================================
+strong {border-left: 25px double gray; background: silver;}
+    
+    
+====================================
+h1 {padding: 10px; background-color: silver;}
+    
+    
+====================================
+h1 {padding: 10px 0.25em 3ex 3cm;} /* uneven padding */
+h2 {padding: 0.5em 2em;} /* values replicate to the bottom and left sides */
+    
+    
+====================================
+h1 {padding: 10px 0.25em 3ex 3cm; background: gray;}
+h2 {padding: 0.5em 2em; background: silver;}
+    
+    
+====================================
+p {margin: 1em 0; padding: 1em 0;}
+p.one, p.three {background: gray;}
+p.two, p.four {background: silver;}
+p.three, p.four {margin: 0;}
+    
+    
+====================================
+p {margin: 0; padding: 0.5em 0;}
+    
+    
+====================================
+p {margin: 0; padding: 0.5em 0; border-bottom: 1px solid gray;
+  border-left: 3px double black;}
+    
+    
+====================================
+p {padding: 10%; background-color: silver;}
+
+<div style="width: 200px;">
+<p>This paragraph is contained within a DIV that has a width of 200 pixels,
+so its padding will be 10% of the width of the paragraph's parent element.
+Given the declared width of 200 pixels, the padding will be 20 pixels on
+all sides.</p>
+</div>
+<div style="width: 100px;">
+<p>This paragraph is contained within a DIV with a width of 100 pixels,
+so its padding will still be 10% of the width of the paragraph's parent.
+There will, therefore, be half as much padding on this paragraph as that
+on the first paragraph.</p>
+</div>
+    
+    
+====================================
+h1 {padding: 0 0 0 0.25in;}
+h2 {padding-left: 0.25in;}
+    
+    
+====================================
+strong {padding-left: 10px; padding-right: 10px; background: silver;}
+    
+    
+====================================
+strong {padding-top: 0.5em; background-color: silver;}
+    
+    
+====================================
+img {background: silver; padding: 1em;}
+    
+    
+==================

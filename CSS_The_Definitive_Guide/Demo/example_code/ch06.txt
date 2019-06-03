@@ -1,0 +1,361 @@
+chapter: Text Properties
+==================
+p {text-indent: 3em;}
+    
+    
+====================================
+p {text-indent: -4em;}
+    
+    
+====================================
+p {text-indent: -4em; padding-left: 4em;}
+    
+    
+====================================
+p.hang {text-indent: -25px;}
+
+<img src="star.gif" style="width: 60px; height: 60px;
+float: left;" alt="An image of a five-pointed star."/>
+<p class="hang"> This paragraph has a negatively indented first
+line, which overlaps the floated image that precedes the text.  Subsequent
+lines do not overlap the image, since they are not indented in any way.</p>
+    
+    
+====================================
+div {width: 400px;}
+p {text-indent: 10%;}
+
+<div>
+<p>This paragraph is contained inside a DIV, which is 400px wide, so the
+first line of the paragraph is indented 40px (400 * 10% = 40).  This is
+because percentages are computed with respect to the width of the element.</p>
+</div>
+    
+    
+====================================
+div#outer {width: 500px;}
+div#inner {text-indent: 10%;}
+p {width: 200px;}
+
+<div id="outer">
+<div id="inner">
+This first line of the DIV is indented by 50 pixels.
+<p>
+This paragraph is 200px wide, and the first line of the paragraph
+is indented 50px.  This is because computed values for 'text-indent'
+are inherited, instead of the declared values.
+</p>
+</div>
+</div>
+    
+    
+====================================
+body {line-height: 14px; font-size: 13px;}
+p.cl1 {line-height: 1.5em;}
+p.cl2 {font-size: 10px; line-height: 150%;}
+p.cl3 {line-height: 0.33in;}
+
+<p>This paragraph inherits a 'line-height' of 14px from the body, as well as
+a 'font-size' of 13px.</p>
+<p class="cl1">This paragraph has a 'line-height' of 19.5px(13 * 1.5), so
+it will have slightly more line-height than usual.</p>
+<p class="cl2">This paragraph has a 'line-height' of 15px (10 * 150%), so
+it will have slightly more line-height than usual.</p>
+<p class="cl3">This paragraph has a 'line-height' of 0.33in, so it will have
+slightly more line-height than usual.</p>
+    
+    
+====================================
+body {font-size: 10px;}
+div {line-height: 1em;}  /* computes to '10px' */
+p {font-size: 18px;}
+
+<div>
+<p>This paragraph's 'font-size' is 18px, but the inherited 'line-height'
+value is only 10px.  This may cause the lines of text to overlap each
+other by a small amount.</p>
+</div>
+    
+    
+====================================
+body {font-size: 10px;}
+div {line-height: 1;}
+p {font-size: 18px;}
+    
+    
+====================================
+div {line-height: 1.5;}
+p {font-size: 18px;}
+
+<div>
+<p>This paragraph's 'font-size' is 18px, and since the 'line-height'
+set for the parent div is 1.5, the 'line-height' for this paragraph
+is 27px (18 * 1.5).</p>
+</div>
+    
+    
+====================================
+p {line-height: 16pt;}
+    
+    
+====================================
+img {vertical-align: baseline;}
+
+<p>The image found in this paragraph <img src="dot.gif" alt="A dot" /> has its
+bottom edge aligned with the baseline of the text in the paragraph.</p>
+    
+    
+====================================
+span.raise {vertical-align: super;}
+span.lower {vertical-align: sub;}
+
+<p>This paragraph contains <span class="raise">superscripted</span>
+and <span class="lower">subscripted</span> text.</P>
+    
+    
+====================================
+.feeder {vertical-align: bottom;}
+
+<p>This paragraph, as you can see quite clearly, contains
+a <img src="tall.gif" alt="tall" class="feeder" /> image and
+a <img src="short.gif" alt="short" class="feeder" /> image,
+and then some text that is not tall.</p>
+    
+    
+====================================
+img.tbot {vertical-align: text-bottom;}
+
+<p>Here: a <img src="tall.gif" style="vertical-align: middle;" alt="tall" />
+image, and then a <img src="short.gif" class="tbot" alt="short" /> image.</p>
+    
+    
+====================================
+.up {vertical-align: top;}
+.textup {vertical-align: text-top;}
+
+<p>Here: a <img src="tall.gif" alt="tall image"> tall image, and then
+<span class="up">some text</span> that's been vertically aligned.</p>
+<p>Here: a <img src="tall.gif" class="textup" alt="tall"> image that's been
+vertically aligned, and then a <img src="short.gif" class="textup" alt="short" />
+image that's similarly aligned.</p>
+    
+    
+====================================
+sub {vertical-align: -100%;}
+sup {vertical-align: 100%;}
+
+<p>We can either <sup>soar to new heights</sup> or, instead,
+<sub>sink into despair...</sub></p>
+    
+    
+====================================
+<div style="font-size: 14px; line-height: 18px;">
+I felt that, if nothing else, I deserved a
+<span style="vertical-align: 50%;">raise</span> for my efforts.
+</div>
+    
+    
+====================================
+p.spread {word-spacing: 0.5em;}
+p.tight {word-spacing: -0.5em;}
+p.base {word-spacing: normal;}
+p.norm {word-spacing: 0;}
+
+<p class="spread">The spaces between words in this paragraph will be increased
+  by 0.5em.</p>
+<p class="tight">The spaces between words in this paragraph will be decreased
+  by 0.5em.</p>
+<p class="base">The spaces between words in this paragraph will be normal.</p>
+<p class="norm">The spaces between words in this paragraph will be normal.</p>
+    
+    
+====================================
+p {letter-spacing: 0;}    /*  identical to 'normal'  */
+p.spacious {letter-spacing: 0.25em;}
+p.tight {letter-spacing: -0.25em;}
+
+<p>The letters in this paragraph are spaced as normal.</p>
+<p class="spacious">The letters in this paragraph are spread out a bit.</p>
+<p class="tight">The letters in this paragraph are a bit smashed together.</p>
+    
+    
+====================================
+strong {letter-spacing: 0.2em;}
+
+<p>This paragraph contains <strong>strongly emphasized text</strong>
+that is spread out for extra emphasis.</p>
+    
+    
+====================================
+p {letter-spacing: 0.25em; font-size: 20px;}
+small {font-size: 50%;}
+
+<p>This spacious paragraph features <small>tiny text that is just
+as spacious</small>, even though the author probably wanted the
+spacing to be in proportion to the size of the text.</p>
+    
+    
+====================================
+p {letter-spacing: 0.25em;}
+small {font-size: 50%; letter-spacing: 0.25em;}
+    
+    
+====================================
+h1 {text-transform: capitalize;}
+strong {text-transform: uppercase;}
+p.cummings {text-transform: lowercase;}
+p.raw {text-transform: none;}
+
+<h1>The heading-one at the beginninG</h1>
+<p> By default, text is displayed in the capitalization it has in the source
+document, but <strong>it is possible to change this</strong> using
+the property 'text-transform'.
+</p>
+<p class="cummings">
+For example, one could Create TEXT such as might have been Written by
+the late Poet e.e.cummings.
+</p>
+<p class="raw">
+If you feel the need to Explicitly Declare the transformation of text
+to be 'none', that can be done as well.
+</p>
+    
+    
+====================================
+h1 {text-transform: uppercase;}
+
+<h1>This is an H1 element</h1>
+    
+    
+====================================
+h1 {text-transform: capitalize;}
+
+<h1>This is an H1 element</h1>
+    
+    
+====================================
+p.emph {text-decoration: underline;}
+p.topper {text-decoration: overline;}
+p.old {text-decoration: line-through;}
+p.annoy {text-decoration: blink;}
+p.plain {text-decoration: none;}
+    
+    
+====================================
+a {text-decoration: none;}
+    
+    
+====================================
+a:link, a:visited {text-decoration: underline overline;}
+    
+    
+====================================
+h2.stricken {text-decoration: line-through;}
+h2 {text-decoration: underline overline;}
+    
+    
+====================================
+p {text-decoration: underline; color: black;}
+strong {color: gray;}
+
+<p>This paragraph, which is black and has a black underline, also contains
+<strong>strongly emphasized text</strong> which has the black underline
+beneath it as well.</p>
+    
+    
+====================================
+p {text-decoration: underline; color: black;}
+strong {color: gray; text-decoration: none;}
+
+<p>This paragraph, which is black and has a black underline, also contains
+<strong>strongly emphasized text</strong> which has the black underline beneath it as
+well.</p>
+    
+    
+====================================
+p {text-decoration: overline; font-size: 12pt;}
+sup {vertical-align: 50%; font-size: 12pt;}
+    
+    
+====================================
+p {text-decoration: underline; color: black;}
+strong {color: silver; text-decoration: none;}
+
+<p>This paragraph, which is black and has a black underline, also contains
+<strong>boldfaced text</strong> which does not have black underline
+beneath it.</p>
+    
+    
+====================================
+p {text-decoration: underline; color: black;}
+strong {color: silver; text-decoration: underline;}
+
+<p>This paragraph, which is black and has a black underline, also contains
+<strong>strongly emphasized text</strong> which has the black underline
+beneath it as well, but whose gray underline overlays the black underline
+of its parent.</p>
+    
+    
+====================================
+text-shadow: green 5px 0.5em;
+    
+    
+====================================
+p.cl1 {color: black; text-shadow: silver 2px 2px 2px;}
+p.cl2 {color: white; text-shadow: 0 0 4px black;}
+p.cl3 {color: black; text-shadow: 1em 1em 5px gray, -1em -1em silver;}
+    
+    
+====================================
+<p>This    paragraph   has     many
+    spaces        in it.</p>
+    
+    
+====================================
+p {white-space: normal;}
+    
+    
+====================================
+p {white-space: pre;}
+
+<p>This    paragraph   has     many
+    spaces        in it.</p>
+    
+    
+====================================
+<p style="white-space: nowrap;">This paragraph is not allowed to wrap,
+which means that the only way to end a line is to insert a line-break
+element.  If no such element is inserted, then the line will go forever,
+forcing the user to scroll horizontally to read whatever can't be
+initially displayed <br/>in the browser window.</p>
+    
+    
+====================================
+td {white-space: nowrap;}
+
+<table><tr>
+<td>The contents of this cell are not wrapped.</td>
+<td>Neither are the contents of this cell.</td>
+<td>Nor this one, or any after it, or any other cell in this table.</td>
+<td>CSS prevents any wrapping from happening.</td>
+</tr></table>
+    
+    
+====================================
+<p style="white-space: pre-wrap;">
+This  paragraph      has  a  great   many   s p a c e s   within  its textual
+  content,   but their    preservation     will    not    prevent   line
+    wrapping or line breaking.
+</p>
+<p style="white-space: pre-line;">
+This  paragraph      has  a  great   many   s p a c e s   within  its textual
+  content,   but their collapse  will    not    prevent   line
+    wrapping or line breaking.
+</p>
+    
+    
+====================================
+*:lang(ar), *:lang(he) {direction: rtl;}
+    
+    
+==================

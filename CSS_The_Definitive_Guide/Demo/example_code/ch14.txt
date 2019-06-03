@@ -1,0 +1,355 @@
+chapter: Non-Screen Media
+==================
+<link rel="stylesheet" type="text/css" media="print"
+   href="article-print.css">
+
+<style type="text/css" media="projection">
+body {font-family: sans-serif;}
+</style>
+    
+    
+====================================
+<link rel="stylesheet" type="text/css" media="screen, projection"
+   href="visual.css">
+    
+    
+====================================
+@import url(visual.css) screen, projection;
+@import url(article-print.css) print;
+    
+    
+====================================
+<link rel="stylesheet" type="text/css" media="screen"
+   href="article-screen.css">
+<link rel="stylesheet" type="text/css" media="print"
+   href="article-print.css">
+    
+    
+====================================
+<style type="text/css">
+body {background: white; color: black;}
+@media screen {
+   body {font-family: sans-serif;}
+   h1 {margin-top: 1em;}
+}
+@media print {
+   body {font-family: serif;}
+   h1 {margin-top: 2em; border-bottom: 1px solid silver;}
+}
+</style>
+    
+    
+====================================
+body {font: 12pt "Times New Roman", "TimesNR", Times, serif;}
+    
+    
+====================================
+* {color: black !important; background: white !important;}
+    
+    
+====================================
+div#leftcol {float: left; width: 45%;}
+div#rightcol {float: right; width: 45%;}
+    
+    
+====================================
+div#leftcol, div#rightcol {float: none; width: auto;}
+    
+    
+====================================
+@page {size: 7.5in 10in; margin: 0.5in;}
+    
+    
+====================================
+@page {size: landscape;}
+    
+    
+====================================
+@page {margin: 3.75in;}
+    
+    
+====================================
+@page normal {size: portrait; margin: 1in;}
+@page rotate {size: landscape; margin: 0.5in;}
+    
+    
+====================================
+body {page: normal;}
+table#moon-data {page: rotate;}
+    
+    
+====================================
+@page {margin: 3cm;}
+@page :first {margin-top: 6cm;}
+    
+    
+====================================
+@page :left {margin-left: 3cm; margin-right: 5cm;}
+@page :right {margin-left: 5cm; margin-right: 3cm;}
+    
+    
+====================================
+h1 {page-break-after: always;}
+h2 {page-break-before: always;}
+    
+    
+====================================
+h2 {page-break-before: left;}
+    
+    
+====================================
+h3 {page-break-after: avoid;}
+    
+    
+====================================
+img {height: 9.5in; width: 8in; page-break-before: avoid;}
+h4 {page-break-after: avoid;}
+h4 + img {height: 10.5in;}
+    
+    
+====================================
+div.aside {page-break-inside: avoid;}
+    
+    
+====================================
+p {widows: 4;}
+    
+    
+====================================
+p {widows: 30; orphans: 30;}
+    
+    
+====================================
+p {page-break-inside: avoid;}
+    
+    
+====================================
+div#runhead {position: fixed; top: 0; right: 0;}
+    
+    
+====================================
+h1 {position: fixed; top: 0; width: 100%; text-align: center;
+   font-size: 80%; border-bottom: 1px solid gray;}
+    
+    
+====================================
+h1 {position: absolute; top: 1500in;}
+    
+    
+====================================
+h2 {page-break-before: always;}
+    
+    
+====================================
+ul {page-break-after: always;}
+    
+    
+====================================
+ul {page-break-after: always;}
+ul ul {page-break-after: auto;}
+    
+    
+====================================
+h2 {page-break-before: always; position: absolute; bottom: 0; right: 0;}
+    
+    
+====================================
+h1 {position: fixed; top: 0; right: 0; font-size: 80%;}
+    
+    
+====================================
+<div style="speak: none;">
+Navigation:
+<a href="home.html" style="speak: normal;">Home</a>
+</div>
+    
+    
+====================================
+<div style="display: none;">
+Navigation:
+<a href="home.html" style="speak: normal;">Home</a>
+</div>
+    
+    
+====================================
+<acronym style="speak: spell-out;" title="Technology Evangelism and
+  Developer Support">TEDS</acronym>
+    
+    
+====================================
+<p style="speak-punctuation: code;">Avast, ye scalawags!</p>
+    
+    
+====================================
+<code style="speak-punctuation: code;">a[href] {color: red;}</code>
+    
+    
+====================================
+<p style="speak-numeral: continuous;">23</p>
+<p style="speak-numeral: digits;">23</p>
+    
+    
+====================================
+<table id="colors">
+<caption>Favorite Color</caption>
+<tr id="headers">
+<th>Jim</th><th>Joe</th><th>Jane</th>
+</tr>
+<tr>
+<td>red</td><td>green</td><td>blue</td>
+<td>
+</tr>
+</table>
+    
+    
+====================================
+#colors {speak-header: always;}
+#headers {speak: none;}
+    
+    
+====================================
+*.duh {speech-rate: x-slow;}
+div#disclaimer {speech-rate: x-fast;}
+    
+    
+====================================
+div.marine {volume: 60;}
+big {volume: 125%;}
+
+<div class="marine">
+When I say jump, I mean <big>rabbit</big>, you maggots!
+</div>
+    
+    
+====================================
+div.marine {volume: 60;}
+big {volume: 200%;}
+    
+    
+====================================
+h1 {voice-family: Mark, male, Joe;}
+    
+    
+====================================
+rosen {voice-family:  Gary, Scott, male;}
+guild {voice-family: Tim, Jim, male;}
+claud {voice-family: Donald, Ian, male;}
+gertr {voice-family: Joanna, Susan, female;}
+albert {voice-family: Bobby, Paulie, child;}
+    
+    
+====================================
+h1 {pitch: 150Hz;}
+    
+    
+====================================
+h1 {voice-family: Jethro, Susie; pitch: 100Hz;}
+    
+    
+====================================
+<sentence>
+  <primary>In English,</primary>
+  <tertiary>for example,</tertiary>
+  <secondary>sentences have different parts that call for
+different stress.</secondary>
+</sentence>
+    
+    
+====================================
+primary {stress: 65;}
+secondary {stress: 50;}
+tertiary {stress: 33;}
+    
+    
+====================================
+h1 {pause-after: 2s;}
+h1 {pause-after: 2000ms;}  /* the same length of time as '2s' */
+    
+    
+====================================
+h1 {speech-rate: 180;}
+    
+    
+====================================
+h1 {speech-rate: 180; pause-before: 200%;}
+    
+    
+====================================
+pre {pause: 1s;}
+pre {pause: 1s 1s;}
+pre {pause-before: 1s; pause-after: 1s;}
+    
+    
+====================================
+a:link {cue-before: url(chime.mp3);}
+a:visited {cue-before: url(beep.wav);}
+    
+    
+====================================
+a[href] {cue: url(ping.mp3);}
+a[href] {cue: url(ping.mp3) url(ping.mp3);}
+a[href] {cue-before: url(ping.mp3); cue-after: url(ping.mp3);}
+    
+    
+====================================
+h1 {cue: url(trumpet.mp3);}
+h1:before {content: "Behold! ";}
+h1:after {content: ". Verily!";}
+
+<h1>The Beginning</h1>
+    
+    
+====================================
+h1 {play-during: url(trumpets.mp3);}
+    
+    
+====================================
+div.ocean {play-during: url(wave.wav) repeat;}
+    
+    
+====================================
+a:link {play-during: url(chains.mp3) repeat;}
+em {play-during: url(bass.mp3) repeat;}
+
+<a href="http://www.example.com/">This is a <em>really great</em> site!</a>
+    
+    
+====================================
+a:link {play-during: url(chains.mp3) repeat;}
+em {play-during: url(bass.mp3) repeat mix;}
+    
+    
+====================================
+a:link {play-during: url(chains.mp3) repeat;}
+em {play-during: none;}
+
+<a href="http://www.example.com/">This is a <em>really great</em> site!</a>
+    
+    
+====================================
+body {azimuth: right-side;}  /* equivalent to 90deg */
+h1 {azimuth: leftwards;}
+    
+    
+====================================
+body {azimuth: behind;}  /* equivalent to 180deg */
+h1 {azimuth: leftwards;}  /* computes to 160deg */
+    
+    
+====================================
+body {elevation: level;}  /* equivalent to 0 */
+body > h1 {elevation: higher;}
+    
+    
+====================================
+azimuth: -135deg; elevation: 45deg;
+azimuth: 215deg; elevation: 45deg;
+azimuth: left behind; elevation: 45deg;
+    
+    
+====================================
+a[href] {cue: url(ping.wav); azimuth: behind; elevation: 30deg;}
+voices.onhigh {play-during: url(choir.mp3); elevation: above;}
+    
+    
+==================

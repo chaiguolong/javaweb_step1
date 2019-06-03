@@ -1,0 +1,320 @@
+chapter: Fonts
+==================
+body {font-family: sans-serif;}
+    
+    
+====================================
+body {font-family: serif;}
+h1, h2, h3, h4 {font-family: sans-serif;}
+code, pre, tt, span.input {font-family: monospace;}
+p.signature {font-family: cursive;}
+    
+    
+====================================
+h1 {font-family: Georgia;}
+    
+    
+====================================
+h1 {font-family: Georgia, serif;}
+    
+    
+====================================
+h1 {font-family: Arial, sans-serif;}
+h2 {font-family: Charcoal, sans-serif;}
+p {font-family: TimesNR, serif;}
+address {font-family: Chicago, sans-serif;}
+    
+    
+====================================
+p {font-family: Times, TimesNR, 'New Century Schoolbook', Georgia,
+      'New York', serif;}
+    
+    
+====================================
+h2 {font-family: Wedgie, 'Karrank%', Klingon, fantasy;}
+    
+    
+====================================
+p {font-family: sans-serif;}  /* sets paragraphs to sans-serif by default */
+
+<!-- the next example is correct (uses single-quotes) -->
+<p style="font-family: 'New Century Schoolbook', Times, serif;">...</p>
+
+<!-- the next example is NOT correct (uses double-quotes) -->
+<p style="font-family: "New Century Schoolbook", Times, serif;">...</p>
+    
+    
+====================================
+h1 {font-family: 'Zurich UltraBlack', sans-serif;}
+h2 {font-family: 'Zurich Black', sans-serif;}
+h3 {font-family: 'Zurich Bold', sans-serif;}
+h4, p {font-family: Zurich, sans-serif;}
+small {font-family: 'Zurich Light', sans-serif;}
+    
+    
+====================================
+b {font-weight: bold;}
+    
+    
+====================================
+p.one {font-weight: bold;}
+    
+    
+====================================
+p {font-weight: normal;}
+p em {font-weight: bolder;}  /* results in bold text, evaluates to '700' */
+
+h1 {font-weight: bold;}
+h1 b {font-weight: bolder;}  /* if no bolder face exists, evaluates to '800' */
+
+div {font-weight: 100;} /* assume 'Light' face exists; see explanation */
+div strong {font-weight: bolder;} /* results in normal text, weight '400' */
+    
+    
+====================================
+/*   assume only two faces for this example: 'Regular' and 'Bold'   */
+p {font-weight: 100;}   /* looks the same as 'normal' text */
+p span {font-weight: bolder;}   /* maps to '700' */
+    
+    
+====================================
+/*   assume only two faces for this example: 'Regular' and 'Bold'   */
+p {font-weight: 100;}   /* looks the same as 'normal' text */
+p span {font-weight: 400;}   /* so does this */
+strong {font-weight: bolder;}   /* even bolder than its parent */
+strong b {font-weight: bolder;}   /*bolder still */
+
+<p>
+This paragraph contains elements of increasing weight: there is a
+<span>span element that contains a <strong>strongly emphasized
+element and a <b>boldface element</b></strong></span>.
+</p>
+    
+    
+====================================
+<p>
+100 <span> 400 <strong> 700 <b> 800 </b></strong></span>.
+</p>
+    
+    
+====================================
+<p>
+100 <span> 400 <strong> 700 <b> 800 <strong> 900
+</strong></b></strong></span>.
+</p>
+    
+    
+====================================
+<p>
+regular <span> regular <strong> bold <b> bold
+<strong> bold </strong></b></strong></span>.
+</p>
+    
+    
+====================================
+/*   assume only two faces for this example: 'Regular' and 'Bold'   */
+p {font-weight: 900;}   /* as bold as possible, which will look 'bold' */
+p span {font-weight: 700;}   /* this will also be bold */
+strong {font-weight: lighter;}   /* lighter than its parent */
+b {font-weight: lighter;}   /* lighter still */
+
+<p>
+900 <span> 700 <strong> 400 <b> 300 <strong> 200
+</strong></b></strong></span>.
+</p>
+<!-- ...or, to put it another way... -->
+<p>
+bold <span> bold <strong> regular <b> regular
+<strong> regular </strong></b></strong></span>.
+</p>
+    
+    
+====================================
+p.one {font-size: xx-small;}
+p.two {font-size: x-small;}
+p.three {font-size: small;}
+p.four {font-size: medium;}
+p.five {font-size: large;}
+p.six {font-size: x-large;}
+p.seven {font-size: xx-large;}
+    
+    
+====================================
+p {font-size: medium;}
+strong, em {font-size: larger;}
+
+<p>This paragraph element contains <strong>a strong-emphasis element
+which itself contains <em>an emphasis element that also contains
+<strong>a strong element.</strong></em></strong></p>
+
+<p> medium <strong>large <em> x-large
+<strong>xx-large</strong></em></strong></p>
+    
+    
+====================================
+h1 {font-size: xx-large;}
+em {font-size: larger;}
+
+<h1>A Heading with <em>Emphasis</em> added</h1>
+<p>This paragraph has some <em>emphasis</em> as well.</p>
+    
+    
+====================================
+body {font-size: 15px;}
+p {font-size: 12px;}
+em {font-size: 120%;}
+strong {font-size: 135%;}
+small, .fnote {font-size: 70%;}
+
+<body>
+<p>This paragraph contains both <em>emphasis</em> and <strong>strong
+emphasis</strong>, both of which are larger than their parent element.
+The <small>small text</small>, on the other hand, is smaller by a quarter.</p>
+<p class="fnote">This is a 'footnote' and is smaller than regular text.</p>
+
+<p> 12px <em> 14.4px </em> 12px <strong> 16.2px </strong>  12px
+<small> 9px </small> 12px </p>
+<p class="fnote"> 10.5px </p>
+</body>
+    
+    
+====================================
+p.one {font-size: 166%;}
+p.two {font-size: 1.6em;}
+    
+    
+====================================
+p {font-size: 12px;}
+em {font-size: 120%;}
+strong {font-size: 135%;}
+
+<p>This paragraph contains both<em>emphasis and <strong>strong
+emphasis</strong></em>, both of which are larger than the paragraph text. </p>
+
+<p> 12px <em>14.4px <strong> 19.44px </strong></em> 12px  </p>
+    
+    
+====================================
+ul {font-size: 80%;}
+    
+    
+====================================
+td {font-size: 0.8em;}
+    
+    
+====================================
+p.one {font-size: 36pt;}
+p.two {font-size: 3pc;}
+p.three {font-size: 0.5in;}
+p.four {font-size: 1.27cm;}
+p.five {font-size: 12.7mm;}
+    
+    
+====================================
+p {font-style: normal;}
+em, i {font-style: italic;}
+    
+    
+====================================
+p {font-style: normal;}
+em {font-style: oblique;}
+i {font-style: italic;}
+    
+    
+====================================
+blockquote {font-style: italic;}
+blockquote em, blockquote i {font-style: normal;}
+    
+    
+====================================
+h1 {font-variant: small-caps;}
+h1 code, p {font-variant: normal;}
+
+<h1>The Uses of <code>font-variant</code> On the Web</h1>
+<p>
+The property <code>font-variant</code> is very interesting...
+</p>
+    
+    
+====================================
+strong {font-stretch: wider;}
+    
+    
+====================================
+p {font-size: 10px;}
+p.cl1 {font-family: Verdana, sans-serif;}
+p.cl2 {font-family: Times, serif; }
+    
+    
+====================================
+p {font: 10px Verdana, sans-serif; font-size-adjust: 0.58;}
+p.cl2 {font-family: Times, serif; }
+    
+    
+====================================
+h1 {font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 30px;
+   font-weight: 900; font-style: italic; font-variant: small-caps;}
+h2 {font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 24px;
+   font-weight: bold; font-style: italic; font-variant: normal;}
+    
+    
+====================================
+h1 {font: italic 900 small-caps 30px Verdana, Helvetica, Arial, sans-serif;}
+h2 {font: bold normal italic 24px Verdana, Helvetica, Arial, sans-serif;}
+    
+    
+====================================
+h1 {font: italic 900 small-caps 30px Verdana, Helvetica, Arial, sans-serif;}
+h2 {font: bold italic 24px Verdana, Helvetica, Arial, sans-serif;}
+    
+    
+====================================
+h1 {font: normal normal italic 30px sans-serif;}   /*no problem here */
+h2 {font: 1.5em sans-serif;}   /* also fine; omitted values set to 'normal' */
+h3 {font: sans-serif;}   /* INVALID--no 'font-size' provided */
+h4 {font: lighter 14px;}   /* INVALID--no 'font-family' provided */
+    
+    
+====================================
+body {font-size: 12px;}
+h2 {font: bold italic 200%/1.2 Verdana, Helvetica, Arial, sans-serif;}
+    
+    
+====================================
+h1, h2, h3 {font: italic small-caps 250% sans-serif;}
+h2 {font: 200% sans-serif;}
+h3 {font-size: 150%;}
+
+<h1>This is an h1 element</h1>
+<h2>This is an h2 element</h2>
+<h3>This is an h3 element</h3>
+    
+    
+====================================
+h1, h2, h3 {font: italic normal small-caps 250% sans-serif;}
+h2 {font: normal normal normal 200% sans-serif;}
+h3 {font-size: 150%;}
+    
+    
+====================================
+button {font: caption;}
+    
+    
+====================================
+button {font: caption; font-size: 1em;}
+    
+    
+====================================
+body {font-family: Times, serif;}
+    
+    
+====================================
+@font-face {font-style: normal; font-family: "Times"; slope: -5;}
+    
+    
+====================================
+@font-face {font-family: "Scarborough Fair";
+   src: url(http://www.example.com/fonts/ps/scarborough.ps);}
+    
+    
+==================

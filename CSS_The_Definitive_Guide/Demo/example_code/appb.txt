@@ -1,0 +1,126 @@
+appendix: Selector, Pseudo-Class, and Pseudo-Element Reference
+==================
+* {color: red;}
+div * p {color: blue;}
+    
+    
+====================================
+body {background: #FFF;}
+p {font-size: 1em;}
+    
+    
+====================================
+body h1 {font-size: 200%;}
+table tr td div ul li {color: purple;}
+    
+    
+====================================
+div > p {color: cyan;}
+ul > li {font-weight: bold;}
+    
+    
+====================================
+table + p {margin-top: 2.5em;}
+h1 + * {margin-top: 0;}
+    
+    
+====================================
+p.urgent {color: red;}
+a.external {font-style: italic;}
+.example {background: olive;}
+    
+    
+====================================
+h1#page-title {font-size: 250%;}
+body#home {background: silver;}
+#example {background: lime;}
+    
+    
+====================================
+a[rel] {border-bottom: 3px double gray;}
+p[class] {border: 1px dotted silver;}
+    
+    
+====================================
+a[rel="Home"] {font-weight: bold;}
+p[class="urgent"] {color: red;;}
+    
+    
+====================================
+a[rel~="friend"] {text-transform: uppercase;}
+p[class~="warning"] {background: yellow;}
+    
+    
+====================================
+a[href^="/blog"] {text-transform: uppercase;}
+p[class^="test-"] {background: yellow;}
+    
+    
+====================================
+a[href$=".pdf"] {font-style: italic;}
+    
+    
+====================================
+a[href*="oreilly.com"] {font-weight: bold;}
+div [class*="port"] {border: 1px solid red;}
+    
+    
+====================================
+html[lang|="en"] {color: gray;}
+    
+    
+====================================
+a:active {color: red;}
+*:active {background: blue;}
+    
+    
+====================================
+a.external:after {content: " " url(/icons/globe.gif);}
+p:after {content: " | ";}
+    
+    
+====================================
+a[href]:before {content: "[LINK] ";}
+p:before {content: attr(class);}
+    
+    
+====================================
+body *:first-child {font-weight: bold;}
+p:first-child {font-size: 125%;}
+    
+    
+====================================
+h1:first-letter {font-size: 166%;}
+a:first-letter {text-decoration: underline;}
+    
+    
+====================================
+p.lead:first-line {font-weight: bold;}
+    
+    
+====================================
+a:focus {outline: 1px dotted red;}
+input:focus {background: yellow;}
+    
+    
+====================================
+a[href]:hover {text-decoration: underline;}
+p:hover {background: yellow;}
+    
+    
+====================================
+html:lang(en) {background: silver;}
+*:lang(fr) {quotes: '« ' ' »';}
+    
+    
+====================================
+a:link {color: blue;}
+*:link {text-decoration: underline;}
+    
+    
+====================================
+a:visited {color: purple;}
+*:visited {color: gray;}
+    
+    
+==================

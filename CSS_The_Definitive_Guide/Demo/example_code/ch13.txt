@@ -1,0 +1,76 @@
+chapter: User Interface Styles
+==================
+a.widget {font: caption;}
+    
+    
+====================================
+body {font: icon;}
+body {font: 10px Geneva;}
+body {
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-size: 10px;
+  font-family: Geneva;
+}
+    
+    
+====================================
+body {font: icon; font-weight: bold;}
+    
+    
+====================================
+div#test {background-color: Background;}
+    
+    
+====================================
+body {color: WindowText; background: Window;}
+    
+    
+====================================
+a[href] {cursor: pointer;}
+    
+    
+====================================
+#example {cursor: pointer; cursor: hand;}
+    
+    
+====================================
+a.help {cursor: help;}
+    
+    
+====================================
+acronym[title] {cursor: help; border-bottom: 1px dotted gray;}
+    
+    
+====================================
+a.external {cursor: url(globe.cur), pointer;}
+    
+    
+====================================
+a.external {cursor: url(globe.svg#globe), url(globe.cur), url(globe.png),
+  url(globe.gif), url(globe.xbm), pointer;}
+    
+    
+====================================
+outline-color: red;
+outline-color: #000;
+outline-color: rgb(50%,50%,50%);
+    
+    
+====================================
+a:focus {outline-color: red; outline: thick solid;}
+    
+    
+====================================
+div#callbox {outline: 5px solid invert; margin: 5px;}
+input:focus {outline: 1em double gray;}
+    
+    
+====================================
+div#one {outline: 1em solid invert;}
+div#two {outline: 1em solid invert; margin: -2em -2em 0 2em;
+  background: white;}
+    
+    
+==================

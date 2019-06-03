@@ -1,0 +1,144 @@
+chapter: Values and Units
+==================
+h1 {color: maroon;}
+    
+    
+====================================
+h1 {color: gray;}
+h2 {color: silver;}
+h3 {color: black;}
+    
+    
+====================================
+h1 {color: lightgreen;}
+    
+    
+====================================
+rgb(100%,100%,100%)
+rgb(0%,0%,0%)
+    
+    
+====================================
+rgb(255,255,255)
+rgb(0,0,0)
+    
+    
+====================================
+h1 {color: rgb(75%,0%,0%);}
+    
+    
+====================================
+h1 {color: rgb(75%,50%,50%);}
+    
+    
+====================================
+h1 {color: rgb(191,127,127);}
+    
+    
+====================================
+p.one {color: rgb(0%,0%,0%);}
+p.two {color: rgb(20%,20%,20%);}
+p.three {color: rgb(40%,40%,40%);}
+p.four {color: rgb(60%,60%,60%);}
+p.five {color: rgb(80%,80%,80%);}
+p.six {color: rgb(0,0,0);}
+p.seven {color: rgb(51,51,51);}
+p.eight {color: rgb(102,102,102);}
+p.nine {color: rgb(153,153,153);}
+p.ten {color: rgb(204,204,204);}
+    
+    
+====================================
+h2 {color: rgb(25.5%,40%,98.6%);}
+    
+    
+====================================
+P.one {color: rgb(300%,4200%,110%);}   /*  100%,100%,100%  */
+P.two {color: rgb(0%,-40%,-5000%);}   /*  0%,0%,0%  */
+p.three {color: rgb(42,444,-13);}    /* 42,255,0  */
+    
+    
+====================================
+h1 {color: #FF0000;}   /* set H1s to red */
+h2 {color: #903BC0;}   /* set H2s to a dusky purple */
+h3 {color: #000000;}   /* set H3s to black */
+h4 {color: #808080;}   /* set H4s to medium gray */
+    
+    
+====================================
+h1 {color: #000;}   /* set H1s to black */
+h2 {color: #666;}   /* set H2s to dark gray */
+h3 {color: #FFF;}   /* set H3s to white */
+    
+    
+====================================
+h1 {font-size: 24px;}
+h2 {font-size: 18px;}
+p {font-size: 12px;}
+h1, h2, p {margin-left: 1em;}
+small {font-size: 0.8em;}
+
+<h1>Left margin = <small>24 pixels</small></h1>
+<h2>Left margin = <small>18 pixels</small></h2>
+<p>Left margin = <small>12 pixels</small></p>
+    
+    
+====================================
+<p>
+The following image is 20 pixels tall and wide: <img src="test.gif"
+  style="width: 20px; height: 20px;" alt="" />
+</p>
+    
+    
+====================================
+url(protocol://server/pathname)
+    
+    
+====================================
+http://www.waffles.org/pix/waffle22.gif
+    
+    
+====================================
+url(pathname)
+    
+    
+====================================
+pix/waffle22.gif
+    
+    
+====================================
+<link rel="stylesheet" type="text/css"
+    href="http://www.waffles.org/styles/basic.css">
+    
+    
+====================================
+@import url(special/toppings.css);
+    
+    
+====================================
+@import url(http://www.waffles.org/toppings/special/toppings.css);
+    
+    
+====================================
+body {background: url(http://www.pix.web/picture1.jpg);}   /* correct */
+body {background: url  (images/picture2.jpg);}          /* INCORRECT */
+    
+    
+====================================
+a:link, a:visited {text-decoration: none;}
+    
+    
+====================================
+#toolbar {background: blue; color: white;}
+
+<div id="toolbar">
+<a href="one.html">One</a> | <a href="two.html">Two</a> |
+<a href="three.html">Three</a>
+</div>
+    
+    
+====================================
+#toolbar a {color: inherit;}
+    
+    
+==================

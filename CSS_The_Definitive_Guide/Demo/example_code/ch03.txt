@@ -1,0 +1,261 @@
+chapter: Structure and the Cascade
+==================
+h1 {color: red;}
+body h1 {color: green;}
+
+h2.grape {color: purple;}
+h2 {color: silver;}
+
+html > body table tr[id="totals"] td ul > li {color: maroon;}
+li#answer {color: navy;}
+    
+    
+====================================
+h1 {color: red;}  /* specificity = 0,0,0,1 */
+p em {color: purple;}  /* specificity = 0,0,0,2 */
+.grape {color: purple;}  /* specificity = 0,0,1,0 */
+*.bright {color: yellow;}  /* specificity = 0,0,1,0 */
+p.bright em.dark {color: maroon;}  /* specificity = 0,0,2,2 */
+#id216 {color: blue;}  /* specificity = 0,1,0,0 */
+div#sidebar *[href] {color: silver;}  /* specificity = 0,1,1,1 */
+    
+    
+====================================
+h1 {color: red;}  /* 0,0,0,1 */
+body h1 {color: green;}  /* 0,0,0,2  (winner)*/
+
+h2.grape {color: purple;}  /* 0,0,1,1 (winner) */
+h2 {color: silver;}  /* 0,0,0,1 */
+
+html > body table tr[id="totals"] td ul > li {color: maroon;}  /* 0,0,1,7 */
+li#answer {color: navy;}  /* 0,1,0,1  (winner) */
+    
+    
+====================================
+h1 {color: silver; background: black;}
+    
+    
+====================================
+h1 {color: silver;}
+h1 {background: black;}
+    
+    
+====================================
+h1, h2.section {color: silver; background: black;}
+    
+    
+====================================
+h1 {color: silver;}  /* 0,0,0,1 */
+h1 {background: black;}  /* 0,0,0,1 */
+h2.section {color: silver;}  /* 0,0,1,1 */
+h2.section {background: black;}  /* 0,0,1,1 */
+    
+    
+====================================
+h1 + p {color: black; font-style: italic;}  /* 0,0,0,2 */
+p {color: gray; background: white; font-style: normal;}  /* 0,0,0,1 */
+*.aside {color: black; background: silver;}  /* 0,0,1,0 */
+    
+    
+====================================
+<h1>Greetings!</h1>
+<p class="aside">
+It's a fine way to start a day, don't you think?
+</p>
+<p>
+There are many ways to greet a person, but the words are not as important as the act
+of greeting itself.
+</p>
+<h1>Salutations!</h1>
+<p>
+There is nothing finer than a hearty welcome from one's fellow man.
+</p>
+<p class="aside">
+Although a thick and juicy hamburger with bacon and mushrooms runs a close second.
+</p>
+    
+    
+====================================
+div p {color: black;}  /* 0,0,0,2 */
+* {color: gray;}  /* 0,0,0,0 */
+    
+    
+====================================
+div p  /* 0,0,0,2 */
+body * strong  /* 0,0,0,2 */
+    
+    
+====================================
+html > body table tr[id="totals"] td ul > li {color: maroon;}  /* 0,0,1,7 */
+li#answer {color: navy;}  /* 0,1,0,1  (winner) */
+    
+    
+====================================
+#meadow {color: green;}  /* 0,1,0,0 */
+*[id="meadow"] {color: red;}  /* 0,0,1,0 */
+    
+    
+====================================
+h1 {color: red;}
+
+<h1 style="color: green;">The Meadow Party</h1>
+    
+    
+====================================
+h1#meadow {color: red;}
+
+<h1 id="meadow" style="color: green;">The Meadow Party</h1>
+    
+    
+====================================
+p.dark {color: #333 !important; background: white;}
+    
+    
+====================================
+p.dark {color: #333 !important; background: white !important;}
+    
+    
+====================================
+p.light {color: yellow; font: smaller Times, serif !important;}
+    
+    
+====================================
+h1 {font-style: italic; color: gray !important;}
+.title {color: black; background: silver;}
+* {background: black !important;}
+
+<h1 class="title">NightWing</h1>
+    
+    
+====================================
+h1 {color: gray;}
+
+<h1>Meerkat <em>Central</em></h1>
+    
+    
+====================================
+ul {color: gray;}
+    
+    
+====================================
+* {color: gray;}
+h1#page-title {color: black;}
+
+<h1 id="page-title">Meerkat <em>Central</em></h1>
+<p>
+Welcome to the best place on the web for meerkat information!
+</p>
+    
+    
+====================================
+body {font-size: 0.8em;}
+    
+    
+====================================
+body, table, th, td {font-size: 0.8em;}
+    
+    
+====================================
+#toolbar {color: white; background: black;}
+    
+    
+====================================
+a:link {color: blue;}
+    
+    
+====================================
+#toolbar {color: white; background: black;}
+#toolbar a:link {color: white;}
+    
+    
+====================================
+h1 {color: red;}
+h1 {color: blue;}
+    
+    
+====================================
+p {color: gray !important;}
+
+<p style="color: black;">Well, <em>hello</em> there!</p>
+    
+    
+====================================
+p em {color: black;}    /* author's style sheet */
+
+p em {color: yellow;}   /* reader's style sheet */
+    
+    
+====================================
+p em {color: black !important;}    /* author's style sheet */
+
+p em {color: yellow !important;}   /* reader's style sheet */
+    
+    
+====================================
+p#bright {color: silver;}
+p {color: black;}
+
+<p id="bright">Well, hello there!</p>
+    
+    
+====================================
+h1 {color: red;}
+h1 {color: blue;}
+    
+    
+====================================
+p em {color: purple;}  /* from imported style sheet */
+
+p em {color: gray;}    /* rule contained within the document */
+    
+    
+====================================
+:link {color: blue;}
+:visited {color: purple;}
+:hover {color: red;}
+:active {color: orange;}
+    
+    
+====================================
+:active {color: orange;}
+:hover {color: red;}
+:link {color: blue;}
+:visited {color: purple;}
+    
+    
+====================================
+:link {color: blue;}
+:hover {color: red;}
+:visited {color: purple;}
+:active {color: orange;}
+    
+    
+====================================
+:link {font-weight: bold;}
+:visited {font-style: italic;}
+:hover {color: red;}
+:active {background: yellow;}
+    
+    
+====================================
+:link {color: blue;}
+:visited {color: purple;}
+:link:hover {color: red;}
+:visited:hover {color: gray;}
+    
+    
+====================================
+:link {color: blue;}
+:visited {color: purple;}
+:link:hover {color: red;}
+:visited:hover {color: gray;}
+:link:active {color: orange;}
+:visited:active {color: silver;}
+    
+    
+====================================
+:link:hover:active {color: orange;}
+:visited:hover:active {color: silver;}
+    
+    
+==================
