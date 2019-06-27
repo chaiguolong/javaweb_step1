@@ -1,0 +1,80 @@
+body,input{
+	margin: 0px;
+	padding: 0px;
+}
+input:focus{
+	outline: none;
+}
+#container{
+	width: 524px;
+	height: 907px;
+	font-size: 15px;
+	color: #fff;
+	margin: 50px auto;
+	text-align: center;
+	background: url(../images/001/bg_001.png) repeat-x;
+}
+
+#headimg  span{
+	color: #fff;
+	font-size: 15px;
+}
+#container p span{
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#headimg{
+	margin-top: 132px;
+	border-radius: 58px;
+}
+#user,#passwd,#submit{
+	width: 361px;
+	height: 50px;
+	margin: 0 auto;
+	border-radius: 25px;
+	padding-left: 25px;
+}
+#user{
+	background: #fff;
+	margin-top: 53px;
+	text-align: left;
+}
+#passwd{
+	background: #fff;
+	margin-top: 10px;
+	text-align: left;
+}
+#submit{
+	margin-top: 20px;
+	background: #333333;
+}
+.input{
+	width: 300px;
+	height: 44px;
+	border: 1px solid #fff;
+}
+#user img,#passwd img{
+	vertical-align:middle;
+}
+#submit input{
+	font-size: 13px;
+	text-align: center;
+	background: #333333;
+	border:none;
+	color: #fff;
+	line-height: 50px;
+}
+p img{
+	vertical-align: middle;
+	text-align: center;
+}
+#zhuce{
+	margin-top: 237px;
+}
+p a{
+	font-size: 17px;
+	color: #fff;
+}
+
