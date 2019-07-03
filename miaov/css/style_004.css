@@ -1,0 +1,57 @@
+p{
+	margin: 3px;
+}
+
+#container{
+	background:url(../images/004_iphone5s.jpg) no-repeat;
+	width: 238px;
+	height: 420px;
+	margin: 50px auto;
+	padding: 90px 25px;
+}
+img{
+	vertical-align: middle;
+}
+input{
+	outline: none;
+	box-shadow: none;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+#top{
+	width: 238px;
+	height: 370px;
+	/* border: 1px solid green; */
+	overflow: auto;
+}
+#bottom{
+	height: 50px;
+	text-align: left;
+	line-height: 45px;
+	border-top:1px solid #bdcec6;
+}
+#bottom img{
+	width:25px;
+	height: 24px;
+	border: 1px solid #ded6e7;
+	border-radius: 5px;
+	padding: 5px 3px;
+	margin-left: 5px;
+}
+#bottom input{
+	width: 140px;
+	height: 35px;
+	border: 1px solid #ded6e7;
+	border-radius: 5px;
+	margin-left: 5px;
+}
+#bottom span{
+	font-size: 22px;
+	color: #a0a0a4;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+#bottom a{
+	text-decoration: none;
+}
