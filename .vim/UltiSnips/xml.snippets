@@ -1,0 +1,11 @@
+snippet servlet "web.xml Editer" b
+
+<servlet>
+	<servlet-name>${1}</servlet-name>
+	<servlet-class>${0:$1}</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>${2:$1}</servlet-name>
+	<url-pattern>/${3:$1}</url-pattern>
+</servlet-mapping>
+endsnippet
