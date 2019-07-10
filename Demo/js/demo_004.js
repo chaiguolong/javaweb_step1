@@ -1,5 +1,7 @@
 window.onload = function(){
 	var oA = document.getElementsByTagName("a");
+
+
 	for (var i in oA) {
 		oA[i].onmouseover = function(){
 			this.setAttribute("class","over");
@@ -7,5 +9,6 @@ window.onload = function(){
 		oA[i].onmouseout = function(){
 			this.setAttribute("class","out");
 		}
+
 	}
 }
