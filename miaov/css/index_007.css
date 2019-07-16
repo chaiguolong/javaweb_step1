@@ -1,0 +1,151 @@
+body,p,h3,ul,li,h4{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+img{
+	vertical-align: middle;
+}
+a{
+	text-decoration: none;
+}
+
+#container{
+	width: 731px;
+	height: 343px;
+	border: 1px solid red;
+	margin: 100px auto;
+}
+.header{
+	width: 510px;
+	margin: 0px 10px;
+	font-size: 12px;
+	color: #000;
+	line-height: 19px;
+	margin-top: 100px;
+	font-weight: bolder;
+}
+#list{
+	width: 510px;
+	height: 180px;
+	margin-left: 29px;
+	margin-top: 13px;
+}
+li{
+	width: 48px;
+	height: 90px;
+	position: relative;
+	margin-right: 37px;
+	float: left;
+}
+.check{
+	position: absolute;
+	left: 38px;
+	top: 38px;
+}
+.p1,.p2{
+	font-size: 12px;
+	text-align: center;
+	line-height: 16px;
+}
+.p1{
+	margin-top: 6px;
+	color: #000;
+}
+.p2{
+	color: #9c9c9c;
+}
+#zhezao{
+	width: 228px;
+	height: 134px;
+	border-right: 1px solid #c0c0c0;
+	border-bottom: 2px solid #c0c0c0;
+	position: absolute;
+	display: none;
+	top: 115px;
+	left: 400px;
+	pointer-events: none;
+
+}
+#top{
+	width: 208px;
+	height: 52px;
+	background: #dee7ef;
+	position: relative;
+	padding: 0px 10px;
+}
+#top h4{
+	font-size: 14px;
+	color: #000;
+}
+#top p{
+	font-size: 12px;
+	color: #808080;
+	margin-top: 12px;
+	line-height: 20px;
+}
+#top img{
+	position: absolute;
+	right: 5px;
+	top: 15px;
+}
+#middle{
+	width: 208px;
+	height: 70px;
+	padding: 0px 10px;
+	background: #fff;
+}
+#middle p{
+	width: 195px;
+	height: 40px;
+	font-size: 12px;
+	line-height: 20px;
+	padding-top: 7px;
+}
+#middle div{
+	font-size: 0px;
+}
+#yStar{
+	width: 90px;
+	height: 15px;
+	background: url(../images/007_yStar.png) repeat-x ;
+	display: inline-block;
+	vertical-align: middle;
+}
+#gStar{
+	width: 90px;
+	height: 15px;
+	background: url(../images/007_gStar.png) repeat-x;
+	display: none;
+
+}
+#starNum,#addNum{
+	color: red;
+	font-size: 12px;
+	vertical-align: middle;
+}
+#addInfo{
+	font-size: 12px;
+	vertical-align: middle;
+}
+#bottom{
+	width: 228px;
+	height: 12px;
+	background: #f7efef;
+	position: relative;
+}
+#left{
+	float: left;
+	padding-top: 5px;
+}
+#right{
+	float: right;
+	padding-top: 5px;
+}
+#three{
+	position: absolute;
+	left: 30px;
+	top: 11px;
+}
