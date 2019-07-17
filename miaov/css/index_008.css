@@ -1,0 +1,84 @@
+body,ul,li{
+	padding: 0px;
+	margin: 0px;
+}
+img{
+	width: 1000px;
+	height: 81px;
+	vertical-align: middle;
+	margin-top: 20px;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+}
+#nav{
+	width: 1000px;
+	height: 145px;
+	margin: 100px auto;
+	border: 1px solid red;
+	/* background: #000; */
+}
+#outer{
+	width: 1001px;
+	height: 35px;
+	margin-top: 8px;
+	background: #000;
+	/* border: 1px solid green; */
+	position: relative;
+}
+.fa{
+	width: 76px;
+	height: 35px;
+	float: left;
+	line-height: 35px;
+	border-right: 1px solid #313131;
+	text-align: center;
+}
+.navzi{
+	width: 1000px;
+	height: 35px;
+	background: red;
+	position: absolute;
+	/* padding-left: 42px; */
+	left: 0px;
+	display: none;
+	font-size: 12px;
+}
+.son{
+	height: 35px;
+	line-height: 35px;
+	float: left;
+	text-align: center;
+}
+
+.left_01{
+	margin-left: 38px;
+}
+.left_02{
+	margin-left: 114px;
+}
+.left_03{
+	margin-left: 228px;
+}
+.left_04{
+	margin-left: 342px;
+}
+.left_05{
+	margin-left: 456px;
+}
+.son a{
+	width: 75px;
+	height: 15px;
+	line-height: 15px;
+	color: #fff;
+	border-right: 1px solid #fff;
+	display: inline-block;
+}
+.son .sonbig {
+	width: 130px;
+	display: inline-block;
+}
