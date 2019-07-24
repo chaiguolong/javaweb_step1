@@ -1,0 +1,80 @@
+body,ul{
+	margin: 0px;
+	padding: 0px;
+}
+/* body{ */
+/* 	background: #000; */
+/* } */
+a{
+	width: 80px;
+	height: 80px;
+	text-decoration: none;
+	position: absolute;
+	color: #fff;
+	font-size: 50px;
+	background: #efd694;
+	border-radius: 40px;
+	display: block;
+	margin-top: -270px;
+}
+ul{
+	list-style: none;
+	margin-left: 295px;
+	margin-top: 20px;
+}
+img{
+	vertical-align: middle;
+}
+#container{
+	width: 712px;
+	height: 568px;
+	margin: 100px auto;
+	border: 1px solid red;
+	position: relative;
+	text-align: center;
+	background: url(../images/012_beijing.jpg) no-repeat center;
+}
+#container span{
+	color: #fff;
+	font-size: 25px;
+	float: left;
+	margin-left: 20px;
+}
+.left{
+	left: 50px;
+}
+.right{
+	right: 50px;
+}
+
+ul li{
+	background: #94a59c;
+	width: 20px;
+	height: 20px;
+	margin-left: 15px;
+	border-radius: 10px;
+	float: left;
+}
+.active{
+	background: #a90;
+}
+.suolue{
+	width: 80px;
+	height: 50px;
+	position: relative;
+	pointer-events: none
+}
+#img1{
+	width: 80px;
+	height: 50px;
+	position: absolute;
+	border: 5px solid #fff;
+	bottom: 55px;
+	left: -35px;
+}
+#img2{
+	position: absolute;
+	bottom: 50px;
+	left: 5px;
+}
+	
