@@ -97,13 +97,4 @@ window.onload=function(){
 		// console.log(aLeft.indexLeft);
 	}
 
-	
-
-
-
-
-
-	
-
-
 }
