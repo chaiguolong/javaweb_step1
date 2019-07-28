@@ -1,0 +1,50 @@
+body,ul,h3{
+	margin: 0px;
+	padding: 0px;
+}
+li{
+	list-style: none;
+}
+#container{
+	width: 252px;
+	/* height: 326px; */
+	margin: 50px auto;
+	border: 1px solid red;
+}
+.content{
+	width: 240px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	margin: 0px 5px;
+}
+#content1{
+	border-top: 1px solid black;
+	margin-top: 5px;
+}
+#content2{
+}
+#content3{
+	margin-bottom: 5px
+}
+h3{
+	width: 219px;
+	height: 30px;
+	font-size: 22px;
+	line-height: 30px;
+	padding-left: 21px;
+}
+.hClose{
+	background: url(../images/014_guanbi.png) no-repeat 7px  #63f7ff;
+}
+.hOpen{
+	background: url(../images/014_kaiqi.png) no-repeat 7px  #f7f794;
+}
+ul{
+	display: none;
+}
+ul li{
+	width: 240px;
+	height: 24px;
+	text-indent: 24px;
+	border-bottom: 1px solid black;
+}
