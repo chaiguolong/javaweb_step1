@@ -1,0 +1,64 @@
+body,input{
+	margin: 0px;
+	padding: 0px;
+}
+#container{
+	width: 571px;
+	height: 111px;
+	margin: 50px auto;
+	border: 1px solid red;
+}
+img{
+	vertical-align: text-bottom;
+}
+
+input{
+	width: 150px;
+	height: 26px;
+	outline: none;
+	font-size: 13px;
+	border: 1px solid #a59c21;
+}
+input:focus{
+	border: 1px solid #efc67b;
+}
+.edit{
+	width: 100%;
+	height: 40px;
+}
+.edit a{
+	width: 48px;
+	height: 24px;
+	color: #429400;
+	text-decoration: none;
+
+}
+.edit a:hover{
+	width: 48px;
+	height: 24px;
+	background: #429400;
+	color: #fff;
+}
+
+#top{
+	width: 571px;
+	height: 28px;
+	background: #6ba542;
+	color: #fff;
+	line-height: 28px;
+	font-size: 13px;
+	text-indent: 2em;
+	font-weight: bolder;
+}
+.content div{
+	width: 571px;
+	height: 40px;
+	border-bottom: 1px solid #bddede;
+	line-height: 40px;
+	font-size: 13px;
+	text-indent: 2em;
+}
+
+.content div img{
+	margin-left: 10px;
+}
