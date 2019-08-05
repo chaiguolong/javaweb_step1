@@ -1,0 +1,98 @@
+body,ul{
+	padding: 0px;
+	margin: 0px;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	vertical-align: middle;
+}
+#container{
+	width: 962px;
+	height: 333px;
+	margin: 50px auto;
+	border-top: 9px solid #e7e7e7;
+	border-bottom: 4px solid #e7e7e7;
+	border-left: 5px solid #e7e7e7;
+	border-right: 5px solid #e7e7e7;
+}
+#container1{
+	width: 960px;
+	height: 331px;
+	border: 1px solid #c6c6c6;
+}
+ul{
+	width: 148px;
+	height: 81px;
+	float: left;
+}
+
+#left{
+	width: 148px;
+	height: 330px;
+	float: left;
+}
+
+#left li{
+	position: relative;
+	background: #e7e7e7;
+}
+
+.leftPic{
+	width: 148px;
+	height: 81px;
+	color: #000;
+	border-top: 1px solid #f7f7ef;
+	border-bottom: 1px solid #c6c6c6;
+	display: inline-block;
+	text-align: center;
+	line-height: 125px;
+	font-size: 14px;
+}
+
+.leftPic img{
+	position: absolute;
+	top: 15px;
+	left: 55px;
+}
+#right{
+	width: 810px;
+	height: 330px;
+	float: left;
+}
+#top{
+	width: 810px;
+	height: 330px;
+}
+#pic{
+	width: 810px;
+	height: 330px;
+	margin-top: -30px;
+	position: relative;
+}
+#pic li{
+	position: absolute;
+	background: rgba(0,0,0,0.8);
+	width: 202px;
+	height: 30px;
+	border-right: 1px solid #fff;
+	text-align: center;
+	line-height: 30px;
+	font-size: 12px;
+}
+#pic li a{
+	color: #fff;
+}
+#pic2{
+	left: 203px;
+}
+#pic3{
+	left: 406px;
+}
+#pic4{
+	left: 609px;
+}
