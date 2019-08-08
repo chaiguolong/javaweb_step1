@@ -1,0 +1,57 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+#container{
+	width: 504px;
+	height: 63px;
+	margin: 50px auto;
+	border: 1px solid red;
+}
+#con{
+	width: 504px;
+	height: 63px;
+	position: relative;
+	line-height: 63px;
+	font-size: 17px;
+	font-weight: bolder;
+}
+img{
+	vertical-align: middle;
+}
+#red{
+	color: red;
+}
+#con #tishi{
+	position: absolute;
+	top: 10px;
+	left: 230px;
+}
+#exp{
+	float: left;
+}
+#star{
+	width: 125px;
+	height: 63px;
+	float: left;
+	margin-top: 20px;
+	overflow: hidden;
+}
+a{
+	width: 125px;
+	height: 63px;
+	float: left;
+	margin-top: -2px;
+}
+#pingfen{
+	float: left;
+	margin-left: -125px;
+}
+#wenzi{
+	width: 45px;
+	height: 24px;
+	color: #ef7300;
+	font-size: 14px;
+	margin-left: 15px;
+}
