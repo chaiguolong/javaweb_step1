@@ -1,0 +1,59 @@
+body,ul{
+	padding: 0px;
+	margin: 0px;
+}
+
+li{
+	list-style: none;
+}
+
+#container{
+	width: 312px;
+	height: 220px;
+	border: 1px solid red;
+	margin: 50px auto;
+}
+
+ul{
+	width: 312px;
+	height:182px;
+	text-align: left;
+}
+
+input{
+	margin-left: 17px;
+}
+
+ul li{
+	width: 312px;
+	height: 30px;
+	border-top: 1px solid #fff;
+	line-height: 30px;
+}
+
+.left{
+	width: 180px;
+	height: 30px;
+	float: left;
+}
+.left span{
+	margin-left: 12px;
+}
+.right{
+	width: 80px;
+	height: 30px;
+	float: right;
+	text-align: left;
+}
+.clear{
+	clear:both;
+}
+#bottom{
+	width: 312px;
+	height: 35px;
+	line-height: 35px;
+	border-top: 1px solid #dedede;
+}
+.odd{
+	background: #f7ffff;
+}
