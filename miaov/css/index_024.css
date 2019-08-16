@@ -1,0 +1,56 @@
+body,ul{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background-color: #444;
+}
+
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+#container{
+	width: 310px;
+	height: 230px;
+	border: 1px solid #fff;
+	background-color: #fff;
+	margin: 100px auto;
+}
+#con1{
+	width: 298px;
+	height: 218px;
+	border: 1px solid #ff6300;
+	margin: 5px 3px 3px 5px;
+}
+ul{
+	margin-top: 4px;
+}
+
+ul li{
+	width: 48px;
+	height: 26px;
+	border: 1px solid #ffadad;
+	text-align: center;
+	line-height: 26px;
+	font-size: 12px;
+	margin: 2px 1px;
+}
+li a{
+	color: #000;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+#middle{
+	width: 184px;
+	height: 205px;
+	float: left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
