@@ -18,6 +18,7 @@ window.onload = function(){
 
 	var oContent1 = document.getElementById("content1");
 
+
 	var oContent2 = document.getElementById("content2");
 
 	/*

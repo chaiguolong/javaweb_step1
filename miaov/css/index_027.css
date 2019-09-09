@@ -1,0 +1,25 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #444;
+}
+#container{
+	width: 800px;
+	height: 600px;
+	background: #eee;
+	border: 1px solid #999;
+	margin: 50px auto;
+	position: relative;
+	text-align: center;
+}
+#container div{
+	width: 80px;
+	height: 80px;
+	background: pink;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	line-height: 80px;
+}
