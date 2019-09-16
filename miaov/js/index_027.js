@@ -21,8 +21,6 @@ window.onload = function(){
 
 		var pos = aDiv[aDiv.length -1].style.top;
 
-		console.log(pos);
-
 		this.style.pointerEvents = "none";
 
 		if(pos == "400px"){
