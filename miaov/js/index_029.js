@@ -70,8 +70,6 @@ window.onload = function(){
 
 			oDiv.style.opacity = opaIndex +"";
 
-			console.log("--------"+opaIndex+"-----------");
-
 			if(window.parseFloat(opaIndex) <= target){
 				opaIndex = 1;
 				window.clearInterval(oDiv.timer2);
