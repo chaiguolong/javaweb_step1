@@ -1,0 +1,44 @@
+body,ul{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #444;
+}
+#container{
+	width: 517px;
+	height: 166px;
+	background: #fff;
+	border: 1px solid #444;
+	margin: 100px auto;
+}
+#con{
+	width: 500px;
+	height: 50px;
+	border: 1px solid #000;
+	margin: 110px auto;
+	position: relative;
+	text-align: center;
+}
+/* #color{ */
+/* 	width: 1%; */
+/* 	height: 50px; */
+/* 	background: #4aa; */
+/* 	position: absolute; */
+/* 	top: 212px; */
+/* 	left: 212px; */
+/* } */
+li{
+	width: 50px;
+	height: 50px;
+	list-style: none;
+	position: absolute;
+	line-height: 50px;
+	font-size: 20px;
+	left: 0px;
+
+}
+li span{
+	position: absolute;
+	left: 15px;
+}
