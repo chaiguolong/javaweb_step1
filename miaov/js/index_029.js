@@ -2,90 +2,85 @@ window.onload = function(){
 
 	var oUl = document.getElementById("con");
 
-	var aLi = oUl.getElementsByTagName("li");
+	var oColor = document.getElementById("color");
 
-	var aSpan = [];
+	var aLi = oUl.getElementsByTagName("li");
 
 	var timer1 = null;
 
 	var timer2 = null;
 
-	var opaIndex = 1;
-
-	for (var i = 0, len = aLi.length; i < len; i++) {
-		aLi[i].style.left = 50*i + "px";
-
-		aLi[i].children[0].style.top = "0px";
-
-		//将span都添加到aSpan数组中
-		aSpan.push(aLi[i].children[0]);
-	}
+	//设置默认的布局
+	defaultSet();
 
 	oUl.onclick = function(){
-
-		//阻止点击事件,2s钟之后激活
-		preventEventOfTime(this,2000);
 
 		//再次点击之前清除原先的定时器
 		window.clearInterval(timer1);
 		window.clearInterval(timer2);
 
 		//初始化每次点击之前的数据
-		var	index = 0;
-
 		var topIndex = 0;
-
-		opaIndex = 1;
 
 		//文字从下往上
 		//给每个span都设定一个计时器
-		aSpan[topIndex].timer3 = window.setInterval(function(){
-			doMove(aSpan[topIndex],"top",-20,-120);
+		aLi[topIndex].timer3 = window.setInterval(function(){
+			doMove(aLi[topIndex],"top",-2,-120,7);
+			opacity(aLi[topIndex],0.05,0,20);
 			topIndex++;
-			if(topIndex == aSpan.length){
+			if(topIndex == aLi.length){
 				topIndex = 0;
-				window.clearInterval(aSpan[topIndex].timer3);
+				window.clearInterval(aLi[topIndex].timer3);
 			}
-		},100);
+		},135);
 
 
 		// 蓝条从左到右移动
 		timer1 = window.setInterval(function(){
-			aLi[index].style.background = "#4aa";
-			index++;
-			//如果index大于等于aLi.length的长度,则定时器停止
-			if(index >= aLi.length){
-				index = aLi.length-1;
+		//oColor的当前宽度
+		var currentWidth =window.parseInt(window.getComputedStyle(oColor,null).width);
+
+			currentWidth += 10;
+
+			if(currentWidth >= 499){
+				currentWidth = 500;
 				window.clearInterval(timer1);
-				//在定时器timer2关闭之后,延时1s,显示默认的Li样式
-				window.setTimeout(function(){
-					for (var i = 0, len = index; i <= len; i++) {
-						aLi[i].style.background = "#fff";
-						aLi[i].children[0].style.opacity = "1";
-						aLi[i].style.opacity = "1";
-						aLi[i].children[0].style.top = "0px";
-					}
-				},800);
-			}
-		},100);
-
-		timer2 = window.setInterval(function(){
-			opaIndex -= 0.05;
-
-			for (var i = 0, len = index; i <= len; i++) {
-				aLi[i].style.opacity = opaIndex +"";
-				aLi[i].children[0].style.opacity = opaIndex +"";
 			}
 
-			if(opaIndex <= 0.1){
-				opaIndex = 1;
-				window.clearInterval(timer2);
-			}
+			oColor.style.width = currentWidth + "px";
 
-		},80);
+		},10);
+
+		opacity(oColor,0.02,0,50);
+
+		
+		//阻止点击事件,2s钟之后激活
+		preventEventOfTime(this,2500);
 	}
 
-	function doMove(oDiv,dir,speed,target){
+	//减少透明度
+	function opacity(oDiv,speed,target,time){
+
+		var opaIndex = 1;
+
+		//蓝条透明度按照0.05的速度降低
+		//必须把定时器绑定到oDiv元素上,不然多个元素调用同一个定时器,会导致定时器混乱
+		oDiv.timer2 = window.setInterval(function(){
+			opaIndex -= speed;
+
+			oDiv.style.opacity = opaIndex +"";
+
+			console.log("--------"+opaIndex+"-----------");
+
+			if(window.parseFloat(opaIndex) <= target){
+				opaIndex = 1;
+				window.clearInterval(oDiv.timer2);
+			}
+
+		},time);
+	}
+
+	function doMove(oDiv,dir,speed,target,time){
 		oDiv.timer1 = window.setInterval(function(){
 
 			var currentDir = window.parseInt(window.getComputedStyle(oDiv,null)[dir]) + speed;
@@ -104,7 +99,7 @@ window.onload = function(){
 
 			oDiv.style[dir] = nextDir;
 
-		},100);
+		},time);
 
 	}
 
@@ -119,8 +114,28 @@ window.onload = function(){
 		window.setTimeout(function(){
 			//一秒钟之后将点击事件激活
 			that.style.pointerEvents = "auto";
+			//恢复默认的设置
+
+			for (var j = 0, lenj = aLi.length; j < lenj; j++) {
+				aLi[j].style.opacity = 1;
+				aLi[j].style.left = 50*j + "px";
+				aLi[j].style.top = "0px";
+			}
+			//颜色层显示
+			oColor.style.opacity = 1;
+			oColor.style.width = "0px";
+			oColor.style.backgroundColor = "#4aa";
 		},time);
 
+	}
+
+
+	function defaultSet(){
+		for (var i = 0, len = aLi.length; i < len; i++) {
+			aLi[i].style.opacity = 1;
+			aLi[i].style.left = 50*i + "px";
+			aLi[i].style.top = "0px";
+		}
 	}
 
 }

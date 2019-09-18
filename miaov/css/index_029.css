@@ -20,14 +20,14 @@ body{
 	position: relative;
 	text-align: center;
 }
-/* #color{ */
-/* 	width: 1%; */
-/* 	height: 50px; */
-/* 	background: #4aa; */
-/* 	position: absolute; */
-/* 	top: 212px; */
-/* 	left: 212px; */
-/* } */
+#color{
+	width: 0px;
+	height: 50px;
+	background: #4aa;
+	position: absolute;
+	top: 212px;
+	left: 212px;
+}
 li{
 	width: 50px;
 	height: 50px;
@@ -36,9 +36,4 @@ li{
 	line-height: 50px;
 	font-size: 20px;
 	left: 0px;
-
-}
-li span{
-	position: absolute;
-	left: 15px;
 }
