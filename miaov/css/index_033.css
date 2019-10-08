@@ -1,0 +1,38 @@
+body,ul{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #444;
+}
+ul{
+	width: 400px;
+	height: 70px;
+	position: relative;
+	margin-top: 5px;
+	margin-left: 8px;
+	overflow: hidden;
+}
+li{
+	list-style: none;
+	width: 50px;
+	height: 70px;
+	position: absolute;
+	left: 0px;
+}
+li img{
+	width: 50px;
+	height: 70px;
+	display: block;
+	line-height: 70px;
+	position: absolute;
+}
+#container{
+	width: 415px;
+	height: 78px;
+	margin: 200px auto;
+	background: #fff;
+	line-height: 78px;
+	text-align: center;
+	border: 1px solid #fff;
+}
