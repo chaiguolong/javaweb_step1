@@ -19,12 +19,6 @@ window.onload = function(){
 
 	//点击文字向右移动
 	oToRight.onclick = function(){
-		console.log(oRight.innerHTML);
-
-		oRight.innerHTML = "";
-
-		console.log(oRight.innerHTML);
-
 		window.clearInterval(timer1);
 		window.clearInterval(timer2);
 		this.style.backgroundColor = "#e7cece";
@@ -60,6 +54,7 @@ window.onload = function(){
 
 		var index = 0;
 
+		//每次点击之前先置空
 		var text_right = '';
 
 		moveLi();
