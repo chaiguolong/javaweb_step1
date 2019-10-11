@@ -1,0 +1,87 @@
+body,ul{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background: #444;
+}
+input,button,select,textarea{
+	outline:none
+}
+textarea{
+	resize:none
+}
+#ul_middle{
+	width: 136px;
+	height: 50px;
+	font-size: 14px;
+	line-height: 50px;
+}
+ul{
+	/* margin-top: 20px; */
+	margin-left: 30px;
+}
+li{
+	width: 8px;
+	height: 10px;
+	background: #e7a521;
+	list-style: none;
+	float: left;
+	margin-left: 2px;
+}
+.select{
+	background-color: #ef6363;
+}
+#toRight{
+	width: 120px;
+	height: 40px;
+	background-color: #f76300;
+	text-decoration: none;
+	color: #fff;
+	display: inline-block;
+	line-height: 40px;
+}
+#container{
+	width: 840px;
+	height: 278px;
+	margin: 100px auto;
+	background: #fff;
+	border: 1px solid #444;
+}
+#con{
+	width: 793px;
+	height: 232px;
+	border: 10px solid #c0c0c0;
+	margin: 10px auto;
+	text-align: center;
+	padding-left: 7px;
+	padding-top: 8px;
+}
+#right{
+	width: 302px;
+	height: 202px;
+	border: 1px dotted #000;
+	background-color: #63eff7;
+	text-align: left;
+	float: left;
+	padding: 5px;
+	font-size: 14px;
+	line-height: 20px;
+}
+#middle{
+	float: left;
+	width: 136px;
+	height: 222px;
+}
+#left{
+	float: left;
+}
+#text_area{
+	width: 290px;
+	height: 190px;
+	border: 1px dotted #000;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 15px;
+	background-color: #efefd6;
+}
