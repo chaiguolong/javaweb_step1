@@ -11,7 +11,6 @@ window.onload = function(){
 
 	var aLi = oUl.getElementsByTagName("li");
 
-	var text_right = '';
 
 	var timer1 = null;
 
@@ -20,10 +19,11 @@ window.onload = function(){
 
 	//点击文字向右移动
 	oToRight.onclick = function(){
-
-		console.log(oRight);
+		console.log(oRight.innerHTML);
 
 		oRight.innerHTML = "";
+
+		console.log(oRight.innerHTML);
 
 		window.clearInterval(timer1);
 		window.clearInterval(timer2);
@@ -59,6 +59,8 @@ window.onload = function(){
 		var totalWord = text_all.length;
 
 		var index = 0;
+
+		var text_right = '';
 
 		moveLi();
 
