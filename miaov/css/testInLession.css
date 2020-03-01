@@ -1,0 +1,30 @@
+body{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background-color: #444;
+}
+#container{
+	width: 800px;
+	height: 400px;
+	border: 1px solid #444;
+	margin: 50px auto;
+	background-color: #fff;
+	text-align: center;
+}
+input[type=button]{
+	width: 80px;
+	height: 40px;
+	border:1px solid #000;
+	font-size: 14px;
+	margin: 10px;
+}
+#div{
+	width: 700px;
+	height: 200px;
+	padding: 50px;
+	border: none;
+	background-color: pink;
+	word-break: break-all;white-space: normal;
+}

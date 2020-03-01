@@ -1,3 +1,4 @@
+"ggvG=格式化代码"
 "这是提交到git的.vimrc,现在主文件改动,看看硬连接有咩有改
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -45,7 +46,7 @@ set nocompatible
 " 共享剪贴板
  set clipboard+=unnamed
 " 顶部底部保持3行距离
-set scrolloff=3
+" set scrolloff=3
 " vim 自身命令行模式智能补全
 set wildmenu
 "vim禁用自动备份
@@ -70,10 +71,10 @@ set laststatus=2
 "设置使用该配色主题,在.vim/color目录下
 " syntax enable
 set background=dark
-" set background=light
-" colorscheme solarized
-colorscheme gruvbox
-" 设置 gvim 显示字体
+"set background=light
+"colorscheme solarized
+ colorscheme gruvbox
+"设置 gvim 显示字体
 set guifont=YaHei\ Consolas\ Hybrid\ 11.5
 " 禁止折行
 "set nowrap
@@ -98,8 +99,8 @@ set guioptions-=m
 set guioptions-=T
 
 "注释行换行不再有注释符号,第一种在js中没用,暂时用第二种
-au FileType java,jsp,js setlocal comments-=:// comments+=f://
-"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"au FileType java,jsp,js,c setlocal comments-=:// comments+=f://
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "粘贴模式
 ":set paste
@@ -141,6 +142,7 @@ Bundle 'pgdouyon/vim-evanesco'
 "轻松创建目录
 " Bundle 'duggiefresh/vim-easydir'
 Bundle 'npacker/vim-java-syntax-after'
+Bundle 'vim/killersheep'
 Bundle 'mileszs/ack.vim'
 Bundle 'VundleVim/Vundle.vim'
 "git包装器
@@ -158,6 +160,8 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 "Vim的轻量级可配置状态行/标签插件
 Bundle 'itchyny/lightline.vim'
+"vim-airline主题
+"Bundle 'vim-airline/vim-airline'
 "vim主题,比较好用的一个主题
 Bundle 'morhetz/gruvbox'
 "侧边文件树形导航u,可以向上切换根目录
@@ -201,11 +205,11 @@ Bundle 'vim-scripts/dbext.vim'
 "编译java,运行java,自己瞎写的程序
 Plugin 'chaiguolong/myTools.vim'
 "========================web开发插件开始=====================
-"javascript语法高亮
-Bundle 'mxw/vim-jsx'
 "Vim中极大地改进了Javascript缩进和语法支持
 "js对齐上有bug,先用一段时间,过后删除
 Bundle 'pangloss/vim-javascript'
+"javascript语法高亮
+Bundle 'mxw/vim-jsx'
 "色彩高亮
  Bundle 'gorodinskiy/vim-coloresque'
 "与YouCompleteMe结合对JavaScript补全
@@ -222,9 +226,16 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'othree/html5.vim'
 "标签自动补全
 Bundle 'docunext/closetag.vim'
+"画流程图,结构图插件
+Bundle 'liuchengxu/graphviz.vim'
+"书签
+Bundle 'MattesGroeger/vim-bookmarks'
 "w3m浏览器插件
 "Bundle 'yuratomo/w3m.vim'
-
+"MarkDown插件
+" Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'suan/vim-instant-markdown'
 
 "========================web开发插件结束=====================
 call vundle#end()
@@ -245,7 +256,11 @@ map <F12> gg=G
 vnoremap <Leader>y "+y
 " 设置快捷键将系统剪贴板内容粘贴至 vim
 nmap <Leader>p "+p
-
+"调整vim的尺寸
+nmap w= :resize +3<CR>
+nmap w- :resize -3<CR>
+nmap w, :vertical resize -3<CR>
+nmap w. :vertical resize +3<CR>
 
 "test the current methond,测试当前方法
 nnoremap <Leader>jv :JavaUnitExec<CR>
@@ -296,7 +311,7 @@ let g:indent_guides_guide_size=1
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
-let NERDTreeWinSize=30
+let NERDTreeWinSize=40
 " 设置NERDTree子窗口位置
 let NERDTreeWinPos="left"
 " 显示隐藏文件
@@ -346,7 +361,35 @@ set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeopt = 0
 "屏蔽YCM默认诊断信息
 let g:ycm_show_diagnostics_ui = 1
+" css补全
+let g:ycm_semantic_triggers = {
+   \   'css': [ 're!^\t', 're!:\s+' ],
+   \ }
 
+"-----------------20191012----------------
+
+" 寻找全局配置文件
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+" 开启语义补全
+" 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
+let g:ycm_key_invoke_completion = '<M-;>'
+" 禁用syntastic来对python检查
+let g:syntastic_ignore_files=[".*\.py$"] 
+" 设置转到定义处的快捷键为ALT+G，未测出效果
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> 
+"关键字补全
+let g:ycm_seed_identifiers_with_syntax = 1
+" 在接受补全后不分裂出一个窗口显示接受的项
+set completeopt-=preview
+" 让补全行为与一般的IDE一致
+set completeopt=longest,menu
+" 不显示开启vim时检查ycm_extra_conf文件的信息
+let g:ycm_confirm_extra_conf=0
+" 每次重新生成匹配项，禁止缓存匹配项
+let g:ycm_cache_omnifunc=0
+" 在注释中也可以补全
+let g:ycm_complete_in_comments=1"
+"-----------------20191012----------------
 
 
 "下列定义如果不卡可以放开
@@ -383,17 +426,27 @@ let g:ycm_enable_diagnostic_highlighting = 0
 "打开chrome
 nnoremap <Leader>o :exec '!exec open %'<CR>
 
+" map the function key to preview the dot file
+" autocmd BufRead *.dot 
+nmap <F8> :w<CR>:!dot -Tpng -o %<.png % && open /Applications/Preview.app %<.png<CR><CR>
+
 "==============================================vim-javacomplete2=======================================================START
 "将其添加到您的.vimrc文件中：
 "
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 " autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 " #注释掉用tern_for_vim
 " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType sql setlocal omnifunc=sqlcomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"othree/html5.vim的方法
+autocmd FileType html set omnifunc=htmlcomplete#DetectOmniFlavor
+"graphviz
+" " autocmd FileType dot set omnifunc=graphviz#completion#Omni
 
+" 默认编译生成 pdf 格式，如果想要其他格式，将 pdf 换成其他格式即可
+let g:graphviz_output_format = 'png'
 " 构造javacomplete2使用python3解释器而不是python2:
 " let g:JavaComplete_UsePython3 = 1
 let g:JavaComplete_ShowExternalCommandsOutput=1
@@ -407,7 +460,7 @@ let g:JavaComplete_ImportDefault = -1
     "tagbar以来ctags插件
     let g:tagbar_ctags_bin = 'ctags'                
     "让tagbar在页面左侧显示，默认右边
-    let g:tagbar_left = 0                           
+    let g:tagbar_left = 0
     "设置tagbar的宽度为30列，默认40
     let g:tagbar_width = 30                         
     "这是tagbar一打开，光标即在tagbar页面内，默认在vim打开的文件内
@@ -434,6 +487,7 @@ let g:dbext_default_profile_mySQL_web08 = 'type=MYSQL:user=root:passwd=mysql:dbn
 let g:dbext_default_profile_mySQL_heimashop = 'type=MYSQL:user=root:passwd=mysql:dbname=heimashop'
 let g:dbext_default_profile_mySQL_hibernate = 'type=MYSQL:user=root:passwd=mysql:dbname=hibernate'
 let g:dbext_default_profile_mySQL_springmvc= 'type=MYSQL:user=root:passwd=mysql:dbname=springmvc'
+let g:dbext_default_profile_mySQL_crm= 'type=MYSQL:user=root:passwd=mysql:dbname=crm'
 let g:dbext_default_profile_mySQL_mybatis= 'type=MYSQL:user=root:passwd=mysql:dbname=mybatis'
 let g:dbext_default_profile_mySQL_mydb1 = 'type=MYSQL:user=root:passwd=mysql:dbname=mydb1'
 let g:dbext_default_profile_mySQL_day05 = 'type=MYSQL:user=root:passwd=mysql:dbname=day05'
@@ -465,9 +519,10 @@ nnoremap <leader>ss :call WidthToSize(140)<cr>
 let g:ale_set_highlights = 0
 "自定义error和warning图标
 let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '⚡'
+let g:ale_sign_warning = '⚠'
 "在vim自带的状态栏中整合ale
-let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"let g:ale_statusline_format = ['✗ %d', '⚡%d', '✔ OK']
+let g:ale_statusline_format = ['✗ %d', '⚠ %d', '✔ OK']
 "显示Linter名称,出错或警告等相关信息
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -508,9 +563,32 @@ let g:lightline = {
 			\ },
 			\ }
 
-autocmd FileType html set omnifunc=htmlcomplete#DetectOmniFlavor
 "设置tmux的状态栏的分割符为0
 let g:tmuxline_powerline_separators = 0
+"let g:tmuxline_preset = 'nightly_fox'
+"let g:tmuxline_theme = "powerline"
+"let g:tmuxline_theme = "lightline_insert"
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : '#H',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '#W %R',
+      \'z'    : '#H'}
+"对tmuxline的主题进行微调
+let g:tmuxline_theme = {
+    \   'a'    : [ 236, 246 ],
+    \   'b'    : [ 246, 239 ],
+    \   'c'    : [ 246, 236 ],
+    \   'x'    : [ 246, 236 ],
+    \   'y'    : [ 246, 239 ],
+    \   'z'    : [ 236, 246 ],
+    \   'win'  : [ 103, 236, 'bold'],
+    \   'cwin' : [ 236, 246, 'bold'],
+    \   'bg'   : [ 244, 236 ],
+    \ }
 " let g:neoterm_size=''
 " let g:neoterm_fixedsize=1
 "定义终端复用窗口出现的位置
@@ -525,5 +603,5 @@ let g:easytags_file = '~/.vim/tags'
 " let g:easytags_async = 1
 " let g:JavaComplete_JavaviLogLevel = 'debug'
 " let g:JavaComplete_JavaviLogDirectory = '/Users/mymac/Loglet
-let g:JavaUnit_custom_tempdir = "/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/build/classes/"
-let g:JavaComplete_LibsPath ="/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/aopalliance-1.0.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/asm-3.3.1.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/aspectjweaver-1.6.11.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/cglib-2.2.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/commons-dbcp-1.2.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/commons-fileupload-1.2.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/commons-io-2.4.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/commons-logging-1.1.1.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/commons-pool-1.3.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/jackson-annotations-2.4.0.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/jackson-core-2.4.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/jackson-databind-2.4.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/javassist-3.17.1-GA.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/jsp-api.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/jstl-1.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/junit-4.9.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/log4j-1.2.17.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/log4j-api-2.0-rc1.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/log4j-core-2.0-rc1.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/mybatis-3.2.7.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/mybatis-spring-1.2.2.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/mysql-connector-java-5.1.7-bin.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/servlet-api.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/slf4j-api-1.7.5.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/slf4j-log4j12-1.7.5.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-aop-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-aspects-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-beans-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-context-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-context-support-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-core-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-expression-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-jdbc-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-jms-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-messaging-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-tx-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-web-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/springmvc-mybatis02/WebContent/WEB-INF/lib/spring-webmvc-4.1.3.RELEASE.jar:."
+let g:JavaUnit_custom_tempdir = "/Users/mymac/Documents/JavaWeb01/crm32/build/classes/"
+"let g:JavaComplete_LibsPath ="/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/aopalliance-1.0.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/asm-3.3.1.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/aspectjweaver-1.8.4.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/cglib-2.2.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-codec-1.6.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-collections-1.0.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-fileupload-1.2.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-io-1.3.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-lang3-3.1.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-lang3-3.4.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-logging-1.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/commons-pool2-2.0.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/dom4j-1.6.1.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/druid-1.0.9.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/hamcrest-core-1.3.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/jackson-annotations-2.4.0.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/jackson-core-2.4.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/jackson-databind-2.4.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/json-20131018.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/jsp-api.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/jstl-1.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/junit-4.12.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/log4j-1.2.17.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/mybatis-3.2.7.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/mybatis-spring-1.2.2.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/mysql-connector-java-5.1.8.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/servlet-api.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/slf4j-api-1.6.6.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/slf4j-log4j12-1.6.6.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-aop-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-aspects-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-beans-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-context-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-context-support-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-core-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-expression-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-jdbc-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-jms-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-messaging-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-test-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-tx-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-web-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/spring-webmvc-4.1.3.RELEASE.jar:/Users/mymac/Documents/JavaWeb01/crm32/WebContent/WEB-INF/lib/standard-1.1.2.jar:."
