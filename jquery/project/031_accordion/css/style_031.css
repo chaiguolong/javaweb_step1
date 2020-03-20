@@ -1,0 +1,17 @@
+body, ul{
+	padding: 0px;
+	margin: 0px;
+}
+ul{
+	list-style: none;
+}
+
+.accordion{position:relative;overflow:hidden;background-color:#FFF;border:4px solid #FFF;width:960px;margin: 0px auto 80px auto;}
+.accordion .panel{background:#eee url(../image/loading.gif) no-repeat center center;position:absolute;overflow:hidden;}
+.accordion .shadow{position:absolute;right:0px;width:25px;height:100%;}
+.accordion .preloader{width:62px;height:14px;position:absolute;z-index:15;}
+.accordion .caption{overflow:hidden;position:absolute;z-index:20;}
+.accordion img, .accordion .caption{position:absolute;left:-9999px;}
+.accordion .caption-background{background:rgba(0,0,0,0.5);position:absolute;width:100%;height:100%;}
+.accordion .caption p{color:#FFF;margin:0px;padding:10px;}
+.accordion .caption p a{color:#FFF;}
