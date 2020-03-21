@@ -1,0 +1,28 @@
+@charset utf-8;
+body{
+	padding: 0px;
+	margin: 0px;
+}
+.container{
+	width: 960px;
+	/* border: 1px solid #f00; */
+	margin: auto;
+}
+#box{
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	line-height: 200px;
+	border: 1px solid #f00;
+	margin: 100px auto 0px;
+}
+#slide{
+	width: 200px;
+	height: 200px;
+	text-align:center;
+	line-height: 200px;
+	background: rgba(128,128,128,0.3);
+	margin-top: -201px;
+	margin-left: 39.6%;
+	display: none;
+}
