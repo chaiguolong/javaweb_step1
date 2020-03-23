@@ -13,13 +13,13 @@ ul li:not(.imgr){
 	width: 400px;
 	height: 260px;
 	margin-right: 10px;
-	margin-top: 5px;
+	margin-top: 10px;
 	position: relative;
 	overflow: hidden;
 }
 .imgr{
 	float: right;
-	margin-top: 5px;
+	margin-top: 10px;
 	position: relative;
 	overflow: hidden;
 }
