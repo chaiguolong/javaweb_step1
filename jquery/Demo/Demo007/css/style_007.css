@@ -1,0 +1,31 @@
+@charset utf-8;
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.box{
+	width: 50px;
+	height: 50px;
+	border: 1px solid #f00;
+	perspective: 800px;
+	margin: 20px auto;
+}
+.box01{
+	width: 50px;
+	height: 0px;
+	border-top: 0px;
+	border-bottom: 50px solid pink;
+	border-left: 50px solid transparent;
+}
+.box02{
+	background-color: pink;
+	transform: skewX(-18deg);
+}
+.box03{
+	background-color: pink;
+	transform: perspective(50px) translateZ(-20px);
+}
+.box03:hover{
+	background-color: #f00;
+    transform: perspective(50px) translateZ(20px);
+}

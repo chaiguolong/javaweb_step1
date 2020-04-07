@@ -1,0 +1,4 @@
+ 138.128.201.208
+Your Server Port      :  8989
+Your Password         :  chaiguolong
+Your Encryption Method:  aes-256-gcm

@@ -30,6 +30,15 @@ $(function(){
 	 *		父元素如果为100%的宽和高,那么设置背景图片的尺寸为100%,则图片尺寸会和缩放浏览器的尺寸一同缩放,也就是在缩放浏览器的视图的情况下,
 	 *		图片在视觉上不会改变大小尺寸.
 	 *
+	 *	8.border-bottom: 50px solid transparent; transparent透明的意思,可以利用它来画出不规则的形状;
+	 *
+	 *	9.height: 100vh; vh流式布局中的单位,vh:view height;vw: view width;
+	 *
+	 *	10.transform: skew();对元素进行歪曲,斜切,可以做出平行四边形等
+	 *
+	 *	11.perspective: 50:perspective属性为人眼到元素中心的距离,translateZ为元素往人眼方向移动的距离,
+	 *		当translateZ > perspective(50)时,则没有透视,因为元素已经跑到人眼的后面,所以看不到.
+	 *
 	 *
 	 *
 	 *
