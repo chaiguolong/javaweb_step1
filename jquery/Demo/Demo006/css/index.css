@@ -1,0 +1,23 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+header,main,footer{
+	width: 960px;
+	margin: 0px auto;
+}
+nav a{
+	display: inline-block;
+	width: 25%;
+	border: 1px solid green;
+	text-align: center;
+}
+section{
+	width: 320px;
+	border: 1px solid red;
+	float: left;
+	display: inline-block;
+	text-align: center;
+	margin: 20px 0px;
+}
